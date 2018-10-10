@@ -14,7 +14,7 @@ export default class About extends React.Component {
 				</p>
 				<h2>Links</h2>
 				<p>
-					Discord: <a href="https://discordapp.com/invite/uzmumFv" target="_blank">https://discordapp.com/invite/uzmumFv</a>
+					Discord: <a href="https://discordapp.com/invite/WHpTJdP" target="_blank">https://discordapp.com/invite/WHpTJdP</a>
 				</p>
 				<h2>The Team</h2>
 				<table>
