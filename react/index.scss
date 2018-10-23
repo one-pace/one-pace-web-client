@@ -62,21 +62,6 @@ input[type="file"] {
 	color: #d2d2d2;
 	text-shadow: 2px 2px #000000;
 }
-ul {
-	list-style-type: none;
-}
-li {
-	padding: 5px;
-}
-li a {
-	color: #ffffff;
-	text-decoration: none;
-}
-li a:hover {
-	color: #d2d2d2;
-	text-shadow: 2px 2px #000000;
-	padding: 3px;
-}
 /* Side */
 .side {
 	background-color: rgba(35,35,35,0.8);
@@ -302,12 +287,6 @@ table.releases {
 table.releases td {
 	margin: 0;
 	padding: 0 10px 0 10px;
-}
-table.releases td > a {
-	color: white;
-	text-decoration: none;
-	padding: 2px;
-	cursor: pointer;
 }
 table.releases td > a:hover {
 	color: black;
