@@ -27,7 +27,7 @@ $stmt = $context->prepare("select episodes.id,".
 "arcs.released as arc_released ".
 "from episodes ".
 "right join arcs on arcs.id = episodes.arc_id ".
-"where arcs.hidden = false;");
+"where arcs.hidden = false and episodes.released_date is not null and episodes.released_date <= now();");
 $rows = $context->get_result($stmt);
 $context->disconnect();
 $data = [];

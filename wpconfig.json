@@ -5,6 +5,9 @@
     {
       "file": "index.js",
       "entryLinkPattern": "<script src=\"(index\\.js[\\?v=A-Fa-f\\d]*)\"></script>"
+    },
+    {
+      "file": "php/get_streams.php"
     }
   ]
 }
