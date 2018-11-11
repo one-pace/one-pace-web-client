@@ -69,6 +69,7 @@ input[type="file"] {
 	position: relative;
 	&:not(.minimized) {
 		width: 25%;
+        min-width: 300px;
 	}
 	&.minimized {
 		width: 4px;
