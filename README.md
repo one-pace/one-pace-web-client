@@ -32,7 +32,7 @@
 8. Add a new user with username onepace_site and password 12345
 
 ### PHP
-1. Put extracted PHP contents under C:\
+1. Put extracted PHP contents under C:\ (Make sure the directory is named php)
 2. Remove `php.ini-production`
 3. Rename `php.ini-development` to `php.ini`
 4. Find `;   extension=mysqli`
