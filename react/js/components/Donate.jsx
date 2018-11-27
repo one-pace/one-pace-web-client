@@ -11,7 +11,9 @@ export default class SupportUs extends React.Component {
 				<br />
 				Mine Monero:
 				<br />
-				<iframe src="https://onepace.net/mine" style={{minHeight: "310px", border: "none", padding: 0}}></iframe>
+				<div className="coinhive-miner" style={{"width": "256px", "height": "310px"}} data-key="9PPz4KKzTq540iNk6je2ZAmDzOyEY4jX">
+					<em>Loading...</em>
+				</div>
 			</div>
 		);
 	}
