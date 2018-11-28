@@ -86,16 +86,27 @@ input[type="file"] {
 	}
 }
 /**/
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
 .arcs {
 	display: flex;
-	overflow-y: auto;
+	margin: 2px 0;
+	overflow-x: hidden;
 }
 
 /* Arc side box */
+.arc-side-box:not(:first-child) {
+	margin: 0 0 0 14px;
+}
 .arc-side-box {
 	display: flex;
-    margin: 10px 0px 0px 14px;
 	.arc-header {
 		width: 300px;
 		.arc-header-container {

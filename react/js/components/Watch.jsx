@@ -4,6 +4,7 @@ import NetworkHandler from "../NetworkHandler";
 import LocalStorageUtils from "../LocalStorageUtils";
 import ArcSideBox from "./ArcSideBox";
 import EpisodeSideBox from "./EpisodeSideBox";
+import DragScroller from "./DragScroller";
 
 export default class Watch extends React.Component {
 	state = {
@@ -33,15 +34,8 @@ export default class Watch extends React.Component {
 			LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null);
 			this.setState({ selectedArc, selectedEpisode, arcs, episodes }, () => {
 				this.props.onSetState(this.state.selectedArc, this.state.selectedEpisode);
-				this.scrollToArc();
 			});
 		});
-	}
-	scrollToArc = () => {
-		if(this.state.selectedArc != null && this.SelectedArcRef != null) {
-			const domNode = ReactDOM.findDOMNode(this.SelectedArcRef);
-			domNode.scrollIntoView();
-		}
 	}
 	changeArc = (selectedArc) => {
 		if(this.state.selectedArc && selectedArc.id == this.state.selectedArc.id) {
@@ -50,16 +44,18 @@ export default class Watch extends React.Component {
 		LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null);
 		LocalStorageUtils.setWatchSelectedEpisodeId(null);
 		this.setState({ selectedArc: selectedArc, selectedEpisode: null }, () => {
-			this.props.onChangeArc(this.state.selectedArc);
-			this.scrollToArc();
+			this.videoRef.load();
 		});
 	}
-	changeEpisode = (selectedEpisode, cb) => {
+	changeEpisode = (selectedEpisode) => {
 		if(this.state.selectedEpisode && selectedEpisode.id == this.state.selectedEpisode.id) {
 			selectedEpisode = null;
 		}
 		LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null);
-		this.setState({ selectedEpisode }, cb);
+		this.setState({ selectedEpisode }, () => {
+			this.videoRef.load();
+			this.videoRef.play();
+		});
 	}
 	nav = (dir) => {
 		const episodes = this.state.episodes.filter((i) => i.isReleased);
@@ -78,25 +74,28 @@ export default class Watch extends React.Component {
 		this.videoRef.pause();
 	}
 	render() {
+		const {isScrolling} = this.state; 
 		return (
 			<div className="watch">
 				<Side />
 				<div className="video-container">
-					<div className="arcs">
+					<DragScroller
+						className="arcs noselect"
+						onScrolling={() => !isScrolling && this.setState({isScrolling: true})}
+						onStoppedScrolling={() => isScrolling && this.setState({isScrolling: false})}
+					>
 						{this.state.arcs.map(arc => {
 							const isSelected = this.state.selectedArc != null && arc.id == this.state.selectedArc.id;
 							const arcEpisodes = isSelected ? this.state.episodes.filter(episode => episode.arcId == arc.id) : [];
 							const ref = isSelected ? (section) => { this.SelectedArcRef = section } : null;
 						return <ArcSideBox
 							onStopVideo={()=>this.stopVideo()}
-							onClick={() => this.changeArc(arc)}
+							onClick={() => !isScrolling && this.changeArc(arc)}
 							key={arc.id} arc={arc} isSelected={isSelected} ref={ref}>
 							<div className="episodes">
 								{arcEpisodes.map(episode => {
 									return <EpisodeSideBox
-										onClick={() => this.changeEpisode(episode, () => {
-											this.props.onChangeEpisode(this.state.selectedEpisode, true);
-										})}
+										onClick={() => this.changeEpisode(episode)}
 										onStopVideo={()=>this.props.onStopVideo()}
 										key={episode.id} episode={episode}
 										isSelected={this.state.selectedEpisode != null && episode.id == this.state.selectedEpisode.id}
@@ -105,7 +104,7 @@ export default class Watch extends React.Component {
 							</div>
 						</ArcSideBox>
 						})}
-					</div>
+					</DragScroller>
 					<video ref={(i) => this.videoRef = i} className="video-player" controls poster="/assets/logo-poster.png">
 					{ this.state.selectedEpisode != null &&
 						<source type="video/mp4" src={"https://onepace.net/streams/" + this.state.selectedEpisode.crc32 + ".mp4"} />

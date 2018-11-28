@@ -1,25 +1,7 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import Scroll, { Link, Element , Events, animateScroll, scrollSpy, scroller } from 'react-scroll';
 
 export default class DragScroller extends React.Component {
 	state = { isScrolling: false };
-
-	componentDidMount = () => {
-		Events.scrollEvent.register('begin', function(to, element) {
-			console.log("begin", arguments);
-		});
-	 
-		Events.scrollEvent.register('end', function(to, element) {
-			console.log("end", arguments);
-		});
-		scrollSpy.update();
-	};
-
-	componentWillUnmount = () => {
-		Events.scrollEvent.remove('begin');
-		Events.scrollEvent.remove('end');
-	};
 
 	componentWillUpdate = (nextProps, nextState) => {
 		if (this.state.isScrolling !== nextState.isScrolling) {
@@ -40,37 +22,33 @@ export default class DragScroller extends React.Component {
 	};
 
 	onMouseMove = (event) => {
-		if (!event.clientX || !event.clientY) {
+		if (!event.clientX) {
 			return;
 		}
-		const { clientX, scrollLeft, scrollTop, clientY } = this.state;
+		const { clientX, scrollLeft} = this.state;
 		const newScrollLeft = ((scrollLeft*-1) - clientX + event.clientX)*-1;
-		const newScrollTop = scrollTop - clientY + event.clientY;
 		this.scroller.scrollLeft = newScrollLeft;
-		this.scroller.scrollTop = newScrollTop;
-		if(newScrollLeft + newScrollTop > 0) {
+		if(newScrollLeft > 0) {
 			this.props.onScrolling();
 		}
 	};
 
 	onMouseUp = () => {
-		const { scrollLeft, scrollTop } = this.scroller;
-		this.setState({
-			isScrolling: false,
-			scrollLeft: scrollLeft, scrollTop: scrollTop,
-			clientX: 0, clientY: 0
-		});
+		const { scrollLeft } = this.scroller;
+		this.setState({ isScrolling: false, scrollLeft: scrollLeft, clientX: 0 });
 		this.props.onStoppedScrolling();
+		$('#scroller-thingy').kinetic('start', { velocity: 100 });
 	};
 
 	onMouseDown = (event) => {
-		const { scrollLeft, scrollTop } = this.scroller;
-		this.setState({ isScrolling: true, scrollLeft, scrollTop, clientX: event.clientX, clientY: event.clientY });
+		const { scrollLeft } = this.scroller;
+		this.setState({ isScrolling: true, scrollLeft, clientX: event.clientX });
 	};
 
 	render() {
 		return (
 			<div
+				id={"scroller-thingy"}
 				className={this.props.className}
 				ref={(i) => this.scroller = i}
 				onScroll={this.onMouseMove}
