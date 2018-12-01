@@ -32,9 +32,7 @@ export default class Watch extends React.Component {
 			}
 			LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null);
 			LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null);
-			this.setState({ selectedArc, selectedEpisode, arcs, episodes }, () => {
-				this.props.onSetState(this.state.selectedArc, this.state.selectedEpisode);
-			});
+			this.setState({ selectedArc, selectedEpisode, arcs, episodes });
 		});
 	}
 	changeArc = (selectedArc) => {

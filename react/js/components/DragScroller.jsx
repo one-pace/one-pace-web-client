@@ -37,7 +37,6 @@ export default class DragScroller extends React.Component {
 		const { scrollLeft } = this.scroller;
 		this.setState({ isScrolling: false, scrollLeft: scrollLeft, clientX: 0 });
 		this.props.onStoppedScrolling();
-		$('#scroller-thingy').kinetic('start', { velocity: 100 });
 	};
 
 	onMouseDown = (event) => {

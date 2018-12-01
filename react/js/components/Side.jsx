@@ -31,7 +31,7 @@ export default class Side extends Component {
 				<hr />
 				<center>
 					<iframe src="https://discordapp.com/widget?id=229653982530764800&amp;theme=dark"
-			frameBorder="0" width="95%" height="70%" allowTransparency={true}></iframe>
+			frameBorder="0" width="95%" height="70%"></iframe>
 				</center>
 			</div>
 			}
