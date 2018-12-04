@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import LocalStorageUtils from "../LocalStorageUtils";
-import NetworkHandler from "../NetworkHandler";
-import ArcSideBox from "./ArcSideBox";
-import EpisodeSideBox from "./EpisodeSideBox";
 
 export default class Side extends Component {
 	constructor(props) {
@@ -21,7 +17,7 @@ export default class Side extends Component {
 		return <div className={"side" + (this.state.isMinimized ? " minimized" : "")}>
 			<div className="toggler" onClick={this.toggleMinimize}></div>
 			{!this.state.isMinimized&&
-			<div style={{padding:"10px"}}>
+			<div style={{"padding": "10px"}}>
 				<h2>Links</h2>
 				<ul>
 					<li><a target="_blank" rel="noopener noreferrer" href="http://forums.arlongpark.net/showthread.php?t=38681">Arlong Park Forums Thread</a></li>
@@ -30,10 +26,10 @@ export default class Side extends Component {
 				</ul>
 				<hr />
 				<center>
-					<iframe src="https://discordapp.com/widget?id=229653982530764800&amp;theme=dark"
-			frameBorder="0" width="95%" height="70%"></iframe>
+					<iframe src="https://discordapp.com/widget?id=229653982530764800&amp;theme=dark" frameBorder="0" width="95%" height="70%"></iframe>
 				</center>
 			</div>
+			}
 		</div>;
 	}
 }
