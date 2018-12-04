@@ -1,7 +1,6 @@
 import React from "react";
 import NetworkHandler from "../NetworkHandler";
 import Moment from "moment";
-import Layout from "./Layout";
 import { Glyphicon } from "react-bootstrap";
 import LocalStorageUtils from "../LocalStorageUtils";
 
@@ -32,8 +31,8 @@ export default class Torrents extends React.Component {
 	}
 	sortReleases = (releases, sortField, sortAscending) => {
 		releases = releases.sort((a, b) => sortAscending ?
-			(b[sortField] + "").localeCompare(a[sortField], undefined, { numeric: true, sensitivity: "base" }) :
-			(a[sortField] + "").localeCompare(b[sortField], undefined, { numeric: true, sensitivity: "base" })
+			(b[sortField] + "").localeCompare(a[sortField], undefined, { "numeric": true, "sensitivity": "base" }) :
+			(a[sortField] + "").localeCompare(b[sortField], undefined, { "numeric": true, "sensitivity": "base" })
 		);
 		return releases;
 	}

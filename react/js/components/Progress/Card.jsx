@@ -5,8 +5,8 @@ export default class Card extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			arc: props.arc,
-			episode: props.episode
+			"arc": props.arc,
+			"episode": props.episode
 		};
 	}
 	render() {

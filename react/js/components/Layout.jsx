@@ -1,5 +1,4 @@
 import React from "react";
-import Side from "./Side";
 
 export default class Layout extends React.Component {
 	render() {

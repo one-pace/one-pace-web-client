@@ -9,13 +9,13 @@ export default class Side extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isMinimized: LocalStorageUtils.getSidebarToggled()
+			"isMinimized": LocalStorageUtils.getSidebarToggled()
 		};
 	}
 	toggleMinimize = e => {
 		e.preventDefault();
 		LocalStorageUtils.setSidebarToggled(!this.state.isMinimized);
-		this.setState({ isMinimized: !this.state.isMinimized });
+		this.setState({ "isMinimized": !this.state.isMinimized });
 	}
 	render() {
 		return <div className={"side" + (this.state.isMinimized ? " minimized" : "")}>
@@ -34,7 +34,6 @@ export default class Side extends Component {
 			frameBorder="0" width="95%" height="70%"></iframe>
 				</center>
 			</div>
-			}
-		</div>
+		</div>;
 	}
 }

@@ -104,9 +104,9 @@ export default class Watch extends React.Component {
 						})}
 					</DragScroller>
 					<video ref={(i) => this.videoRef = i} className="video-player" controls poster="/assets/logo-poster.png">
-					{ this.state.selectedEpisode != null &&
+						{ this.state.selectedEpisode != null &&
 						<source type="video/mp4" src={"https://onepace.net/streams/" + this.state.selectedEpisode.crc32 + ".mp4"} />
-					}
+						}
 					</video>
 				</div>
 			</div>

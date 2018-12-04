@@ -46,10 +46,10 @@ export default class LocalStorageUtils {
 	}
 	static getUser() {
 		const user = localStorage.getItem("user");
-		return user && user !== 'undefined' && JSON.parse(user) || null;
+		return user && user !== "undefined" && JSON.parse(user) || null;
 	}
 	static setUser(value) {
-		let json = '';
+		let json = "";
 		if(value) {
 			json = JSON.stringify(value);
 		} else {
