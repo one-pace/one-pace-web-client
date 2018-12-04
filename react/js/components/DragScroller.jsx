@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default class DragScroller extends React.Component {
-	state = { isScrolling: false };
+	state = { "isScrolling": false };
 
-	componentWillUpdate = (nextProps, nextState) => {
+	UNSAFE_componentWillUpdate = (nextProps, nextState) => {
 		if (this.state.isScrolling !== nextState.isScrolling) {
 			this.toggleScrolling(nextState.isScrolling);
 		}
@@ -11,14 +11,14 @@ export default class DragScroller extends React.Component {
 
 	toggleScrolling = (isEnable) => {
 		if (isEnable) {
-			window.addEventListener('mousemove', this.onMouseMove);
-			window.addEventListener('mouseup', this.onMouseUp);
+			window.addEventListener("mousemove", this.onMouseMove);
+			window.addEventListener("mouseup", this.onMouseUp);
 		} else {
-			window.removeEventListener('mousemove', this.onMouseMove);
+			window.removeEventListener("mousemove", this.onMouseMove);
 		}
 	};
 
-	onScroll = (event) => {
+	onScroll = () => {
 	};
 
 	onMouseMove = (event) => {
@@ -35,13 +35,13 @@ export default class DragScroller extends React.Component {
 
 	onMouseUp = () => {
 		const { scrollLeft } = this.scroller;
-		this.setState({ isScrolling: false, scrollLeft: scrollLeft, clientX: 0 });
+		this.setState({ "isScrolling": false, "scrollLeft": scrollLeft, "clientX": 0 });
 		this.props.onStoppedScrolling();
 	};
 
 	onMouseDown = (event) => {
 		const { scrollLeft } = this.scroller;
-		this.setState({ isScrolling: true, scrollLeft, clientX: event.clientX });
+		this.setState({ "isScrolling": true, scrollLeft, "clientX": event.clientX });
 	};
 
 	render() {
