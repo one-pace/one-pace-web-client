@@ -6,11 +6,11 @@ export default class NetworkHandler {
 		onSuccess = onSuccess == null ? (f) => f : onSuccess;
 		onError = onError == null ? (f) => f : onError;
 		Axios.request({
-			method: "POST",
-			url: Config.ServerURL + route,
-			data: data,
-			responseType: "json",
-			onUploadProgress: onUploadProgress
+			"method": "POST",
+			"url": Config.ServerURL + route,
+			"data": data,
+			"responseType": "json",
+			"onUploadProgress": onUploadProgress
 		}).then(response => {
 			const responseObject = {
 				...response.data,

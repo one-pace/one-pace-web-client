@@ -11,7 +11,7 @@ import Watch from "./Watch";
 import About from "./About";
 import Donate from "./Donate";
 import Layout from "./Layout";
-import HttpsRedirect from 'react-https-redirect';
+import HttpsRedirect from "react-https-redirect";
 import "../../index.scss";
 
 ReactDOM.render(

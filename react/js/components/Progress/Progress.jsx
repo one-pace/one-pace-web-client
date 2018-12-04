@@ -34,7 +34,7 @@ export default class Progress extends React.Component {
 		data.append("token", token);
 		NetworkHandler.request("/list_progress_episodes.php", data, (responseJson) => {
 			this.setState({
-				arcs: responseJson.arcs, episodes: responseJson.episodes
+				"arcs": responseJson.arcs, "episodes": responseJson.episodes
 			});
 		});
 	}
@@ -42,7 +42,7 @@ export default class Progress extends React.Component {
 		this.showCreateEpisodeForm(arc);
 	}
 	showCreateEpisodeForm = (arc) => {
-		this.setState({showCreateEpisodeFormForArc: arc});
+		this.setState({"showCreateEpisodeFormForArc": arc});
 	}
 	onCreateEpisode = (episode) => {
 		const token = this.state.user.token;
@@ -51,7 +51,7 @@ export default class Progress extends React.Component {
 		data.append("episode", JSON.stringify(episode));
 		data.append("token", token);
 		NetworkHandler.request("/create_episode.php", data, (responseJson) => {
-			this.setState({showCreateEpisodeFormForArc: null, arcs: responseJson.arcs, episodes: responseJson.episodes});
+			this.setState({"showCreateEpisodeFormForArc": null, "arcs": responseJson.arcs, "episodes": responseJson.episodes});
 		}, () => {
 		});
 	}
@@ -61,12 +61,12 @@ export default class Progress extends React.Component {
 		data.append("id", this.state.showViewEpisodeForm.id);
 		data.append("token", token);
 		NetworkHandler.request("/delete_episode.php", data, (responseJson) => {
-			this.setState({showViewEpisodeForm: null, arcs: responseJson.arcs, episodes: responseJson.episodes});
+			this.setState({"showViewEpisodeForm": null, "arcs": responseJson.arcs, "episodes": responseJson.episodes});
 		}, () => {
 		});
 	}
 	onClickCard = (episode) => {
-		this.setState({showViewEpisodeForm: episode});
+		this.setState({"showViewEpisodeForm": episode});
 	}
 	logIn = () => {
 		const data = new FormData();
@@ -75,7 +75,7 @@ export default class Progress extends React.Component {
 		NetworkHandler.request("/login.php", data, responseJson => {
 			const user = responseJson.user;
 			LocalStorageUtils.setUser(user);
-			this.setState({name: "", password: "", "user": user, arcs: responseJson.arcs, episodes: responseJson.episodes});
+			this.setState({"name": "", "password": "", "user": user, "arcs": responseJson.arcs, "episodes": responseJson.episodes});
 		}, () => {
 			alert("Couldnt log in");
 		});
@@ -85,8 +85,8 @@ export default class Progress extends React.Component {
 		const data = new FormData();
 		data.append("token", this.state.user.token);
 		NetworkHandler.request("/logout.php", data, responseJson => {
-			this.setState({ user: null, arcs: responseJson.arcs, episodes: responseJson.episodes });
-		}, () => this.setState({ user: null })
+			this.setState({ "user": null, "arcs": responseJson.arcs, "episodes": responseJson.episodes });
+		}, () => this.setState({ "user": null })
 		);
 	}
 	changePassword = (formdata) => {
@@ -95,7 +95,7 @@ export default class Progress extends React.Component {
 		data.append("newpassword", formdata.newpassword);
 		data.append("token", formdata.token);
 		NetworkHandler.request("/update_user_password.php", data, () => {
-			this.setState({showChangePasswordForm: false});
+			this.setState({"showChangePasswordForm": false});
 		});
 	}
 	createUser = (formdata) => {
@@ -105,7 +105,7 @@ export default class Progress extends React.Component {
 		data.append("token", this.state.user.token);
 		data.append("role", formdata.role);
 		NetworkHandler.request("/create_user.php", data, () => {
-			this.setState({showCreateUserForm: false});
+			this.setState({"showCreateUserForm": false});
 		});
 	}
 	render() {
@@ -117,14 +117,14 @@ export default class Progress extends React.Component {
 					isLoggedIn && this.state.showChangePasswordForm &&
 					<ChangePasswordForm
 						onSubmit={formdata=>this.changePassword(formdata)}
-						onClose={()=>this.setState({showChangePasswordForm:false})}
+						onClose={()=>this.setState({"showChangePasswordForm": false})}
 					/>
 				}
 				{
 					isAdmin && this.state.showCreateUserForm &&
 					<CreateUserForm
 						onSubmit={this.createUser}
-						onClose={()=>this.setState({showCreateUserForm:false})}
+						onClose={()=>this.setState({"showCreateUserForm": false})}
 					/>
 				}
 				{
@@ -132,7 +132,7 @@ export default class Progress extends React.Component {
 					<CreateEpisodeForm
 						arc={this.state.showCreateEpisodeFormForArc}
 						onSubmit={this.onCreateEpisode}
-						onClose={()=>this.setState({showCreateEpisodeFormForArc:null})}
+						onClose={()=>this.setState({"showCreateEpisodeFormForArc": null})}
 					/>
 				}
 				{
@@ -141,8 +141,8 @@ export default class Progress extends React.Component {
 						user={this.state.user}
 						episode={this.state.showViewEpisodeForm}
 						onDelete={()=>isAdmin&&this.onDeleteEpisode()}
-						onClose={()=>this.setState({showViewEpisodeForm:null})}
-						onUpdatedEpisode={responseJson => this.setState({arcs: responseJson.arcs, episodes: responseJson.episodes})}
+						onClose={()=>this.setState({"showViewEpisodeForm": null})}
+						onUpdatedEpisode={responseJson => this.setState({"arcs": responseJson.arcs, "episodes": responseJson.episodes})}
 						onIssueDeleted={episode => {
 							let episodes = this.state.episodes.slice();
 							const index = episodes.findIndex(i => i.id == episode.id);
