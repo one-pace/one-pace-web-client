@@ -50,7 +50,7 @@ module.exports = {
 	},
 	externals: {
 		"webpack-config": JSON.stringify({
-			ServerURL: "http://localhost:9000/php"
+			ServerURL: "http://localhost:9000/server"
 		})
 	}
 };

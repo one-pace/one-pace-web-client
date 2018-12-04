@@ -47,7 +47,7 @@ module.exports = {
 	},
 	externals: {
 		"webpack-config": JSON.stringify({
-			ServerURL: "https://onepace.net/php"
+			ServerURL: "https://onepace.net/server"
 		})
 	}
 };
