@@ -3,8 +3,8 @@ import Side from "./Side";
 
 export default class Watch extends React.Component {
 	state = {
-		selectedArc: null,
-		selectedEpisode: null
+		"selectedArc": null,
+		"selectedEpisode": null
 	}
 	nav = (dir) => {
 		const episodes = this.state.episodes.filter((i) => i.isReleased);
@@ -30,7 +30,7 @@ export default class Watch extends React.Component {
 						this.videoRef.load();
 					}}
 					onChangeArc={selectedArc => {
-						this.setState({ selectedArc: selectedArc, selectedEpisode: null });
+						this.setState({ "selectedArc": selectedArc, "selectedEpisode": null });
 						this.videoRef.load();
 					}}
 					onChangeEpisode={(selectedEpisode, autoPlay) => {
@@ -44,9 +44,9 @@ export default class Watch extends React.Component {
 				/>
 				<div className="video-container">
 					<video ref={(i) => this.videoRef = i} className="video-player" controls poster="/assets/logo-poster.png">
-					{ this.state.selectedEpisode != null &&
+						{ this.state.selectedEpisode != null &&
 						<source type="video/mp4" src={"https://onepace.net/streams/" + this.state.selectedEpisode.crc32 + ".mp4"} />
-					}
+						}
 					</video>
 				</div>
 			</div>

@@ -7,27 +7,30 @@ include_once 'torrent_utils.php';
 $torrents = TorrentUtils::getTorrents();
 $context = new db_context();
 $context->connect();
-$stmt = $context->prepare("select episodes.id,".
-"episodes.crc32,".
-"episodes.resolution,".
-"episodes.title,".
-"episodes.chapters,".
-"episodes.episodes,".
-"episodes.torrent_hash,".
-"episodes.released_date,".
-"episodes.part,episodes.openload,".
-"episodes.status,".
-"arcs.id as arc_id,".
-"arcs.title as arc_title,".
-"arcs.chapters as arc_chapters,".
-"arcs.episodes as arc_episodes,".
-"arcs.completed as arc_completed,".
-"arcs.resolution as arc_resolution,".
-"arcs.torrent_hash as arc_torrent_hash,".
-"arcs.released as arc_released ".
-"from episodes ".
-"right join arcs on arcs.id = episodes.arc_id ".
-"where arcs.hidden = false and episodes.released_date is not null and episodes.released_date <= now();");
+$sql = <<<EOD
+select episodes.id,
+episodes.crc32,
+episodes.resolution,
+episodes.title,
+episodes.chapters,
+episodes.episodes,
+episodes.torrent_hash,
+episodes.released_date,
+episodes.part,episodes.openload,
+episodes.status,
+arcs.id as arc_id,
+arcs.title as arc_title,
+arcs.chapters as arc_chapters,
+arcs.episodes as arc_episodes,
+arcs.completed as arc_completed,
+arcs.resolution as arc_resolution,
+arcs.torrent_hash as arc_torrent_hash,
+arcs.released as arc_released
+from episodes
+right join arcs on arcs.id = episodes.arc_id
+where arcs.hidden = false and episodes.hidden = false and episodes.released_date is not null and episodes.released_date <= now();
+EOD;
+$stmt = $context->prepare($sql);
 $rows = $context->get_result($stmt);
 $context->disconnect();
 $data = [];

@@ -9,11 +9,11 @@ export default class Side extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isMinimized: LocalStorageUtils.getSidebarToggled(),
-			selectedArc: null,
-			selectedEpisode: null,
-			episodes: [],
-			arcs: []
+			"isMinimized": LocalStorageUtils.getSidebarToggled(),
+			"selectedArc": null,
+			"selectedEpisode": null,
+			"episodes": [],
+			"arcs": []
 		};
 	}
 	componentDidMount() {
@@ -53,7 +53,7 @@ export default class Side extends Component {
 		}
 		LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null);
 		LocalStorageUtils.setWatchSelectedEpisodeId(null);
-		this.setState({ selectedArc: selectedArc, selectedEpisode: null }, () => {
+		this.setState({ "selectedArc": selectedArc, "selectedEpisode": null }, () => {
 			this.props.onChangeArc(this.state.selectedArc);
 			this.scrollToArc();
 		});
@@ -68,11 +68,11 @@ export default class Side extends Component {
 	toggleMinimize = e => {
 		e.preventDefault();
 		LocalStorageUtils.setSidebarToggled(!this.state.isMinimized);
-		this.setState({ isMinimized: !this.state.isMinimized });
+		this.setState({ "isMinimized": !this.state.isMinimized });
 	}
 	getEpisodeSideBox = episode => {
 		const isSelected = this.state.selectedEpisode != null && episode.id == this.state.selectedEpisode.id;
-		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, '0') : episode.title;
+		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, "0") : episode.title;
 		let subtitle = episode.chapters ? "Chapters: " + episode.chapters : "";
 		subtitle += episode.episodes ? "\n" + "Episodes: " + episode.episodes : "";
 		return <EpisodeSideBox
@@ -87,7 +87,7 @@ export default class Side extends Component {
 			torrentLink={episode.torrent ? "/torrents/" + episode.torrent.torrent_name : null}
 			isSelected={isSelected}
 			isReleased={episode.isReleased}
-		/>
+		/>;
 	}
 	getArcEpisodes = arc => this.state.episodes.filter(episode => episode.arcId == arc.id);
 	getArcSideBox = arc => {
@@ -102,12 +102,12 @@ export default class Side extends Component {
 			magnet={arc.torrent ? arc.torrent.magnet : null}
 			torrentLink={arc.torrent ? "/torrents/" + arc.torrent.torrent_name : null}
 			isSelected={isSelected}
-			ref={isSelected ? (section) => { this.SelectedArcRef = section } : null}
+			ref={isSelected ? (section) => { this.SelectedArcRef = section; } : null}
 		>
 			<div className="episodes">
 				{arcEpisodes.map(episode => this.getEpisodeSideBox(episode))}
 			</div>
-		</ArcSideBox>
+		</ArcSideBox>;
 	}
 	render() {
 		return <div className={"side" + (this.state.isMinimized ? " minimized" : "")}>
@@ -115,6 +115,6 @@ export default class Side extends Component {
 			<div className="arcs">
 				{this.state.arcs.map(arc => this.getArcSideBox(arc))}
 			</div>
-		</div>
+		</div>;
 	}
 }
