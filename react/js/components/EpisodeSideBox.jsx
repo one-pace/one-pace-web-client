@@ -5,7 +5,7 @@ export default class EpisodeSideBox extends React.Component {
 		const {episode, isSelected, onClick} = this.props;
 		const isReleased = episode.isReleased;
 		const torrentLink = episode.torrent ? "/torrents/" + episode.torrent.torrent_name : null;
-		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, '0') : episode.title;
+		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, "0") : episode.title;
 		let subtitle = episode.chapters ? "Chapters: " + episode.chapters : "";
 		subtitle += episode.episodes ? "\n" + "Episodes: " + episode.episodes : "";
 		const magnet = episode.torrent ? episode.torrent.magnet : null;

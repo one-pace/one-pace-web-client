@@ -4,7 +4,6 @@ import NetworkHandler from "../NetworkHandler";
 import LocalStorageUtils from "../LocalStorageUtils";
 import ArcSideBox from "./ArcSideBox";
 import EpisodeSideBox from "./EpisodeSideBox";
-import DragScroller from "./DragScroller";
 
 export default class Watch extends React.Component {
 	state = {
