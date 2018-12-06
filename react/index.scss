@@ -41,7 +41,7 @@ input[type="file"] {
 	position: absolute;
 	width: 100%;
 }
-.topnav img {
+.topnav .logo {
 	float: left;
 	padding: 10px;
 }
@@ -61,6 +61,13 @@ input[type="file"] {
 .topnav .link:hover {
 	color: #d2d2d2;
 	text-shadow: 2px 2px #000000;
+}
+.discord.link {
+	float: right;
+	padding-right: 6px;
+}
+.discord.link > img {
+	height: 22px;
 }
 /* Side */
 .side {
@@ -199,12 +206,6 @@ input[type="file"] {
 	.main, .side {
 		width: 100%;
 		padding: 0;
-	}
-}
-@media screen and (max-width: 400px) {
-	.topnav a {
-		float: none;
-		width: 100%;
 	}
 }
 img.logo {
@@ -624,10 +625,4 @@ table.releases tr:hover {
 	font-weight: 100;
 	font-size: 18px;
 	max-height: 87px;
-}
-iframe.discord {
-	border: none;
-	width: 100%;
-	height: 70%;
-	text-align: center;
 }
