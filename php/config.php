@@ -1,5 +1,5 @@
 <?php
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1');
 define('DB_USER', 'onepace_site');
 define('DB_PASSWORD', '12345');
 define('DB_NAME', 'onepace');
