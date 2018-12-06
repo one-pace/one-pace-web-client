@@ -3,8 +3,8 @@ import Side from "./Side";
 
 export default class Watch extends React.Component {
 	state = {
-		selectedArc: null,
-		selectedEpisode: null
+		"selectedArc": null,
+		"selectedEpisode": null
 	}
 	nav = (dir) => {
 		const episodes = this.state.episodes.filter((i) => i.isReleased);
