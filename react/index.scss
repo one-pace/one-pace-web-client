@@ -30,7 +30,7 @@ input[type="file"] {
 
 /* Watch */
 .video-container {
-	width: 75%;
+	overflow-x: hidden;
 }
 /**/
 
@@ -98,7 +98,7 @@ input[type="file"] {
 .arcs {
 	display: flex;
 	margin: 2px 0;
-	overflow-x: hidden;
+	overflow-x: scroll;
 }
 
 /* Arc side box */
