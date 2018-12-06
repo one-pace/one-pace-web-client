@@ -7,10 +7,10 @@ import EpisodeSideBox from "./EpisodeSideBox";
 
 export default class Watch extends React.Component {
 	state = {
-		selectedArc: null,
-		selectedEpisode: null,
-		episodes: [],
-		arcs: []
+		"selectedArc": null,
+		"selectedEpisode": null,
+		"episodes": [],
+		"arcs": []
 	}
 
 	componentDidMount() {
