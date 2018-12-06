@@ -30,7 +30,7 @@ export default class Watch extends React.Component {
 						this.videoRef.load();
 					}}
 					onChangeArc={selectedArc => {
-						this.setState({ selectedArc: selectedArc, selectedEpisode: null });
+						this.setState({ "selectedArc": selectedArc, "selectedEpisode": null });
 						this.videoRef.load();
 					}}
 					onChangeEpisode={(selectedEpisode, autoPlay) => {
