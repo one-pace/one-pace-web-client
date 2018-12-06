@@ -16,18 +16,18 @@ export default class ArcSideBox extends React.Component {
 							<div className="arc-title">{title}</div>
 							<div className="arc-subtitle">{subtitle}</div>
 						</div>
-					</div>
-					<div className="arc-links">
-						{magnet &&
-						<a className="torrent-link" href={magnet} onClick={()=>this.props.onStopVideo()}>
-							<i className="fas fa-magnet" />
-						</a>
-						}
-						{torrentLink &&
-						<a className="torrent-link" href={torrentLink} onClick={()=>this.props.onStopVideo()}>
-							<i className="fas fa-file-download" />
-						</a>
-						}
+						<div className="arc-links">
+							{magnet &&
+							<a className="torrent-link" href={magnet} onClick={()=>this.props.onStopVideo()}>
+								<i className="fas fa-magnet" />
+							</a>
+							}
+							{torrentLink &&
+							<a className="torrent-link" href={torrentLink} onClick={()=>this.props.onStopVideo()}>
+								<i className="fas fa-file-download" />
+							</a>
+							}
+						</div>
 					</div>
 				</div>
 				{this.props.isSelected &&
