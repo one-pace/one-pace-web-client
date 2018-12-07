@@ -67,35 +67,62 @@ export default class Watch extends React.Component {
 			}
 		}
 	}
-	stopVideo = () => {
-		this.videoRef.pause();
+
+	episodeBox = episode => {
+		const isSelected = this.state.selectedEpisode && episode.id == this.state.selectedEpisode.id;
+		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, "0") : episode.title;
+		const subtitle = (episode.chapters ? "Chapters: " + episode.chapters : "") + (episode.episodes ? "\nEpisodes: " + episode.episodes : "");
+		const isReleased = episode.isReleased;
+		const magnet = episode.torrent ? episode.torrent.magnet : null;
+		const torrentLink = episode.torrent ? "/torrents/" + episode.torrent.torrent_name : null;
+		return <EpisodeSideBox
+			onClick={() => this.changeEpisode(episode)}
+			onStopVideo={() => this.props.onStopVideo()}
+			key={episode.id}
+			isSelected={isSelected}
+			isReleased={isReleased}
+			title={title}
+			subtitle={subtitle}
+			magnet={magnet}
+			torrentLink={torrentLink}
+		/>;
 	}
+
+	arcEpisodes = arc => this.state.episodes.filter(i => i.arcId == arc.id);
+
+	arcBox = arc => {
+		const isSelected = this.state.selectedArc && arc.id == this.state.selectedArc.id;
+		const subtitle = (arc.chapters ? "Chapter " : "") + arc.chapters + (arc.episodes ? "\n" + "Episode " + arc.episodes : "");
+		const arcEpisodes = isSelected ? this.arcEpisodes(arc) : [];
+		const img = "/assets/arc_" + arc.id + ".png";
+		const magnet = arc.torrent ? arc.torrent.magnet : null;
+		const torrentLink = arc.torrent ? "/torrents/" + arc.torrent.torrent_name : null;
+		return <ArcSideBox
+			onStopVideo={() => this.stopVideo()}
+			onClick={() => this.changeArc(arc)}
+			key={arc.id}
+			title={arc.title}
+			subtitle={subtitle}
+			img={img}
+			magnet={magnet}
+			torrentLink={torrentLink}
+			isSelected={isSelected}
+		>
+			<div className="episodes">
+				{arcEpisodes.map(episode => this.episodeBox(episode))}
+			</div>
+		</ArcSideBox>;
+	}
+
+	stopVideo = () => this.videoRef.pause();
+
 	render() {
 		return (
 			<div className="watch">
 				<Side />
 				<div className="video-container">
 					<div className="arcs noselect">
-						{this.state.arcs.map(arc => {
-							const isSelected = this.state.selectedArc != null && arc.id == this.state.selectedArc.id;
-							const arcEpisodes = isSelected ? this.state.episodes.filter(episode => episode.arcId == arc.id) : [];
-							const ref = isSelected ? (section) => { this.SelectedArcRef = section; } : null;
-							return <ArcSideBox
-								onStopVideo={() => this.stopVideo()}
-								onClick={() => this.changeArc(arc)}
-								key={arc.id} arc={arc} isSelected={isSelected} ref={ref}>
-								<div className="episodes">
-									{arcEpisodes.map(episode => {
-										return <EpisodeSideBox
-											onClick={() => this.changeEpisode(episode)}
-											onStopVideo={() => this.props.onStopVideo()}
-											key={episode.id} episode={episode}
-											isSelected={this.state.selectedEpisode != null && episode.id == this.state.selectedEpisode.id}
-										/>;
-									})}
-								</div>
-							</ArcSideBox>;
-						})}
+						{this.state.arcs.map(arc => this.arcBox(arc))}
 					</div>
 					<video ref={(i) => this.videoRef = i} className="video-player" controls poster="/assets/logo-poster.png">
 						{this.state.selectedEpisode != null &&

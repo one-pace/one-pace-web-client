@@ -2,16 +2,10 @@ import React from "react";
 
 export default class EpisodeSideBox extends React.Component {
 	render() {
-		const {episode, isSelected, onClick} = this.props;
-		const isReleased = episode.isReleased;
-		const torrentLink = episode.torrent ? "/torrents/" + episode.torrent.torrent_name : null;
-		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, "0") : episode.title;
-		let subtitle = episode.chapters ? "Chapters: " + episode.chapters : "";
-		subtitle += episode.episodes ? "\n" + "Episodes: " + episode.episodes : "";
-		const magnet = episode.torrent ? episode.torrent.magnet : null;
+		const { isSelected, isReleased, title, subtitle, magnet, torrentLink } = this.props;
 		return (
 			<div className={"episode-side-box" + (isSelected ? " selected" : "") + (isReleased ? " released" : "")}>
-				<div className="episode-info" onClick={isReleased ? onClick : null}>
+				<div className="episode-info" onClick={isReleased ? this.props.onClick : null}>
 					<div className="episode-title">{title}</div>
 					<div className="episode-subtitle">{subtitle}</div>
 				</div>

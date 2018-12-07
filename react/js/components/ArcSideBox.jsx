@@ -2,16 +2,12 @@ import React from "react";
 
 export default class ArcSideBox extends React.Component {
 	render() {
-		const {arc, children} = this.props;
-		const title = arc.title;
-		const magnet = arc.torrent ? arc.torrent.magnet : null;
-		const torrentLink = arc.torrent ? "/torrents/" + arc.torrent.torrent_name : null;
-		const subtitle = (arc.chapters ? "Chapter " : "") + arc.chapters + (arc.episodes ? "\n" + "Episode " + arc.episodes : "");
+		const { title, subtitle, children, img, magnet, torrentLink, isSelected } = this.props;
 		return (
 			<div className={"arc-side-box" + (this.props.isSelected ? " selected" : "")}>
 				<div className="arc-header">
 					<div onClick={this.props.onClick} className="arc-header-container">
-						<div className="arc-img" style={{"backgroundImage": "url(/assets/arc_" + arc.id + ".png)"}} />
+						<div className="arc-img" style={{"backgroundImage": "url(" + img + ")"}} />
 						<div className="arc-info">
 							<div className="arc-title">{title}</div>
 							<div className="arc-subtitle">{subtitle}</div>
@@ -30,7 +26,7 @@ export default class ArcSideBox extends React.Component {
 						</div>
 					</div>
 				</div>
-				{this.props.isSelected &&
+				{isSelected &&
 				<div className="arc-body">
 					{children}
 				</div>
