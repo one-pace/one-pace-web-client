@@ -202,24 +202,6 @@ input[type="file"] {
 .with-padding {
 	padding: 15px;
 }
-@media screen and (max-width: 800px) {
-	.side {
-		width: 4px;
-		border-left: 4px solid #395d9e;
-		.side-content {
-			display: none;
-		}
-	}
-	.side > .toggler {
-		display: none;
-	}
-}
-@media screen and (min-width: 801px) {
-	.side:not(.minimized) {
-		width: 25%;
-		min-width: 300px;
-	}
-}
 img.logo {
 	height: 70px;
 	margin: -6px 13px;
