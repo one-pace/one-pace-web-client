@@ -76,9 +76,8 @@ input[type="file"] {
 	background-color: rgba(35,35,35,0.8);
 	height: 100%;
 	position: relative;
-	&:not(.minimized) {
-		width: 25%;
-        min-width: 300px;
+	.side-content {
+		padding: 10px;
 	}
 	&.minimized {
 		width: 4px;
@@ -205,9 +204,21 @@ input[type="file"] {
 	padding: 15px;
 }
 @media screen and (max-width: 800px) {
-	.main, .side {
-		width: 100%;
-		padding: 0;
+	.side {
+		width: 4px;
+		border-left: 4px solid #395d9e;
+		.side-content {
+			display: none;
+		}
+	}
+	.side > .toggler {
+		display: none;
+	}
+}
+@media screen and (min-width: 801px) {
+	.side:not(.minimized) {
+		width: 25%;
+		min-width: 300px;
 	}
 }
 img.logo {

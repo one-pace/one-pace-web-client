@@ -112,7 +112,7 @@ export default class Side extends Component {
 	render() {
 		return <div className={"side" + (this.state.isMinimized ? " minimized" : "")}>
 			<div className="toggler" onClick={this.toggleMinimize}></div>
-			<div className="arcs">
+			<div className="side-content arcs">
 				{this.state.arcs.map(arc => this.getArcSideBox(arc))}
 			</div>
 		</div>;
