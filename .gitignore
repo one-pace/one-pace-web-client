@@ -5,3 +5,5 @@ onepace_info.log
 torrents/
 node_modules/
 episodeattachments/
+.DS_Store
+*.swp
