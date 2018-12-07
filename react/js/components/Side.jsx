@@ -17,7 +17,7 @@ export default class Side extends Component {
 		return <div className={"side" + (this.state.isMinimized ? " minimized" : "")}>
 			<div className="toggler" onClick={this.toggleMinimize}></div>
 			{!this.state.isMinimized&&
-			<div style={{"padding": "10px"}}>
+			<div className="side-content">
 				<h2>Links</h2>
 				<ul>
 					<li><a target="_blank" rel="noopener noreferrer" href="http://forums.arlongpark.net/showthread.php?t=38681">Arlong Park Forums Thread</a></li>
