@@ -70,7 +70,7 @@ export default class Watch extends React.Component {
 	episodeBox = episode => {
 		const isSelected = this.state.selectedEpisode && episode.id == this.state.selectedEpisode.id;
 		const title = episode.part ? "Episode " + episode.part.toString().padStart(2, "0") : episode.title;
-		const subtitle = (episode.chapters ? "Chapters: " + episode.chapters : "") + (episode.episodes ? "\nEpisodes: " + episode.episodes : "");
+		const subtitle = (episode.chapters ? "Chapters: " + episode.chapters : "") + (episode.episodes ? " / Episodes: " + episode.episodes : "");
 		const isReleased = episode.isReleased;
 		const magnet = episode.torrent ? episode.torrent.magnet : null;
 		const torrentLink = episode.torrent ? "/torrents/" + episode.torrent.torrent_name : null;
