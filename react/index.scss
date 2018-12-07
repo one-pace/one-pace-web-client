@@ -30,7 +30,7 @@ input[type="file"] {
 
 /* Watch */
 .video-container {
-	width: 100%;
+	overflow-x: hidden;
 }
 /**/
 
@@ -82,10 +82,6 @@ input[type="file"] {
 	&.minimized {
 		width: 4px;
 	}
-	.arcs {
-		height: 100%;
-		overflow-y: auto;
-	}
 	.toggler {
 		position: absolute;
 		width: 4px;
@@ -98,24 +94,42 @@ input[type="file"] {
 	}
 }
 /**/
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.arcs {
+	display: flex;
+	margin: 2px 0;
+	overflow-x: scroll;
+}
 
 /* Arc side box */
+.arc-side-box:not(:first-child) {
+	margin: 0 0 0 14px;
+}
 .arc-side-box {
-	padding: 10px 0px 0px 14px;
-	.arc-img {
-		width: 100px;
-		height: 100px;
-	}
+	display: flex;
 	.arc-header {
-		display: flex;
+		width: 300px;
 		.arc-header-container {
 			background: #254d71;
-			display: flex;
-			width: 100%;
+			height: 100px;
+		}
+		.arc-img {
+			background-size: cover;
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin: 0 12px 0px 0px;
 		}
 		.arc-info {
 			margin: 0 12px;
-			width: 100%;
 		}
 		.arc-title {
 			font-size: 20px;
@@ -128,6 +142,12 @@ input[type="file"] {
 		background-color: #316491;
 		cursor: pointer;
 	}
+	.arc-body .episodes {
+		display: flex;
+	}
+}
+.arc-links {
+	display: flex;
 }
 /**/
 
@@ -152,6 +172,7 @@ input[type="file"] {
 	padding-left: 12px;
 	margin: 6px 0;
 	display: flex;
+	width: 200px;
 	.episode-links {
 		display: flex;
 	}
