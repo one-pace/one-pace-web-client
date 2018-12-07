@@ -155,26 +155,22 @@ input[type="file"] {
 
 /* Episode side box */
 .episode-side-box {
-	padding-left: 12px;
-	margin: 6px 0;
+	margin-left: 12px;
 	display: flex;
-	width: 200px;
+	flex-direction: column;
 	.episode-links {
 		display: flex;
 	}
 	.episode-info {
+		white-space: nowrap;
 		padding: 5px 12px;
 		width: 100%;
 	}
 	&.released {
-		&.selected .episode-info, .episode-info:hover {
+		background-color: #2a5067;
+		&:hover, &.selected {
 			background-color: #366a8a;
-		}
-		.episode-info {
-			background-color: #2a5067;
-			&:hover {
-				cursor: pointer;
-			}
+			cursor: pointer;
 		}
 	}
 	&:not(.released) {
@@ -186,7 +182,6 @@ input[type="file"] {
 		font-size: 16px;
 	}
 	.episode-subtitle {
-		white-space: pre-line;
 		font-size: 12px;
 	}
 }
