@@ -118,10 +118,10 @@ export default class Watch extends React.Component {
 	render() {
 		return (
 			<div className="watch">
+				<div className="arcs noselect">
+					{this.state.arcs.map(arc => this.arcBox(arc))}
+				</div>
 				<div className="video-container">
-					<div className="arcs noselect">
-						{this.state.arcs.map(arc => this.arcBox(arc))}
-					</div>
 					<video ref={(i) => this.videoRef = i} className="video-player" controls poster="/assets/logo-poster.png">
 						{this.state.selectedEpisode != null &&
 							<source type="video/mp4" src={"https://onepace.net/streams/" + this.state.selectedEpisode.crc32 + ".mp4"} />
