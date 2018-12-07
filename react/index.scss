@@ -45,26 +45,28 @@ input[type="file"] {
 	float: left;
 	padding: 10px;
 }
-.topnav .link {
-	float: left;
-	color: #ffffff;
-	text-align: center;
+.link {
 	padding: 20px 0;
-	margin: 0 14px;
+}
+.link.text-link {
 	text-decoration: none;
 	font-size: 18px;
 	font-weight: bold;
+	margin: 0 14px;
+	float: left;
+	color: #ffffff;
+	text-align: center;
 }
-.topnav .link:nth-child(2) {
+.link.text-link:nth-child(2) {
 	margin-left: 5px;
 }
-.topnav .link:hover {
+.link.text-link:hover {
 	color: #d2d2d2;
 	text-shadow: 2px 2px #000000;
 }
 .link.link-right {
 	float: right;
-	padding-right: 6px;
+	padding-right: 12px;
 }
 .link.link-right > img {
 	height: 22px;
