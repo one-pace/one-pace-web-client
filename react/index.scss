@@ -71,28 +71,6 @@ input[type="file"] {
 .link.link-right > img {
 	height: 22px;
 }
-/* Side */
-.side {
-	background-color: rgba(35,35,35,0.8);
-	height: 100%;
-	position: relative;
-	.side-content {
-		padding: 10px;
-	}
-	&.minimized {
-		width: 4px;
-	}
-	.toggler {
-		position: absolute;
-		width: 4px;
-		height: 100%;
-		background-color: #395d9e;
-		cursor: pointer;
-		&:hover {
-			background-color: #426bb8;
-		}
-	}
-}
 /**/
 .noselect {
 	-webkit-touch-callout: none;
@@ -252,64 +230,9 @@ img.logo {
 .menu a {
 	padding:10px;
 }
-.posts {
-	width: 70%;
-	margin: auto;
-}
-.post {
-	margin-bottom: 50px;
-	
-}
-.post > .footer {
-	font-style: italic;
-}
-.post > .footer > .author {
-	margin-right: 10px;
-}
-.watch-top {
-	margin: auto;
-	padding-bottom: 10px;
-}
-.watch-top select.episodes {
-	margin: 0px 3px 0px 2px;
-}
-.watch-top select {
-	border: 1px;
-	font-size: 16px;
-	color: #ffffff;
-	padding-bottom: 5px;
-	font-family: Calibri;
-	border-radius: 4px 4px 0px 0px;
-	background-color: rgba(0,35,35,0.0);
-}
-.watch-top select option {
-	background-color: rgba(35,35,35,1.0);
-}
-.watch-top span.episodes {
-	margin: 10px;
-}
-.watch-top span.chapters {
-	margin: 10px;
- }
-.animetosho .fa {
-	font-weight: bold;
-}
-.watch.card {
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-}
 .video-player {
 	width: 100%;
 	height: 100%;
-}
-.video-player-wrapper {
-	width: 100%;
-	height: 82%;
-}
-.darkmode {
-	color: white;
-	background-color: black;
 }
 .button {
 	cursor:pointer;

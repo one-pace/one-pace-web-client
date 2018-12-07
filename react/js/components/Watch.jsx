@@ -1,5 +1,4 @@
 import React from "react";
-import Side from "./Side";
 import NetworkHandler from "../NetworkHandler";
 import LocalStorageUtils from "../LocalStorageUtils";
 import ArcSideBox from "./ArcSideBox";
@@ -119,7 +118,6 @@ export default class Watch extends React.Component {
 	render() {
 		return (
 			<div className="watch">
-				<Side />
 				<div className="video-container">
 					<div className="arcs noselect">
 						{this.state.arcs.map(arc => this.arcBox(arc))}
