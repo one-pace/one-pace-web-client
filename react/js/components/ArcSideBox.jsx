@@ -7,7 +7,7 @@ export default class ArcSideBox extends React.Component {
 			<div className={"arc-side-box" + (this.props.isSelected ? " selected" : "")}>
 				<div className="arc-header">
 					<div onClick={this.props.onClick} className="arc-header-container">
-						<div className="arc-img" style={{"backgroundImage": "url(" + img + ")"}} />
+						<img className="arc-img" src={img} />
 						<div className="arc-info">
 							<div className="arc-title">{title}</div>
 							<div className="arc-subtitle">{subtitle}</div>

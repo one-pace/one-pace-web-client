@@ -29,8 +29,20 @@ input[type="file"] {
 }
 
 /* Watch */
+.watch {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
 .video-container {
 	overflow-x: hidden;
+	width: 100%;
+	height: 100%;
+	flex: 1;
+}
+.video-player {
+	width: 100%;
+	height: 100%;
 }
 /**/
 
@@ -81,39 +93,29 @@ input[type="file"] {
 	user-select: none;
 }
 
+/* Arcs */
+
 .arcs {
 	display: flex;
 	margin: 2px 0;
-	overflow-x: scroll;
+	overflow-x: auto;
 }
-
-/* Arc side box */
 .arc-side-box:not(:first-child) {
 	margin: 0 0 0 14px;
 }
 .arc-side-box {
 	display: flex;
 	.arc-header {
-		width: 300px;
 		.arc-header-container {
 			background: #254d71;
-			height: 100px;
-		}
-		.arc-img {
-			background-size: cover;
-			width: 100px;
-			height: 100px;
-			float: left;
-			margin: 0 12px 0px 0px;
+			display: flex;
 		}
 		.arc-info {
 			margin: 0 12px;
+			white-space: nowrap;
 		}
 		.arc-title {
 			font-size: 20px;
-		}
-		.arc-subtitle {
-			white-space: pre-line;
 		}
 	}
 	.arc-header-container:hover, &.selected .arc-header-container {
@@ -123,6 +125,12 @@ input[type="file"] {
 	.arc-body .episodes {
 		display: flex;
 	}
+}
+.arc-img {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 0 12px 0px 0px;
 }
 .arc-links {
 	display: flex;
@@ -190,10 +198,6 @@ input[type="file"] {
 	background-color: rgba(35,35,35,.8);
 	width: 100%;
 }
-.watch {
-	height: 100%;
-	display: flex;
-}
 .main-content {
 	height: 100%;
 	width: 100%;
@@ -211,10 +215,6 @@ img.logo {
 }
 .menu a {
 	padding:10px;
-}
-.video-player {
-	width: 100%;
-	height: 100%;
 }
 .button {
 	cursor:pointer;
