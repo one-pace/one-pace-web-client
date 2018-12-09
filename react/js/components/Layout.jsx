@@ -3,7 +3,7 @@ import React from "react";
 export default class Layout extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="layout-container">
 				<div className="topnav bottom-shadow">
 					<a href="/"><img className="logo" src="/assets/Logo.png" /></a>
 					<a className="link text-link" href="/about">About</a>
@@ -12,10 +12,8 @@ export default class Layout extends React.Component {
 					<a className="link link-right" target="_blank" rel="noopener noreferrer" href="http://forums.arlongpark.net/showthread.php?t=38681"><img src="/assets/arlongpark.svg" /></a>
 					<a className="link link-right" target="_blank" rel="noopener noreferrer" href="https://onedrive.live.com/view.aspx?resid=2A9137DBF1112637!37021&amp;ithint=file%2cxlsx&amp;app=Excel&amp;authkey=!ACgbEWtkXaBEMC0"><img src="/assets/excel.svg" /></a>
 				</div>
-				<div className="layout-container">
-					<div className="main-content">
-						{this.props.children}
-					</div>
+				<div className="main-content">
+					{this.props.children}
 				</div>
 			</div>
 		);
