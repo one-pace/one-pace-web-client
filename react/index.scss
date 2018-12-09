@@ -29,8 +29,20 @@ input[type="file"] {
 }
 
 /* Watch */
+.watch {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
 .video-container {
+	overflow-x: hidden;
 	width: 100%;
+	height: 100%;
+	flex: 1;
+}
+.video-player {
+	width: 100%;
+	height: 100%;
 }
 /**/
 
@@ -38,88 +50,89 @@ input[type="file"] {
 	z-index: 1;
 	background-color: #313131;
 	display: inline-block;
-	position: absolute;
 	width: 100%;
 }
-.topnav img {
+.topnav .logo {
 	float: left;
 	padding: 10px;
 }
-.topnav .link {
-	float: left;
-	color: #ffffff;
-	text-align: center;
+.link {
 	padding: 20px 0;
-	margin: 0 14px;
+}
+.link.text-link {
 	text-decoration: none;
 	font-size: 18px;
 	font-weight: bold;
+	margin: 0 14px;
+	float: left;
+	color: #ffffff;
+	text-align: center;
 }
-.topnav .link:nth-child(2) {
+.link.text-link:nth-child(2) {
 	margin-left: 5px;
 }
-.topnav .link:hover {
+.link.text-link:hover {
 	color: #d2d2d2;
 	text-shadow: 2px 2px #000000;
 }
-/* Side */
-.side {
-	background-color: rgba(35,35,35,0.8);
-	height: 100%;
-	position: relative;
-	&:not(.minimized) {
-		width: 25%;
-        min-width: 300px;
-	}
-	&.minimized {
-		width: 4px;
-	}
-	.arcs {
-		height: 100%;
-		overflow-y: auto;
-	}
-	.toggler {
-		position: absolute;
-		width: 4px;
-		height: 100%;
-		background-color: #395d9e;
-		cursor: pointer;
-		&:hover {
-			background-color: #426bb8;
-		}
-	}
+.link.link-right {
+	float: right;
+	padding-right: 12px;
+}
+.link.link-right > img {
+	height: 22px;
 }
 /**/
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
-/* Arc side box */
+/* Arcs */
+
+.arcs {
+	display: flex;
+	margin: 2px 0;
+	overflow-x: auto;
+}
+.arc-side-box:not(:first-child) {
+	margin: 0 0 0 14px;
+}
 .arc-side-box {
-	padding: 10px 0px 0px 14px;
-	.arc-img {
-		width: 100px;
-		height: 100px;
-	}
+	display: flex;
 	.arc-header {
-		display: flex;
 		.arc-header-container {
 			background: #254d71;
 			display: flex;
-			width: 100%;
 		}
 		.arc-info {
 			margin: 0 12px;
-			width: 100%;
+			white-space: nowrap;
 		}
 		.arc-title {
 			font-size: 20px;
-		}
-		.arc-subtitle {
-			white-space: pre-line;
 		}
 	}
 	.arc-header-container:hover, &.selected .arc-header-container {
 		background-color: #316491;
 		cursor: pointer;
 	}
+	.arc-body .episodes {
+		display: flex;
+	}
+}
+.arc-img {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 0 12px 0px 0px;
+}
+.arc-links {
+	display: flex;
 }
 /**/
 
@@ -141,25 +154,22 @@ input[type="file"] {
 
 /* Episode side box */
 .episode-side-box {
-	padding-left: 12px;
-	margin: 6px 0;
+	margin-left: 12px;
 	display: flex;
+	flex-direction: column;
 	.episode-links {
 		display: flex;
 	}
 	.episode-info {
+		white-space: nowrap;
 		padding: 5px 12px;
 		width: 100%;
 	}
 	&.released {
-		&.selected .episode-info, .episode-info:hover {
+		background-color: #2a5067;
+		&:hover, &.selected {
 			background-color: #366a8a;
-		}
-		.episode-info {
-			background-color: #2a5067;
-			&:hover {
-				cursor: pointer;
-			}
+			cursor: pointer;
 		}
 	}
 	&:not(.released) {
@@ -171,21 +181,17 @@ input[type="file"] {
 		font-size: 16px;
 	}
 	.episode-subtitle {
-		white-space: pre-line;
 		font-size: 12px;
 	}
 }
 /**/
 
 .layout-container {
-	padding: 62px 0 0 0;
 	height: 100%;
 	background-color: rgba(35,35,35,.8);
 	width: 100%;
-}
-.watch {
-	height: 100%;
 	display: flex;
+	flex-direction: column;
 }
 .main-content {
 	height: 100%;
@@ -194,18 +200,6 @@ input[type="file"] {
 }
 .with-padding {
 	padding: 15px;
-}
-@media screen and (max-width: 800px) {
-	.main, .side {
-		width: 100%;
-		padding: 0;
-	}
-}
-@media screen and (max-width: 400px) {
-	.topnav a {
-		float: none;
-		width: 100%;
-	}
 }
 img.logo {
 	height: 70px;
@@ -216,65 +210,6 @@ img.logo {
 }
 .menu a {
 	padding:10px;
-}
-.posts {
-	width: 70%;
-	margin: auto;
-}
-.post {
-	margin-bottom: 50px;
-	
-}
-.post > .footer {
-	font-style: italic;
-}
-.post > .footer > .author {
-	margin-right: 10px;
-}
-.watch-top {
-	margin: auto;
-	padding-bottom: 10px;
-}
-.watch-top select.episodes {
-	margin: 0px 3px 0px 2px;
-}
-.watch-top select {
-	border: 1px;
-	font-size: 16px;
-	color: #ffffff;
-	padding-bottom: 5px;
-	font-family: Calibri;
-	border-radius: 4px 4px 0px 0px;
-	background-color: rgba(0,35,35,0.0);
-}
-.watch-top select option {
-	background-color: rgba(35,35,35,1.0);
-}
-.watch-top span.episodes {
-	margin: 10px;
-}
-.watch-top span.chapters {
-	margin: 10px;
- }
-.animetosho .fa {
-	font-weight: bold;
-}
-.watch.card {
-	padding-left: 0px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-}
-.video-player {
-	width: 100%;
-	height: 100%;
-}
-.video-player-wrapper {
-	width: 100%;
-	height: 82%;
-}
-.darkmode {
-	color: white;
-	background-color: black;
 }
 .button {
 	cursor:pointer;
@@ -624,10 +559,4 @@ table.releases tr:hover {
 	font-weight: 100;
 	font-size: 18px;
 	max-height: 87px;
-}
-iframe.discord {
-	border: none;
-	width: 100%;
-	height: 70%;
-	text-align: center;
 }
