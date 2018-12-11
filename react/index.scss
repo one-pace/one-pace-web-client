@@ -44,6 +44,12 @@ input[type="file"] {
 	width: 100%;
 	height: 100%;
 }
+.watch > .watch-top {
+	margin-top: 10px;
+}
+.watch > .watch-top select {
+	margin-left: 5px;
+}
 /**/
 
 .topnav {
@@ -92,99 +98,23 @@ input[type="file"] {
 	user-select: none;
 }
 
-/* Arcs */
-
-.arcs {
-	display: flex;
-	margin: 2px 0;
-	overflow-x: auto;
-}
-.arc-side-box:not(:first-child) {
-	margin: 0 0 0 14px;
-}
-.arc-side-box {
-	display: flex;
-	.arc-header {
-		.arc-header-container {
-			background: #254d71;
-			display: flex;
-		}
-		.arc-info {
-			margin: 0 12px;
-			white-space: nowrap;
-		}
-		.arc-title {
-			font-size: 20px;
-		}
-	}
-	.arc-header-container:hover, &.selected .arc-header-container {
-		background-color: #316491;
-		cursor: pointer;
-	}
-	.arc-body .episodes {
-		display: flex;
-	}
-}
-.arc-img {
-	float: left;
-	width: 100px;
-	height: 100px;
-	margin: 0 12px 0px 0px;
-}
-.arc-links {
-	display: flex;
-}
-/**/
-
 .torrent-link {
 	color: #ffffff;
-	padding-top: 13px;
+	padding-top: 9px;
+	padding-left: 0px;
 	text-align: center;
-	display: block;
 	margin: 5px;
-	border-radius: 2px;
-	width: 42px;
-	height: 40px;
-	background-color: #099020;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	border-radius: 15px;
+	background-color: #293848;
+	font-size: 13px;
 }
 .torrent-link:hover {
-	background-color: #0baf27;
+	background-color: #36495e;
 	color: white;
 }
-
-/* Episode side box */
-.episode-side-box {
-	margin-left: 12px;
-	display: flex;
-	flex-direction: column;
-	.episode-links {
-		display: flex;
-	}
-	.episode-info {
-		white-space: nowrap;
-		padding: 5px 12px;
-		width: 100%;
-	}
-	&.released {
-		background-color: #2a5067;
-		&:hover, &.selected {
-			background-color: #366a8a;
-			cursor: pointer;
-		}
-	}
-	&:not(.released) {
-		.episode-info {
-			background-color: #4e616d;
-		}
-	}
-	.episode-title {
-		font-size: 16px;
-	}
-	.episode-subtitle {
-		font-size: 12px;
-	}
-}
-/**/
 
 .layout-container {
 	height: 100%;
@@ -243,21 +173,18 @@ table.releases tr:hover {
 .h2 {
 	margin: 0;
 }
-.prev-ep {
+.ep-nav {
+	width: 30px;
+	height: 30px;
+	padding-top: 1px;
+	display: inline-block;
+	font-size: 20px;
+	border-radius: 15px;
 	background-color: #293848;
-	color: #ffffff;
-	border-radius: 10px;
 	padding-bottom: 2px;
-	margin: 5px;
 	cursor: pointer;
-}
-.next-ep {
-	background-color: #293848;
 	color: #ffffff;
-	border-radius: 10px;
-	padding-bottom: 2px;
 	margin: 5px;
-	cursor: pointer;
 }
 .vl {
 	border-left: 4px solid #395d9e;
