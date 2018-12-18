@@ -32,12 +32,13 @@
 		],
 		"semi": [
 			"error",
-			"always"
+			"never"
 		],
 		"key-spacing": ["error", { "beforeColon": false }],
 		"react/prop-types": 0,
 		"quote-props": ["error", "always"],
 		"no-irregular-whitespace": "error",
-		"comma-spacing": ["error", { "before": false, "after": true }]
+		"comma-spacing": ["error", { "before": false, "after": true }],
+		"linebreak-style": ["error", "unix"]
 	}
 }
