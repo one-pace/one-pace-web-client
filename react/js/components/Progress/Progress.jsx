@@ -1,16 +1,16 @@
-import React from "react";
-import Layout from "../Layout";
-import NetworkHandler from "../../NetworkHandler";
-import List from "./List";
 import CreateEpisodeForm from "./CreateEpisodeForm";
-import LocalStorageUtils from "../../LocalStorageUtils";
 import ViewEpisodeForm from "./ViewEpisodeForm";
 import ChangePasswordForm from "./ChangePasswordForm";
 import CreateUserForm from "./CreateUserForm";
+import React from "react"
+import Layout from "../Layout"
+import NetworkHandler from "../../NetworkHandler"
+import List from "./List"
+import LocalStorageUtils from "../../LocalStorageUtils"
 
 export default class Progress extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			"arcs": [],
 			"episodes": [],
@@ -23,7 +23,7 @@ export default class Progress extends React.Component {
 			"name": "",
 			"password": "",
 			"user": LocalStorageUtils.getUser()
-		};
+		}
 	}
 	componentDidMount() {
 		let token = null;
@@ -35,8 +35,8 @@ export default class Progress extends React.Component {
 		NetworkHandler.request("/list_progress_episodes.php", data, (responseJson) => {
 			this.setState({
 				"arcs": responseJson.arcs, "episodes": responseJson.episodes
-			});
-		});
+			})
+		})
 	}
 	onAddCardButtonClick = (arc) => {
 		this.showCreateEpisodeForm(arc);
@@ -179,6 +179,6 @@ export default class Progress extends React.Component {
 					</div>
 				</Layout>
 			</div>
-		);
+		)
 	}
 }

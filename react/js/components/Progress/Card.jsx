@@ -1,16 +1,16 @@
-import React from "react";
-import Moment from "moment";
+import React from "react"
+import Moment from "moment"
 
 export default class Card extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			"arc": props.arc,
 			"episode": props.episode
-		};
+		}
 	}
 	render() {
-		const {episode, arc} = this.state;
+		const {episode, arc} = this.state
 		return (
 			<div>
 				{
@@ -30,6 +30,6 @@ export default class Card extends React.Component {
 					</div>
 				}
 			</div>
-		);
+		)
 	}
 }

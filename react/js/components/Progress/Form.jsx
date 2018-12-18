@@ -1,11 +1,11 @@
-import React from "react";
+import React from "react"
 
 export default class Form extends React.Component {
 	render() {
 		return (
 			<div className="form-overlay" onClick={e => {
 				if(e.target === e.currentTarget) {
-					this.props.onClose();
+					this.props.onClose()
 				}
 			}}>
 				<div className="form-container">

@@ -1,11 +1,11 @@
-import React from "react";
-import Card from "./Card";
-import { Glyphicon } from "react-bootstrap";
+import React from "react"
+import Card from "./Card"
+import { Glyphicon } from "react-bootstrap"
 
 export default class List extends React.Component {
 	render() {
-		const isLoggedIn = this.props.user != null;
-		const isAdmin = isLoggedIn && this.props.user.role >= 4;
+		const isLoggedIn = this.props.user != null
+		const isAdmin = isLoggedIn && this.props.user.role >= 4
 		return (
 			<div className="list">
 				<div className="list-content">
@@ -20,7 +20,7 @@ export default class List extends React.Component {
 								episode={episode}
 								arc={this.props.arc}
 								onEditCardButtonClick={()=>this.props.onEditCardButtonClick(episode)}
-							/>;
+							/>
 						})}
 					</div>
 					{
@@ -34,6 +34,6 @@ export default class List extends React.Component {
 					}
 				</div>
 			</div>
-		);
+		)
 	}
 }
