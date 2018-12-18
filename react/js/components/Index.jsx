@@ -11,7 +11,7 @@ import Watch from "./Watch"
 import About from "./About"
 import Donate from "./Donate"
 import Layout from "./Layout"
-import Progress from "./Progress/Progress"
+import Overview from "./Overview/Overview"
 import HttpsRedirect from "react-https-redirect"
 import "../../index.scss"
 
@@ -23,7 +23,7 @@ ReactDOM.render(
 					<IndexRoute component={Watch} />
 					<Route name="about" path="/about" component={About} />
 					<Route name="donate" path="/donate" component={Donate} />
-					<Route name="progress" path="/progress" component={Progress} />
+					<Route name="overview" path="/overview" component={Overview} />
 				</Route>
 			</Router>
 		</Layout>
