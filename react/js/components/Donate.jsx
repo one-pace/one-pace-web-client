@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 export default class SupportUs extends React.Component {
 	componentDidMount() {
-		document.title = "One Pace | Donate";
+		document.title = "One Pace | Donate"
 	}
 	render() {
 		return (
@@ -15,6 +15,6 @@ export default class SupportUs extends React.Component {
 					<em>Loading...</em>
 				</div>
 			</div>
-		);
+		)
 	}
 }

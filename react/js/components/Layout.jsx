@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default class Layout extends React.Component {
 	render() {
@@ -17,6 +17,6 @@ export default class Layout extends React.Component {
 					{this.props.children}
 				</div>
 			</div>
-		);
+		)
 	}
 }

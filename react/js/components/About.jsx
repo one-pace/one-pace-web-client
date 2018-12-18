@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 export default class About extends React.Component {
 	componentDidMount() {
-		document.title = "One Pace | About";
+		document.title = "One Pace | About"
 	}
 	render() {
 		return (

@@ -1,26 +1,26 @@
-import React from "react";
-import Layout from "../Layout";
-import NetworkHandler from "../../NetworkHandler";
-import List from "./List";
-import LocalStorageUtils from "../../LocalStorageUtils";
+import React from "react"
+import Layout from "../Layout"
+import NetworkHandler from "../../NetworkHandler"
+import List from "./List"
+import LocalStorageUtils from "../../LocalStorageUtils"
 
 export default class Progress extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			"arcs": [],
 			"episodes": [],
 			"name": "",
 			"password": "",
 			"user": LocalStorageUtils.getUser()
-		};
+		}
 	}
 	componentDidMount() {
 		NetworkHandler.request("/list_progress_episodes.php", null, (responseJson) => {
 			this.setState({
 				"arcs": responseJson.arcs, "episodes": responseJson.episodes
-			});
-		});
+			})
+		})
 	}
 	render() {
 		return (
@@ -43,6 +43,6 @@ export default class Progress extends React.Component {
 					</div>
 				</Layout>
 			</div>
-		);
+		)
 	}
 }

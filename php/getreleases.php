@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json; charset=utf-8;');
+require_once 'RequestHeader.php';
 require_once 'db_context.php';
 require_once 'torrent_utils.php';
 include_once 'string_utils.php';
