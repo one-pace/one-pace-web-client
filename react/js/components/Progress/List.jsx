@@ -19,7 +19,6 @@ export default class List extends React.Component {
 								key={episode.id}
 								episode={episode}
 								arc={this.props.arc}
-								onEditCardButtonClick={()=>this.props.onEditCardButtonClick(episode)}
 							/>;
 						})}
 					</div>
