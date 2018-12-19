@@ -1,17 +1,13 @@
 import React from "react"
 import NetworkHandler from "../../NetworkHandler"
 import List from "./List"
-import LocalStorageUtils from "../../LocalStorageUtils"
 
 export default class Overview extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			"arcs": [],
-			"episodes": [],
-			"name": "",
-			"password": "",
-			"user": LocalStorageUtils.getUser()
+			"episodes": []
 		}
 	}
 	componentDidMount() {
@@ -28,7 +24,6 @@ export default class Overview extends React.Component {
 					this.state.arcs.map(i =>
 						<List
 							arc={i}
-							user={this.state.user}
 							image={"/assets/arc_" + i.id + ".png"}
 							cards={this.state.episodes.filter(j => j.arc_id == i.id)}
 							key={"arc"+i.id}
