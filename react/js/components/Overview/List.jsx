@@ -13,6 +13,7 @@ export default class List extends React.Component {
 							key={episode.id}
 							episode={episode}
 							arc={this.props.arc}
+							onClick={() => this.props.onClickCard(episode)}
 						/>
 					})}
 				</div>

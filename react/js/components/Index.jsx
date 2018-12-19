@@ -3,7 +3,6 @@ import ReactDOM from "react-dom"
 import {
 	Router,
 	Route,
-	browserHistory,
 	IndexRoute
 } from "react-router"
 import "babel-polyfill"
@@ -14,11 +13,12 @@ import Layout from "./Layout"
 import Overview from "./Overview/Overview"
 import HttpsRedirect from "react-https-redirect"
 import "../../index.scss"
+import history from "../history"
 
 ReactDOM.render(
 	<HttpsRedirect>
 		<Layout>
-			<Router history={browserHistory}>
+			<Router history={history}>
 				<Route path="/(?episode=:episode)">
 					<IndexRoute component={Watch} />
 					<Route name="about" path="/about" component={About} />

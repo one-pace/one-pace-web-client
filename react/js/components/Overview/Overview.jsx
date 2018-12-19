@@ -1,6 +1,7 @@
 import React from "react"
 import NetworkHandler from "../../NetworkHandler"
 import List from "./List"
+import history from "../../history"
 
 export default class Overview extends React.Component {
 	constructor(props) {
@@ -17,6 +18,9 @@ export default class Overview extends React.Component {
 			})
 		})
 	}
+
+	goToEpisode = episodeId => history.push(`/?episode=${episodeId}`)
+
 	render() {
 		return (
 			<div className="card progress-container">
@@ -27,6 +31,7 @@ export default class Overview extends React.Component {
 							image={"/assets/arc_" + i.id + ".png"}
 							cards={this.state.episodes.filter(j => j.arc_id == i.id)}
 							key={"arc"+i.id}
+							onClickCard={episode => this.goToEpisode(episode.id)}
 						/>
 					)
 				}
