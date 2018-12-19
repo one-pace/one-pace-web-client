@@ -189,7 +189,7 @@ class db_context {
 			right join arcs on arcs.id = episodes.arc_id
 			where arcs.hidden = false and episodes.hidden = false
 			group by episodes.id
-			order by arc_in_progress desc, in_progress desc, abs(arc_chapters) desc, abs(episodes.chapters)
+			order by abs(arc_chapters) asc, abs(episodes.chapters)
 			;"
 		);
 		$data = [];
