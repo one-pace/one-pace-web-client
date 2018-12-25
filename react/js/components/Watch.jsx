@@ -116,7 +116,8 @@ export default class Watch extends React.Component {
 					>
 						{episodes.length > 0 && selectedArc &&
 							episodes.filter((i) => i.arcId == selectedArc.id).map(episode => {
-								const title = episode.part ? " " + selectedArc.title + " " + ("00" + episode.part.toString()).slice(-2) : episode.title ? " " + episode.title : ""
+								let title = episode.part ? " " + selectedArc.title + " " + ("00" + episode.part.toString()).slice(-2) : episode.title ? " " + episode.title : ""
+								title += episode.isReleased ? "" : " (In progress)"
 								return <option disabled={!episode.isReleased} key={"episode" + episode.id} value={episode.id}>{title}</option>
 							})
 						}

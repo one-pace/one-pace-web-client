@@ -27,7 +27,7 @@ arcs.torrent_hash as arc_torrent_hash,
 arcs.released as arc_released
 from episodes
 right join arcs on arcs.id = episodes.arc_id
-where arcs.hidden = false and episodes.hidden = false and episodes.released_date is not null and episodes.released_date <= now();
+where arcs.hidden = false and episodes.hidden = false;
 EOD;
 $stmt = $context->prepare($sql);
 $rows = $context->get_result($stmt);
