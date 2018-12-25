@@ -330,7 +330,7 @@ table.releases tr:hover {
 	border-radius: 3px;
 	border-bottom: 1px solid #ccc;
 	color: #f5f5f5;
-	&:hover {
+	&:hover:not(.unreleased) {
 		background-color: #4f698b;
 		cursor: pointer;
 	}
@@ -358,24 +358,13 @@ table.releases tr:hover {
 }
 /* Progress card unreleased */
 .progress-card.unreleased {
-	background-color: #415671;
-}
-.progress-card.unreleased .text {
-	color: #e0e0e0;
-}
-.progress-card.unreleased .status {
-	color: #c5c5c5;
-}
-/* Progress card admin only*/
-.progress-card.title.admin-only:hover {
-	background-color: #989898;
-	cursor: pointer;
-}
-.progress-card.admin-only .text {
-	color: #e0e0e0;
-}
-.progress-card.admin-only .status {
-	color: #c5c5c5;
+	background-color: #5d5d5d;
+	.text {
+		color: #d8d8d8;
+	}
+	.status {
+		color: #b7b7b7;
+	}
 }
 /*Card image*/
 .progress-container .cards .list-image {
