@@ -177,6 +177,9 @@ class db_context {
 	function delete_episode($id) {
 		return $this->delete("episodes", $id);
 	}
+	function list_episodes() {
+		return $this->prepare_and_get_result("select * from episodes where hidden = false;");
+	}
 	function list_progress_episodes() {
 		$rows = $this->prepare_and_get_result(
 			"select
@@ -233,6 +236,11 @@ class db_context {
 	/* Users */
 	function create_user($params) {
 		return $this->create("users", $params);
+	}
+
+	/* Arcs */
+	function list_arcs() {
+		return $this->prepare_and_get_result("select * from arcs where hidden = false;");
 	}
 
 	/* Issues */
