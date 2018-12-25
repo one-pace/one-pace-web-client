@@ -8,7 +8,9 @@ export default class Overview extends React.Component {
 		super(props)
 		this.state = {
 			"arcs": [],
-			"episodes": []
+			"episodes": [],
+			"name": "",
+			"password": "",
 		}
 	}
 	componentDidMount() {
@@ -28,6 +30,7 @@ export default class Overview extends React.Component {
 					this.state.arcs.map(i =>
 						<List
 							arc={i}
+							user={this.state.user}
 							image={"/assets/arc_" + i.id + ".png"}
 							cards={this.state.episodes.filter(j => j.arc_id == i.id)}
 							key={"arc"+i.id}

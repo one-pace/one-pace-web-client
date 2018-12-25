@@ -187,7 +187,7 @@ class db_context {
 				arcs.torrent_hash as arc_torrent_hash, arcs.released as arc_released, arcs.hidden as arc_hidden
 			from episodes
 			right join arcs on arcs.id = episodes.arc_id
-			where arcs.hidden = false and episodes.hidden = false and episodes.released_date is not null and episodes.released_date <= now()
+			where arcs.hidden = false and episodes.hidden = false
 			group by episodes.id
 			order by abs(arc_chapters) asc, abs(episodes.chapters)
 			;"
