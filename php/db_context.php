@@ -177,10 +177,9 @@ class db_context {
 	function delete_episode($id) {
 		return $this->delete("episodes", $id);
 	}
-	function list_progress_episodes($user) {
+	function list_progress_episodes() {
 		$rows = $this->prepare_and_get_result(
 			"select
-				(select count(*) from issues where episode_id = episodes.id and issues.completed = false) as issues_total,
 				((episodes.hidden is null or episodes.hidden = false) and (released_date is null or released_date > now())) as in_progress,
 				(select count(*) from episodes where arcs.id = arc_id and hidden = false and (released_date is null or released_date > now())) > 0 as arc_in_progress,
 				episodes.*, arcs.title as arc_title, arcs.chapters as arc_chapters,
@@ -188,10 +187,9 @@ class db_context {
 				arcs.torrent_hash as arc_torrent_hash, arcs.released as arc_released, arcs.hidden as arc_hidden
 			from episodes
 			right join arcs on arcs.id = episodes.arc_id
-			left join issues on issues.episode_id = episodes.id".
-			($user == null || $user['role'] <= 1 ? " where arcs.hidden = false and episodes.hidden = false" : "")
-			." group by episodes.id
-			order by arc_in_progress desc, in_progress desc, abs(arc_chapters) desc, abs(episodes.chapters)
+			where arcs.hidden = false and episodes.hidden = false
+			group by episodes.id
+			order by abs(arc_chapters) asc, abs(episodes.chapters)
 			;"
 		);
 		$data = [];
@@ -227,7 +225,6 @@ class db_context {
 				"hidden" => $row['hidden'],
 				"in_progress" => $row['in_progress'],
 				"released_date" => $row['released_date'] == null ? '' : $row['released_date'],
-				"issues_total" => $row['issues_total']
 			];
 		}
 		return $data;

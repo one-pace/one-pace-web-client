@@ -60,7 +60,6 @@ foreach($rows as $row) {
 		'chapters' => scr_value($row, 'chapters'),
 		"episodes" => scr_value($row, "episodes"),
 		"isReleased" => $is_released,
-		'status' => scr_value($row, 'status'),
 		'part' => scr_value($row, 'part'),
 		'arcId' => scr_value($row, 'arc_id'),
 		'torrent' => $torrent

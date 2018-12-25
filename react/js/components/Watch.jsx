@@ -1,6 +1,7 @@
 import React from "react"
 import NetworkHandler from "../NetworkHandler"
 import LocalStorageUtils from "../LocalStorageUtils"
+import history from "../history"
 
 export default class Watch extends React.Component {
 	state = {
@@ -15,7 +16,9 @@ export default class Watch extends React.Component {
 			const { arcs, episodes } = response
 			let selectedArc = null
 			let selectedEpisode = null
-			const selectedEpisodeId = this.props.location.query.episode || LocalStorageUtils.getWatchSelectedEpisodeId()
+			const search = history.getCurrentLocation().search.substring(1)
+			const o = search && JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+			const selectedEpisodeId = o && o.episode || LocalStorageUtils.getWatchSelectedEpisodeId()
 			const selectedArcId = LocalStorageUtils.getWatchSelectedArcId()
 			if (selectedEpisodeId) {
 				[selectedEpisode] = episodes.filter((i) => i.id == selectedEpisodeId || i.crc32 == selectedEpisodeId)
