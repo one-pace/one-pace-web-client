@@ -82,6 +82,8 @@ export default class Watch extends React.Component {
 		<i className="fas fa-magnet" />
 	</a>
 
+	getEpisodePart = episodePart => episodePart && `00${episodePart.toString()}`.slice(-2) || ""
+
 	render() {
 		const { selectedArc, selectedEpisode, arcs, episodes } = this.state
 		return (
@@ -115,9 +117,10 @@ export default class Watch extends React.Component {
 						}}
 					>
 						{episodes.length > 0 && selectedArc &&
-							episodes.filter((i) => i.arcId == selectedArc.id).map(episode => {
-								let title = episode.part ? " " + selectedArc.title + " " + ("00" + episode.part.toString()).slice(-2) : episode.title ? " " + episode.title : ""
-								title += episode.isReleased ? "" : " (In progress)"
+							episodes.filter(i => i.arcId == selectedArc.id).map(episode => {
+								let title = episode.part && `${selectedArc.title} ${this.getEpisodePart(episode.part)}` || episode.chapters && `Chapter ${episode.chapters}` || episode.title || "Unknown episode"
+								title += (episode.part || episode.chapters) && episode.title && `: ${episode.title}` || ""
+								title += !episode.isReleased && " (In progress)" || ""
 								return <option disabled={!episode.isReleased} key={"episode" + episode.id} value={episode.id}>{title}</option>
 							})
 						}
