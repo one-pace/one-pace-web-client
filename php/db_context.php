@@ -224,12 +224,10 @@ class db_context {
 				"episodes" => $row["episodes"],
 				"resolution" => $row["resolution"],
 				"torrent_hash" => $row["torrent_hash"],
-				"status" => $row['status'],
 				"hidden" => $row['hidden'],
 				"in_progress" => $row['in_progress'],
 				"released_date" => $row['released_date'] == null ? '' : $row['released_date'],
-				"issues_total" => $row['issues_total'],
-                "openload" => $row['openload']
+				"issues_total" => $row['issues_total']
 			];
 		}
 		return $data;
