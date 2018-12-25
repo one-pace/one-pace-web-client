@@ -181,53 +181,39 @@ class db_context {
 		return $this->prepare_and_get_result("select * from episodes where hidden = false;");
 	}
 	function list_progress_episodes() {
-		$rows = $this->prepare_and_get_result(
-			"select
-				((episodes.hidden is null or episodes.hidden = false) and (released_date is null or released_date > now())) as in_progress,
-				(select count(*) from episodes where arcs.id = arc_id and hidden = false and (released_date is null or released_date > now())) > 0 as arc_in_progress,
-				episodes.*, arcs.title as arc_title, arcs.chapters as arc_chapters,
-				arcs.episodes as arc_episodes, arcs.completed as arc_completed, arcs.resolution as arc_resolution,
-				arcs.torrent_hash as arc_torrent_hash, arcs.released as arc_released, arcs.hidden as arc_hidden
+		$episodes = $this->prepare_and_get_result("
+			select
+				*,
+				((episodes.hidden is null or episodes.hidden = false) and (released_date is null or released_date > now())) as in_progress
 			from episodes
-			right join arcs on arcs.id = episodes.arc_id
-			where arcs.hidden = false and episodes.hidden = false
-			group by episodes.id
-			order by abs(arc_chapters) asc, abs(episodes.chapters)
-			;"
-		);
+			where hidden = false
+			group by id
+			order by abs(chapters)
+			;
+		");
+		$arcs = $this->prepare_and_get_result("select * from arcs where hidden = false order by abs(chapters) asc;");
 		$data = [];
-		$arc_id = -1;
-		foreach($rows as $row) {
-			// Only add a new arc object if the arc id is different from the previous row.
-			if($arc_id != $row['arc_id']) {
-				// Update the arc_id variable with the latest arc id.
-				$arc_id = $row['arc_id'];
-
-				// Set the arc object.
-				$data['arcs'][] = [
-					'id' => $row['arc_id'],
-					'in_progress' => $row['arc_in_progress'],
-					'title' => $row['arc_title'],
-					'hidden' => $row['arc_hidden'],
-					'chapters' => $row['arc_chapters'],
-					'in_progress' => false
-				];
-			}
-
-			// Set the episode object.
+		foreach($arcs as $arc) {
+			$data['arcs'][] = [
+				'id' => $arc['id'],
+				'released' => $arc['released'],
+				'title' => $arc['title'],
+				'chapters' => $arc['chapters'],
+			];
+		}
+		foreach($episodes as $episode) {
 			$data['episodes'][] = [
-				'id' => $row['id'],
-				"crc32" => $row["crc32"],
-				"arc_id" => $row['arc_id'],
-				'part' => $row['part'],
-				'title' => $row['title'],
-				'chapters' => $row['chapters'],
-				"episodes" => $row["episodes"],
-				"resolution" => $row["resolution"],
-				"torrent_hash" => $row["torrent_hash"],
-				"hidden" => $row['hidden'],
-				"in_progress" => $row['in_progress'],
-				"released_date" => $row['released_date'] == null ? '' : $row['released_date'],
+				'id' => $episode['id'],
+				"crc32" => $episode["crc32"],
+				"arc_id" => $episode['arc_id'],
+				'part' => $episode['part'],
+				'title' => $episode['title'],
+				'chapters' => $episode['chapters'],
+				"episodes" => $episode["episodes"],
+				"resolution" => $episode["resolution"],
+				"torrent_hash" => $episode["torrent_hash"],
+				"in_progress" => $episode['in_progress'],
+				"released_date" => $episode['released_date'] == null ? '' : $episode['released_date'],
 			];
 		}
 		return $data;

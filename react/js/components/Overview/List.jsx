@@ -8,7 +8,7 @@ export default class List extends React.Component {
 		const isAdmin = isLoggedIn && this.props.user.role >= 4
 		return (
 			<div className="list">
-				<div className={"header" + (this.props.arc.hidden ? " admin-only" : "")}>{this.props.arc.title}</div>
+				<div className={"header" + (!this.props.arc.released ? " unreleased" : "")}>{this.props.arc.title}</div>
 				<div className="cards">
 					<Card img={this.props.image} />
 					{this.props.cards.map(episode => {
