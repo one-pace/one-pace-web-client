@@ -9,7 +9,7 @@ export default class List extends React.Component {
 		return (
 			<div className="list">
 				<div className={"header" + (!this.props.arc.released ? " unreleased" : "")}>{this.props.arc.title}</div>
-				<div className="cards">
+				<div className={"cards" + (!this.props.arc.released ? " unreleased" : "")}>
 					<Card img={this.props.image} />
 					{this.props.cards.map(episode => {
 						return <Card

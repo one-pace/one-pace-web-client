@@ -292,9 +292,20 @@ table.releases tr:hover {
 	font-weight: bold;
 	border-radius: 3px 3px 0 0;
 }
-.progress-container .list .header.unreleased {
-	background-color: #9c9c9c;
-	color: #616161;
+.progress-container {
+	.list {
+		.header {
+			&.unreleased {
+				background-color: #5d5d5d;
+				color: #d4d4d4;
+			}
+		}
+		.cards {
+			&.unreleased {
+				background-color: #929292;
+			}
+		}
+	}
 }
 /* Card add button*/
 .progress-container .add-card-button-container {
