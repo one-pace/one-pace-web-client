@@ -341,25 +341,10 @@ table.releases tr:hover {
 	border-radius: 3px;
 	border-bottom: 1px solid #ccc;
 	color: #f5f5f5;
-	&:hover:not(.unreleased) {
+	&.title:hover:not(.unreleased) {
 		background-color: #4f698b;
 		cursor: pointer;
 	}
-}
-.progress-card .glyphicon {
-	display: none;
-	color: #666;
-}
-.progress-card:hover .glyphicon {
-	float: right;
-	display: inline-block;
-	position: relative;
-	cursor: pointer;
-	right: 13px;
-	top: 9px;
-}
-.progress-card .glyphicon:hover {
-	color: #101010;
 }
 .progress-container .progress-card .text {
 	margin: 5px 10px;
