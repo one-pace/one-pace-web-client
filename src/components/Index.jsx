@@ -11,7 +11,7 @@ import About from "./About"
 import Layout from "./Layout"
 import Overview from "./Overview/Overview"
 import HttpsRedirect from "react-https-redirect"
-import "../../index.scss"
+import "../index.scss"
 import history from "../history"
 
 ReactDOM.render(
