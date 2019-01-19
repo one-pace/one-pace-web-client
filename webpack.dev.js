@@ -1,5 +1,6 @@
 ﻿var path = require("path")
 var webpack = require("webpack")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 module.exports = {
 	"entry": "./src/components/Index.jsx",
@@ -15,7 +16,8 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify("development")
-		})
+		}),
+		new CopyWebpackPlugin([{ from: "php", to: "php" }], {})
 	],
 	"resolve": {
 		"extensions": [".js", ".jsx"],
