@@ -44,13 +44,11 @@ module.exports = {
 			},
 			{
 				"test": /\.(woff2?|png|jpe?g|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-				"use": [{
-					"loader": "file-loader",
-					"options": {
-						"name": "[name].[ext]",
-						"outputPath": "assets/"
-					}
-				}]
+				"loader": "file-loader",
+				"options": {
+					"name": "[name].[ext]",
+					"outputPath": "assets/"
+				}
 			},
 			{
 				"test": /\.html$/,

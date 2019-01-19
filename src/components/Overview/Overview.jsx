@@ -31,7 +31,7 @@ export default class Overview extends React.Component {
 						<List
 							arc={i}
 							user={this.state.user}
-							image={"/assets/arc_" + i.id + ".png"}
+							image={require("../../images/arc_" + i.id + ".png")}
 							cards={this.state.episodes.filter(j => j.arc_id == i.id)}
 							key={"arc"+i.id}
 							onClickCard={episode => this.goToEpisode(episode.id)}

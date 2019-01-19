@@ -7,3 +7,4 @@ node_modules/
 episodeattachments/
 .DS_Store
 *.swp
+dist/
