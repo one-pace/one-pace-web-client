@@ -29,6 +29,9 @@ export default class Watch extends React.Component {
 			if (!selectedArc && selectedEpisode) {
 				[selectedArc] = arcs.filter((i) => i.id == selectedEpisode.arcId)
 			}
+			if (!selectedArc && !selectedEpisode) {
+				[selectedArc] = arcs
+			}
 			if (selectedArc && !selectedEpisode) {
 				[selectedEpisode] = episodes.filter(i => i.arcId == selectedArc.id)
 			}
