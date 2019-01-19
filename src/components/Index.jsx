@@ -13,6 +13,7 @@ import Overview from "./Overview/Overview"
 import HttpsRedirect from "react-https-redirect"
 import "../index.scss"
 import history from "../history"
+import "../index.html"
 
 ReactDOM.render(
 	<HttpsRedirect>

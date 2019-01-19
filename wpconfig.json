@@ -1,9 +1,9 @@
 {
-  "entry": "index.html",
+  "entry": "dist/index.html",
   "uploadDirectory": "/www/onepace.net/public_html",
   "include": [
     {
-      "file": "index.js",
+      "file": "dist/index.js",
       "entryLinkPattern": "<script src=\"(index\\.js[\\?v=A-Fa-f\\d]*)\"></script>"
     }
   ]

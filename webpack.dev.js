@@ -4,7 +4,7 @@ var webpack = require("webpack")
 module.exports = {
 	"entry": "./src/components/Index.jsx",
 	"output": {
-		"path": path.join(__dirname, "../../"),
+		"path": path.join(__dirname, "./dist"),
 		"filename": "index.js"
 	},
 	"plugins": [
@@ -40,6 +40,23 @@ module.exports = {
 				"include": [path.join(__dirname, "/src"), path.join(__dirname, "node_modules/reflux-core")],
 				"options": {
 					"presets": ["react", "es2015", "stage-1", "stage-2"]
+				}
+			},
+			{
+				"test": /\.(woff2?|png|jpe?g|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				"use": [{
+					"loader": "file-loader",
+					"options": {
+						"name": "[name].[ext]",
+						"outputPath": "assets/"
+					}
+				}]
+			},
+			{
+				"test": /\.html$/,
+				"loader": "file-loader",
+				"options": {
+					"name": "[name].[ext]"
 				}
 			}
 		]
