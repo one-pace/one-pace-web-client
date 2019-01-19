@@ -2,7 +2,7 @@
 var webpack = require("webpack")
 
 module.exports = {
-	"entry": "./react/js/components/Index.jsx",
+	"entry": "./src/js/components/Index.jsx",
 	"output": {
 		"path": path.join(__dirname, "../../"),
 		"filename": "index.js"
@@ -21,7 +21,7 @@ module.exports = {
 		"extensions": [".js", ".jsx"],
 		"alias": {
 			"root": path.join(__dirname, ""),
-			"appRoot": path.join(__dirname, "/react/js")
+			"appRoot": path.join(__dirname, "/src/js")
 		}
 	},
 	"module": {
@@ -37,7 +37,7 @@ module.exports = {
 			{
 				"test": /\.jsx?$/,
 				"loader": "babel-loader",
-				"include": [path.join(__dirname, "/react/js"), path.join(__dirname, "node_modules/reflux-core")],
+				"include": [path.join(__dirname, "/src/js"), path.join(__dirname, "node_modules/reflux-core")],
 				"options": {
 					"presets": ["react", "es2015", "stage-1", "stage-2"]
 				}
