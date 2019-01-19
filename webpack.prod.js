@@ -1,5 +1,5 @@
-﻿var path = require("path");
-var webpack = require("webpack");
+﻿var path = require("path")
+var webpack = require("webpack")
 
 module.exports = {
 	"entry": "./react/js/components/Index.jsx",
@@ -50,4 +50,4 @@ module.exports = {
 			"ServerURL": "https://onepace.net/php"
 		})
 	}
-};
+}
