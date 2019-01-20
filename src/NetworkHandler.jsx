@@ -1,4 +1,3 @@
-import Config from "webpack-config"
 import Axios from "axios"
 
 export default class NetworkHandler {
@@ -7,7 +6,7 @@ export default class NetworkHandler {
 		onError = onError == null ? (f) => f : onError
 		Axios.request({
 			"method": "POST",
-			"url": Config.ServerURL + route,
+			"url": "/php/" + route,
 			"data": data,
 			"responseType": "json",
 			"onUploadProgress": onUploadProgress

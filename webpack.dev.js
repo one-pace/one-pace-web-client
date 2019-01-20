@@ -64,10 +64,5 @@ module.exports = {
 	"watch": true,
 	"watchOptions": {
 		"ignored": /node_modules/
-	},
-	"externals": {
-		"webpack-config": JSON.stringify({
-			"ServerURL": "http://localhost:9000/php"
-		})
 	}
 }

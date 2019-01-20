@@ -222,79 +222,74 @@ table.releases tr:hover {
 .members table tr:last-of-type > td {
 	padding: 1px 10px 10px 45px;
 }
-.submit-button {
-	color: white;
-	font-size: 16px;
-	cursor: pointer;
-	padding: 7px;
-	margin: 5px 0;
-	text-align: center;
-	background-color: #5176af;
-	border-radius: 0px;
-}
-.submit-button:hover {
-	background-color: #6186bf;
-}
-.submit-button a {
-	color: white;
-}
-.submit-button a:hover, .submit-button a:focus {
-	text-decoration: none;
-	color: white;
-}
-.submit-button.disabled {
-	background-color: #5f6e84;
-	color: #c5c5c5;
-	cursor: default;
-	user-select: none;
-	-moz-user-select: none;
-	-ms-touch-select: none;
-	-ms-user-select: none;
-	-webkit-user-select: none;
-}
-/* Login */
-.login-side-container {
-	color: white;
-	width: 15%;
-}
-.login-container {
-	margin-top: 5px;
-}
-.login-container input {
-	width: 100%;
-}
 /*List*/
-.progress-container {
-	color: #444444;
-	display: flex;
-	height: 100%;
-}
 .flex-scroll-x {
 	display: flex;
 	overflow-x: auto;
 }
-.progress-container .list {
-	flex: 1;
-	padding: 10px;
-	width: 270px;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	flex-basis: 270px;
-	flex-grow: 0;
-	flex-shrink: 0;
-}
-.progress-container .list .header {
-	background-color: #ffffff;
-	padding: 10px;
-	color: #333333;
-	font-size: 18px;
-	font-weight: bold;
-	border-radius: 3px 3px 0 0;
-}
+/* Progress card */
 .progress-container {
+	color: #444444;
+	display: flex;
+	height: 100%;
+	.progress-card {
+		background-color: #415671;
+		margin: 10px;
+		border-radius: 3px;
+		color: #f5f5f5;
+		&.title {
+			padding: 5px 8px;
+			&:hover:not(.unreleased) {
+				background-color: #4f698b;
+				cursor: pointer;
+			}
+		}
+		.text {
+			display: inline-block;
+			font-size: 13px;
+			font-style: italic;
+		}
+		.status {
+			color: #b3b3b3;
+			font-size: 11px;
+			font-style: italic;
+		}
+		&.unreleased {
+			background-color: #5d5d5d;
+			.text {
+				color: #d8d8d8;
+			}
+			.status {
+				color: #b7b7b7;
+			}
+		}
+	}
+	.cards {
+		overflow-y: auto;
+		background: #E2E4E6;
+		border-radius: 0 0px 3px 3px;
+		.list-image {
+			width: 100%;
+			border-radius: 3px;
+		}
+	}
 	.list {
+		flex: 1;
+		padding: 10px;
+		width: 270px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		flex-basis: 270px;
+		flex-grow: 0;
+		flex-shrink: 0;
 		.header {
+			background-color: #ffffff;
+			padding: 10px;
+			color: #333333;
+			font-size: 18px;
+			font-weight: bold;
+			border-radius: 3px 3px 0 0;
 			&.unreleased {
 				background-color: #5d5d5d;
 				color: #d4d4d4;
@@ -306,72 +301,6 @@ table.releases tr:hover {
 			}
 		}
 	}
-}
-/* Card add button*/
-.progress-container .add-card-button-container {
-	padding-bottom: 1px;
-}
-.progress-container .add-card-button:hover {
-	background-color: #edeff0;
-}
-.progress-container .add-card-button .the-text {
-	font-size: 17px;
-	font-weight: 700;
-	display: inline-block;
-	margin-left: 5px;
-}
-.progress-container .add-card-button .glyphicon {
-	margin-left: 6px;
-	font-size: 14px;
-	position: relative;
-	top: 1px;
-}
-.progress-container .add-card-button {
-	border-bottom: 1px solid #ccc;
-	padding: 5px;
-	margin: 10px;
-	border-radius: 3px;
-	background-color: #ffffff;
-	cursor: pointer;
-}
-/* Progress card */
-.progress-container .progress-card {
-	background-color: #415671;
-	margin: 10px;
-	border-radius: 3px;
-	border-bottom: 1px solid #ccc;
-	color: #f5f5f5;
-	&.title:hover:not(.unreleased) {
-		background-color: #4f698b;
-		cursor: pointer;
-	}
-}
-.progress-container .progress-card .text {
-	margin: 5px 10px;
-	display: inline-block;
-	font-size: 13px;
-	font-style: italic;
-}
-/* Progress card unreleased */
-.progress-card.unreleased {
-	background-color: #5d5d5d;
-	.text {
-		color: #d8d8d8;
-	}
-	.status {
-		color: #b7b7b7;
-	}
-}
-/*Card image*/
-.progress-container .cards .list-image {
-	width: 100%;
-	border-radius: 3px;
-}
-/* Card list */
-.progress-container .cards {
-	overflow-y: auto;
-	background: #E2E4E6;
-	border-radius: 0 0px 3px 3px;
 }
 /*Form overlay*/
 .form-overlay {
@@ -404,53 +333,6 @@ table.releases tr:hover {
 .right-margin {
 	margin-right: 5px;
 }
-.issues{
-	max-height: 50%;
-	overflow-y: auto;
-}
-.issue-container {
-	background-color: #fff;
-	padding: 10px;
-	color: black;
-	margin-top: 10px;
-}
-.issue-container .header .name {
-	font-size: 14px;
-}
-.issue-container .header .time {
-	font-size: 12px;
-	font-style: italic;
-}
-.card .status {
-	color: #b3b3b3;
-	text-align: left;
-	font-size: 11px;
-	margin: -5px 10px 4px 10px;
-	font-style: italic;
-}
-.create-issue-input {
-	width: 100%;
-}
-.progress-card.admin-only,.list-content>.header.admin-only {
-	background-color: grey;
-	color: white;
-}
-.complete-button {
-	background-color: #138a22;
-}
-.uncomplete-button {
-	background-color: #7d0d0d;
-}
-.issue-container.completed {
-	background-color: #b7b7b7;
-	color: #909090;
-}
-.issue-container .glyphicon-unchecked.editable {
-	cursor: pointer;
-}
-.issue-container .glyphicon-unchecked.editable:hover:before {
-	content: "\e067";
-}
 .glyphicon-check,.glyphicon-unchecked {
 	color: rgba(2, 130, 0, 0.67);
 	font-size: 24px;
@@ -459,17 +341,4 @@ table.releases tr:hover {
 .form-container video {
 	width: 100%;
 	background-color: #35465a;
-}
-.upload-button {
-	flex: 1;
-	color: #fff;
-	font-size: 16px;
-	cursor: pointer;
-	padding: 10px;
-	margin: 10px;
-	text-align: center;
-	background-color: #5176af;
-	font-weight: 100;
-	font-size: 18px;
-	max-height: 87px;
 }
