@@ -46,21 +46,16 @@ module.exports = {
 				}
 			},
 			{
-				"test": /\.(woff2?|png|jpe?g|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-				"use": [{
-					"loader": "file-loader",
-					"options": {
-						"name": "[name].[ext]",
-						"outputPath": "assets/"
-					}
-				}]
+				"test": /\.(woff2?|png|jpe?g|ico|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				"loader": "file-loader",
+				"options": {
+					"name": "[name].[ext]",
+					"outputPath": "assets/"
+				}
 			},
 			{
 				"test": /\.html$/,
-				"loader": "file-loader",
-				"options": {
-					"name": "[name].[ext]"
-				}
+				"loader": "file-loader?name=[name].[ext]"
 			}
 		]
 	}

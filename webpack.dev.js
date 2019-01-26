@@ -45,7 +45,7 @@ module.exports = {
 				}
 			},
 			{
-				"test": /\.(woff2?|png|jpe?g|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				"test": /\.(woff2?|png|jpe?g|ico|ttf|otf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 				"loader": "file-loader",
 				"options": {
 					"name": "[name].[ext]",
