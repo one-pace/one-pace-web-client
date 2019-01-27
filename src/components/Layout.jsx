@@ -11,6 +11,7 @@ export default class Layout extends React.Component {
 					<a className="link link-right" target="_blank" rel="noopener noreferrer" href="https://paypal.me/supportonepace"><img src={require("../images/paypal.svg")} /></a>
 					<a className="link link-right" target="_blank" rel="noopener noreferrer" href="https://discordapp.com/invite/WHpTJdP"><img src={require("../images/discord.svg")} /></a>
 					<a className="link link-right" target="_blank" rel="noopener noreferrer" href="http://forums.arlongpark.net/showthread.php?t=38681"><img src={require("../images/arlongpark.svg")} /></a>
+					<span className="link link-right text-link">Currently looking for QCers!</span>
 				</div>
 				<div className="main-content">
 					{this.props.children}
