@@ -8,3 +8,4 @@ episodeattachments/
 .DS_Store
 *.swp
 dist/
+.vscode/sftp.json
