@@ -189,6 +189,9 @@ table.releases tr:hover {
 	cursor: pointer;
 	color: #ffffff;
 	margin: 5px;
+	&:hover {
+		background-color: #456;
+	}
 }
 .vl {
 	border-left: 4px solid #395d9e;
