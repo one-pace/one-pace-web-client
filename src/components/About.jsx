@@ -9,8 +9,10 @@ export default class About extends React.Component {
 			<div className="about with-padding">
 				<h2>What is One Pace?</h2>
 				<p>
-					One Pace is a project aiming to match the One Piece manga more accurately than Toei&apos;s anime adaptation.
-					We cut out filler scenes, reaction shots, padded sequences, and re-order scenes to stay truer to Goda&apos;s manga.
+					One Pace is a team effort that started in March 2013 with the goal of matching the One Piece manga
+					more accurately than Toei&apos;s anime adaptation.
+					We cut out filler scenes, non-canon reaction shots, padded sequences,
+					and re-order scenes to stay truer to Goda&apos;s manga.
 				</p>
 				<h2>The Team</h2>
 				<table>
@@ -25,7 +27,7 @@ export default class About extends React.Component {
 						</tr>
 						<tr>
 							<td>Feeso</td>
-							<td>Editing</td>
+							<td>Editing, QC</td>
 						</tr>
 						<tr>
 							<td>Halee</td>
@@ -37,11 +39,11 @@ export default class About extends React.Component {
 						</tr>
 						<tr>
 							<td>Grug</td>
-							<td>Quality Assurance</td>
+							<td>QC</td>
 						</tr>
 						<tr>
 							<td>Pepperjack</td>
-							<td>Quality Assurance</td>
+							<td>QC</td>
 						</tr>
 						<tr>
 							<td width="50%">Kaitou Yahiko</td>
@@ -55,13 +57,9 @@ export default class About extends React.Component {
 							<td>Lance</td>
 							<td>Timing</td>
 						</tr>
-						<tr>
-							<td>Jojoejoe3</td>
-							<td>Designer</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
-		);
+		)
 	}
 }
