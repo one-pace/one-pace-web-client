@@ -141,8 +141,9 @@ export default class Watch extends React.Component {
 						selectedEpisode && selectedEpisode.torrent && this.magnetLink(selectedEpisode.torrent.magnet) ||
 						selectedArc && selectedArc.torrent && this.magnetLink(selectedArc.torrent.magnet)
 					}
-					{selectedEpisode && selectedEpisode.chapters && <span>Chapters: {selectedEpisode.chapters}</span>}
-					{selectedEpisode && selectedEpisode.episodes && <span>&nbsp;/&nbsp;Episodes: {selectedEpisode.episodes}</span>}
+					{selectedEpisode && selectedEpisode.released_date && <span style={{ marginLeft: 20 }}>Released: {selectedEpisode.released_date}</span>}
+					{selectedEpisode && selectedEpisode.chapters && <span style={{ marginLeft: 20 }}>Chapters: {selectedEpisode.chapters}</span>}
+					{selectedEpisode && selectedEpisode.episodes && <span style={{ marginLeft: 20 }}>Episodes: {selectedEpisode.episodes}</span>}
 				</center>
 				</div>
 				<div className="video-container">

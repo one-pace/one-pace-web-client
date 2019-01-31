@@ -28,6 +28,7 @@ foreach($episodes as $episode) {
 
 	// Set the episode object
 	$torrent = TorrentUtils::findTorrent($torrents, $episode['torrent_hash']);
+	$releasedDate = $is_released ? date("F j, Y", strtotime($episode["released_date"])) : "";
 	$data['episodes'][] = [
 		'id' => $episode['id'],
 		'crc32' => $is_released ? $episode['crc32'] : "",
@@ -35,6 +36,7 @@ foreach($episodes as $episode) {
 		'title' => $episode['title'],
 		'chapters' => $episode['chapters'],
 		"episodes" => $episode["episodes"],
+		"released_date" => $releasedDate,
 		"isReleased" => $is_released,
 		'part' => $episode['part'],
 		'arcId' => $episode['arc_id'],
