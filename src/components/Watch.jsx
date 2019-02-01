@@ -1,7 +1,7 @@
 import React from "react"
 import NetworkHandler from "../NetworkHandler"
 import LocalStorageUtils from "../LocalStorageUtils"
-import history from "../history"
+import queryString from "query-string"
 
 export default class Watch extends React.Component {
 	state = {
@@ -16,9 +16,8 @@ export default class Watch extends React.Component {
 			const { arcs, episodes } = response
 			let selectedArc = null
 			let selectedEpisode = null
-			const search = history.getCurrentLocation().search.substring(1)
-			const o = search && JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-			const selectedEpisodeId = o && o.episode || LocalStorageUtils.getWatchSelectedEpisodeId()
+			const search = queryString.parse(this.props.location.search)
+			const selectedEpisodeId = search && search.episode || LocalStorageUtils.getWatchSelectedEpisodeId()
 			const selectedArcId = LocalStorageUtils.getWatchSelectedArcId()
 			if (selectedEpisodeId) {
 				[selectedEpisode] = episodes.filter((i) => i.id == selectedEpisodeId || i.crc32 == selectedEpisodeId)
@@ -47,6 +46,7 @@ export default class Watch extends React.Component {
 		}
 		LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null)
 		LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null)
+		this.props.history.push({ search: `?episode=${selectedEpisode.crc32}` })
 		this.setState({ "selectedArc": selectedArc, "selectedEpisode": selectedEpisode }, () => {
 			this.videoRef.load()
 		})
@@ -58,6 +58,7 @@ export default class Watch extends React.Component {
 			[selectedArc] = this.state.arcs.filter(i => i.id == selectedEpisode.arcId)
 			LocalStorageUtils.setWatchSelectedArcId(selectedArc.id)
 		}
+		this.props.history.push({ search: `?episode=${selectedEpisode.crc32}` })
 		this.setState({ selectedArc, selectedEpisode }, () => {
 			this.videoRef.load()
 			this.videoRef.play()

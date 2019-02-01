@@ -1,7 +1,6 @@
 import React from "react"
 import NetworkHandler from "../../NetworkHandler"
 import List from "./List"
-import history from "../../history"
 
 export default class Overview extends React.Component {
 	constructor(props) {
@@ -21,7 +20,7 @@ export default class Overview extends React.Component {
 		})
 	}
 
-	goToEpisode = episodeId => history.push(`/?episode=${episodeId}`)
+	goToEpisode = episodeId => this.props.history.push(`/?episode=${episodeId}`)
 
 	render() {
 		return (
