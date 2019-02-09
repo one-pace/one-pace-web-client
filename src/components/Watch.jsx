@@ -36,6 +36,9 @@ export default class Watch extends React.Component {
 			}
 			LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null)
 			LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null)
+			if(selectedEpisode) {
+				this.props.history.push({ search: `?episode=${selectedEpisode.id}` })
+			}
 			this.setState({ selectedArc, selectedEpisode, arcs, episodes })
 		})
 	}
@@ -46,7 +49,7 @@ export default class Watch extends React.Component {
 		}
 		LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null)
 		LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null)
-		this.props.history.push({ search: `?episode=${selectedEpisode.crc32}` })
+		this.props.history.push({ search: `?episode=${selectedEpisode.id}` })
 		this.setState({ "selectedArc": selectedArc, "selectedEpisode": selectedEpisode }, () => {
 			this.videoRef.load()
 		})
@@ -58,7 +61,7 @@ export default class Watch extends React.Component {
 			[selectedArc] = this.state.arcs.filter(i => i.id == selectedEpisode.arcId)
 			LocalStorageUtils.setWatchSelectedArcId(selectedArc.id)
 		}
-		this.props.history.push({ search: `?episode=${selectedEpisode.crc32}` })
+		this.props.history.push({ search: `?episode=${selectedEpisode.id}` })
 		this.setState({ selectedArc, selectedEpisode }, () => {
 			this.videoRef.load()
 			this.videoRef.play()
