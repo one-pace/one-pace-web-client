@@ -171,6 +171,9 @@ class db_context {
 	function create_episode($params) {
 		return $this->create("episodes", $params);
 	}
+	function read_episode($id) {
+		return $this->read("episodes", $id);
+	}
 	function update_episode($id, $params) {
 		return $this->update("episodes", $id, $params);
 	}
