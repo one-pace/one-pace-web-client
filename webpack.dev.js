@@ -20,11 +20,7 @@ module.exports = {
 		new CopyWebpackPlugin([{ from: "php", to: "php" }], {})
 	],
 	"resolve": {
-		"extensions": [".js", ".jsx"],
-		"alias": {
-			"root": path.join(__dirname, ""),
-			"appRoot": path.join(__dirname, "/src")
-		}
+		"extensions": [".js", ".jsx"]
 	},
 	"module": {
 		"rules": [
