@@ -202,6 +202,7 @@ class db_context {
 				'released' => $arc['released'],
 				'title' => $arc['title'],
 				'chapters' => $arc['chapters'],
+				'episodes' => $arc['episodes'],
 			];
 		}
 		foreach($episodes as $episode) {
