@@ -6,20 +6,19 @@ import Watch from "./Watch"
 import About from "./About"
 import Layout from "./Layout"
 import Overview from "./Overview/Overview"
-import HttpsRedirect from "react-https-redirect"
 import "../index.scss"
 import "../index.html"
 import "../images/favicon.ico"
 require.context("../images", false, /arc_\d+\.png$/)
 
 ReactDOM.render(<Router>
-	<Route render={() => (
-		<HttpsRedirect>
+	<Route
+		render={() => (
 			<Layout>
 				<Route exact path="/" component={Watch} />
 				<Route name="about" path="/about" component={About} />
 				<Route name="overview" path="/overview" component={Overview} />
 			</Layout>
-		</HttpsRedirect>)}
+		)}
 	/>
 </Router>, document.getElementById("reactentry"))

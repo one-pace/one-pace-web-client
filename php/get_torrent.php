@@ -34,5 +34,5 @@ if(isset($_GET['json']) && $_GET['json'] == "true") {
 } else if (isset($_GET['magnet']) && $_GET['magnet'] == "true" && $torrent['magnet'] != null) {
 	header("Location: " . $torrent['magnet']);
 } else {
-	header("Location: https://onepace.net/torrents/" . $torrent["torrent_name"]);
+	header("Location: /torrents/" . $torrent["torrent_name"]);
 }
