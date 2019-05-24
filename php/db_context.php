@@ -189,7 +189,7 @@ class db_context {
 				*,
 				((episodes.hidden is null or episodes.hidden = false) and (released_date is null or released_date > now())) as in_progress
 			from episodes
-			where hidden = false and (released_date is null or released_date > now()) = false
+			where hidden = false
 			group by id
 			order by abs(chapters)
 			;
