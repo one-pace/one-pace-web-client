@@ -308,6 +308,23 @@ table.releases tr:hover {
 			}
 		}
 	}
+	.nav-arrow {
+		position: absolute;
+		right: 0;
+		opacity: 0.7;
+		margin-right: 20px;
+		bottom: 5%;
+		&:hover {
+			cursor: pointer;
+		}
+		.MuiSvgIcon-root {
+			font-size: 3rem;
+			color: #fba301;
+			&:hover {
+				color: #ffd280;
+			}
+		}
+	}
 }
 /*Form overlay*/
 .form-overlay {

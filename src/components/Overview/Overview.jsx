@@ -10,6 +10,7 @@ export default class Overview extends React.Component {
 			"episodes": [],
 			"name": "",
 			"password": "",
+			"showScrollArrow": false
 		}
 	}
 	componentDidMount() {
@@ -37,6 +38,11 @@ export default class Overview extends React.Component {
 						/>
 					)
 				}
+				<div className="nav-arrow" onClick={this.scrollRight}>
+					<Fade in={this.state.showScrollArrow}>
+						<ArrowForwardIos />
+					</Fade>
+				</div>
 			</div>
 		)
 	}
