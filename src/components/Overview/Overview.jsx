@@ -1,6 +1,8 @@
 import React from "react"
 import NetworkHandler from "../../NetworkHandler"
 import List from "./List"
+import { ArrowForwardIos } from "@material-ui/icons"
+import { Fade } from "@material-ui/core"
 
 export default class Overview extends React.Component {
 	constructor(props) {
@@ -14,6 +16,8 @@ export default class Overview extends React.Component {
 		}
 	}
 	componentDidMount() {
+		this.handleScroll()
+		window.addEventListener("scroll", this.handleScroll, true)
 		NetworkHandler.request("/list_progress_episodes.php", null, (responseJson) => {
 			this.setState({
 				"arcs": responseJson.arcs, "episodes": responseJson.episodes
@@ -21,11 +25,30 @@ export default class Overview extends React.Component {
 		})
 	}
 
+	handleScroll = (e) => {
+		if (!e || e.target.scrollLeft + e.target.offsetWidth < e.target.scrollWidth) {
+			if (!this.state.showScrollArrow) {
+				this.setState({ showScrollArrow: true })
+			}
+		} else {
+			if (this.state.showScrollArrow) {
+				this.setState({ showScrollArrow: false })
+			}
+		}
+	}
+
+	scrollRight = () => {
+		this.container.scrollTo({
+			left: this.container.scrollWidth,
+			behavior: "smooth"
+		})
+	}
+
 	goToEpisode = episodeId => this.props.history.push(`/?episode=${episodeId}`)
 
 	render() {
 		return (
-			<div className="card progress-container">
+			<div ref={ref => this.container = ref} className="card progress-container">
 				{
 					this.state.arcs.map(i =>
 						<List
