@@ -16,13 +16,16 @@ export default class Overview extends React.Component {
 		}
 	}
 	componentDidMount() {
-		this.handleScroll()
 		window.addEventListener("scroll", this.handleScroll, true)
 		NetworkHandler.request("/list_progress_episodes.php", null, (responseJson) => {
 			this.setState({
 				"arcs": responseJson.arcs, "episodes": responseJson.episodes
 			})
 		})
+	}
+
+	componentDidUpdate() {
+		this.handleScroll()
 	}
 
 	handleScroll = (e) => {
