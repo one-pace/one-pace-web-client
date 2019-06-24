@@ -28,8 +28,8 @@ export default class Overview extends React.Component {
 		this.handleScroll()
 	}
 
-	handleScroll = (e) => {
-		if (!e || e.target.scrollLeft + e.target.offsetWidth < e.target.scrollWidth) {
+	handleScroll = () => {
+		if (this.container.scrollLeft + this.container.offsetWidth < this.container.scrollWidth) {
 			if (!this.state.showScrollArrow) {
 				this.setState({ showScrollArrow: true })
 			}
