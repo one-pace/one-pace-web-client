@@ -9,6 +9,7 @@ import Overview from "./Overview/Overview"
 import "../index.scss"
 import "../index.html"
 import "../images/favicon.ico"
+import "typeface-roboto"
 require.context("../images", false, /arc_\d+\.png$/)
 
 ReactDOM.render(<Router>

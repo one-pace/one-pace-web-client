@@ -237,8 +237,9 @@ table.releases tr:hover {
 /* Progress card */
 .progress-container {
 	color: #444444;
-	display: flex;
 	height: 100%;
+	display: flex;
+	overflow-x: auto;
 	.progress-card {
 		background-color: #415671;
 		margin: 10px;
@@ -305,6 +306,23 @@ table.releases tr:hover {
 		.cards {
 			&.unreleased {
 				background-color: #929292;
+			}
+		}
+	}
+	.nav-arrow {
+		position: absolute;
+		right: 0;
+		opacity: 0.7;
+		margin-right: 20px;
+		bottom: 5%;
+		&:hover {
+			cursor: pointer;
+		}
+		.MuiSvgIcon-root {
+			font-size: 3rem;
+			color: #fba301;
+			&:hover {
+				color: #ffd280;
 			}
 		}
 	}
