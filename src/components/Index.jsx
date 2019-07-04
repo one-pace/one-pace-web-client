@@ -13,13 +13,13 @@ import "typeface-roboto"
 require.context("../images", false, /arc_\d+\.png$/)
 
 ReactDOM.render(<Router>
-	<Route
-		render={() => (
-			<Layout>
-				<Route exact path="/" component={Watch} />
-				<Route name="about" path="/about" component={About} />
-				<Route name="overview" path="/overview" component={Overview} />
-			</Layout>
-		)}
-	/>
+  <Route
+    render={() => (
+      <Layout>
+        <Route exact path="/" component={Watch} />
+        <Route name="about" path="/about" component={About} />
+        <Route name="overview" path="/overview" component={Overview} />
+      </Layout>
+    )}
+  />
 </Router>, document.getElementById("reactentry"))
