@@ -1,18 +1,18 @@
-import React from "react"
-import NetworkHandler from "../NetworkHandler"
-import LocalStorageUtils from "../LocalStorageUtils"
-import queryString from "query-string"
+import React from 'react'
+import NetworkHandler from '../NetworkHandler'
+import LocalStorageUtils from '../LocalStorageUtils'
+import queryString from 'query-string'
 
 export default class Watch extends React.Component {
   state = {
-    "selectedArc": null,
-    "selectedEpisode": null,
-    "episodes": [],
-    "arcs": []
+    'selectedArc': null,
+    'selectedEpisode': null,
+    'episodes': [],
+    'arcs': []
   }
 
   componentDidMount() {
-    NetworkHandler.request("/get_streams.php", null, response => {
+    NetworkHandler.request('/get_streams.php', null, response => {
       const { arcs, episodes } = response
       let selectedArc = null
       let selectedEpisode = null
@@ -50,7 +50,7 @@ export default class Watch extends React.Component {
     LocalStorageUtils.setWatchSelectedArcId(selectedArc ? selectedArc.id : null)
     LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null)
     this.props.history.push({ search: `?episode=${selectedEpisode.id}` })
-    this.setState({ "selectedArc": selectedArc, "selectedEpisode": selectedEpisode }, () => {
+    this.setState({ 'selectedArc': selectedArc, 'selectedEpisode': selectedEpisode }, () => {
       this.videoRef.load()
     })
   }
@@ -73,8 +73,8 @@ export default class Watch extends React.Component {
     for (let i = 0; i < episodes.length; i++) {
       const episode = episodes[i]
       if (episode.id === this.state.selectedEpisode.id) {
-        if (!((dir == "prev" && i == 0) || (dir == "next" && i >= episodes.length - 1))) {
-          const otherEpisode = episodes[dir == "prev" ? i - 1 : i + 1]
+        if (!((dir == 'prev' && i == 0) || (dir == 'next' && i >= episodes.length - 1))) {
+          const otherEpisode = episodes[dir == 'prev' ? i - 1 : i + 1]
           this.changeEpisode(otherEpisode)
         }
         break
@@ -84,12 +84,12 @@ export default class Watch extends React.Component {
 
   stopVideo = () => this.videoRef.pause()
 
-  torrentLink = torrentName => <a className="torrent-link" href={"/torrents/" + torrentName} onClick={() => this.stopVideo()}>
-    <i className="fas fa-file-download" />
+  torrentLink = torrentName => <a className='torrent-link' href={'/torrents/' + torrentName} onClick={() => this.stopVideo()}>
+    <i className='fas fa-file-download' />
   </a>
 
-  magnetLink = magnetURL => <a className="torrent-link" href={magnetURL} onClick={() => this.stopVideo()}>
-    <i className="fas fa-magnet" />
+  magnetLink = magnetURL => <a className='torrent-link' href={magnetURL} onClick={() => this.stopVideo()}>
+    <i className='fas fa-magnet' />
   </a>
 
   getEpisodePart = episodePart => episodePart && `00${episodePart.toString()}`.slice(-2) || ""
@@ -97,10 +97,10 @@ export default class Watch extends React.Component {
   render() {
     const { selectedArc, selectedEpisode, arcs, episodes } = this.state
     return (
-      <div className="watch">
-        <div className="watch-top"><center>
+      <div className='watch'>
+        <div className='watch-top'><center>
           <select
-            className="arcs"
+            className='arcs'
             value={selectedArc ? selectedArc.id : 0}
             onChange={(e) => {
               const arcId = e.target.value
@@ -110,15 +110,15 @@ export default class Watch extends React.Component {
           >
             {
               arcs.map(arc => {
-                let title = arc.chapters ? "(Chapter " + arc.chapters + ")" : ""
-                title += (arc.title ? " " + arc.title : " Untitled") + (arc.chapters ? " Arc" : "")
-                title += arc.released ? "" : " (Unreleased)"
-                return <option disabled={!arc.released} key={"arc"+arc.id} value={arc.id}>{title}</option>
+                let title = arc.chapters ? '(Chapter ' + arc.chapters + ')' : ''
+                title += (arc.title ? ' ' + arc.title : ' Untitled') + (arc.chapters ? ' Arc' : '')
+                title += arc.released ? '' : ' (Unreleased)'
+                return <option disabled={!arc.released} key={'arc'+arc.id} value={arc.id}>{title}</option>
               })
             }
           </select>
           <select
-            className="episodes"
+            className='episodes'
             value={selectedEpisode ? selectedEpisode.id : 0}
             onChange={(e) => {
               const episodeId = e.target.value
@@ -128,15 +128,15 @@ export default class Watch extends React.Component {
           >
             {episodes.length > 0 && selectedArc &&
               episodes.filter(i => i.arcId == selectedArc.id).map(episode => {
-                let title = episode.part && `${selectedArc.title} ${this.getEpisodePart(episode.part)}` || episode.chapters && `Chapter ${episode.chapters}` || episode.title || "Unknown episode"
-                title += (episode.part || episode.chapters) && episode.title && `: ${episode.title}` || ""
-                title += !episode.isReleased && " (In progress)" || ""
-                return <option disabled={!episode.isReleased} key={"episode" + episode.id} value={episode.id}>{title}</option>
+                let title = episode.part && `${selectedArc.title} ${this.getEpisodePart(episode.part)}` || episode.chapters && `Chapter ${episode.chapters}` || episode.title || 'Unknown episode'
+                title += (episode.part || episode.chapters) && episode.title && `: ${episode.title}` || ''
+                title += !episode.isReleased && ' (In progress)' || ''
+                return <option disabled={!episode.isReleased} key={'episode' + episode.id} value={episode.id}>{title}</option>
               })
             }
           </select>
-          <span className="ep-nav" onClick={() => this.nav("prev")}>&nbsp; &laquo; &nbsp;</span>
-          <span className="ep-nav" onClick={() => this.nav("next")}>&nbsp; &raquo; &nbsp;</span>
+          <span className='ep-nav' onClick={() => this.nav('prev')}>&nbsp; &laquo; &nbsp;</span>
+          <span className='ep-nav' onClick={() => this.nav('next')}>&nbsp; &raquo; &nbsp;</span>
           {
             selectedEpisode && selectedEpisode.torrent && this.torrentLink(selectedEpisode.torrent.torrent_name) ||
             selectedArc && selectedArc.torrent && this.torrentLink(selectedArc.torrent.torrent_name)
@@ -150,10 +150,10 @@ export default class Watch extends React.Component {
           {selectedEpisode && selectedEpisode.episodes && <span style={{ marginLeft: 20 }}>Episodes: {selectedEpisode.episodes}</span>}
         </center>
         </div>
-        <div className="video-container">
-          <video ref={(i) => this.videoRef = i} className="video-player" controls poster={require("../images/logo-poster.png")}>
+        <div className='video-container'>
+          <video ref={(i) => this.videoRef = i} className='video-player' controls poster={require('../images/logo-poster.png')}>
             {selectedEpisode &&
-              <source type="video/mp4" src={"/streams/" + selectedEpisode.crc32 + ".mp4"} />
+              <source type='video/mp4' src={'/streams/' + selectedEpisode.crc32 + '.mp4'} />
             }
           </video>
         </div>

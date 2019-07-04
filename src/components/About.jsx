@@ -1,12 +1,12 @@
-import React from "react"
+import React from 'react'
 
 export default class About extends React.Component {
   componentDidMount() {
-    document.title = "One Pace | About"
+    document.title = 'One Pace | About'
   }
   render() {
     return (
-      <div className="about with-padding">
+      <div className='about with-padding'>
         <h2>What is One Pace?</h2>
         <p>
           One Pace is a team effort that started in March 2013 with the goal of matching the One Piece manga
@@ -46,7 +46,7 @@ export default class About extends React.Component {
               <td>QC</td>
             </tr>
             <tr>
-              <td width="50%">Kaitou Yahiko</td>
+              <td width='50%'>Kaitou Yahiko</td>
               <td>Karaoke Effects</td>
             </tr>
             <tr>
