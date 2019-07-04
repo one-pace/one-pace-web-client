@@ -37,6 +37,7 @@
 		"typeface-roboto": "0.0.54"
 	},
 	"devDependencies": {
+		"babel-eslint": "^10.0.2",
 		"babel-plugin-wildcard": "^3.0.1",
 		"babel-preset-stage-1": "^6.24.1",
 		"babel-preset-stage-2": "^6.24.1",
@@ -59,5 +60,8 @@
 			"stage-1",
 			"stage-2"
 		]
+	},
+	"standard": {
+		"parser": "babel-eslint"
 	}
 }
