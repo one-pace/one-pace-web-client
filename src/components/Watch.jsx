@@ -11,7 +11,7 @@ export default class Watch extends React.Component {
     'arcs': []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     NetworkHandler.request('/get_streams.php', null, response => {
       const { arcs, episodes } = response
       let selectedArc = null
@@ -92,9 +92,9 @@ export default class Watch extends React.Component {
     <i className='fas fa-magnet' />
   </a>
 
-  getEpisodePart = episodePart => episodePart && `00${episodePart.toString()}`.slice(-2) || ""
+  getEpisodePart = episodePart => episodePart && `00${episodePart.toString()}`.slice(-2) || ''
 
-  render() {
+  render () {
     const { selectedArc, selectedEpisode, arcs, episodes } = this.state
     return (
       <div className='watch'>

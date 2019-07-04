@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default class Form extends React.Component {
-  render() {
+  render () {
     return (
       <div className='form-overlay' onClick={e => {
         if (e.target === e.currentTarget) {

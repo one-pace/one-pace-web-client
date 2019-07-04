@@ -1,45 +1,45 @@
 export default class LocalStorageUtils {
-  static getSidebarToggled() {
+  static getSidebarToggled () {
     const value = localStorage.getItem('sidebarToggled')
     return value === 'true'
   }
-  static setSidebarToggled(value) {
+  static setSidebarToggled (value) {
     localStorage.setItem('sidebarToggled', value)
   }
-  static getSortField() {
+  static getSortField () {
     return localStorage.getItem('sortField')
   }
-  static setSortField(value) {
+  static setSortField (value) {
     localStorage.setItem('sortField', value)
   }
-  static getSortAscending() {
+  static getSortAscending () {
     return localStorage.getItem('sortAscending')
   }
-  static setSortAscending(value) {
+  static setSortAscending (value) {
     localStorage.setItem('sortAscending', value)
   }
-  static getWatchSelectedArcId() {
+  static getWatchSelectedArcId () {
     const value = localStorage.getItem('watchSelectedArcId')
-    if(isNaN(value)) {
+    if (isNaN(value)) {
       return null
     }
     return value
   }
-  static setWatchSelectedArcId(value) {
+  static setWatchSelectedArcId (value) {
     if(isNaN(value)) {
       value = null
     }
     localStorage.setItem('watchSelectedArcId', value)
   }
-  static getWatchSelectedEpisodeId() {
+  static getWatchSelectedEpisodeId () {
     const value = localStorage.getItem('watchSelectedEpisodeId')
     if(isNaN(value)) {
       return null
     }
     return value
   }
-  static setWatchSelectedEpisodeId(value) {
-    if(isNaN(value)) {
+  static setWatchSelectedEpisodeId (value) {
+    if (isNaN(value)) {
       value = null
     }
     localStorage.setItem('watchSelectedEpisodeId', value)

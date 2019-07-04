@@ -1,19 +1,19 @@
 import React from 'react'
 
 export default class About extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
     document.title = 'One Pace | About'
   }
-  render() {
+  render () {
     return (
       <div className='about with-padding'>
         <h2>What is One Pace?</h2>
         <p>
           One Pace is a team effort that started in March 2013 with the goal of matching the One Piece manga
-					more accurately than Toei&apos;s anime adaptation.
-					We cut out filler scenes, non-canon reaction shots, padded sequences,
-					and re-order scenes to stay truer to Goda&apos;s manga.
-				</p>
+          more accurately than Toei&apos;s anime adaptation.
+          We cut out filler scenes, non-canon reaction shots, padded sequences,
+          and re-order scenes to stay truer to Goda&apos;s manga.
+        </p>
         <h2>The Team</h2>
         <table>
           <tbody>

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default class Layout extends React.Component {
-  render() {
+  render () {
     return (
       <div className='layout-container'>
         <div className='topnav bottom-shadow'>

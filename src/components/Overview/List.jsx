@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card'
 
 export default class List extends React.Component {
-  render() {
+  render () {
     const { arc, image, cards, user, onClickCard } = this.props
     const { released, title, episodes, chapters } = arc
     return (

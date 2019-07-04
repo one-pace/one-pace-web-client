@@ -5,7 +5,7 @@ import { ArrowForwardIos } from '@material-ui/icons'
 import { Fade } from '@material-ui/core'
 
 export default class Overview extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       'arcs': [],
@@ -15,7 +15,7 @@ export default class Overview extends React.Component {
       'showScrollArrow': false
     }
   }
-  componentDidMount() {
+  componentDidMount () {
     window.addEventListener('scroll', this.handleScroll, true)
     NetworkHandler.request('/list_progress_episodes.php', null, (responseJson) => {
       this.setState({
@@ -24,7 +24,7 @@ export default class Overview extends React.Component {
     })
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     this.handleScroll()
   }
 
@@ -43,13 +43,13 @@ export default class Overview extends React.Component {
   scrollRight = () => {
     this.container.scrollTo({
       left: this.container.scrollWidth,
-      behavior: "smooth"
+      behavior: 'smooth'
     })
   }
 
   goToEpisode = episodeId => this.props.history.push(`/?episode=${episodeId}`)
 
-  render() {
+  render () {
     return (
       <div ref={ref => this.container = ref} className='card progress-container'>
         {
@@ -59,7 +59,7 @@ export default class Overview extends React.Component {
               user={this.state.user}
               image={'assets/arc_' + i.id + '.png'}
               cards={this.state.episodes.filter(j => j.arc_id == i.id)}
-              key={'arc'+i.id}
+              key={'arc' + i.id}
               onClickCard={episode => this.goToEpisode(episode.id)}
             />
           )
