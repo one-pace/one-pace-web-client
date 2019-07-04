@@ -26,14 +26,14 @@ export default class LocalStorageUtils {
     return value
   }
   static setWatchSelectedArcId (value) {
-    if(isNaN(value)) {
+    if (isNaN(value)) {
       value = null
     }
     localStorage.setItem('watchSelectedArcId', value)
   }
   static getWatchSelectedEpisodeId () {
     const value = localStorage.getItem('watchSelectedEpisodeId')
-    if(isNaN(value)) {
+    if (isNaN(value)) {
       return null
     }
     return value
