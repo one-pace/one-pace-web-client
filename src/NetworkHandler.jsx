@@ -16,7 +16,7 @@ export default class NetworkHandler {
         'status': response.status,
         'message': response.statusText
       }
-      if (response.status == 200) {
+      if (response.status === 200) {
         onSuccess(responseObject)
       } else {
         onError(responseObject)

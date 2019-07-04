@@ -51,14 +51,14 @@ export default class Overview extends React.Component {
 
   render () {
     return (
-      <div ref={ref => this.container = ref} className='card progress-container'>
+      <div ref={ref => (this.container = ref)} className='card progress-container'>
         {
           this.state.arcs.map(i =>
             <List
               arc={i}
               user={this.state.user}
               image={'assets/arc_' + i.id + '.png'}
-              cards={this.state.episodes.filter(j => j.arc_id == i.id)}
+              cards={this.state.episodes.filter(j => j.arc_id === i.id)}
               key={'arc' + i.id}
               onClickCard={episode => this.goToEpisode(episode.id)}
             />
