@@ -1,6 +1,6 @@
 import React from 'react'
-import NetworkHandler from '../../NetworkHandler'
-import List from './List'
+import NetworkHandler from '../../networkHandler'
+import List from './list'
 import { ArrowForwardIos } from '@material-ui/icons'
 import { Fade } from '@material-ui/core'
 
