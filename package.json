@@ -1,10 +1,9 @@
 {
 	"name": "onepace",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "React frontend code for SÖS",
 	"main": "index.js",
 	"scripts": {
-		"install-eslint": "code --install-extension dbaeumer.vscode-eslint",
 		"install-webpack": "npm i -g webpack@3.3.0",
 		"dev": "webpack --config webpack.dev.js",
 		"prod": "webpack --config webpack.prod.js"
@@ -38,19 +37,18 @@
 		"typeface-roboto": "0.0.54"
 	},
 	"devDependencies": {
-		"babel-eslint": "^8.2.3",
+		"babel-eslint": "^10.0.2",
 		"babel-plugin-wildcard": "^3.0.1",
 		"babel-preset-stage-1": "^6.24.1",
 		"babel-preset-stage-2": "^6.24.1",
 		"copy-webpack-plugin": "^4.6.0",
-		"eslint": "^4.19.1",
-		"eslint-plugin-react": "^7.8.2",
 		"extract-text-webpack-plugin": "^3.0.2",
 		"file-loader": "^2.0.0",
 		"imports-loader": "^0.7.1",
 		"node-sass": "^4.11.0",
 		"react-svg-loader": "^2.1.0",
 		"sass-loader": "^6.0.6",
+		"standard": "^12.0.1",
 		"webpack": "^3.3.0",
 		"webpack-notifier": "^1.5.0"
 	},
@@ -62,5 +60,8 @@
 			"stage-1",
 			"stage-2"
 		]
+	},
+	"standard": {
+		"parser": "babel-eslint"
 	}
 }
