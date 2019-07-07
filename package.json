@@ -13,7 +13,8 @@
 		"name": "Simon Haga",
 		"url": "https://github.com/sewil"
 	},
-	"license": "ISC",
+	"license": "UNLICENSED",
+	"private": true,
 	"dependencies": {
 		"@material-ui/core": "^4.0.0-rc.0",
 		"@material-ui/icons": "^4.2.1",
