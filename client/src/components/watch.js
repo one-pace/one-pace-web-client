@@ -103,7 +103,7 @@ export default class Watch extends React.Component {
             className='arcs'
             value={selectedArc ? selectedArc.id : 0}
             onChange={(e) => {
-              const arcId = e.target.value
+              const arcId = Number.parseInt(e.target.value)
               const [arc] = arcs.filter(i => i.id === arcId)
               this.changeArc(arc)
             }}
@@ -121,7 +121,7 @@ export default class Watch extends React.Component {
             className='episodes'
             value={selectedEpisode ? selectedEpisode.id : 0}
             onChange={(e) => {
-              const episodeId = e.target.value
+              const episodeId = Number.parseInt(e.target.value)
               const [episode] = episodes.filter(i => i.id === episodeId)
               this.changeEpisode(episode)
             }}
