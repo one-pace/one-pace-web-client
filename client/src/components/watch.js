@@ -1,6 +1,6 @@
 import React from 'react'
-import NetworkHandler from '../NetworkHandler'
-import LocalStorageUtils from '../LocalStorageUtils'
+import NetworkHandler from '../networkHandler'
+import LocalStorageUtils from '../localStorageUtils'
 import queryString from 'query-string'
 
 export default class Watch extends React.Component {
