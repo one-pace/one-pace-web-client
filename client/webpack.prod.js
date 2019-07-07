@@ -3,7 +3,7 @@ var webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  'entry': './src/components/Index.jsx',
+  'entry': './src/components/index',
   'output': {
     'path': path.join(__dirname, '../dist'),
     'filename': 'index.js'
