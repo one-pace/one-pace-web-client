@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
 	"entry": "./src/components/Index.jsx",
 	"output": {
-		"path": path.join(__dirname, "./dist"),
+		"path": path.join(__dirname, "../dist"),
 		"filename": "index.js"
 	},
 	"plugins": [
@@ -17,7 +17,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify("production")
 		}),
-		new CopyWebpackPlugin([{ from: "php", to: "php" }], {})
+		new CopyWebpackPlugin([{ from: "../server", to: "server" }], {})
 	],
 	"resolve": {
 		"extensions": [".js", ".jsx"],
