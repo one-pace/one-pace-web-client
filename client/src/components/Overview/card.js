@@ -4,12 +4,14 @@ import Moment from 'moment'
 export default class Card extends React.Component {
   constructor (props) {
     super(props)
+    this.renderProgressCard = this.renderProgressCard.bind(this)
     this.state = {
       'arc': props.arc,
       'episode': props.episode
     }
   }
-  renderProgressCard = (episode, arc) => {
+
+  renderProgressCard (episode, arc) {
     if (this.props.img) {
       return (
         <div className={'progress-card'} onClick={this.props.onClick}>

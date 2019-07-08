@@ -4,11 +4,22 @@ import LocalStorageUtils from '../localStorageUtils'
 import queryString from 'query-string'
 
 export default class Watch extends React.Component {
-  state = {
-    'selectedArc': null,
-    'selectedEpisode': null,
-    'episodes': [],
-    'arcs': []
+  constructor (props) {
+    super(props)
+    this.videoRef = React.createRef()
+    this.changeArc = this.changeArc.bind(this)
+    this.changeEpisode = this.changeEpisode.bind(this)
+    this.nav = this.nav.bind(this)
+    this.stopVideo = this.stopVideo.bind(this)
+    this.torrentLink = this.torrentLink.bind(this)
+    this.magnetLink = this.magnetLink.bind(this)
+    this.getEpisodePart = this.getEpisodePart.bind(this)
+    this.state = {
+      'selectedArc': null,
+      'selectedEpisode': null,
+      'episodes': [],
+      'arcs': []
+    }
   }
 
   componentDidMount () {
@@ -42,7 +53,8 @@ export default class Watch extends React.Component {
       this.setState({ selectedArc, selectedEpisode, arcs, episodes })
     })
   }
-  changeArc = selectedArc => {
+
+  changeArc (selectedArc) {
     let selectedEpisode = null
     if (selectedArc) {
       [selectedEpisode] = this.state.episodes.filter(i => i.arcId === selectedArc.id)
@@ -51,10 +63,11 @@ export default class Watch extends React.Component {
     LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null)
     this.props.history.push({ search: `?episode=${selectedEpisode.id}` })
     this.setState({ 'selectedArc': selectedArc, 'selectedEpisode': selectedEpisode }, () => {
-      this.videoRef.load()
+      this.videoRef.current.load()
     })
   }
-  changeEpisode = selectedEpisode => {
+
+  changeEpisode (selectedEpisode) {
     LocalStorageUtils.setWatchSelectedEpisodeId(selectedEpisode ? selectedEpisode.id : null)
     let selectedArc = this.state.selectedArc
     if (selectedEpisode && selectedArc && selectedEpisode.arcId !== selectedArc.id) {
@@ -63,12 +76,12 @@ export default class Watch extends React.Component {
     }
     this.props.history.push({ search: `?episode=${selectedEpisode.id}` })
     this.setState({ selectedArc, selectedEpisode }, () => {
-      this.videoRef.load()
-      this.videoRef.play()
+      this.videoRef.current.load()
+      this.videoRef.current.play()
     })
   }
 
-  nav = dir => {
+  nav (dir) {
     const episodes = this.state.episodes.filter((i) => i.isReleased)
     for (let i = 0; i < episodes.length; i++) {
       const episode = episodes[i]
@@ -82,17 +95,29 @@ export default class Watch extends React.Component {
     }
   }
 
-  stopVideo = () => this.videoRef.pause()
+  stopVideo () {
+    this.videoRef.current.pause()
+  }
 
-  torrentLink = torrentName => <a className='torrent-link' href={'/torrents/' + torrentName} onClick={() => this.stopVideo()}>
-    <i className='fas fa-file-download' />
-  </a>
+  torrentLink (torrentName) {
+    return (
+      <a className='torrent-link' href={'/torrents/' + torrentName} onClick={() => this.stopVideo()}>
+        <i className='fas fa-file-download' />
+      </a>
+    )
+  }
 
-  magnetLink = magnetURL => <a className='torrent-link' href={magnetURL} onClick={() => this.stopVideo()}>
-    <i className='fas fa-magnet' />
-  </a>
+  magnetLink (magnetURL) {
+    return (
+      <a className='torrent-link' href={magnetURL} onClick={() => this.stopVideo()}>
+        <i className='fas fa-magnet' />
+      </a>
+    )
+  }
 
-  getEpisodePart = episodePart => episodePart ? `00${episodePart.toString()}`.slice(-2) : ''
+  getEpisodePart (episodePart) {
+    return episodePart ? `00${episodePart.toString()}`.slice(-2) : ''
+  }
 
   render () {
     const { selectedArc, selectedEpisode, arcs, episodes } = this.state
@@ -158,7 +183,7 @@ export default class Watch extends React.Component {
         </center>
         </div>
         <div className='video-container'>
-          <video ref={(i) => (this.videoRef = i)} className='video-player' controls poster={require('../images/logo-poster.png')}>
+          <video ref={this.videoRef} className='video-player' controls poster={require('../images/logo-poster.png')}>
             {selectedEpisode &&
               <source type='video/mp4' src={'/streams/' + selectedEpisode.crc32 + '.mp4'} />
             }

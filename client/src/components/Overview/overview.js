@@ -7,6 +7,9 @@ import { Fade } from '@material-ui/core'
 export default class Overview extends React.Component {
   constructor (props) {
     super(props)
+    this.handleScroll = this.handleScroll.bind(this)
+    this.scrollRight = this.scrollRight.bind(this)
+    this.goToEpisode = this.goToEpisode.bind(this)
     this.state = {
       'arcs': [],
       'episodes': [],
@@ -28,7 +31,7 @@ export default class Overview extends React.Component {
     this.handleScroll()
   }
 
-  handleScroll = () => {
+  handleScroll () {
     if (this.container.scrollLeft + this.container.offsetWidth < this.container.scrollWidth) {
       if (!this.state.showScrollArrow) {
         this.setState({ showScrollArrow: true })
@@ -40,14 +43,16 @@ export default class Overview extends React.Component {
     }
   }
 
-  scrollRight = () => {
+  scrollRight () {
     this.container.scrollTo({
       left: this.container.scrollWidth,
       behavior: 'smooth'
     })
   }
 
-  goToEpisode = episodeId => this.props.history.push(`/?episode=${episodeId}`)
+  goToEpisode (episodeId) {
+    this.props.history.push(`/?episode=${episodeId}`)
+  }
 
   render () {
     return (
