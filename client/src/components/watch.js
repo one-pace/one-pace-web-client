@@ -28,10 +28,13 @@ export default class Watch extends React.Component {
       let selectedArc = null
       let selectedEpisode = null
       const search = queryString.parse(this.props.location.search)
-      const selectedEpisodeId = search ? search.episode : LocalStorageUtils.getWatchSelectedEpisodeId()
+      let selectedEpisodeId = search.episode ? search.episode : LocalStorageUtils.getWatchSelectedEpisodeId()
       const selectedArcId = LocalStorageUtils.getWatchSelectedArcId()
-      if (selectedEpisodeId) {
-        [selectedEpisode] = episodes.filter((i) => i.id === selectedEpisodeId || i.crc32 === selectedEpisodeId)
+      if (!isNaN(selectedEpisodeId)) {
+        const id = Number.parseInt(selectedEpisodeId)
+        selectedEpisode = episodes.find(i => i.id === id)
+      } else if (selectedEpisodeId) {
+        selectedEpisode = episodes.find(i => i.crc32 === selectedEpisodeId)
       }
       if (!selectedEpisode && selectedArcId) {
         [selectedArc] = arcs.filter((i) => i.id === selectedArcId)
