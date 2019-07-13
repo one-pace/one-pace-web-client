@@ -22,7 +22,7 @@ export default class Card extends React.Component {
       const containerClassName = `progress-card title ${episode.in_progress ? 'unreleased' : ''}`
       const episodeTitle = episode.part ? `${arc.title} ${episode.part.toString().padStart(2, '0')}` : episode.title
       return (
-        <div className={containerClassName} onClick={!episode.in_progress && this.props.onClick}>
+        <div className={containerClassName} onClick={episode.in_progress ? null : this.props.onClick}>
           <div className='text'>
             {episodeTitle}
             {episode.in_progress ? ' (TBA)' : ''}
