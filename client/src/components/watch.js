@@ -23,7 +23,7 @@ export default class Watch extends React.Component {
   }
 
   componentDidMount () {
-    NetworkHandler.request('/get_streams.php', null, response => {
+    NetworkHandler.request('get_streams.php', null, response => {
       const { arcs, episodes } = response
       let selectedArc = null
       let selectedEpisode = null
@@ -102,17 +102,19 @@ export default class Watch extends React.Component {
     this.videoRef.current.pause()
   }
 
-  torrentLink (torrentName) {
+  torrentLink (episode) {
+    const torrentHash = episode['torrent_hash']
     return (
-      <a className='torrent-link' href={'/torrents/' + torrentName} onClick={() => this.stopVideo()}>
+      <a className='torrent-link' href={`https://api.onepace.net/download/torrent.php?hash=${torrentHash}`} onClick={() => this.stopVideo()}>
         <i className='fas fa-file-download' />
       </a>
     )
   }
 
-  magnetLink (magnetURL) {
+  magnetLink (episode) {
+    const torrentHash = episode['torrent_hash']
     return (
-      <a className='torrent-link' href={magnetURL} onClick={() => this.stopVideo()}>
+      <a className='torrent-link' href={`https://api.onepace.net/download/magnet.php?hash=${torrentHash}`} onClick={() => this.stopVideo()}>
         <i className='fas fa-magnet' />
       </a>
     )
@@ -172,14 +174,10 @@ export default class Watch extends React.Component {
           </select>
           <span className='ep-nav' onClick={() => this.nav('prev')}>&nbsp; &laquo; &nbsp;</span>
           <span className='ep-nav' onClick={() => this.nav('next')}>&nbsp; &raquo; &nbsp;</span>
-          {
-            selectedEpisode && selectedEpisode.torrent ? this.torrentLink(selectedEpisode.torrent.torrent_name)
-              : selectedArc && selectedArc.torrent && this.torrentLink(selectedArc.torrent.torrent_name)
-          }
-          {
-            selectedEpisode && selectedEpisode.torrent ? this.magnetLink(selectedEpisode.torrent.magnet)
-              : selectedArc && selectedArc.torrent && this.magnetLink(selectedArc.torrent.magnet)
-          }
+          {selectedEpisode && selectedEpisode.torrent_hash ? this.torrentLink(selectedEpisode)
+            : selectedArc && selectedArc.torrent_hash && this.torrentLink(selectedArc)}
+          {selectedEpisode && selectedEpisode.torrent_hash ? this.magnetLink(selectedEpisode)
+            : selectedArc && selectedArc.torrent_hash && this.magnetLink(selectedArc)}
           {selectedEpisode && selectedEpisode.released_date && <span style={{ marginLeft: 20 }}>Released: {selectedEpisode.released_date}</span>}
           {selectedEpisode && selectedEpisode.chapters && <span style={{ marginLeft: 20 }}>Chapters: {selectedEpisode.chapters}</span>}
           {selectedEpisode && selectedEpisode.episodes && <span style={{ marginLeft: 20 }}>Episodes: {selectedEpisode.episodes}</span>}

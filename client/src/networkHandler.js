@@ -6,7 +6,7 @@ export default class NetworkHandler {
     onError = onError == null ? (f) => f : onError
     Axios.request({
       'method': 'POST',
-      'url': '/server/' + route,
+      'url': 'https://api.onepace.net/' + route,
       'data': data,
       'responseType': 'json',
       'onUploadProgress': onUploadProgress
