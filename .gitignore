@@ -1,10 +1,3 @@
-/index.js
-/index.css
-onepace_error.log
-onepace_info.log
-torrents/
 node_modules/
-episodeattachments/
 .DS_Store
-*.swp
 dist/
