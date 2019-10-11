@@ -105,7 +105,7 @@ export default class Watch extends React.Component {
   torrentLink (episode) {
     const torrentHash = episode['torrent_hash']
     return (
-      <a className='torrent-link' href={`https://api.onepace.net/download/torrent.php?hash=${torrentHash}`} onClick={() => this.stopVideo()}>
+      <a className='torrent-link' href={`http://api.onepace.net/download/torrent.php?hash=${torrentHash}`} onClick={() => this.stopVideo()}>
         <i className='fas fa-file-download' />
       </a>
     )
@@ -114,7 +114,7 @@ export default class Watch extends React.Component {
   magnetLink (episode) {
     const torrentHash = episode['torrent_hash']
     return (
-      <a className='torrent-link' href={`https://api.onepace.net/download/magnet.php?hash=${torrentHash}`} onClick={() => this.stopVideo()}>
+      <a className='torrent-link' href={`http://api.onepace.net/download/magnet.php?hash=${torrentHash}`} onClick={() => this.stopVideo()}>
         <i className='fas fa-magnet' />
       </a>
     )
