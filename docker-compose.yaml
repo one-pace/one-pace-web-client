@@ -1,0 +1,11 @@
+version: '2'
+services:
+  apache2:
+    image: webdevops/apache:latest
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/html/
+      - WEB_DOCUMENT_INDEX=index.html
+    volumes:
+      - ./dist:/var/www/html
+    ports:
+      - 8090:80

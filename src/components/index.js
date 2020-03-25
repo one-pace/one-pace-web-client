@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { StaticRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import 'babel-polyfill'
 import Watch from './watch'
 import About from './about'
@@ -17,8 +17,8 @@ ReactDOM.render((
     <Layout>
       <Switch>
         <Route exact path='/' component={Watch} />
-        <Route name='about' path='/about' component={About} />
-        <Route name='overview' path='/overview' component={Overview} />
+        <Route path={['/about', '/about.html']} component={About} />
+        <Route path={['/overview', '/overview.html']} component={Overview} />
       </Switch>
     </Layout>
   </Router>
