@@ -18,6 +18,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new CopyWebpackPlugin([
+      'src/.htaccess',
       'src/about.html',
       'src/overview.html',
     ]),
