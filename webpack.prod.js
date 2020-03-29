@@ -1,5 +1,6 @@
-﻿var path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   'entry': './src/components/index',
@@ -15,7 +16,12 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    }),
+    new CopyWebpackPlugin([
+      'src/.htaccess',
+      'src/about.html',
+      'src/overview.html',
+    ]),
   ],
   'resolve': {
     'extensions': ['.js', '.jsx'],
