@@ -19,35 +19,35 @@ export default class About extends React.Component {
           <tbody>
             <tr>
               <td>Galaxy 9000</td>
-              <td>Editing</td>
+              <td>Editing, Timing</td>
             </tr>
             <tr>
               <td>Sewil</td>
-              <td>Editing</td>
+              <td>Editing, Timing</td>
             </tr>
             <tr>
               <td>Feeso</td>
-              <td>Editing, QC</td>
+              <td>Editing, <abbr title="Quality Checking">QC</abbr></td>
             </tr>
             <tr>
               <td>Halee</td>
-              <td>Music Master</td>
+              <td>Music Master, Timing</td>
             </tr>
             <tr>
               <td>Datenshi</td>
-              <td>Timing</td>
+              <td>Timing, Graphic Maker</td>
             </tr>
             <tr>
               <td>Grug</td>
-              <td>QC</td>
+              <td><abbr title="Quality Checking">QC</abbr></td>
             </tr>
             <tr>
               <td>Pepperjack</td>
-              <td>QC</td>
+              <td><abbr title="Quality Checking">QC</abbr></td>
             </tr>
             <tr>
               <td width='50%'>Kaitou Yahiko</td>
-              <td>Karaoke Effects</td>
+              <td>Timing, Visual Effects Design</td>
             </tr>
             <tr>
               <td>Rael</td>
@@ -56,6 +56,18 @@ export default class About extends React.Component {
             <tr>
               <td>Lance</td>
               <td>Timing</td>
+            </tr>
+            <tr>
+              <td>Gi-a Fosu</td>
+              <td>Webmaster</td>
+            </tr>
+            <tr>
+              <td>DolphinWeabu</td>
+              <td><abbr title="Quality Checking">QC</abbr></td>
+            </tr>
+            <tr>
+              <td>Gaijin</td>
+              <td>Translation</td>
             </tr>
           </tbody>
         </table>
