@@ -21,17 +21,21 @@ const List = ({ arc, image, cards, user, onClickCard }) => {
         </div>
       </div>
       <div className={`cards${!released ? ' unreleased' : ''}`}>
-        <Card img={image} />
-        {cards.map((episode) => (
-          <Card
-            user={user}
-            onView={() => onClickCard(episode)}
-            key={episode.id}
-            episode={episode}
-            arc={arc}
-            onClick={() => onClickCard(episode)}
-          />
-        ))}
+        <div className="progress-card" key={`${arc.title} image`}>
+          <img alt="" className="list-image" src={image} />
+        </div>
+        <div className="progress-episode-list">
+          {cards.map((episode) => (
+            <Card
+              user={user}
+              onView={() => onClickCard(episode)}
+              key={episode.id}
+              episode={episode}
+              arc={arc}
+              onClick={() => onClickCard(episode)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
