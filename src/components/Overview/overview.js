@@ -1,80 +1,88 @@
-import React from 'react'
-import NetworkHandler from '../../networkHandler'
-import List from './list'
-import { ArrowForwardIos } from '@material-ui/icons'
-import { Fade } from '@material-ui/core'
+import React from 'react';
+import { ArrowForwardIos } from '@material-ui/icons';
+import { Fade } from '@material-ui/core';
+import NetworkHandler from '../../networkHandler';
+import List from './list';
 
 export default class Overview extends React.Component {
-  constructor (props) {
-    super(props)
-    this.handleScroll = this.handleScroll.bind(this)
-    this.scrollRight = this.scrollRight.bind(this)
-    this.goToEpisode = this.goToEpisode.bind(this)
+  constructor(props) {
+    super(props);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.scrollRight = this.scrollRight.bind(this);
+    this.goToEpisode = this.goToEpisode.bind(this);
     this.state = {
-      'arcs': [],
-      'episodes': [],
-      'name': '',
-      'password': '',
-      'showScrollArrow': false
-    }
-  }
-  componentDidMount () {
-    window.addEventListener('scroll', this.handleScroll, true)
-    NetworkHandler.request('/list_progress_episodes.php', null, (responseJson) => {
-      this.setState({
-        'arcs': responseJson.arcs, 'episodes': responseJson.episodes
-      })
-    })
+      arcs: [],
+      episodes: [],
+      showScrollArrow: false,
+    };
   }
 
-  componentDidUpdate () {
-    this.handleScroll()
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll, true);
+    NetworkHandler.request(
+      '/list_progress_episodes.php',
+      null,
+      (responseJson) => {
+        this.setState({
+          arcs: responseJson.arcs,
+          episodes: responseJson.episodes,
+        });
+      },
+    );
   }
 
-  handleScroll () {
-    if (this.container.scrollLeft + this.container.offsetWidth < this.container.scrollWidth) {
+  componentDidUpdate() {
+    this.handleScroll();
+  }
+
+  handleScroll() {
+    if (
+      this.container.scrollLeft + this.container.offsetWidth <
+      this.container.scrollWidth
+    ) {
       if (!this.state.showScrollArrow) {
-        this.setState({ showScrollArrow: true })
+        this.setState({ showScrollArrow: true });
       }
-    } else {
-      if (this.state.showScrollArrow) {
-        this.setState({ showScrollArrow: false })
-      }
+    } else if (this.state.showScrollArrow) {
+      this.setState({ showScrollArrow: false });
     }
   }
 
-  scrollRight () {
+  scrollRight() {
     this.container.scrollTo({
       left: this.container.scrollWidth,
-      behavior: 'smooth'
-    })
+      behavior: 'smooth',
+    });
   }
 
-  goToEpisode (episodeId) {
-    this.props.history.push(`/?episode=${episodeId}`)
+  goToEpisode(episodeId) {
+    this.props.history.push(`/?episode=${episodeId}`);
   }
 
-  render () {
+  render() {
     return (
-      <div ref={ref => (this.container = ref)} className='card progress-container'>
-        {
-          this.state.arcs.map(i =>
-            <List
-              arc={i}
-              user={this.state.user}
-              image={'assets/arc_' + i.id + '.png'}
-              cards={this.state.episodes.filter(j => j.arc_id === i.id)}
-              key={'arc' + i.id}
-              onClickCard={episode => this.goToEpisode(episode.id)}
-            />
-          )
-        }
-        <div className='nav-arrow' onClick={this.scrollRight}>
+      <div
+        ref={(ref) => {
+          this.container = ref;
+        }}
+        className="card progress-container"
+      >
+        {this.state.arcs.map((i) => (
+          <List
+            arc={i}
+            user={this.state.user}
+            image={`assets/arc_${i.id}.png`}
+            cards={this.state.episodes.filter((j) => j.arc_id === i.id)}
+            key={`arc${i.id}`}
+            onClickCard={(episode) => this.goToEpisode(episode.id)}
+          />
+        ))}
+        <div className="nav-arrow" onClick={this.scrollRight}>
           <Fade in={this.state.showScrollArrow}>
             <ArrowForwardIos />
           </Fade>
         </div>
       </div>
-    )
+    );
   }
 }

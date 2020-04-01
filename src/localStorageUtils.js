@@ -1,49 +1,60 @@
 /* global localStorage */
 
 export default class LocalStorageUtils {
-  static getSidebarToggled () {
-    const value = localStorage.getItem('sidebarToggled')
-    return value === 'true'
+  static getSidebarToggled() {
+    const value = localStorage.getItem('sidebarToggled');
+    return value === 'true';
   }
-  static setSidebarToggled (value) {
-    localStorage.setItem('sidebarToggled', value)
+
+  static setSidebarToggled(value) {
+    localStorage.setItem('sidebarToggled', value);
   }
-  static getSortField () {
-    return localStorage.getItem('sortField')
+
+  static getSortField() {
+    return localStorage.getItem('sortField');
   }
-  static setSortField (value) {
-    localStorage.setItem('sortField', value)
+
+  static setSortField(value) {
+    localStorage.setItem('sortField', value);
   }
-  static getSortAscending () {
-    return localStorage.getItem('sortAscending')
+
+  static getSortAscending() {
+    return localStorage.getItem('sortAscending');
   }
-  static setSortAscending (value) {
-    localStorage.setItem('sortAscending', value)
+
+  static setSortAscending(value) {
+    localStorage.setItem('sortAscending', value);
   }
-  static getWatchSelectedArcId () {
-    const value = localStorage.getItem('watchSelectedArcId')
-    if (isNaN(value)) {
-      return null
+
+  static getWatchSelectedArcId() {
+    const value = localStorage.getItem('watchSelectedArcId');
+    if (Number.isNaN(value)) {
+      return null;
     }
-    return value
+    return value;
   }
-  static setWatchSelectedArcId (value) {
-    if (isNaN(value)) {
-      value = null
+
+  static setWatchSelectedArcId(value) {
+    let val = value;
+    if (Number.isNaN(value)) {
+      val = null;
     }
-    localStorage.setItem('watchSelectedArcId', value)
+    localStorage.setItem('watchSelectedArcId', val);
   }
-  static getWatchSelectedEpisodeId () {
-    const value = localStorage.getItem('watchSelectedEpisodeId')
-    if (isNaN(value)) {
-      return null
+
+  static getWatchSelectedEpisodeId() {
+    const value = localStorage.getItem('watchSelectedEpisodeId');
+    if (Number.isNaN(value)) {
+      return null;
     }
-    return value
+    return value;
   }
-  static setWatchSelectedEpisodeId (value) {
-    if (isNaN(value)) {
-      value = null
+
+  static setWatchSelectedEpisodeId(value) {
+    let val = value;
+    if (Number.isNaN(value)) {
+      val = null;
     }
-    localStorage.setItem('watchSelectedEpisodeId', value)
+    localStorage.setItem('watchSelectedEpisodeId', val);
   }
 }
