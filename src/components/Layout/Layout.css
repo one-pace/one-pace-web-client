@@ -1,0 +1,7 @@
+@import '../variables.css';
+@import '../globals.css';
+
+.root {
+  overflow: hidden;
+  z-index: 0;
+}

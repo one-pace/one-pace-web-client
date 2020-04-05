@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image renders correctly by itself 1`] = `
+<div
+  className="root"
+  onClick={null}
+  role="presentation"
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "paddingTop": "calc(1 * 100%)",
+    }
+  }
+>
+  <img
+    alt="Logo"
+    className="image"
+    crossOrigin="anonymous"
+    decoding="async"
+    height="70"
+    loading={null}
+    onError={[Function]}
+    onLoad={[Function]}
+    src="Lodus-logo-final.svg"
+    style={
+      Object {
+        "filterBrightness": 0,
+        "filterSaturate": 20,
+        "opacity": 0,
+        "transition": "
+        filterBrightness 2250ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        filterSaturate 3000ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        opacity 1500ms cubic-bezier(0.4, 0.0, 0.2, 1)
+      ",
+      }
+    }
+    width="180"
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="spinner"
+    >
+      <svg
+        aria-valuemax={100}
+        aria-valuemin={0}
+        className="md-progress md-progress--circular md-block-centered md-progress--circular-indeterminate"
+        height={24}
+        id="imageLoader--Lodus-logo-final.svg"
+        role="progressbar"
+        style={Object {}}
+        viewBox="0 0 66 66"
+        width={24}
+      >
+        <circle
+          className="md-circular-progress-path md-circular-progress-path--animated"
+          cx="33"
+          cy="33"
+          r="30"
+          strokeLinecap="round"
+          strokeWidth="6"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Image renders correctly with children 1`] = `
+<div
+  className="root"
+  onClick={null}
+  role="presentation"
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "paddingTop": "calc(1 * 100%)",
+    }
+  }
+>
+  <picture
+    className="image"
+  >
+    <source
+      srcSet="profile-nate-hobi-lg.webp 1x, profile-nate-hobi-lg@2x.webp 2x, profile-nate-hobi-lg@3x.webp 3x, profile-nate-hobi-lg@4x.webp 4x"
+      type="image/webp"
+    />
+    <img
+      alt="Nate Hobi"
+      decoding="async"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="profile-nate-hobi-lg.png"
+      srcSet="profile-nate-hobi-lg@2x.png 2x, profile-nate-hobi-lg@3x.png 3x, profile-nate-hobi-lg@4x.png 4x"
+      style={
+        Object {
+          "filterBrightness": 0,
+          "filterSaturate": 20,
+          "opacity": 0,
+          "transition": "
+        filterBrightness 2250ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        filterSaturate 3000ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        opacity 1500ms cubic-bezier(0.4, 0.0, 0.2, 1)
+      ",
+        }
+      }
+      type="image/png"
+    />
+  </picture>
+  <div
+    className="container"
+  >
+    <div
+      className="spinner"
+    >
+      <svg
+        aria-valuemax={100}
+        aria-valuemin={0}
+        className="md-progress md-progress--circular md-block-centered md-progress--circular-indeterminate"
+        height={24}
+        id="imageLoader--profile-nate-hobi-lg.png"
+        role="progressbar"
+        style={Object {}}
+        viewBox="0 0 66 66"
+        width={24}
+      >
+        <circle
+          className="md-circular-progress-path md-circular-progress-path--animated"
+          cx="33"
+          cy="33"
+          r="30"
+          strokeLinecap="round"
+          strokeWidth="6"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

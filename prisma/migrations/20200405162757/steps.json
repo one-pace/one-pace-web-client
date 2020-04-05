@@ -1,0 +1,12 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Episode",
+      "field": "streams_hash",
+      "type": "String",
+      "arity": "Optional"
+    }
+  ]
+}

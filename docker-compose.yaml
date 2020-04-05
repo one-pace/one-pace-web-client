@@ -1,11 +1,16 @@
 version: '2'
 services:
-  apache2:
-    image: webdevops/apache:latest
-    environment:
-      - WEB_DOCUMENT_ROOT=/var/www/html/
-      - WEB_DOCUMENT_INDEX=index.html
+  db:
+    image: mysql:5.7
     volumes:
-      - ./dist:/var/www/html
+      - db_data:/var/lib/mysql
     ports:
-      - 9000:80
+     - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: onepace
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+volumes:
+  db_data:

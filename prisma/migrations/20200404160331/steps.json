@@ -1,0 +1,38 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Arc",
+          "field": "torrent_hash"
+        },
+        "directive": "unique"
+      }
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Episode",
+          "field": "part"
+        },
+        "directive": "unique"
+      }
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Episode",
+          "field": "torrent_hash"
+        },
+        "directive": "unique"
+      }
+    }
+  ]
+}

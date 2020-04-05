@@ -37,6 +37,7 @@
     "@mdi/js": "^4.7.95",
     "@mdi/react": "^1.3.0",
     "@next/bundle-analyzer": "^9.1.7",
+    "@prisma/client": "^2.0.0-beta.1",
     "@types/cookie": "^0.3.3",
     "@types/jsonwebtoken": "^8.3.6",
     "@zeit/next-css": "^1.0.1",
@@ -72,6 +73,7 @@
     "react-addons-transition-group": "^15.6.2",
     "react-apollo": "^3.1.3",
     "react-dom": "^16.12.0",
+    "webtorrent": "^0.108.1",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
@@ -85,6 +87,7 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.7",
+    "@prisma/cli": "^2.0.0-beta.1",
     "@types/babel-core": "^6.25.6",
     "@types/babel__core": "^7.1.3",
     "@types/classnames": "^2.2.9",
@@ -109,7 +112,7 @@
     "babel-jest": "^24.9.0",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-typescript": "^7.2.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-import-resolver-node": "^0.3.2",
     "eslint-loader": "^3.0.3",
@@ -138,7 +141,6 @@
     "postcss-preset-env": "^6.7.0",
     "postcss-pseudoelements": "^5.0.0",
     "prettier": "^1.19.1",
-    "prettier-tslint": "^0.4.2",
     "react-dev-utils": "^10.0.0",
     "react-test-renderer": "^16.12.0",
     "stylelint": "^12.0.1",
@@ -154,6 +156,7 @@
     "build-docker": "docker build -t next-app .",
     "build-docker-multistage": "docker build -t next-app -f ./Dockerfile.multistage .",
     "run-docker": "docker run --rm -it -p 3000:3000 -e 'API_URL=https://example.com' next-app",
+    "seed-db": "babel-node prisma/seed.mjs",
     "serve": "next start",
     "start": "next"
   }

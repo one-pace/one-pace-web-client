@@ -1,0 +1,19 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Arc",
+      "field": "image_url",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Episode",
+      "field": "image_url",
+      "type": "String",
+      "arity": "Optional"
+    }
+  ]
+}

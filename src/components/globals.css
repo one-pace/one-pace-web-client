@@ -1,0 +1,55 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+html {
+  background: #141414;
+  color: #fff;
+  cursor: default;
+  font-family: var(--font-family-base);
+  line-height: 1.2;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* hide alt text from images, but maintain accessibility */
+img {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+@font-feature-values Montserrat {
+  font-display: swap;
+}
+
+@font-feature-values Alegreya Sans {
+  font-display: swap;
+}
+
+:global {
+  /* @media screen and (min-width: 1025px) {
+    svg.md-icon {
+      height: 20px;
+      width: 20px;
+    }
+  } */
+
+  .material-icons {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+}

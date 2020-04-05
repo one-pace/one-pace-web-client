@@ -1,0 +1,35 @@
+.root {
+  position: sticky;
+  top: 0;
+  transition: background 500ms ease;
+  width: 100%;
+  z-index: 10;
+
+  /* @media (max-width: 991px) {
+    position: relative;
+  } */
+}
+
+.container {
+  display: flex;
+  margin: 0;
+  padding: 8px;
+  position: relative;
+  width: 100%;
+
+  .brand {
+    display: inline-block;
+  }
+
+  nav {
+    align-items: center;
+    flex: 1;
+  }
+}
+
+/* .brand > img {
+  @media (max-width: 991px) {
+    height: 56px;
+    width: 140px;
+  }
+} */
