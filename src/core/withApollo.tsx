@@ -2,7 +2,6 @@ import React from 'react';
 import cookie from 'cookie';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import fetch from 'node-fetch';
 import {
   ApolloClient,
   ApolloProvider,
@@ -15,7 +14,7 @@ import { RetryLink } from 'apollo-link-retry';
 import { setContext } from 'apollo-link-context';
 import apolloLogger from 'apollo-link-logger';
 
-// import schema from '../data/schema';
+import schema from '../data/schema';
 
 import {
   resolvers as clientResolvers,
@@ -37,28 +36,57 @@ const __DEV__ = process.env.NODE_ENV !== 'production';
 
 let globalApolloClient = null;
 
-// function createIsomorphLink() {
-//   if (typeof window === 'undefined') {
-//     const { SchemaLink } = require('apollo-link-schema');
-//     const { makeExecutableSchema } = require('graphql-tools');
-//     const httpLink = new HttpLink({
-//       credentials: 'same-origin',
-//       fetch: (fetch as any),
-//       uri: 'http://localhost:3000/api/graphql',
-//     });
-//     return from([
-//       httpLink,
-//       new SchemaLink({ schema: makeExecutableSchema(schema) }),
-//     ]);
-//   } else {
-//     const httpLink = createHttpLink({
-//       credentials: 'same-origin',
-//       uri: 'http://localhost:3000/api/graphql',
-//     });
-//
-//     return httpLink;
-//   }
-// }
+function createIsomorphLink(context: { getToken: () => string }) {
+  const links = [
+    onError(({ graphQLErrors, networkError }) => {
+      if (graphQLErrors) {
+        graphQLErrors.map(({ message, locations, path }) =>
+          console.warn(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+          ),
+        );
+      }
+      if (networkError) console.warn(`[Network error]: ${networkError}`);
+    }),
+  ];
+
+  // Server-side link
+  if (typeof window === 'undefined') {
+    const { SchemaLink } = require('apollo-link-schema'); // eslint-disable-line global-require
+    const { makeExecutableSchema } = require('graphql-tools'); // eslint-disable-line global-require
+    console.info('createIsomorphLink context', context);
+    links.push(
+      new SchemaLink({ schema: makeExecutableSchema(schema), context }),
+    );
+    return from(links);
+  }
+
+  const authLink = setContext((_, { headers }) => {
+    const token = context.getToken();
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  });
+
+  // Client-side link
+  const httpLink = createHttpLink({
+    credentials: 'same-origin',
+    uri: 'http://localhost:3000/api/graphql',
+  });
+
+  links.push(
+    ...(__DEV__ ? [apolloLogger] : []),
+    authLink,
+    new RetryLink(),
+    // @ts-ignore-next-line
+    httpLink,
+  );
+
+  return from(links);
+}
 
 export const getToken = (req?: GetTokenRequestObject) => {
   const cookies = cookie.parse(
@@ -71,49 +99,16 @@ export const getToken = (req?: GetTokenRequestObject) => {
  * Creates and configures the ApolloClient
  * @param  {Object} [initialState={}]
  */
+// eslint-disable-next-line no-shadow
 function createApolloClient(initialState?: any, { getToken = () => '' } = {}) {
   const ssrMode = typeof window === 'undefined';
   const cache = new InMemoryCache().restore(initialState);
 
-  const authLink = setContext((_, { headers }) => {
-    const token = getToken();
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : '',
-      },
-    };
-  });
-
-  const httpLink = createHttpLink({
-    credentials: 'same-origin',
-    fetch: fetch as any,
-    uri: 'http://localhost:3000/api/graphql', // Server URL (must be absolute)
-  });
-
-  const link = from([
-    onError(({ graphQLErrors, networkError }) => {
-      if (graphQLErrors) {
-        graphQLErrors.map(({ message, locations, path }) =>
-          console.warn(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-          ),
-        );
-      }
-      if (networkError) console.warn(`[Network error]: ${networkError}`);
-    }),
-    ...(__DEV__ ? [apolloLogger] : []),
-    authLink,
-    new RetryLink(),
-    // @ts-ignore
-    httpLink,
-  ]);
-
   // Check out https://github.com/zeit/next.js/pull/4611 if you want to use the AWSAppSyncClient
   return new ApolloClient({
     ssrMode,
-    // @ts-ignore
-    link,
+    // @ts-ignore-next-line
+    link: createIsomorphLink({ getToken }),
     resolvers: clientResolvers,
     typeDefs: gql(clientSchema),
     cache,
@@ -177,12 +172,13 @@ export const withApollo = (
     WithApollo.displayName = `withApollo(${displayName})`;
   }
 
-  if (ssr || PageComponent.getInitialProps) {
-    WithApollo.getInitialProps = async (ctx: any) => {
+  if (ssr || PageComponent.getStaticProps || PageComponent.getServerSideProps) {
+    const getProps = async (ctx: any) => {
       const { AppTree } = ctx;
 
       // Initialize ApolloClient, add it to the ctx object so
       // we can use it in `PageComponent.getInitialProp`.
+      // eslint-disable-next-line no-multi-assign
       const apolloClient = (ctx.apolloClient = initApolloClient(
         {},
         { getToken: () => getToken(ctx.req) },
@@ -190,8 +186,12 @@ export const withApollo = (
 
       // Run wrapped getInitialProps methods
       let pageProps = {};
-      if (PageComponent.getInitialProps) {
-        pageProps = await PageComponent.getInitialProps(ctx);
+      if (PageComponent.getStaticProps) {
+        pageProps = await PageComponent.getStaticProps(ctx);
+      }
+
+      if (PageComponent.GetServerSideProps) {
+        pageProps = await PageComponent.getServerSideProps(ctx);
       }
 
       // Only on the server:
@@ -236,6 +236,9 @@ export const withApollo = (
         apolloState,
       };
     };
+
+    WithApollo.getStaticProps = getProps;
+    WithApollo.getServerSideProps = getProps;
   }
 
   return WithApollo;
