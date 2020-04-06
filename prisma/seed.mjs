@@ -108,7 +108,7 @@ async function main() {
         new_arc = 'Enies Lobby';
         break;
       case 41:
-        new_arc = 'Whiskey Peak';
+        new_arc = 'Whisky Peak';
         break;
       case 42:
         new_arc = 'Marineford';
@@ -170,7 +170,7 @@ async function main() {
       }
     }
 
-    console.info(new_image_url);
+    // console.info(new_image_url);
 
     await prisma.episode.create({
       data: {

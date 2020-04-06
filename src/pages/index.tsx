@@ -128,10 +128,10 @@ const HomePage: NextPage<Props> = props => {
           aspectRatio="4:3"
           items={
             arcs?.filter(
-              (arc: { title: string }) => arc.title === 'Whiskey Peak',
+              (arc: { title: string }) => arc.title === 'Whisky Peak',
             )[0]?.episodes
           }
-          title="Whiskey Peak"
+          title="Whisky Peak"
         />
         <Carousel
           aspectRatio="4:3"
@@ -301,6 +301,13 @@ const HomePage: NextPage<Props> = props => {
             )[0]?.episodes
           }
           title="Whole Cake Island"
+        />
+        <Carousel
+          items={
+            arcs?.filter((arc: { title: string }) => arc.title === 'Reverie')[0]
+              ?.episodes
+          }
+          title="Reverie"
         />
         <Carousel
           items={
