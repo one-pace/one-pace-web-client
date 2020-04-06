@@ -166,7 +166,7 @@ async function main() {
         if (episode.part >= 1 && episode.part < 10) {
           new_part = `0${episode.part}`;
         }
-        new_image_url = `cover-${new_arc.replace(/\s/g, '-').toLowerCase()}-${new_part}.png`;
+        new_image_url = `cover-${new_arc.replace(/\s/g, '-').toLowerCase()}-${new_part}.jpg`;
       }
     }
 
