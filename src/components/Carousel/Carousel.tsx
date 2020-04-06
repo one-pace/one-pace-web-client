@@ -103,6 +103,7 @@ const Carousel = (props: Props) => {
                 return (
                   <div
                     className={cn(s.item, item.streams_hash && s.canClick)}
+                    key={item.title}
                     onClick={handleClick}
                     onKeyPress={() => {}}
                   >
