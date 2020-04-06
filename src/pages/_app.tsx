@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'normalize.css';
 import WebTorrent from 'webtorrent';
 
 import AppContext from '../context';

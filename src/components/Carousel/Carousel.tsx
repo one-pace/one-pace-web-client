@@ -107,7 +107,7 @@ const Carousel = (props: Props) => {
                     onClick={handleClick}
                     onKeyPress={() => {}}
                   >
-                    <div className={s.image}>{image}</div>
+                    {image}
                     <span className={s.part}>{item.part}</span>
                   </div>
                 );

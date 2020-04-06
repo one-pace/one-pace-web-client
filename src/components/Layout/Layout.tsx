@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 // import cn from 'classnames';
 
-import 'normalize.css';
 import s from './Layout.css';
 
 import AppContext from '../../context';
