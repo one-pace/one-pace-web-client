@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
-import { ApolloClient, useApolloClient, useQuery } from '@apollo/client';
-import cookie from 'cookie';
+import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { GetStaticProps, NextPage, NextPageContext } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
 
-// import checkLoggedIn from '../core/checkLoggedIn';
-// import redirect from '../core/redirect';
-import { withApollo } from '../core/withApollo';
-
-interface HomePageContext extends NextPageContext {
-  apolloClient: ApolloClient<object>;
-}
+import withApollo from '../core/withApollo';
 
 interface Props {
   arcs: [
@@ -32,7 +25,7 @@ interface Props {
 }
 
 const GET_ALL_ARCS = gql`
-  query {
+  query getAllArcs {
     databaseGetAllArcs {
       title
       episodes {
