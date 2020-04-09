@@ -5,24 +5,16 @@
 // Set the `provider` field to match your DB type: "postgresql", "mysql" or "sqlite".
 // The `url` field must contain the connection string to your DB.
 // Learn more about connection strings for your DB: https://pris.ly/connection-strings
-// datasource db {
-//   provider = "postgresql" // other options are: "mysql" and "sqlite"
-//   url      = "postgresql://johndoe:johndoe@localhost:5432/mydb?schema=public"
-// }
-// datasource sqlite {
-//   provider = "sqlite"
-//   url      = "sqlite:./sqlite.db"
-// }
-
-datasource onepace_local {
-  provider = "mysql"
-  url      = "mysql://admin:admin123@localhost:3306/onepace"
+datasource sqlite {
+  provider = "sqlite"
+  url      = "sqlite:./sqlite.db"
 }
 
-// datasource onepace_classic {
+// datasource onepace_local {
 //   provider = "mysql"
-//   url      = "***REMOVED***"
+//   url      = "mysql://admin:admin123@localhost:3306/onepace"
 // }
+
 // Other examples for connection strings are:
 // SQLite: url = "sqlite:./dev.db"
 // MySQL:  url = "mysql://johndoe:johndoe@localhost:3306/mydb"
