@@ -157,7 +157,7 @@
     "build-docker": "docker build -t next-app .",
     "build-docker-multistage": "docker build -t next-app -f ./Dockerfile.multistage .",
     "run-docker": "docker run --rm -it -p 3000:3000 -e 'API_URL=https://example.com' next-app",
-    "seed-db": "babel-node prisma/seed.mjs",
+    "seed-db": "babel-node prisma/seed.js",
     "serve": "next start",
     "start": "next"
   }
