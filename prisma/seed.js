@@ -1,50 +1,54 @@
+import fs from 'fs';
+import path from 'path';
 import { PrismaClient } from '@prisma/client';
+
+import { arcs } from './dump-onepace-arcs';
+import { episodes } from './dump-onepace-episodes';
+
 const prisma = new PrismaClient();
 
-import { arcs } from './dump-onepace-arcs.js';
-import { episodes } from './dump-onepace-episodes.js';
-
-async function main() {
+function main() {
   let errorCount = 0;
 
-  for (const arc of arcs) {
-    await prisma.arc.upsert({
-      create: {
-        title: arc.title,
-        description: '',
-        anime_episodes: arc.episodes,
-        manga_chapters: arc.chapters,
-        torrent_hash: arc.torrent_hash,
-        resolution: arc.resolution,
-        image_url: arc.image_url,
-        is_completed: arc.completed === 1 ? true : false,
-        is_hidden: arc.hidden === 1 ? true : false,
-        is_released: arc.released === 1 ? true : false,
-      },
-      update: {
-        title: arc.title,
-        description: '',
-        anime_episodes: arc.episodes,
-        manga_chapters: arc.chapters,
-        torrent_hash: arc.torrent_hash,
-        resolution: arc.resolution,
-        image_url: arc.image_url,
-        is_completed: arc.completed === 1 ? true : false,
-        is_hidden: arc.hidden === 1 ? true : false,
-        is_released: arc.released === 1 ? true : false,
-      },
-      where: {
-        title: arc.title,
-      },
-    })
-    // .then(res => console.info(res))
-    .catch(err => {
-      console.error(err, arc);
-      errorCount += 1;
-    });
-  }
+  arcs.forEach(arc => {
+    prisma.arc
+      .upsert({
+        create: {
+          title: arc.title,
+          description: '',
+          anime_episodes: arc.episodes,
+          manga_chapters: arc.chapters,
+          torrent_hash: arc.torrent_hash,
+          resolution: arc.resolution,
+          image_url: arc.image_url,
+          is_completed: arc.completed === 1,
+          is_hidden: arc.hidden === 1,
+          is_released: arc.released === 1,
+        },
+        update: {
+          title: arc.title,
+          description: '',
+          anime_episodes: arc.episodes,
+          manga_chapters: arc.chapters,
+          torrent_hash: arc.torrent_hash,
+          resolution: arc.resolution,
+          image_url: arc.image_url,
+          is_completed: arc.completed === 1,
+          is_hidden: arc.hidden === 1,
+          is_released: arc.released === 1,
+        },
+        where: {
+          title: arc.title,
+        },
+      })
+      // .then(res => console.info(res))
+      .catch(err => {
+        console.error(err, arc);
+        errorCount += 1;
+      });
+  });
 
-  for (const episode of episodes) {
+  episodes.forEach(episode => {
     let new_arc = '';
     switch (episode.arc_id) {
       case 1:
@@ -162,47 +166,60 @@ async function main() {
     let new_image_url = null;
     if (!episode.image_url) {
       if (new_arc !== 'Specials') {
-        let new_part = episode.part;
+        let new_part = `${episode.part}`;
         if (episode.part >= 1 && episode.part < 10) {
           new_part = `0${episode.part}`;
         }
-        new_image_url = `cover-${new_arc.replace(/\s/g, '-').toLowerCase()}-${new_part}.jpg`;
+        new_image_url = `cover-${new_arc
+          .replace(/\s/g, '-')
+          .toLowerCase()}-${new_part}.jpg`;
       }
+    }
+
+    let found_image_filename = null;
+    if (
+      fs.existsSync(
+        path.resolve(__dirname, `../public/images/episodes/${new_image_url}`),
+      )
+    ) {
+      console.info('Found image ', new_image_url);
+      found_image_filename = new_image_url;
     }
 
     // console.info(new_image_url);
 
-    await prisma.episode.create({
-      data: {
-        arc: {
-          connect: {
-            title: new_arc,
+    prisma.episode
+      .create({
+        data: {
+          arc: {
+            connect: {
+              title: new_arc,
+            },
           },
+          title: new_title,
+          description: '',
+          anime_episodes: episode.episodes,
+          manga_chapters: episode.chapters,
+          crc32: episode.crc32,
+          torrent_hash: episode.torrent_hash,
+          part: episode.part,
+          resolution: episode.resolution,
+          image_url: found_image_filename,
+          released_date: episode.released_date || 'Unreleased',
+          status: episode.status || '',
+          openload: episode.openload || '',
         },
-        title: new_title,
-        description: '',
-        anime_episodes: episode.episodes,
-        manga_chapters: episode.chapters,
-        crc32: episode.crc32,
-        torrent_hash: episode.torrent_hash,
-        part: episode.part,
-        resolution: episode.resolution,
-        image_url: new_image_url,
-        released_date: episode.released_date || 'Unreleased',
-        status: episode.status || '',
-        openload: episode.openload || '',
-      },
-    })
-    .catch(err => {
-      console.error(err, episode);
-      errorCount += 1;
-    });
-  }
+      })
+      .catch(err => {
+        console.error(err, episode);
+        errorCount += 1;
+      });
+  });
 
   console.info(`Total Number of Errors: ${errorCount}`);
+
+  console.info('Disconnecting from datasource...');
+  prisma.disconnect();
 }
 
-main().finally(async () => {
-  console.info('Disconnecting from datasource...');
-  await prisma.disconnect();
-});
+main();
