@@ -1,0 +1,6 @@
+{
+  "name": "CarouselSlider",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CarouselSlider.tsx"
+}

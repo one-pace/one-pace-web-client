@@ -53,7 +53,7 @@ const HomePage: NextPage<Props> = props => {
   return (
     <Layout title="One Pace">
       <main>
-        <Carousel title="Arcs" />
+        {/* <Carousel title="Arcs" /> */}
         <Carousel
           aspectRatio="4:3"
           items={

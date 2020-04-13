@@ -1,0 +1,56 @@
+.carousel {
+  margin: 0;
+  padding: 0 4%;
+  position: relative;
+  touch-action: pan-y;
+
+  @media (min-width: 1500px) {
+    padding: 0 60px;
+  }
+}
+
+.sliderContent {
+  white-space: nowrap;
+}
+
+.animating.sliderContent {
+  transition: transform 750ms ease 0s;
+}
+
+.mask {
+  overflow-x: hidden;
+  padding-bottom: 1px;
+}
+
+.showPeek.mask {
+  overflow-x: visible;
+}
+
+.scroller {
+  background: rgba(20, 20, 20, 0.5);
+  bottom: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 4%;
+  z-index: 20;
+
+  @media (min-width: 1500px) {
+    width: 60px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.prev.scroller {
+  left: 0;
+}
+
+.next.scroller {
+  right: 0;
+}

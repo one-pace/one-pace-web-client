@@ -50,6 +50,10 @@
   }
 }
 
+.canClick {
+  cursor: pointer;
+}
+
 .mask {
   overflow-x: hidden;
   padding-bottom: 1px;
@@ -75,8 +79,20 @@
   }
 }
 
+.prev.scroller {
+  left: 0;
+
+  &:not(.active) {
+    opacity: 0;
+  }
+}
+
 .next.scroller {
   right: 0;
+}
+
+.active.scroller {
+  opacity: 1;
 }
 
 .items {
@@ -137,4 +153,12 @@
   position: absolute;
   right: 16px;
   top: 16px;
+}
+
+.ratio16x9 {
+  padding-top: 56.25%;
+}
+
+.ratio4x3 {
+  padding-top: calc(100% / 3);
 }

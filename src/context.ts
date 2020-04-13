@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, createRef, RefObject } from 'react';
 import { WebTorrent } from 'webtorrent';
 
 export type AppContextTypes = {
@@ -11,6 +11,13 @@ export type AppContextTypes = {
   torrentClient: WebTorrent;
 };
 
+export type SliderContextTypes = {
+  currentSlide: number;
+  elementRef: RefObject<any>;
+  onCloseSlide: () => void;
+  onSelectSlide: () => void;
+};
+
 const AppContext = createContext<AppContextTypes>({
   isNavVisible: false,
   pathname: '',
@@ -19,6 +26,13 @@ const AppContext = createContext<AppContextTypes>({
   setNavVisibility: () => {},
   setScreenOrientation: () => {},
   torrentClient: () => {},
+});
+
+export const SliderContext = createContext<SliderContextTypes>({
+  currentSlide: 0,
+  elementRef: createRef(),
+  onCloseSlide: () => {},
+  onSelectSlide: () => {},
 });
 
 export default AppContext;

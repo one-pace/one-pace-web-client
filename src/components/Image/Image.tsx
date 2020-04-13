@@ -1,13 +1,14 @@
 import React from 'react';
 import cn from 'classnames';
 // import { CircularProgress, FontIcon } from 'react-md';
+import { mdiSyncCircle, mdiImageBroken } from '@mdi/js';
+import Icon from '@mdi/react';
 
 import s from './Image.css';
 
 interface Image {
   defaultProps: Props;
   image: any;
-  loaderId: string;
   toggle: any;
 }
 
@@ -37,7 +38,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
   /** Override the inline-styles of the image. */
   imageStyle?: object;
   /** Override the loading component. */
-  // loading?: React.ReactNode;
+  loadingIcon?: React.ReactNode;
   /** Fired when the user clicks on the image happened. */
   onClick?: (event?: React.MouseEvent<HTMLDivElement>) => void;
   /** Fired when the image failed to load. */
@@ -78,7 +79,7 @@ interface ChildProps {
   /** Override the inline-styles of the image. */
   imageStyle?: object;
   /** Override the loading component. */
-  loading?: React.ReactNode;
+  loadingIcon?: React.ReactNode;
   /** Fired when the user clicks on the image happened. */
   onClick?: (event?: React.MouseEvent<HTMLDivElement>) => void;
   /** Fired when the image failed to load. */
@@ -95,34 +96,42 @@ interface ChildProps {
   toggle?: any;
 }
 
+interface State {
+  imageError: boolean;
+  imageLoaded: boolean;
+  src: string;
+}
+
 /**
  * Images are ugly until they're loaded. Materialize it with material image! It will fade in like the material image loading pattern suggests.
  * @see [Image loading patterns](https://material.io/guidelines/patterns/loading-images.html)
  * Based on https://github.com/TeamWertarbyte/material-ui-image/
  */
 class Image extends React.PureComponent<Props, any> {
-  static defaultProps: {
-    animationDuration: number;
-    aspectRatio: number;
-    children: any;
-    color: string;
-    crossOrigin: string;
-    disableError: boolean;
-    disableSpinner: boolean;
-    disableTransition: boolean;
-    // errorIcon: <FontIcon className={s.errorIcon}>broken_image</FontIcon>,
-    errorIcon: any;
-    imageStyle: {};
-    loading: any;
-    onClick: any;
-    style: {};
+  static defaultProps = {
+    animationDuration: 3000,
+    aspectRatio: 1,
+    children: null,
+    color: '#fff',
+    crossOrigin: 'anonymous',
+    disableError: false,
+    disableSpinner: false,
+    disableTransition: false,
+    errorIcon: (
+      <Icon
+        className={cn('md-icon material-icons', s.errorIcon)}
+        path={mdiImageBroken}
+      />
+    ),
+    imageStyle: {},
+    loadingIcon: null,
+    onClick: null,
+    style: {},
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.image = React.createRef();
-    const srcFileName = props.src.lastIndexOf('//') + 1;
-    this.loaderId = props.src.substr(srcFileName);
     this.state = {
       imageError: false,
       imageLoaded: false,
@@ -135,7 +144,7 @@ class Image extends React.PureComponent<Props, any> {
     if (img && img.complete) this.handleLoadImage();
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: Props, state: State) {
     if (state.src !== props.src) {
       return {
         imageError: false,
@@ -188,7 +197,7 @@ class Image extends React.PureComponent<Props, any> {
   };
 
   handleLoadImage = () => {
-    this.setState(state => ({ ...state, imageLoaded: true }));
+    this.setState((state: State) => ({ ...state, imageLoaded: true }));
     if (this.props.onLoad) {
       this.props.onLoad();
     }
@@ -196,7 +205,7 @@ class Image extends React.PureComponent<Props, any> {
 
   handleImageError = () => {
     if (this.props.src) {
-      this.setState(state => ({ ...state, imageError: true }));
+      this.setState((state: State) => ({ ...state, imageError: true }));
     }
     if (this.props.onError) {
       this.props.onError();
@@ -250,11 +259,13 @@ class Image extends React.PureComponent<Props, any> {
       onClick,
       ...image
     } = this.props;
-    const { loading } = this.props;
+    let { loadingIcon } = this.props;
 
-    // if (!loading) {
-    //   loading = <CircularProgress id={`imageLoader--${this.loaderId}`} />;
-    // }
+    if (!loadingIcon) {
+      loadingIcon = (
+        <Icon className="md-icon material-icons" path={mdiSyncCircle} spin />
+      );
+    }
 
     delete image.animationDuration;
 
@@ -272,7 +283,7 @@ class Image extends React.PureComponent<Props, any> {
               {!disableSpinner &&
                 !this.state.imageLoaded &&
                 !this.state.imageError &&
-                loading}
+                loadingIcon}
               {!disableError && this.state.imageError && errorIcon}
             </div>
           </div>
@@ -304,7 +315,7 @@ class Image extends React.PureComponent<Props, any> {
             {!disableSpinner &&
               !this.state.imageLoaded &&
               !this.state.imageError &&
-              loading}
+              loadingIcon}
             {!disableError && this.state.imageError && errorIcon}
           </div>
         </div>
@@ -312,22 +323,5 @@ class Image extends React.PureComponent<Props, any> {
     );
   }
 }
-
-// Image.defaultProps = {
-//   animationDuration: 3000,
-//   aspectRatio: 1,
-//   children: null,
-//   color: '#fff',
-//   crossOrigin: 'anonymous',
-//   disableError: false,
-//   disableSpinner: false,
-//   disableTransition: false,
-//   // errorIcon: <FontIcon className={s.errorIcon}>broken_image</FontIcon>,
-//   errorIcon: null,
-//   imageStyle: {},
-//   loading: null,
-//   onClick: null,
-//   style: {},
-// };
 
 export default Image;
