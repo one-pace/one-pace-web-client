@@ -1,10 +1,15 @@
-FROM mhart/alpine-node
+FROM node:12-buster
 
-WORKDIR /app
+# Set a working directory
+WORKDIR /usr/src/app
+
+# Copy application files
 COPY . .
 
-RUN yarn install
-RUN yarn build
+RUN yarn install --production && yarn prisma generate
+
+# Run the container under "node" user by default
+USER node
 
 EXPOSE 3000
-CMD ["yarn", "start"]
+CMD ["yarn", "serve"]
