@@ -64,15 +64,19 @@ module.exports = withNextEnv(
           },
           cssModules: true,
           distDir: 'build',
-          experimental: { css: true },
-          // publicRuntimeConfig: {
-          //   // Will be available on both server and client
-          //   // API_URL: process.env.API_URL || 'https://example.com',
-          // },
+          env: {
+            WEB_URL: process.env.WEB_URL,
+          },
+          // experimental: { css: true },
+          publicRuntimeConfig: {
+            // Will be available on both server and client
+            // WEB_URL: process.env.API_URL,
+          },
           serverRuntimeConfig: {
             // Will only be available on the server side
             // KEY: 'value'
           },
+          target: 'serverless',
         }),
       ),
     ),

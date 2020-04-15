@@ -19,6 +19,7 @@ import {
 } from '../data/graphql/OnMemoryState/schema';
 
 const __DEV__ = process.env.NODE_ENV !== 'production';
+const WEB_URL = process.env.WEB_URL; // eslint-disable-line prefer-destructuring
 
 function createIsomorphLink(context: { getToken: () => string }) {
   const links = [
@@ -60,7 +61,7 @@ function createIsomorphLink(context: { getToken: () => string }) {
   // Client-side link
   const httpLink = createHttpLink({
     credentials: 'same-origin',
-    uri: 'http://localhost:3000/api/graphql',
+    uri: `${WEB_URL}/api/graphql`,
   });
 
   links.push(
