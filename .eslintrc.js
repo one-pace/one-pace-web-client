@@ -132,6 +132,7 @@ module.exports = {
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/semi': 'off',
     '@typescript-eslint/quotes': 'off',
+    '@typescript-eslint/camelcase': 'off',
 
     // Type variables by Codegen can not be camelcase.
     'camelcase': 'off',

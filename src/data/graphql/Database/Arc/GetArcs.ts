@@ -5,19 +5,19 @@ import { AST, buildSelect } from '../../utils';
 export const schema = [
   `
   type Arc {
-    id:              String!
-    episodes:        [Episode]!
-    title:           String!
-    description:     String!
-    manga_chapters:  String!
     anime_episodes:  String!
-    torrent_hash:    String
-    resolution:      String!
-    image_url:       String
+    created_at:      Timestamp
+    description:     String!
+    episodes:        [Episode]!
+    id:              String!
+    images:          [Image]
     is_completed:    Boolean!
     is_hidden:       Boolean!
     is_released:     Boolean!
-    created_at:      Timestamp
+    manga_chapters:  String!
+    resolution:      String!
+    torrent_hash:    String
+    title:           String!
     updated_at:      Timestamp
   }
 `,
@@ -47,14 +47,14 @@ export const resolvers = {
     ) {
       const select: ArcSelect = buildSelect(ast);
 
-      if (select.episodes) select.episodes = { orderBy: { part: 'asc' } };
+      if (select.episodes) {
+        select.episodes['orderBy'] = { part: 'asc' }; // eslint-disable-line dot-notation
+      }
+
+      console.info('resolver select\n', select);
 
       const getAllArcs = await prisma.arc.findMany({
-        include: {
-          episodes: {
-            orderBy: { part: 'asc' },
-          },
-        },
+        select,
       });
 
       return getAllArcs;

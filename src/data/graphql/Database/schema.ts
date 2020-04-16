@@ -11,6 +11,11 @@ import {
   queries as GetEpisodesQueries,
   resolvers as GetEpisodesResolver,
 } from './Episode/GetEpisodes';
+import {
+  schema as GetImagesSchema,
+  queries as GetImagesQueries,
+  resolvers as GetImagesResolver,
+} from './Image/GetImages';
 
 /** * Mutations ** */
 // import {
@@ -19,12 +24,24 @@ import {
 //   resolvers as CreateAppResolver,
 // } from './apps/CreateApp';
 
-export const schema = [...GetArcsSchema, ...GetEpisodesSchema];
+export const schema = [
+  ...GetArcsSchema,
+  ...GetEpisodesSchema,
+  ...GetImagesSchema,
+];
 
-export const queries = [...GetArcsQueries, ...GetEpisodesQueries];
+export const queries = [
+  ...GetArcsQueries,
+  ...GetEpisodesQueries,
+  ...GetImagesQueries,
+];
 
 export const mutations = [
   // ...CreateApp,
 ];
 
-export const resolvers = merge(GetArcsResolver, GetEpisodesResolver);
+export const resolvers = merge(
+  GetArcsResolver,
+  GetEpisodesResolver,
+  GetImagesResolver,
+);

@@ -5,23 +5,23 @@ import { AST, buildSelect } from '../../utils';
 export const schema = [
   `
   type Episode {
-    id:              ID!
     arc:             Arc!
     arc_id:          String!
-    title:           String!
-    description:     String
-    part:            Int!
-    manga_chapters:  String!
     anime_episodes:  String!
     crc32:           String
-    torrent_hash:    String
-    streams_hash:    String
-    resolution:      String!
-    released_date:   String!
-    image_url:       String
-    status:          String
-    openload:        String
     created_at:      Timestamp
+    description:     String
+    id:              ID!
+    images:          [Image]
+    manga_chapters:  String!
+    openload:        String
+    part:            Int!
+    released_date:   String!
+    resolution:      String!
+    status:          String
+    streams_hash:    String
+    title:           String!
+    torrent_hash:    String
     updated_at:      Timestamp
   }
 `,

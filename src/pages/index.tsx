@@ -11,15 +11,19 @@ import withApollo from '../core/withApollo';
 interface Props {
   arcs: [
     {
-      title: string;
       episodes: [
         {
           title: string;
-          image_url: string;
+          images?: Array<{
+            src: string;
+            type: string;
+            width: number;
+          }>;
           part: number;
           streams_hash: string;
         },
       ];
+      title: string;
     },
   ];
 }
@@ -27,13 +31,17 @@ interface Props {
 const GET_ALL_ARCS = gql`
   query getAllArcs {
     databaseGetAllArcs {
-      title
       episodes {
-        title
-        image_url
+        images {
+          src
+          type
+          width
+        }
         part
         streams_hash
+        title
       }
+      title
     }
   }
 `;
@@ -316,6 +324,14 @@ const HomePage: NextPage<Props> = props => {
           }
           title="Wano Country"
         />
+        <Carousel
+          items={
+            arcs?.filter(
+              (arc: { title: string }) => arc.title === 'Specials',
+            )[0]?.episodes
+          }
+          title="Specials"
+        />
       </main>
     </Layout>
   );
@@ -330,7 +346,13 @@ export const getStaticProps: GetStaticProps = async () => {
       episodes: {
         orderBy: { part: 'asc' },
         select: {
-          image_url: true,
+          images: {
+            select: {
+              src: true,
+              type: true,
+              width: true,
+            },
+          },
           part: true,
           streams_hash: true,
           title: true,
