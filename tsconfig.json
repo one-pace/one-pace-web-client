@@ -33,6 +33,7 @@
   ],
   "include": [
     "next-env.d.ts",
+    "next.config.js",
     "src/**/*.ts",
     "src/**/*.tsx",
     "prisma/seed.js",

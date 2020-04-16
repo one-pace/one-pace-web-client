@@ -22,10 +22,10 @@ module.exports = withNextEnv(
           webpack: (config, { dev }) => {
             let newConfig = config;
 
-            newConfig.module.rules.forEach((rule) => {
+            newConfig.module.rules.forEach(rule => {
               if (rule.test && rule.test.toString().includes('.scss')) {
                 // eslint-disable-next-line no-param-reassign
-                rule.rules = rule.use.map((useRule) => {
+                rule.rules = rule.use.map(useRule => {
                   if (typeof useRule === 'string') {
                     return { loader: useRule };
                   }
@@ -68,15 +68,15 @@ module.exports = withNextEnv(
             WEB_URL: process.env.WEB_URL,
           },
           // experimental: { css: true },
-          publicRuntimeConfig: {
-            // Will be available on both server and client
-            // WEB_URL: process.env.API_URL,
-          },
-          serverRuntimeConfig: {
-            // Will only be available on the server side
-            // KEY: 'value'
-          },
-          target: 'serverless',
+          // publicRuntimeConfig: {
+          //   // Will be available on both server and client
+          //   // WEB_URL: process.env.API_URL,
+          // },
+          // serverRuntimeConfig: {
+          //   // Will only be available on the server side
+          //   // KEY: 'value'
+          // },
+          // target: 'serverless',
         }),
       ),
     ),

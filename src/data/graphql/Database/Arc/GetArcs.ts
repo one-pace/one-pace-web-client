@@ -51,8 +51,6 @@ export const resolvers = {
         select.episodes['orderBy'] = { part: 'asc' }; // eslint-disable-line dot-notation
       }
 
-      console.info('resolver select\n', select);
-
       const getAllArcs = await prisma.arc.findMany({
         select,
       });

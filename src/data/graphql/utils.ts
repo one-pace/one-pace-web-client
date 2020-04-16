@@ -18,19 +18,19 @@ const buildSelect = (ast: AST) => {
 
   // RootQuery / Mutation
   ast.operation.selectionSet.selections.forEach((sel0: ASTSelection) => {
-    console.info('sel0\n', sel0);
-
     // Fields at query / mutation root (level 1)
     sel0.selectionSet.selections.forEach((sel1: ASTSelection) => {
-      console.info('sel1\n', sel1);
+      if (sel1.name.value === '__typename') return;
+
       if (sel1.selectionSet) {
         // Sub fields of first level fields (level 2)
         sel1.selectionSet.selections.forEach((sel2: ASTSelection) => {
-          console.info('sel2\n', sel2);
+          if (sel2.name.value === '__typename') return;
 
           if (sel2.selectionSet) {
             sel2.selectionSet.selections.forEach((sel3: ASTSelection) => {
-              console.info('sel3\n', sel3);
+              if (sel3.name.value === '__typename') return;
+
               select[sel1.name.value] = merge(select[sel1.name.value], {
                 select: {
                   [sel2.name.value]: {
@@ -54,11 +54,6 @@ const buildSelect = (ast: AST) => {
       }
     });
   });
-
-  console.info(
-    'select is\n',
-    require('util').inspect(select, { depth: 5 }),
-  );
 
   return select;
 };

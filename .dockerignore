@@ -5,6 +5,7 @@ prisma/migrations/
 prisma/GUIDE.md
 prisma/sqlite.db
 src/
+tools/
 .editorconfig
 .env
 .env.example
