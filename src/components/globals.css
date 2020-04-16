@@ -31,12 +31,13 @@ img {
 }
 
 :global {
-  /* @media screen and (min-width: 1025px) {
-    svg.md-icon {
-      height: 20px;
-      width: 20px;
-    }
-  } */
+  .md-icon {
+    height: 48px;
+    transition-duration: 150ms;
+    transition-property: color;
+    user-select: none;
+    width: 48px;
+  }
 
   .material-icons {
     font-weight: normal;

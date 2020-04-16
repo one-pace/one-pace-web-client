@@ -3,14 +3,18 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import s from './Header.css';
+import Image, { media1x, media2x, media3x } from '../Image';
 import Navigation from '../Navigation';
-
-import logoUrl from './Logo.png';
 
 type PropTypes = {
   path?: string;
   title: string;
 };
+
+const srcFallback = '/images/Logo.png';
+const src1x = '/images/Logo.webp';
+const src2x = '/images/Logo@2x.webp';
+const src3x = '/images/Logo@3x.webp';
 
 const Header = ({ path, title }: PropTypes) => (
   <>
@@ -30,12 +34,13 @@ const Header = ({ path, title }: PropTypes) => (
         <Link href="/">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className={s.brand}>
-            <img
-              src={logoUrl}
-              srcSet={`${logoUrl} 2x`}
-              height="80"
-              alt="One Pace logo"
-            />
+            <picture>
+              <source media={media3x} srcSet={src3x} type="image/webp" />
+              <source media={media2x} srcSet={src2x} type="image/webp" />
+              <source media={media1x} srcSet={src1x} type="image/webp" />
+              <source srcSet={srcFallback} type="image/jpeg" />
+              <img alt="One Pace logo" src={srcFallback} />
+            </picture>
           </a>
         </Link>
         <Navigation path={path} />

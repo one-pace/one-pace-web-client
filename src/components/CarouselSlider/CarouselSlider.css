@@ -27,6 +27,7 @@
 }
 
 .scroller {
+  align-items: center;
   background: rgba(20, 20, 20, 0.5);
   bottom: 0;
   cursor: pointer;

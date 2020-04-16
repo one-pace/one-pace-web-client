@@ -1,12 +1,12 @@
-import React, { useContext, useReducer } from 'react';
-import cn from 'classnames';
+import React from 'react';
+// import cn from 'classnames';
 
 import s from './Carousel.css';
 
-import AppContext from '../../context';
+// import AppContext from '../../context';
 import CarouselSlider from '../CarouselSlider';
 import CarouselSliderItem from '../CarouselSliderItem';
-import Image from '../Image';
+import Image, { media1x, media2x, media3x } from '../Image';
 
 interface Props {
   activeRowItemIndex?: number;
@@ -16,7 +16,11 @@ interface Props {
   items: [
     {
       // arc?: string;
-      image_url?: string;
+      images?: Array<{
+        src: string;
+        type: string;
+        width: number;
+      }>;
       part?: number;
       streams_hash?: string;
       title?: string;
@@ -135,9 +139,23 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
           totalItems={props.items.length}
         >
           {props.items?.map(item => {
-            let src = placeholderImage;
-            if (item.image_url) {
-              src = `/images/episodes/${item.image_url}`;
+            let srcFallback = placeholderImage;
+            let src1x = null;
+            let src2x = null;
+            let src3x = null;
+
+            if (item.images?.length) {
+              if (item.images[0]?.src)
+                srcFallback = `/images/episodes/${item.images[0].src}`;
+
+              if (item.images[1]?.src)
+                src1x = `/images/episodes/${item.images[1].src}`;
+
+              if (item.images[2]?.src)
+                src2x = `/images/episodes/${item.images[2].src}`;
+
+              if (item.images[3]?.src)
+                src3x = `/images/episodes/${item.images[3].src}`;
             }
 
             const image = (
@@ -145,8 +163,18 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                 alt={`${item.title} image`}
                 aspectRatio={props.aspectRatio === '4:3' ? 0.75 : 0.5625}
                 color="#282828"
-                src={src}
-              />
+                src={srcFallback}
+              >
+                {src1x && src2x && src3x && (
+                  <picture>
+                    <source media={media3x} srcSet={src3x} type="image/webp" />
+                    <source media={media2x} srcSet={src2x} type="image/webp" />
+                    <source media={media1x} srcSet={src1x} type="image/webp" />
+                    <source srcSet={srcFallback} type="image/jpeg" />
+                    <img alt="" />
+                  </picture>
+                )}
+              </Image>
             );
 
             return (

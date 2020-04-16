@@ -102,6 +102,32 @@ interface State {
   src: string;
 }
 
+export const media1x = '(max-width: 799px)';
+
+export const media2x = `
+(min-width: 800px) or
+(-webkit-min-device-pixel-ratio: 2),
+(min--moz-device-pixel-ratio: 2),
+(-o-min-device-pixel-ratio: 2),
+(min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx)
+`
+  .trim()
+  .replace(/\n/g, ' ');
+
+export const media3x = `
+(min-width: 2600px) or
+(-webkit-min-device-pixel-ratio: 3),
+(min--moz-device-pixel-ratio: 3),
+(-o-min-device-pixel-ratio: 3),
+(min-device-pixel-ratio: 3),
+(min-resolution: 288dpi),
+(min-resolution: 3dppx)
+`
+  .trim()
+  .replace(/\n/g, ' ');
+
 /**
  * Images are ugly until they're loaded. Materialize it with material image! It will fade in like the material image loading pattern suggests.
  * @see [Image loading patterns](https://material.io/guidelines/patterns/loading-images.html)
