@@ -5,24 +5,16 @@
 // Set the `provider` field to match your DB type: "postgresql", "mysql" or "sqlite".
 // The `url` field must contain the connection string to your DB.
 // Learn more about connection strings for your DB: https://pris.ly/connection-strings
-// datasource db {
-//   provider = "postgresql" // other options are: "mysql" and "sqlite"
-//   url = "***"
-// }
 // datasource sqlite {
 //   provider = "sqlite"
 //   url = "***"
 // }
 
-datasource onepace_local {
+datasource onepace {
   provider = "mysql"
   url = "***"
 }
 
-// datasource onepace_classic {
-//   provider = "mysql"
-//   url = "***"
-// }
 // Other examples for connection strings are:
 // SQLite: url = "***"
 // MySQL:  url = "***"
@@ -50,7 +42,7 @@ model Arc {
   anime_episodes  String
   torrent_hash    String
   resolution      String
-  image_url       String?
+  images          Image[]
   is_completed    Boolean
   is_hidden       Boolean
   is_released     Boolean
@@ -59,23 +51,34 @@ model Arc {
 }
 
 model Episode {
-  id              String  @default(cuid()) @id
-  arc             Arc     @relation(fields: [arc_id], references: [id])
+  id              String    @default(cuid()) @id
+  arc             Arc       @relation(fields: [arc_id], references: [id])
   arc_id          String
-  title           String  @unique
+  title           String    @unique
   description     String
   part            Int
   manga_chapters  String
   anime_episodes  String
   crc32           String
   torrent_hash    String
+  streams_hash    String?
   resolution      String
   released_date   String
-  image_url       String?
+  images          Image[]   @relation(references: [id])
   status          String
   openload        String
   created_at      DateTime  @default(now())
   updated_at      DateTime  @updatedAt
+}
+
+model Image {
+  id        String    @default(cuid()) @id
+  arc       Arc?      @relation(references: [id])
+  alt       String?
+  episode   Episode?  @relation(references: [id])
+  size      String
+  src       String    @unique
+  type      String
 }
 
 model User {
