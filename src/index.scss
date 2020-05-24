@@ -432,3 +432,23 @@ table.releases tr:hover {
 .pay-respects + img {
   border-radius: 16px;
 }
+
+table.torrents-list {
+	margin: auto;
+	padding: 50px;
+	th {
+		font-weight: bold;
+		font-size: large;
+	}
+	th, td {
+		padding: 5px;
+		text-align: left;
+		border: 1px solid grey;
+	}
+	tr:nth-of-type(odd) {
+		background-color: #1e1e1e;
+	}
+	tr:nth-of-type(even) {
+		background-color: #333;
+	}
+}
