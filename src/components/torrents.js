@@ -32,10 +32,10 @@ export default class Torrents extends React.Component {
             const { hash, display_name, size, created } = torrent
             return (
                 <tr key={hash + index}>
-                    <td><a href={'http://api.onepace.net/download/magnet.php?hash=' + hash}>{display_name}.torrent</a></td>
+                    <td><a href={'https://api.onepace.net/download/magnet.php?hash=' + hash}>{display_name}.torrent</a></td>
                     <td>
-                      <a className="torrent-link" href={`http://api.onepace.net/download/torrent.php?hash=${hash}`}><i className="fas fa-file-download" /></a>
-                      <a className="torrent-link" href={`http://api.onepace.net/download/magnet.php?hash=${hash}`}><i className="fas fa-magnet" /></a>
+                      <a className="torrent-link" href={`https://api.onepace.net/download/torrent.php?hash=${hash}`}><i className="fas fa-file-download" /></a>
+                      <a className="torrent-link" href={`https://api.onepace.net/download/magnet.php?hash=${hash}`}><i className="fas fa-magnet" /></a>
                     </td>
                     <td>{size}</td>
                     <td>{created}</td>
