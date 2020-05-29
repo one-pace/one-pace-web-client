@@ -132,7 +132,7 @@ export default class Watch extends React.Component {
     return (
       <a
         className="torrent-link"
-        href={`http://api.onepace.net/download/torrent.php?hash=${torrentHash}`}
+        href={`https://api.onepace.net/download/torrent.php?hash=${torrentHash}`}
         onClick={() => this.stopVideo()}
       >
         <i className="fas fa-file-download" />
@@ -145,7 +145,7 @@ export default class Watch extends React.Component {
     return (
       <a
         className="torrent-link"
-        href={`http://api.onepace.net/download/magnet.php?hash=${torrentHash}`}
+        href={`https://api.onepace.net/download/magnet.php?hash=${torrentHash}`}
         onClick={() => this.stopVideo()}
       >
         <i className="fas fa-magnet" />
