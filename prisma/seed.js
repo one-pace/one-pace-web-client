@@ -393,7 +393,7 @@ async function main() {
 
 main().finally(async () => {
   console.info('Disconnecting from datasource...');
-  await prisma.disconnect();
+  await prisma.$disconnect();
 
   process.exit();
 });
