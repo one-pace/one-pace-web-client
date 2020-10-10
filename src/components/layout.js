@@ -13,6 +13,9 @@ const Layout = ({ children }) => (
       <Link className="link text-link" to="/overview">
         Overview
       </Link>
+      <Link className="link text-link" to="/issues">
+        Known issues
+      </Link>
       <a
         className="link link-right"
         title="Discord"

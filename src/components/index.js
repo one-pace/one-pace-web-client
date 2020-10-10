@@ -6,6 +6,7 @@ import Torrents from './torrents';
 import About from './about';
 import Layout from './layout';
 import { Overview } from './Overview';
+import Issues from './issues';
 import '../index.scss';
 import '../index.html';
 import '../images/favicon.ico';
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route exact path="/" component={Torrents} />
         <Route path={['/about', '/about.html']} component={About} />
         <Route path={['/overview', '/overview.html']} component={Overview} />
+        <Route path={['/issues', '/issues.html']} component={Issues} />
       </Switch>
     </Layout>
   </Router>,

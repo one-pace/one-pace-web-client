@@ -22,6 +22,7 @@ module.exports = {
       'src/.htaccess',
       'src/about.html',
       'src/overview.html',
+      'src/issues.html',
     ]),
   ],
   resolve: {
