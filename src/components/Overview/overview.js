@@ -38,10 +38,6 @@ export default class Overview extends React.Component {
     window.removeEventListener('scroll', this.handleScroll, true);
   }
 
-  // componentDidUpdate() {
-  //   this.handleScroll();
-  // }
-
   handleScroll() {
     if (this.container.scrollLeft === 0) {
       this.setState((prevState) => ({
