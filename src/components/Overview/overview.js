@@ -34,6 +34,10 @@ export default class Overview extends React.Component {
     );
   }
 
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll, true);
+  }
+
   // componentDidUpdate() {
   //   this.handleScroll();
   // }
