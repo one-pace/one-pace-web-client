@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './card';
+import I18n from 'i18n-js'
 
 const List = ({ arc, image, cards, user, onClickCard }) => {
   const { released, title, episodes, chapters } = arc;
@@ -15,9 +16,9 @@ const List = ({ arc, image, cards, user, onClickCard }) => {
             fontSize: 12,
           }}
         >
-          {!released && <div style={{ fontStyle: 'italic' }}>Unreleased</div>}
-          {chapters && <div>Chapters: {chapters}</div>}
-          {episodes && <div>Episodes: {episodes}</div>}
+          {!released && <div style={{ fontStyle: 'italic' }}>{I18n.t('overview.unreleased')}</div>}
+          {chapters && <div>{I18n.t('overview.chapters')}: {chapters}</div>}
+          {episodes && <div>{I18n.t('overview.episodes')}: {episodes}</div>}
         </div>
       </div>
       <div className={`cards${!released ? ' unreleased' : ''}`}>

@@ -57,4 +57,16 @@ export default class LocalStorageUtils {
     }
     localStorage.setItem('watchSelectedEpisodeId', val);
   }
+
+  static getLocale() {
+    const locale = localStorage.getItem('locale')
+    if (!locale) {
+      return 'en-US'
+    }
+    return locale
+  }
+
+  static setLocale(value) {
+    localStorage.setItem('locale', value)
+  }
 }
