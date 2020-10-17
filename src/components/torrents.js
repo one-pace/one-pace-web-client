@@ -1,5 +1,7 @@
 import React from 'react';
 import NetworkHandler from '../networkHandler';
+import I18n from 'i18n-js'
+import moment from 'moment';
 
 export default class Torrents extends React.Component {
   constructor(props) {
@@ -21,10 +23,10 @@ export default class Torrents extends React.Component {
       <table cellSpacing={0} className='torrents-list'>
         <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Link</th>
-              <th scope="col">Size</th>
-              <th scope="col">Date</th>
+              <th scope="col">{I18n.t('torrents.name')}</th>
+              <th scope="col">{I18n.t('torrents.link')}</th>
+              <th scope="col">{I18n.t('torrents.size')}</th>
+              <th scope="col">{I18n.t('torrents.date')}</th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +40,7 @@ export default class Torrents extends React.Component {
                       <a className="torrent-link" href={`https://api.onepace.net/download/magnet.php?hash=${hash}`}><i className="fas fa-magnet" /></a>
                     </td>
                     <td>{size}</td>
-                    <td>{created}</td>
+                    <td>{moment(created).format('YYYY-MM-DD')}</td>
                 </tr>
             )
             })}

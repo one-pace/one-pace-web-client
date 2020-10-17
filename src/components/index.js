@@ -10,6 +10,7 @@ import '../index.scss';
 import '../index.html';
 import '../images/favicon.ico';
 import 'typeface-roboto';
+import '../utils/i18n'
 
 require.context('../images', false, /arc_\d+\.png$/);
 

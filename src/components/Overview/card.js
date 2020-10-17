@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'moment';
+import I18n from 'i18n-js'
 
 const Card = ({ arc, episode, onClick }) => {
   const containerClassName = `progress-card title ${
@@ -16,7 +17,7 @@ const Card = ({ arc, episode, onClick }) => {
     >
       <div className="text">
         {episodeTitle}
-        {episode.in_progress ? ' (TBA)' : ''}
+        {episode.in_progress ? ' (' + I18n.t('overview.tba') + ')' : ''}
       </div>
       {episode.title && episode.part && (
         <div className="status">“{episode.title}”</div>
@@ -30,14 +31,14 @@ const Card = ({ arc, episode, onClick }) => {
       )}
       {episode.chapters && episode.episodes && (
         <div className="status">
-          Ch. {episode.chapters} / Ep. {episode.episodes}
+          {I18n.t('overview.chapterShort')} {episode.chapters} / {I18n.t('overview.episodeShort')} {episode.episodes}
         </div>
       )}
       {episode.chapters && !episode.episodes && (
-        <div className="status">Chapter {episode.chapters}</div>
+        <div className="status">{I18n.t('overview.chapter')} {episode.chapters}</div>
       )}
       {!episode.chapters && episode.episodes && (
-        <div className="status">Episode {episode.episodes}</div>
+        <div className="status">{I18n.t('overview.episode')} {episode.episodes}</div>
       )}
     </div>
   );

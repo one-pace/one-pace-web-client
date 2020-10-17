@@ -1,6 +1,7 @@
 import React from 'react'
 import music from '../media/151.mp3'
 import crying from '../media/Eh.mp3'
+import I18n from 'i18n-js'
 
 class About extends React.Component {
   constructor () {
@@ -34,90 +35,79 @@ class About extends React.Component {
     return (
       <div className="about">
         <div>
-          <h2>What is One Pace?</h2>
-          <p>
-            One Pace is a team effort that started in March 2013 with the goal of
-            matching the One Piece manga more accurately than Toei&aposs anime
-            adaptation. We cut out filler scenes, non-canon reaction shots, padded
-            sequences, and re-order scenes to stay truer to Goda&aposs manga.
-          </p>
-          <h2>The Team</h2>
+          <h2>{I18n.t('about.title')}</h2>
+          <p>{I18n.t('about.description')}</p>
+          <h2>{I18n.t('about.team')}</h2>
           <table>
             <tbody>
               <tr>
                 <td>Galaxy 9000</td>
-                <td>Editing, Timing</td>
+                <td>{I18n.t('about.editing')}, {I18n.t('about.timing')}</td>
               </tr>
               <tr>
                 <td>Sewil</td>
-                <td>Editing, Timing</td>
+                <td>{I18n.t('about.editing')}, {I18n.t('about.timing')}, {I18n.t('about.webmaster')}</td>
               </tr>
               <tr>
                 <td>Feeso</td>
                 <td>
-                  Editing, <abbr title="Quality Checking">QC</abbr>
+                  {I18n.t('about.editing')}, <abbr title={I18n.t('about.qualityChecking')}>{I18n.t('about.qc')}</abbr>
                 </td>
               </tr>
               <tr>
                 <td>Halee</td>
-                <td>Music Master, Timing</td>
+                <td>{I18n.t('about.musicer')}, {I18n.t('about.timing')}</td>
               </tr>
               <tr>
                 <td>Datenshi</td>
-                <td>Timing, Graphic Maker</td>
+                <td>{I18n.t('about.timing')}, {I18n.t('about.graphics')}</td>
               </tr>
               <tr>
                 <td>Grug</td>
                 <td>
-                  <abbr title="Quality Checking">QC</abbr>
+                  <abbr title="Quality Checking">{I18n.t('about.qc')}</abbr>
                 </td>
               </tr>
               <tr>
                 <td>Pepperjack</td>
                 <td>
-                  <abbr title="Quality Checking">QC</abbr>
+                  <abbr title="Quality Checking">{I18n.t('about.qc')}</abbr>
                 </td>
               </tr>
               <tr>
                 <td width="50%">Kaitou Yahiko</td>
-                <td>Timing, Visual Effects Design</td>
+                <td>{I18n.t('about.timing')}, {I18n.t('about.vfx')}</td>
               </tr>
               <tr>
                 <td>Rael</td>
-                <td>Editing</td>
+                <td>{I18n.t('about.editing')}</td>
               </tr>
               <tr>
                 <td>Lance</td>
-                <td>Timing</td>
+                <td>{I18n.t('about.timing')}</td>
               </tr>
               <tr>
                 <td>Gi-a Fosu</td>
-                <td>Webmaster</td>
+                <td>{I18n.t('about.webmaster')}</td>
               </tr>
               <tr>
                 <td>DolphinWeabu</td>
                 <td>
-                  <abbr title="Quality Checking">QC</abbr>
+                  <abbr title="Quality Checking">{I18n.t('about.qc')}</abbr>
                 </td>
               </tr>
               <tr>
                 <td>Gaijin</td>
-                <td>Translation</td>
+                <td>{I18n.t('about.translation')}</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div>
-          <h2>Memorial</h2>
-          <p>
-            In memory of our beloved team member, Feeso, a good man, and our
-            nakama, who stood up for us through thick and thin. After questioning
-            from the F.B.I. proved unsuccessful, he was handed over to CP-9 and
-            locked up in the lowest level of Impel Down. He has not been heard
-            from since.
-            </p>
+          <h2>{I18n.t('about.memorialTitle')}</h2>
+          <p>{I18n.t('about.memorialDescription')}</p>
           <div className="pay-respects">
-            <button onClick={this.payRespects}>F</button>
+            <button onClick={this.payRespects}>{I18n.t('about.memorialF')}</button>
           </div>
           <img alt="" src={require('../images/MasterRoshiSmoking.png')} />
         </div>

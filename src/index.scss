@@ -62,6 +62,18 @@ input[type="file"] {
 	float: left;
 	padding: 10px;
 }
+
+select.lang {
+	background-color: rgba(0, 0, 0, 0);
+	border: 0;
+	font-weight: bold;
+	margin-left: 5px;
+	color: #ffffff;
+	option {
+		background-color: #313131;
+	}
+}
+
 .link {
 	padding: 20px 0;
 	&.text-link {
