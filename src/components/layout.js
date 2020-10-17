@@ -23,11 +23,11 @@ class Layout extends React.Component {
           setLocale(locale)
           location.reload()
         }}>
-          <option value="de-DE">Deutsch</option>
+          {/* <option value="de-DE">Deutsch</option> */}
           <option value="fr-FR">Français</option>
           <option defaultValue value="en-US">English</option>
           <option value="es-ES">Español</option>
-          <option value="ja">日本語</option>
+          {/* <option value="ja">日本語</option> */}
         </select>
       </span>
     )
