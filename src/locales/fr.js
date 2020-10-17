@@ -23,8 +23,8 @@ export default {
     episodes: 'Épisodes',
     chapterShort: 'Ch.',
     episodeShort: 'Ep.',
-    tba: 'Non disponible',
-    unreleased: 'Inédit'
+    tba: 'À venir',
+    unreleased: 'Non disponible'
   },
   torrents: {
     name: 'Nom',
