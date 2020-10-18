@@ -1,7 +1,7 @@
 export default {
   about: {
     title: '¿Qué es One Pace?',
-    description: 'One Pace es un proyecto que empezó en marzo de 2013 con el objetivo de igualar el manga de One Piece a una adaptación más fiel de la que ofrece Toei. Eliminamos el relleno, reacciones no-canónicas, escenas alargadas, y re-ordenamos escenas para mantenernos fieles al manga de Goda..',
+    description: 'One Pace es un proyecto que empezó en marzo de 2013 con el objetivo de igualar el manga de One Piece a una adaptación más fiel de la que ofrece Toei. Eliminamos el relleno, reacciones no-canónicas, escenas alargadas, y re-ordenamos escenas para mantenernos fieles al manga de Goda.',
     team: 'El Equipo',
     editing: 'Edición',
     timing: 'Tiempos',
