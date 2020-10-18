@@ -31,6 +31,10 @@ class About extends React.Component {
     }
   }
 
+  renderQC = () => {
+    return <abbr title={I18n.t('about.qualityChecking')}>{I18n.t('about.qc')}</abbr>
+  }
+
   render() {
     return (
       <div className="about">
@@ -51,7 +55,7 @@ class About extends React.Component {
               <tr>
                 <td>Feeso</td>
                 <td>
-                  {I18n.t('about.editing')}, <abbr title={I18n.t('about.qualityChecking')}>{I18n.t('about.qc')}</abbr>
+                  {I18n.t('about.editing')}, {this.renderQC()}
                 </td>
               </tr>
               <tr>
@@ -65,13 +69,13 @@ class About extends React.Component {
               <tr>
                 <td>Grug</td>
                 <td>
-                  <abbr title="Quality Checking">{I18n.t('about.qc')}</abbr>
+                  {this.renderQC()}
                 </td>
               </tr>
               <tr>
                 <td>Pepperjack</td>
                 <td>
-                  <abbr title="Quality Checking">{I18n.t('about.qc')}</abbr>
+                  {this.renderQC()}
                 </td>
               </tr>
               <tr>
@@ -93,7 +97,7 @@ class About extends React.Component {
               <tr>
                 <td>DolphinWeabu</td>
                 <td>
-                  <abbr title="Quality Checking">{I18n.t('about.qc')}</abbr>
+                  {this.renderQC()}
                 </td>
               </tr>
               <tr>

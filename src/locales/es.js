@@ -24,7 +24,7 @@ export default {
     chapterShort: 'Cap.',
     episodeShort: 'Ep.',
     tba: 'TBA',
-    unreleased: 'Inédito'
+    unreleased: 'Sin editar'
   },
   torrents: {
     name: 'Nombre',

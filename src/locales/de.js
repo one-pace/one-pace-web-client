@@ -1,40 +1,40 @@
 export default {
   about: {
-    title: 'What is One Pace?',
-    description: 'One Pace is a team effort that started in March 2013 with the goal of matching the One Piece manga more accurately than Toei\'s anime adaptation. We cut out filler scenes, non-canon reaction shots, padded sequences, and re-order scenes to stay truer to Goda\'s manga.',
-    team: 'The Team',
+    title: 'Was ist One Pace?',
+    description: 'One Pace ist ein im März 2013 begonnenes Fanprojekt, mit dem Ziel den Manga treuer als die Toei Adaption umzusetzen. Wir schneiden Fillerszenen, Reactionshots, die nicht im Manga erscheinen und gestreckte Szenen aus, und strukturieren Szenen um, damit wir Godas Manga treuer bleiben.',
+    team: 'Das Team',
     editing: 'Editing',
     timing: 'Timing',
-    qc: 'QC',
-    qualityChecking: 'Quality checking',
-    vfx: 'Visual effects design',
-    graphics: 'Graphic maker',
-    musicer: 'Music master',
+    qc: 'QK',
+    qualityChecking: 'Qualitätskontrolle',
+    vfx: 'Visual Effects Designer',
+    graphics: 'Graphiker',
+    musicer: 'Music Master',
     webmaster: 'Webmaster',
-    translation: 'Translation',
-    memorialTitle: 'Memorial',
-    memorialDescription: 'In memory of our beloved team member, Feeso, a good man, and our nakama, who stood up for us through thick and thin. After questioning from the F.B.I. proved unsuccessful, he was handed over to CP-9 and locked up in the lowest level of Impel Down. He has not been heard from since.',
+    translation: 'Übersetzung',
+    memorialTitle: 'Gedenkstätte',
+    memorialDescription: 'In Gedenken unseres geliebten Teammitglieds, Feeso, ein guter Mann und unser Nakama, der mit uns durch dick und dünn ging. Nachdem sich die Vernehmung des F.B.I. als erfolglos erwies, wurde er der CP-9 übergeben und im untersten Level Impel Downs eingesperrt. Seitdem hat man nichts mehr von ihm gehört.',
     memorialF: 'F'
   },
   overview: {
-    chapter: 'Chapter',
-    chapters: 'Chapters',
-    episode: 'Episode',
-    episodes: 'Episodes',
-    chapterShort: 'Ch.',
-    episodeShort: 'Ep.',
+    chapter: 'Kapitel',
+    chapters: 'Kapitel',
+    episode: 'Folge',
+    episodes: 'Folgen',
+    chapterShort: 'Kap.',
+    episodeShort: 'Fol.',
     tba: 'TBA',
-    unreleased: 'Unreleased'
+    unreleased: 'Unveröffentlicht',
   },
   torrents: {
     name: 'Name',
     link: 'Link',
-    size: 'Size',
-    date: 'Date'
+    size: 'Größe',
+    date: 'Datum'
   },
   nav: {
-    about: 'About',
-    overview: 'Overview',
-    language: 'Language'
+    about: 'Über',
+    overview: 'Überblick',
+    language: 'Sprache'
   }
 }
