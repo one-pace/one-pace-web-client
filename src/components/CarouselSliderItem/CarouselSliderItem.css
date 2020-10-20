@@ -39,6 +39,24 @@
     z-index: 2;
   } */
 
+  &::after {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    transition: background-color 200ms ease-out-cubic;
+    top: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::after {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
   &:first-child {
     padding-left: 0;
   }
