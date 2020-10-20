@@ -6,6 +6,7 @@ import { GetStaticProps, NextPage } from 'next';
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
 
+import { useTranslation } from '../core/i18n';
 import withApollo from '../core/withApollo';
 
 interface Props {
@@ -28,6 +29,10 @@ interface Props {
   ];
 }
 
+interface InitialProps {
+  namespacesRequired?: string[];
+}
+
 const GET_ALL_ARCS = gql`
   query getAllArcs {
     databaseGetAllArcs {
@@ -46,8 +51,10 @@ const GET_ALL_ARCS = gql`
   }
 `;
 
-const HomePage: NextPage<Props> = props => {
+const HomePage: NextPage<Props, InitialProps> = props => {
   const [arcs, setArcs] = useState(props.arcs);
+
+  useTranslation('common');
 
   useQuery(GET_ALL_ARCS, {
     onCompleted: data => {
@@ -336,6 +343,10 @@ const HomePage: NextPage<Props> = props => {
     </Layout>
   );
 };
+
+HomePage.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+});
 
 export const getStaticProps: GetStaticProps = async () => {
   const { PrismaClient } = await import('@prisma/client');

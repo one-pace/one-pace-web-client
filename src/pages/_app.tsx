@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import App from 'next/app';
 import 'normalize.css';
 import WebTorrent from 'webtorrent';
 
 import AppContext from '../context';
+import { appWithTranslation } from '../core/i18n';
 
 const torrentClient = new WebTorrent({
   maxConns: 55,
 });
 
-const App = ({ Component, pageProps, pathname, query, ...context }) => {
+const OnePaceApp = ({ Component, pageProps, pathname, query, ...context }) => {
   const [isNavVisible, setNavVisibility] = useState(true);
   const [screenOrientation, setScreenOrientation] = useState('landscape');
 
@@ -30,4 +32,9 @@ const App = ({ Component, pageProps, pathname, query, ...context }) => {
   );
 };
 
-export default App;
+OnePaceApp.getInitialProps = async appContext => {
+  const appProps = await App.getInitialProps(appContext);
+  return { ...appProps };
+};
+
+export default appWithTranslation(OnePaceApp);
