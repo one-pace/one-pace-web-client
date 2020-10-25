@@ -134,7 +134,7 @@ module.exports = {
     },
     {
       id: 47,
-      title: 'Alabasta',
+      title: 'Arabasta',
       chapters: '155-217',
       episodes: '92-130',
       torrent_hash: '',
