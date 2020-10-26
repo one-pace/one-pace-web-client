@@ -14,14 +14,19 @@ interface Props {
     {
       episodes: [
         {
-          title: string;
+          anime_episodes?: string;
+          description?: string;
           images?: Array<{
             src: string;
             type: string;
             width: number;
           }>;
+          manga_chapters?: string;
           part: number;
-          streams_hash: string;
+          released_date?: string;
+          resolution?: string;
+          title?: string;
+          torrent_hash?: string;
         },
       ];
       title: string;
@@ -37,14 +42,19 @@ const GET_ALL_ARCS = gql`
   query getAllArcs {
     databaseGetAllArcs {
       episodes {
+        anime_episodes
+        description
         images {
           src
           type
           width
         }
+        manga_chapters
         part
-        streams_hash
+        released_date
+        resolution
         title
+        torrent_hash
       }
       title
     }

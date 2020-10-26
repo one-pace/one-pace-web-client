@@ -1,0 +1,12 @@
+/* stylelint-disable at-rule-no-unknown */
+
+$rmd-typography-font-family: 'Open Sans', 'Roboto', sans-serif;
+$rmd-theme-light: false;
+$rmd-theme-primary: #66c0ef;
+$rmd-theme-secondary: #ff0408;
+
+@import '~react-md/dist/react-md';
+
+/* @import '~@react-md/button/dist/mixins'; */
+
+@include react-md-utils;

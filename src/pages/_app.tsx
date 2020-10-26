@@ -3,6 +3,8 @@ import App from 'next/app';
 import 'normalize.css';
 import WebTorrent from 'webtorrent';
 
+import '../components/react-md.scss';
+
 import AppContext from '../context';
 import { appWithTranslation } from '../core/i18n';
 

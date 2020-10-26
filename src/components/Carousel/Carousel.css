@@ -44,118 +44,54 @@
 
 .carousel {
   margin: 0;
-  padding: 0 4%;
   position: relative;
   touch-action: pan-y;
-
-  @media (min-width: 1500px) {
-    padding: 0 60px;
-  }
 
   &.animating {
     transition: transform 750ms ease 0s;
   }
 }
 
-.canClick {
-  cursor: pointer;
-}
-
-.mask {
-  overflow-x: hidden;
-  padding-bottom: 1px;
-}
-
-.showBeyond.mask {
-  overflow-x: visible;
-}
-
-.scroller {
-  background: rgba(20, 20, 20, 0.5);
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 4%;
-  z-index: 20;
+.carousel,
+.expander {
+  padding: 0 4%;
 
   @media (min-width: 1500px) {
-    width: 60px;
+    padding: 0 60px;
   }
 }
 
-.prev.scroller {
-  left: 0;
-
-  &:not(.active) {
-    opacity: 0;
-  }
-}
-
-.next.scroller {
-  right: 0;
-}
-
-.active.scroller {
-  opacity: 1;
-}
-
-.items {
-  white-space: nowrap;
-}
-
-.item {
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 0 1px;
+.expander {
+  background: #282828;
+  margin-top: 2px;
   position: relative;
-  vertical-align: top;
-  white-space: normal;
-  width: 50%;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.infoContainer {
+  padding: 1rem 0;
+}
+
+.description {
+  margin-bottom: 1.728rem;
+}
+
+.closeButton {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.buttons {
+  padding: 1rem 0;
   z-index: 1;
 
-  @media screen and (max-width: 499px) {
-    width: 50%;
+  > button:last-of-type {
+    margin-left: 1rem;
   }
-
-  @media screen and (min-width: 500px) and (max-width: 799px) {
-    width: calc(100% / 3);
-  }
-
-  @media screen and (min-width: 800px) and (max-width: 1099px) {
-    width: 25%;
-  }
-
-  @media screen and (min-width: 1100px) and (max-width: 1399px) {
-    width: 20%;
-  }
-
-  @media screen and (min-width: 1400px) {
-    width: calc(100% / 6);
-  }
-
-  &:hover {
-    z-index: 2;
-  }
-
-  &:first-child {
-    padding-left: 0;
-  }
-
-  &:last-child {
-    padding-right: 0;
-  }
-}
-
-.imagePlaceholder {
-  background: #4d4d4d;
-  display: block;
-  padding-bottom: 56.25%;
-  width: 100%;
-}
-
 .part {
   background: rgba(0, 0, 0, 0.54);
   border-bottom-left-radius: 5px;
@@ -171,10 +107,4 @@
   }
 }
 
-.ratio16x9 {
-  padding-top: 56.25%;
-}
-
-.ratio4x3 {
-  padding-top: calc(100% / 3);
 }

@@ -1,127 +1,94 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import cn from 'classnames';
+import { DateTime } from 'luxon';
+import { mdiMagnet } from '@mdi/js';
+import Icon from '@mdi/react';
+import { Button } from '@react-md/button';
+import { TextIconSpacing } from '@react-md/icon';
+import { CloseSVGIcon, CloudDownloadSVGIcon } from '@react-md/material-icons';
+import { Collapse } from '@react-md/transition';
 
 import s from './Carousel.css';
 
-// import AppContext from '../../context';
 import CarouselSlider from '../CarouselSlider';
 import CarouselSliderItem from '../CarouselSliderItem';
 import Image, { media1x, media2x, media3x } from '../Image';
 
+interface Item {
+  // arc?: string;
+  anime_episodes?: string;
+  description?: string;
+  images?: Array<{
+    src: string;
+    type: string;
+    width: number;
+  }>;
+  manga_chapters?: string;
+  part?: number;
+  released_date?: string;
+  resolution?: string;
+  title?: string;
+  torrent_hash?: string;
+}
+
 interface Props {
   activeRowItemIndex?: number;
   aspectRatio?: '4:3' | '16:9';
-  handleSliderMove?(lowestIndex: number, direction: number);
+  handleSliderMove?: (lowestIndex: number, direction: number) => void;
   isLooping?: boolean;
-  items: [
-    {
-      // arc?: string;
-      images?: Array<{
-        src: string;
-        type: string;
-        width: number;
-      }>;
-      part?: number;
-      streams_hash?: string;
-      title?: string;
-    },
-  ];
+  items: Item[];
   rowNum?: number;
   title?: string;
 }
 
-// interface State {
-//   lowestVisibleItemIndex: number;
-//   sliderMoveDirection: 1 | -1;
-// }
-//
-// const HANDLE_SLIDER_MOVE = 'HANDLE_SLIDER_MOVE';
-//
-// const reducer = (state: State, action: { type: string; payload?: any }) => {
-//   switch (action.type) {
-//     case HANDLE_SLIDER_MOVE:
-//       return { ...state, ...action.payload };
-//     default:
-//       return state;
-//   }
-// };
+interface State {
+  currentItem?: Item;
+  isInfoCollapsed: boolean;
+}
 
 const Carousel: React.FunctionComponent<Props> = (props: Props) => {
-  // const { torrentClient } = useContext(AppContext);
-  // const [state, dispatch] = useReducer(reducer, {
-  //   lowestVisibleItemIndex: 0,
-  //   sliderMoveDirection: 1,
-  // });
+  const [state, setState] = useState<State>({
+    currentItem: null,
+    isInfoCollapsed: true,
+  });
 
-  // const handleSliderMove = (lowestIndex: number, direction: 1 | -1) => {
-  //   dispatch({
-  //     type: HANDLE_SLIDER_MOVE,
-  //     payload: {
-  //       lowestVisibleItemIndex: lowestIndex,
-  //       sliderMoveDirection: direction,
-  //     },
-  //   });
-  //   if (typeof props.handleSliderMove === 'function')
-  //     props.handleSliderMove(lowestIndex, direction);
-  // };
+  const handleClickItem = (
+    event: React.MouseEvent<HTMLDivElement>,
+    item: Item,
+  ) => {
+    event.preventDefault();
 
-  // const getTrackers = () => {
-  //   const trackers = [
-  //     'http://nyaa.tracker.wf:7777/announce',
-  //     'udp://tracker.openbittorrent.com:80',
-  //     'udp://tracker.publicbt.com:80',
-  //     'udp://tracker.opentrackr.org:1337',
-  //     'udp://tracker.coppersurfer.tk:6969',
-  //     'udp://tracker.leechers-paradise.org:6969',
-  //     'udp://zer0day.ch:1337',
-  //     'udp://explodie.org:6969',
-  //     'http://anidex.moe:6969/announce',
-  //     'wss://tracker.btorrent.xyz',
-  //     'wss://tracker.fastcast.nz',
-  //     'wss://tracker.openwebtorrent.com',
-  //   ];
-  //   return trackers
-  //     .join('&tr=')
-  //     .replace(/:/g, '%3A')
-  //     .replace(/\//g, '%2F');
-  // };
-  //
-  // const getTorrentId = (hash: string) =>
-  //   `magnet:?xt=urn:btih:${hash}&tr=${getTrackers()}`;
-  //
-  // const torrentId = getTorrentId('0f8f5cecab38920308889ab9290f16aa36f8190e');
-  //
-  // const handleClick = () => {
-  //   const findTorrent = torrentClient.get(torrentId);
-  //
-  //   if (findTorrent) {
-  //     console.info(
-  //       findTorrent,
-  //       `${torrentClient.downloadSpeed} Bytes/sec`,
-  //       `${torrentClient.progress}% Complete`,
-  //       `${findTorrent.numPeers} Peers`,
-  //     );
-  //     const video = findTorrent.files.find((file: any) =>
-  //       file.name.endsWith('.mp4'),
-  //     );
-  //     if (video) {
-  //       console.info(video);
-  //       video.getBlobURL(blob => console.info(blob));
-  //     }
-  //   } else {
-  //     torrentClient.add(torrentId, (torrent: any) => {
-  //       // Torrents can contain many files. Let's use the .mp4 file
-  //       console.info(torrent);
-  //
-  //       // Display the file by adding it to the DOM. Supports video, audio, image, etc. files
-  //     });
-  //   }
-  // };
+    setState(prevState => ({
+      ...prevState,
+      currentItem: item,
+      isInfoCollapsed: false,
+    }));
+  };
+
+  const handleCloseInfo = () =>
+    setState(prevState => ({
+      ...prevState,
+      currentItem: null,
+      isInfoCollapsed: true,
+    }));
 
   const placeholderImage =
     props.aspectRatio === '4:3'
       ? '/images/unreleased-placeholder-4x3.jpg'
       : '/images/unreleased-placeholder-16x9.jpg';
+
+  const unavailable = <em>Unavailable</em>;
+
+  let currentItemReleaseDate: React.ReactNode | string = unavailable;
+  if (state.currentItem?.released_date?.length) {
+    if (state.currentItem.released_date === 'Unreleased') {
+      currentItemReleaseDate = 'Unreleased';
+    } else {
+      currentItemReleaseDate = DateTime.fromISO(
+        state.currentItem.released_date,
+      ).toLocaleString();
+    }
+  }
 
   return (
     <section className={s.root}>
@@ -178,13 +145,79 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
             );
 
             return (
-              <CarouselSliderItem key={item.title}>
+              <CarouselSliderItem
+                key={item.title}
+                onClick={event => handleClickItem(event, item)}
+              >
                 {image}
                 <span className={s.part}>{item.part}</span>
               </CarouselSliderItem>
             );
           })}
         </CarouselSlider>
+        <div className={s.expander}>
+          <Collapse collapsed={state.isInfoCollapsed} temporary>
+            <div>
+              {state.currentItem && (
+                <div className={s.infoContainer}>
+                  <h2>{state.currentItem.title || 'Untitled'}</h2>
+                  <p className={s.description}>
+                    {state.currentItem.description || (
+                      <em>Description unavailable.</em>
+                    )}
+                  </p>
+                  <p>
+                    Manga Chapter(s):{' '}
+                    <strong>
+                      {state.currentItem.manga_chapters || unavailable}
+                    </strong>
+                  </p>
+                  <p>
+                    Anime Episode(s):{' '}
+                    <strong>
+                      {state.currentItem.anime_episodes || unavailable}
+                    </strong>
+                  </p>
+                  <p>
+                    Resolution:{' '}
+                    <strong>
+                      {state.currentItem.resolution || unavailable}
+                    </strong>
+                  </p>
+                  <p>
+                    Released on: <strong>{currentItemReleaseDate}</strong>
+                  </p>
+                  <div className={s.buttons}>
+                    <Button theme="primary" themeType="outline">
+                      <TextIconSpacing icon={<CloudDownloadSVGIcon />}>
+                        Direct Download
+                      </TextIconSpacing>
+                    </Button>
+                    <Button theme="primary" themeType="outline">
+                      <TextIconSpacing
+                        icon={
+                          <Icon
+                            className="rmd-icon rmd-icon--svg"
+                            path={mdiMagnet}
+                          />
+                        }
+                      >
+                        Magnet Link
+                      </TextIconSpacing>
+                    </Button>
+                  </div>
+                  <Button
+                    buttonType="icon"
+                    className={s.closeButton}
+                    onClick={handleCloseInfo}
+                  >
+                    <CloseSVGIcon />
+                  </Button>
+                </div>
+              )}
+            </div>
+          </Collapse>
+        </div>
       </div>
     </section>
   );

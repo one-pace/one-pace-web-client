@@ -8,7 +8,7 @@ import { SliderContext } from '../../context';
 interface Props {
   className?: string;
   children?: React.ReactNode;
-  key?: string;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>, args?: any) => void;
 }
 
 const CarouselSliderItem: React.FunctionComponent<Props> = (props: Props) => {
@@ -17,7 +17,7 @@ const CarouselSliderItem: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <div
       className={cn(s.item, props.className)}
-      key={props.key}
+      onClick={props.onClick}
       ref={elementRef}
     >
       {props.children}
