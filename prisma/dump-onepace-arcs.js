@@ -14,10 +14,12 @@ module.exports = {
     {
       id: 6,
       title: 'Romance Dawn',
+      title_es: 'Romance Dawn',
+      title_fr: 'Romance Dawn',
       chapters: '1-7',
-      episodes: '2-3, 504, Episode of Luffy',
+      episodes: '1-3, 19, 312 (Intro), Episode of East Blue',
       torrent_hash: 'bd581661e820488ffe5d459e76a9aba5f2b916e5',
-      resolution: '480p',
+      resolution: '1080p',
       completed: 1,
       hidden: 0,
       released: 1,
@@ -25,6 +27,8 @@ module.exports = {
     {
       id: 7,
       title: 'Orange Town',
+      title_es: 'Ciudad Orange',
+      title_fr: "Village d'Orange",
       chapters: '8-21',
       episodes: '4-8',
       torrent_hash: 'aa29e996caef8d061224ba2dc7405d54fccc8315',
@@ -36,6 +40,8 @@ module.exports = {
     {
       id: 18,
       title: 'Syrup Village',
+      title_es: 'Villa Syrup',
+      title_fr: 'Village de Sirop',
       chapters: '23-41',
       episodes: '9-18',
       torrent_hash: '6c29dedaa9bef46c73a04ebe2c8c9761b92cb9eb',
@@ -47,6 +53,8 @@ module.exports = {
     {
       id: 51,
       title: 'Gaimon',
+      title_es: 'Gaimon',
+      title_fr: 'Gaimon',
       chapters: '42, 22',
       episodes: '18',
       torrent_hash: 'f5dd3938fe031dd3fd3ed2269486e48b1b4c83b2',
@@ -58,6 +66,8 @@ module.exports = {
     {
       id: 50,
       title: 'Baratie',
+      title_es: 'Baratie',
+      title_fr: 'Baratie',
       chapters: '42-68',
       episodes: '19-30',
       torrent_hash: '',
@@ -69,6 +79,8 @@ module.exports = {
     {
       id: 44,
       title: 'Arlong Park',
+      title_es: 'Arlong Park',
+      title_fr: 'Arlong Park',
       chapters: '69-95',
       episodes: '31-44',
       torrent_hash: '',
@@ -80,6 +92,8 @@ module.exports = {
     {
       id: 8,
       title: 'Loguetown',
+      title_es: 'Loguetown',
+      title_fr: 'Loguetown',
       chapters: '96-100',
       episodes: '45, 48-49, 51-53',
       torrent_hash: 'aafb53e0c8a1264d7265f98ace92c007b13aa3bd',
@@ -91,6 +105,8 @@ module.exports = {
     {
       id: 9,
       title: 'Reverse Mountain',
+      title_es: 'Reverse Mountain',
+      title_fr: 'Reverse Mountain',
       chapters: '101-105',
       episodes: '55, 61-63',
       torrent_hash: '1256a6742698eb00d1b9b94b268bbb34f0dc9f56',
@@ -101,7 +117,9 @@ module.exports = {
     },
     {
       id: 41,
-      title: 'Whisky Peak',
+      title: 'Whiskey Peak',
+      title_es: 'Whiskey Peak',
+      title_fr: 'Whiskey Peak',
       chapters: '106-114',
       episodes: '64-67',
       torrent_hash: 'd5af21f3f6ab66d20dda4b131b5eeb0e17a23b7a',
@@ -113,6 +131,8 @@ module.exports = {
     {
       id: 45,
       title: 'Little Garden',
+      title_es: 'Little Garden',
+      title_fr: 'Little Garden',
       chapters: '115-129',
       episodes: '70-77',
       torrent_hash: '',
@@ -124,6 +144,8 @@ module.exports = {
     {
       id: 46,
       title: 'Drum Island',
+      title_es: 'Isla de Drum',
+      title_fr: 'Île de Drum',
       chapters: '130-154',
       episodes: '78-91',
       torrent_hash: '',
@@ -135,6 +157,8 @@ module.exports = {
     {
       id: 47,
       title: 'Arabasta',
+      title_es: 'Arabasta',
+      title_fr: 'Alabasta',
       chapters: '155-217',
       episodes: '92-130',
       torrent_hash: '',
@@ -146,6 +170,8 @@ module.exports = {
     {
       id: 48,
       title: 'Jaya',
+      title_es: 'Jaya',
+      title_fr: 'Jaya',
       chapters: '218-236',
       episodes: '144-152',
       torrent_hash: '',
@@ -157,6 +183,8 @@ module.exports = {
     {
       id: 17,
       title: 'Skypiea',
+      title_es: 'Skypiea',
+      title_fr: 'Skypiea',
       chapters: '237-303',
       episodes: '153-195, 203, 207, 225',
       torrent_hash: '2140e49be7a2cef9bcb9109c1d797e17e7e2ff2b',
@@ -168,6 +196,8 @@ module.exports = {
     {
       id: 10,
       title: 'Long Ring Long Land',
+      title_es: 'Long Ring Long Land',
+      title_fr: 'Long Ring Long Land',
       chapters: '304-321',
       episodes: '207-228',
       torrent_hash: '4f2b72009c25ec6c534a852ddfc3fd85ed10fdf5',
@@ -179,6 +209,8 @@ module.exports = {
     {
       id: 49,
       title: 'Water 7',
+      title_es: 'Water 7',
+      title_fr: 'Water Seven',
       chapters: '322-374',
       episodes: '229-263',
       torrent_hash: '',
@@ -190,6 +222,8 @@ module.exports = {
     {
       id: 40,
       title: 'Enies Lobby',
+      title_es: 'Enies Lobby',
+      title_fr: 'Enies Lobby',
       chapters: '375-430',
       episodes: '264-312',
       torrent_hash: '',
@@ -201,6 +235,8 @@ module.exports = {
     {
       id: 11,
       title: 'Post-Enies Lobby',
+      title_es: 'Regreso a Water Seven',
+      title_fr: 'Post-Enies Lobby',
       chapters: '431-441',
       episodes: '313-325',
       torrent_hash: '59497fc3d9a6dbcdbaced48eaa9f5ba2047614df',
@@ -212,6 +248,8 @@ module.exports = {
     {
       id: 12,
       title: 'Thriller Bark',
+      title_es: 'Thriller Bark',
+      title_fr: 'Thriller Bark',
       chapters: '442-489',
       episodes: '337-381',
       torrent_hash: 'cca27737d4340787c7b25d50df0f42ab2d9ab939',
@@ -223,6 +261,8 @@ module.exports = {
     {
       id: 13,
       title: 'Sabaody Archipelago',
+      title_es: 'Archipiélago Sabaody',
+      title_fr: 'Archipel de Sabaody',
       chapters: '490-513',
       episodes: '385-405',
       torrent_hash: '2589926c8f90e8f031a6caeab93bcd5b79990c0e',
@@ -234,6 +274,8 @@ module.exports = {
     {
       id: 14,
       title: 'Amazon Lily',
+      title_es: 'Amazon Lily',
+      title_fr: 'Amazon Lily',
       chapters: '514-524',
       episodes: '408-421',
       torrent_hash: '1f62e2583956c412f8550672bc8066c5e96ab0a8',
@@ -245,6 +287,8 @@ module.exports = {
     {
       id: 1,
       title: 'Impel Down',
+      title_es: 'Impel Down',
+      title_fr: 'Impel Down',
       chapters: '525-548',
       episodes: '422-452',
       torrent_hash: '2e1a040b1de930368ae027be070e6e8bc134b709',
@@ -256,6 +300,8 @@ module.exports = {
     {
       id: 42,
       title: 'Marineford',
+      title_es: 'Marineford',
+      title_fr: 'Marine Ford',
       chapters: '549-580',
       episodes: '457-489',
       torrent_hash: 'a5c64a7f3418d15ca654e023f41a31653486071a',
@@ -267,6 +313,8 @@ module.exports = {
     {
       id: 43,
       title: 'Post-War',
+      title_es: '3D2Y',
+      title_fr: 'Post-Guerre',
       chapters: '581-597',
       episodes: '490-516',
       torrent_hash: '',
@@ -278,6 +326,8 @@ module.exports = {
     {
       id: 16,
       title: 'Return to Sabaody',
+      title_es: 'Regreso a Sabaody',
+      title_fr: 'Retour à Sabaody',
       chapters: '598-602',
       episodes: '517-522',
       torrent_hash: 'cfe12c7a0bc9f91aa1c2fe436955c1f5b1e16909',
@@ -289,6 +339,8 @@ module.exports = {
     {
       id: 5,
       title: 'Fishman Island',
+      title_es: 'Isla Gyojin',
+      title_fr: 'Île des Hommes-Poissons',
       chapters: '603-653',
       episodes: '523-574',
       torrent_hash: 'fd204b5dc346f5458f7f04cf1ad98679aaf9586e',
@@ -300,6 +352,8 @@ module.exports = {
     {
       id: 4,
       title: 'Punk Hazard',
+      title_es: 'Punk Hazard',
+      title_fr: 'Punk Hazard',
       chapters: '654-699',
       episodes: '579-625',
       torrent_hash: 'bcdff039cd7c01f2ffb78799b4082d91de25b2fb',
@@ -322,6 +376,8 @@ module.exports = {
     {
       id: 2,
       title: 'Zou',
+      title_es: 'Zou',
+      title_fr: 'Zo',
       chapters: '801-822',
       episodes: '746-747, 751-776',
       torrent_hash: '5c027631a28242814a6cf1fe24f455b70bca14bc',
@@ -333,6 +389,8 @@ module.exports = {
     {
       id: 19,
       title: 'Whole Cake Island',
+      title_es: 'Whole Cake Island',
+      title_fr: 'Whole Cake Island',
       chapters: '823-902',
       episodes: '777-877',
       torrent_hash: '83f16450fa06099fb2238f4a22ab0460201d76be',
@@ -344,6 +402,8 @@ module.exports = {
     {
       id: 52,
       title: 'Reverie',
+      title_es: 'Levely',
+      title_fr: 'Rêverie',
       chapters: '903-908',
       episodes: '878-889',
       torrent_hash: '3be1edc9af28db8c27bdc4dd3bd93c8b3672fdbb',
@@ -355,6 +415,8 @@ module.exports = {
     {
       id: 53,
       title: 'Wano',
+      title_es: 'Wa',
+      title_fr: 'Wano',
       chapters: '909-',
       episodes: '890-',
       torrent_hash: '',
