@@ -1,7 +1,13 @@
 {
-  "h1": "A simple example",
   "change-locale": "Change locale",
-  "to-second-page": "To second page",
   "error-with-status": "A {{statusCode}} error occurred on server",
-  "error-without-status": "An error occurred on the server"
+  "error-without-status": "An error occurred on the server",
+  "chapters": "Capítulos",
+  "description-unavailable": "Descripción no disponible",
+  "direct-download": "Descarga directa",
+  "episodes": "Episodios",
+  "magnet-link": "Enlace magnético",
+  "released-on": "Publicado el",
+  "resolution": "Resolución",
+  "unreleased": "Sin editar"
 }

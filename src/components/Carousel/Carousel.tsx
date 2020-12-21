@@ -12,6 +12,7 @@ import s from './Carousel.css';
 
 import CarouselSlider from '../CarouselSlider';
 import CarouselSliderItem from '../CarouselSliderItem';
+import { useTranslation } from '../../core/i18n';
 import Image, { media1x, media2x, media3x } from '../Image';
 
 interface Item {
@@ -52,6 +53,8 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
     isInfoCollapsed: true,
   });
 
+  const { t } = useTranslation('common');
+
   const handleClickItem = (
     event: React.MouseEvent<HTMLDivElement>,
     item: Item,
@@ -82,7 +85,7 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
   let currentItemReleaseDate: React.ReactNode | string = unavailable;
   if (state.currentItem?.released_date?.length) {
     if (state.currentItem.released_date === 'Unreleased') {
-      currentItemReleaseDate = 'Unreleased';
+      currentItemReleaseDate = t('unreleased');
     } else {
       currentItemReleaseDate = DateTime.fromISO(
         state.currentItem.released_date,
@@ -163,34 +166,35 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                   <h2>{state.currentItem.title || 'Untitled'}</h2>
                   <p className={s.description}>
                     {state.currentItem.description || (
-                      <em>Description unavailable.</em>
+                      <em>{t('description-unavailable')}.</em>
                     )}
                   </p>
                   <p>
-                    Manga Chapter(s):{' '}
+                    {t('chapters')}:{' '}
                     <strong>
                       {state.currentItem.manga_chapters || unavailable}
                     </strong>
                   </p>
                   <p>
-                    Anime Episode(s):{' '}
+                    {t('episodes')}:{' '}
                     <strong>
                       {state.currentItem.anime_episodes || unavailable}
                     </strong>
                   </p>
                   <p>
-                    Resolution:{' '}
+                    {t('resolution')}:{' '}
                     <strong>
                       {state.currentItem.resolution || unavailable}
                     </strong>
                   </p>
                   <p>
-                    Released on: <strong>{currentItemReleaseDate}</strong>
+                    {t('released-on')}:{' '}
+                    <strong>{currentItemReleaseDate}</strong>
                   </p>
                   <div className={s.buttons}>
                     <Button theme="primary" themeType="outline">
                       <TextIconSpacing icon={<CloudDownloadSVGIcon />}>
-                        Direct Download
+                        {t('direct-download')}
                       </TextIconSpacing>
                     </Button>
                     <Button theme="primary" themeType="outline">
@@ -202,7 +206,7 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                           />
                         }
                       >
-                        Magnet Link
+                        {t('magnet-link')}
                       </TextIconSpacing>
                     </Button>
                   </div>

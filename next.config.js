@@ -16,11 +16,11 @@ const withSass = require('@zeit/next-sass');
 const isDebug = !process.argv.includes('--release');
 
 const localeSubpaths = {
-  de: 'de',
+  // de: 'de',
   en: 'en',
   es: 'es',
   fr: 'fr',
-  jp: 'jp',
+  // jp: 'jp',
 };
 
 // next.config.js
@@ -77,7 +77,7 @@ module.exports = withNextEnv(
           env: {
             WEB_URL: process.env.WEB_URL,
           },
-          rewrites: async () => nextI18NextRewrites(localeSubPaths),
+          rewrites: async () => nextI18NextRewrites(localeSubpaths),
           // experimental: { css: true },
           publicRuntimeConfig: {
             // Will be available on both server and client

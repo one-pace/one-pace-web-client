@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
@@ -64,7 +64,7 @@ const GET_ALL_ARCS = gql`
 const HomePage: NextPage<Props, InitialProps> = props => {
   const [arcs, setArcs] = useState(props.arcs);
 
-  useTranslation('common');
+  // const { t } = useTranslation('common');
 
   useQuery(GET_ALL_ARCS, {
     onCompleted: data => {
@@ -222,7 +222,7 @@ const HomePage: NextPage<Props, InitialProps> = props => {
                   (arc: { title: string }) => arc.title === 'Water Seven',
                 )[0]?.episodes
               }
-              title="Water 7"
+              title="Water Seven"
             />
             <Carousel
               items={
