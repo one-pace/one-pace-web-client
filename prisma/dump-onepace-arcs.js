@@ -87,7 +87,7 @@ module.exports = {
       resolution: '480p',
       completed: 0,
       hidden: 0,
-      released: 0,
+      released: 1,
     },
     {
       id: 8,
@@ -117,9 +117,9 @@ module.exports = {
     },
     {
       id: 41,
-      title: 'Whiskey Peak',
-      title_es: 'Whiskey Peak',
-      title_fr: 'Whiskey Peak',
+      title: 'Whisky Peak',
+      title_es: 'Whisky Peak',
+      title_fr: 'Whisky Peak',
       chapters: '106-114',
       episodes: '64-67',
       torrent_hash: 'd5af21f3f6ab66d20dda4b131b5eeb0e17a23b7a',
@@ -139,7 +139,7 @@ module.exports = {
       resolution: '480p',
       completed: 0,
       hidden: 0,
-      released: 0,
+      released: 1,
     },
     {
       id: 46,
@@ -152,7 +152,7 @@ module.exports = {
       resolution: '480p',
       completed: 0,
       hidden: 0,
-      released: 0,
+      released: 1,
     },
     {
       id: 47,
@@ -165,7 +165,7 @@ module.exports = {
       resolution: '480p',
       completed: 0,
       hidden: 0,
-      released: 0,
+      released: 1,
     },
     {
       id: 48,
@@ -208,7 +208,7 @@ module.exports = {
     },
     {
       id: 49,
-      title: 'Water 7',
+      title: 'Water Seven',
       title_es: 'Water 7',
       title_fr: 'Water Seven',
       chapters: '322-374',
@@ -217,7 +217,7 @@ module.exports = {
       resolution: '720p',
       completed: 0,
       hidden: 0,
-      released: 0,
+      released: 1,
     },
     {
       id: 40,

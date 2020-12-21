@@ -170,7 +170,7 @@ async function main() {
         image_ratio = '4:3';
         break;
       case 47:
-        new_arc = 'Alabasta';
+        new_arc = 'Arabasta';
         image_ratio = '4:3';
         break;
       case 48:
@@ -178,7 +178,7 @@ async function main() {
         image_ratio = '4:3';
         break;
       case 49:
-        new_arc = 'Water 7';
+        new_arc = 'Water Seven';
         image_ratio = '16:9';
         break;
       case 50:

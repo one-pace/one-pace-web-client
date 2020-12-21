@@ -111,16 +111,18 @@ const HomePage: NextPage<Props, InitialProps> = props => {
             <Carousel
               aspectRatio="4:3"
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Gaimon')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Gaimon',
+                )[0]?.episodes
               }
               title="Gaimon"
             />
             <Carousel
               aspectRatio="4:3"
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Baratie')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Baratie',
+                )[0]?.episodes
               }
               title="Baratie"
             />
@@ -182,39 +184,43 @@ const HomePage: NextPage<Props, InitialProps> = props => {
               aspectRatio="4:3"
               items={
                 arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Alabasta',
+                  (arc: { title: string }) => arc.title === 'Arabasta',
                 )[0]?.episodes
               }
-              title="Alabasta"
+              title="Arabasta"
             />
             <Carousel
               aspectRatio="4:3"
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Jaya')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Jaya',
+                )[0]?.episodes
               }
               title="Jaya"
             />
             <Carousel
               aspectRatio="4:3"
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Skypiea')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Skypiea',
+                )[0]?.episodes
               }
               title="Skypiea"
             />
             <Carousel
               items={
                 arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Long Ring Long Land',
+                  (arc: { title: string }) =>
+                    arc.title === 'Long Ring Long Land',
                 )[0]?.episodes
               }
               title="Long Ring Long Land"
             />
             <Carousel
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Water 7')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Water Seven',
+                )[0]?.episodes
               }
               title="Water 7"
             />
@@ -245,7 +251,8 @@ const HomePage: NextPage<Props, InitialProps> = props => {
             <Carousel
               items={
                 arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Sabaody Archipelago',
+                  (arc: { title: string }) =>
+                    arc.title === 'Sabaody Archipelago',
                 )[0]?.episodes
               }
               title="Sabaody Archipelago"
@@ -331,15 +338,17 @@ const HomePage: NextPage<Props, InitialProps> = props => {
             />
             <Carousel
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Reverie')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Reverie',
+                )[0]?.episodes
               }
               title="Reverie"
             />
             <Carousel
               items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Wano')[0]
-                  ?.episodes
+                arcs?.filter(
+                  (arc: { title: string }) => arc.title === 'Wano',
+                )[0]?.episodes
               }
               title="Wano Country"
             />
@@ -358,11 +367,7 @@ const HomePage: NextPage<Props, InitialProps> = props => {
   );
 };
 
-HomePage.getInitialProps = async () => ({
-  namespacesRequired: ['common'],
-});
-
-export const getStaticProps: GetStaticProps = async () => {
+HomePage.getInitialProps = async () => {
   const { PrismaClient } = await import('@prisma/client');
   const prisma = new PrismaClient();
 
@@ -396,8 +401,47 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
+    namespacesRequired: ['common'],
     props: { arcs: [] },
   };
 };
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const { PrismaClient } = await import('@prisma/client');
+//   const prisma = new PrismaClient();
+//
+//   const getAllArcs = await prisma.arc.findMany({
+//     select: {
+//       episodes: {
+//         orderBy: { part: 'asc' },
+//         select: {
+//           images: {
+//             select: {
+//               src: true,
+//               type: true,
+//               width: true,
+//             },
+//           },
+//           part: true,
+//           streams_hash: true,
+//           title: true,
+//         },
+//       },
+//       title: true,
+//     },
+//   });
+//
+//   if (getAllArcs) {
+//     return {
+//       props: {
+//         arcs: getAllArcs,
+//       },
+//     };
+//   }
+//
+//   return {
+//     props: { arcs: [] },
+//   };
+// };
 
 export default withApollo(HomePage);
