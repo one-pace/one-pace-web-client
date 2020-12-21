@@ -25,6 +25,7 @@ datasource onepace {
 // import { Prisma Client } from '@prisma/client'
 generator client {
   provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
 }
 
 // Next steps:
@@ -55,6 +56,8 @@ model Episode {
   arc             Arc       @relation(fields: [arc_id], references: [id])
   arc_id          String
   title           String    @unique
+
+  // Has to be modified to be greater than VarChar(191), i.e VarChar(1000)
   description     String
   part            Int
   manga_chapters  String
@@ -63,8 +66,8 @@ model Episode {
   torrent_hash    String
   streams_hash    String?
   resolution      String
-  released_date   String
   images          Image[]
+  released_date   String
   status          String
   openload        String
   created_at      DateTime  @default(now())
@@ -78,24 +81,25 @@ model Image {
   alt         String?
   episode     Episode?  @relation(fields: [episode_id], references: [id])
   episode_id  String?
-  src         String    @unique
+  src         String
   type        String
   width       Int
 }
 
 model User {
-  id         String        @default(cuid()) @id
-  email      String        @unique
-  password   String
-  profile    UserProfile?
-  role       UserRole      @default(USER)
+  id          String        @default(cuid()) @id
+  email       String        @unique
+  password    String
+  profile     UserProfile?
+  role        UserRole      @default(USER)
   created_at  DateTime     @default(now())
   updated_at  DateTime     @updatedAt
 }
 
 model UserProfile {
   id           String     @default(cuid()) @id
-  user         User
+  user         User?      @relation(fields: [user_id], references: [id])
+  user_id      String?
   name         String
   country      String?
   picture      String?

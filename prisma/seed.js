@@ -20,6 +20,7 @@ const resolveImage = (filename, directory = 'public', model = 'episodes') =>
 const findImage = (filename, directory = 'public', model = 'episodes') =>
   existsSync(resolveImage(filename, directory, model));
 
+const errors = [];
 let errorCount = 0;
 
 async function main() {
@@ -57,6 +58,7 @@ async function main() {
       // .then(res => console.info(res))
       .catch(err => {
         console.error(err, arc);
+        errors.push(`[Error] Upserting arc ${arc.title}: ${err.message}`);
         errorCount += 1;
       });
   }
@@ -282,14 +284,15 @@ async function main() {
     }
 
     const findEpisode = await prisma.episode
-      .findOne({ where: { title: new_title } })
+      .findUnique({ where: { title: new_title } })
       .catch(err => {
-        console.error(err, episode);
+        console.error(err, new_title, episode);
+        errors.push(`[Error] Finding episode ${new_title}: ${err.message}`);
         errorCount += 1;
       });
 
     if (findEpisode) {
-      prisma.episode
+      await prisma.episode
         .update({
           data: {
             anime_episodes: episode.episodes,
@@ -303,8 +306,10 @@ async function main() {
           },
           where: { title: new_title },
         })
+        .then(data => data)
         .catch(err => {
-          console.error(err, episode);
+          console.error(err, new_title, episode);
+          errors.push(`[Error] Updating episode ${new_title}: ${err.message}`);
           errorCount += 1;
         });
 
@@ -326,6 +331,9 @@ async function main() {
           })
           .catch(err => {
             console.error(err, image);
+            errors.push(
+              `[Error] Creating image for episode ${new_title}: ${err.message}`,
+            );
             errorCount += 1;
           });
 
@@ -357,6 +365,7 @@ async function main() {
         .then(data => data)
         .catch(err => {
           console.error(err, episode);
+          errors.push(`[Error] Creating episode ${new_title}: ${err.message}`);
           errorCount += 1;
         });
 
@@ -378,6 +387,9 @@ async function main() {
           })
           .catch(err => {
             console.error(err, image);
+            errors.push(
+              `[Error] Creating image for episode ${new_title}: ${err.message}`,
+            );
             errorCount += 1;
           });
 
@@ -387,6 +399,7 @@ async function main() {
     }
   }
 
+  console.error(errors);
   console.info('Seeding complete!');
   console.info(`Total Number of Errors: ${errorCount}`);
 }
