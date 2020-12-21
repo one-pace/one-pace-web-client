@@ -297,6 +297,7 @@ async function main() {
           data: {
             anime_episodes: episode.episodes,
             manga_chapters: episode.chapters,
+            description: episode.description || '',
             crc32: episode.crc32,
             torrent_hash: episode.torrent_hash,
             part: episode.part,
@@ -350,7 +351,7 @@ async function main() {
               },
             },
             title: new_title,
-            description: '',
+            description: episode.description || '',
             anime_episodes: episode.episodes,
             manga_chapters: episode.chapters,
             crc32: episode.crc32,
