@@ -4959,7 +4959,7 @@ module.exports = {
       description:
         "Nami's audible sorrows have reached the ears of a certain Straw Hat captain, and he and his crew rise to action.  The villagers look on in awe as the Straw Hats boldly enter Arlong Park to face the fishmen.",
       status: '',
-      part: 5,
+      part: 6,
       hidden: 0,
       openload: '',
       length: '26:57',
@@ -4980,7 +4980,7 @@ module.exports = {
       description:
         'Luffy’s newest move leaves him incapacitated and at the mercy of the sea, while Zoro, Sanji, and Usopp desperately fight off Arlong’s top officers.',
       status: '',
-      part: 6,
+      part: 7,
       hidden: 0,
       openload: '',
       length: '27:56',
@@ -5001,7 +5001,7 @@ module.exports = {
       description:
         'The top officers are defeated, but as they currently are, Sanji and Zoro prove to be no match for Arlong.  However, with Luffy finally free, he just may just be able to pull it off.  Meanwhile, Nami finally gathers the courage to face Arlong.',
       status: '',
-      part: 7,
+      part: 8,
       hidden: 0,
       openload: '',
       length: '25:28',
@@ -5022,7 +5022,7 @@ module.exports = {
       description:
         'Luffy springs into action against Arlong, and their intense struggle commences!  Luffy becomes enraged when he discovers how exactly Arlong had been using Nami, and he comes to a quick decision on how to finally free her of her shackles.',
       status: '',
-      part: 8,
+      part: 9,
       hidden: 0,
       openload: '',
       length: '24:35',
@@ -5043,7 +5043,7 @@ module.exports = {
       description:
         "Arlong's reign of terror is over, so the island throws a party to celebrate their freedom and to honor their pirate saviors.  During the festivities, Nami makes her decision to officially join the Straw Hat Pirates.",
       status: '',
-      part: 8,
+      part: 10,
       hidden: 0,
       openload: '',
       length: '20:57',
