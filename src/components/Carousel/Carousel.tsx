@@ -106,7 +106,7 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
           enableLooping
           // onSliderMove={handleSliderMove}
           parentContext={{ rowIndex: props.rowNum }}
-          totalItems={props.items.length}
+          totalItems={props.items?.length || 0}
         >
           {props.items?.map(item => {
             let srcFallback = placeholderImage;
