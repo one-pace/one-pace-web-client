@@ -2,12 +2,12 @@
   "change-locale": "Change locale",
   "error-with-status": "A {{statusCode}} error occurred on server",
   "error-without-status": "An error occurred on the server",
-  "chapters": "Manga Chapter(s)",
-  "description-unavailable": "Description unavailable",
-  "direct-download": "Direct Download",
-  "episodes": "Anime Episode(s)",
-  "magnet-link": "Magnet Link",
-  "released-on": "Released on",
-  "resolution": "Resolution",
-  "unreleased": "Unreleased"
+  "chapters": "Capítulos",
+  "description-unavailable": "Descrição Indisponível",
+  "direct-download": "Download Direto",
+  "episodes": "Episódios",
+  "magnet-link": "Link Magnet",
+  "released-on": "Lançado o",
+  "resolution": "Resolução",
+  "unreleased": "Ainda não lançado"
 }
