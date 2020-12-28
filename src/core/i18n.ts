@@ -9,7 +9,7 @@ const I18Next = new NextI18Next({
   ignoreRoutes: ['/api/', '/build/', '/public/', '/prisma/', '/static/'],
   localeSubpaths,
   localePath: resolve('public/static/locales'),
-  otherLanguages: ['de', 'en', 'es', 'fr', 'jp'],
+  otherLanguages: ['de', 'en', 'es', 'fr', 'jp', 'pt'],
 });
 
 export const { appWithTranslation, useTranslation, withTranslation } = I18Next;
