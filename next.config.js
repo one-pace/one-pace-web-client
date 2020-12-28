@@ -21,6 +21,7 @@ const localeSubpaths = {
   es: 'es',
   fr: 'fr',
   // jp: 'jp',
+  pt: 'pt',
 };
 
 // next.config.js
