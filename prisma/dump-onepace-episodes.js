@@ -4053,6 +4053,8 @@ module.exports = {
       torrent_hash: 'b1d945ae9e3b0a2539109eac024c2c713fa90a2c',
       released_date: '2019-03-31T13:04:03Z',
       title: 'Whole Cake Island 39 (April Fools 2019)',
+      description:
+        'After the Straw Hats die, Tommy Wiseau picks up the pieces and explores a story of love, betrayal, and doggies.',
       status: '',
       part: 5,
       hidden: 0,
