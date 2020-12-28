@@ -81,7 +81,7 @@ model Image {
   alt         String?
   episode     Episode?  @relation(fields: [episode_id], references: [id])
   episode_id  String?
-  src         String
+  src         String    @unique
   type        String
   width       Int
 }
