@@ -2,7 +2,7 @@
 CREATE TABLE `Arc` (
     `id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
-    `description` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(1000) NOT NULL,
     `manga_chapters` VARCHAR(191) NOT NULL,
     `anime_episodes` VARCHAR(191) NOT NULL,
     `torrent_hash` VARCHAR(191) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE `Episode` (
     `id` VARCHAR(191) NOT NULL,
     `arc_id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
-    `description` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(1000) NOT NULL,
     `part` INT NOT NULL,
     `manga_chapters` VARCHAR(191) NOT NULL,
     `anime_episodes` VARCHAR(191) NOT NULL,
