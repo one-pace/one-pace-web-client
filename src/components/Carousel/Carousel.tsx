@@ -24,6 +24,7 @@ interface Item {
     type: string;
     width: number;
   }>;
+  length?: string;
   manga_chapters?: string;
   part?: number;
   released_date?: string;
@@ -179,6 +180,12 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                     {t('episodes')}:{' '}
                     <strong>
                       {state.currentItem.anime_episodes || unavailable}
+                    </strong>
+                  </p>
+                  <p>
+                    {t('length')}:{' '}
+                    <strong>
+                      {state.currentItem.length || unavailable}
                     </strong>
                   </p>
                   <p>

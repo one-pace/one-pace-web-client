@@ -49,6 +49,7 @@ const GET_ALL_ARCS = gql`
           type
           width
         }
+        length
         manga_chapters
         part
         released_date

@@ -13,6 +13,7 @@ export const schema = [
     description:     String
     id:              ID!
     images:          [Image]
+    length:          String
     manga_chapters:  String!
     openload:        String
     part:            Int!

@@ -66,6 +66,7 @@ model Episode {
   torrent_hash    String
   streams_hash    String?
   resolution      String
+  length          String?
   images          Image[]
   released_date   String
   status          String
