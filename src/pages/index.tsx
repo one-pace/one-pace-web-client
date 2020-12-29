@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
@@ -368,7 +368,7 @@ const HomePage: NextPage<Props, InitialProps> = props => {
   );
 };
 
-HomePage.getInitialProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { PrismaClient } = await import('@prisma/client');
   const prisma = new PrismaClient();
 
@@ -377,6 +377,8 @@ HomePage.getInitialProps = async () => {
       episodes: {
         orderBy: { part: 'asc' },
         select: {
+          anime_episodes: true,
+          description: true,
           images: {
             select: {
               src: true,
@@ -384,9 +386,13 @@ HomePage.getInitialProps = async () => {
               width: true,
             },
           },
+          length: true,
+          manga_chapters: true,
           part: true,
-          streams_hash: true,
+          released_date: true,
+          resolution: true,
           title: true,
+          torrent_hash: true,
         },
       },
       title: true,
@@ -406,43 +412,5 @@ HomePage.getInitialProps = async () => {
     props: { arcs: [] },
   };
 };
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const { PrismaClient } = await import('@prisma/client');
-//   const prisma = new PrismaClient();
-//
-//   const getAllArcs = await prisma.arc.findMany({
-//     select: {
-//       episodes: {
-//         orderBy: { part: 'asc' },
-//         select: {
-//           images: {
-//             select: {
-//               src: true,
-//               type: true,
-//               width: true,
-//             },
-//           },
-//           part: true,
-//           streams_hash: true,
-//           title: true,
-//         },
-//       },
-//       title: true,
-//     },
-//   });
-//
-//   if (getAllArcs) {
-//     return {
-//       props: {
-//         arcs: getAllArcs,
-//       },
-//     };
-//   }
-//
-//   return {
-//     props: { arcs: [] },
-//   };
-// };
 
 export default withApollo(HomePage);
