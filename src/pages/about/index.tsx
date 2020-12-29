@@ -18,6 +18,7 @@ interface InitialProps {
 const AboutPage: NextPage<Props, InitialProps> = props => {
   const { t } = useTranslation('about');
 
+  const CODING = 'Coding';
   const EDITING = t('editing');
   const GRAPHICS = t('graphics');
   const MOD = 'Moderator';
@@ -35,22 +36,16 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
   const JPFR = `JP-FR ${TRANSLATION}`;
   const JPPT = `JP-PT ${TRANSLATION}`;
 
+  const KTIMING = `Karaoke ${TIMING}`;
+
   const team = [
     {
-      name: 'Akamizu',
-      roles: [JPDE],
-    },
-    {
       name: 'Bastia',
-      roles: [JPES, 'Recruiter', TIMING],
+      roles: ['Recruiter', TIMING],
     },
     {
       name: 'CyberLariat',
       roles: [MOD, 'Spreadsheeter'],
-    },
-    {
-      name: 'Danpmss',
-      roles: ['---'],
     },
     {
       name: 'Datenshi',
@@ -65,20 +60,12 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
       roles: [QC],
     },
     {
-      name: 'FJATP',
-      roles: [JPES],
-    },
-    {
-      name: 'Floa',
-      roles: [JPDE],
-    },
-    {
       name: 'Gaijin',
       roles: [JPEN, QC, WIKI],
     },
     {
       name: 'Galaxy 9000',
-      roles: [EDITING, QC, `${TIMING} (Former)`],
+      roles: [EDITING, QC],
     },
     {
       name: 'Gi-a Fosu',
@@ -93,24 +80,12 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
       roles: [QC],
     },
     {
-      name: 'Hadohado',
-      roles: [JPPT],
-    },
-    {
       name: 'Halee',
-      roles: [MUSIC, `${TIMING} (Former)`, WIKI],
-    },
-    {
-      name: 'Honoka',
-      roles: ['---'],
-    },
-    {
-      name: 'ItsKipz',
-      roles: [QC],
+      roles: [MUSIC, WIKI],
     },
     {
       name: 'Kaitou Yahiko',
-      roles: [GRAPHICS, TIMING, VFX],
+      roles: [GRAPHICS, KTIMING, TIMING, VFX],
     },
     {
       name: 'Lance',
@@ -119,18 +94,6 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
     {
       name: 'Meggo',
       roles: [EDITING],
-    },
-    {
-      name: 'Mr. Luffy',
-      roles: ['---'],
-    },
-    {
-      name: 'Nagatei',
-      roles: [JPES],
-    },
-    {
-      name: 'Naoya',
-      roles: ['---'],
     },
     {
       name: 'Ninja',
@@ -145,32 +108,16 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
       roles: [TIMING],
     },
     {
-      name: 'Puma',
-      roles: [JPDE],
-    },
-    {
       name: 'RedHawk02',
       roles: [MOD],
     },
     {
-      name: 'Rael',
-      roles: [EDITING],
-    },
-    {
       name: 'Sewil',
-      roles: [EDITING, TIMING, WIKI],
+      roles: [CODING, EDITING, TIMING, WIKI],
     },
     {
-      name: 'Soturno Samurai',
-      roles: [JPPT],
-    },
-    {
-      name: 'Umim',
-      roles: [JPES],
-    },
-    {
-      name: 'Vô danh',
-      roles: [JPDE],
+      name: 'TheFVguy',
+      roles: [QC, TIMING],
     },
     {
       name: 'Zenef',
@@ -178,10 +125,134 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
     },
   ];
 
+  const esTeam = [
+    {
+      name: 'Bastia',
+      roles: [JPES],
+    },
+    {
+      name: 'FJATP',
+      roles: [JPES],
+    },
+    {
+      name: 'LucasGirau',
+      roles: [JPES],
+    },
+    {
+      name: 'Nagatei',
+      roles: [JPES],
+    },
+    {
+      name: 'Umim',
+      roles: [JPES],
+    },
+  ];
+
+  const frTeam = [
+    {
+      name: 'BabOu1331',
+      roles: [JPFR],
+    },
+    {
+      name: 'TrixJoestar',
+      roles: [JPFR],
+    },
+    {
+      name: 'Val*',
+      roles: [JPFR],
+    },
+    {
+      name: 'Void42',
+      roles: [JPFR],
+    },
+    {
+      name: 'Zorohack',
+      roles: [JPFR],
+    },
+  ];
+
+  const deTeam = [
+    {
+      name: 'Akamizu',
+      roles: [JPDE],
+    },
+    {
+      name: 'Floa',
+      roles: [JPDE],
+    },
+    {
+      name: 'Puma',
+      roles: [JPDE],
+    },
+    {
+      name: 'Vô danh',
+      roles: [JPDE],
+    },
+  ];
+
+  const ptTeam = [
+    {
+      name: 'Hadohado',
+      roles: [JPPT],
+    },
+    {
+      name: 'Naoya7',
+      roles: [JPPT],
+    },
+    {
+      name: 'Soturno Samurai',
+      roles: [JPPT],
+    },
+  ];
+
   const formerTeam = [
     {
+      name: 'Danpmss',
+      roles: [JPES, QC],
+    },
+    {
+      name: 'Dumbird',
+      roles: [EDITING],
+    },
+    {
       name: 'Feeso',
-      roles: [EDITING, QC],
+      roles: [EDITING, QC, WIKI],
+    },
+    {
+      name: 'Galaxy 9000',
+      roles: [TIMING],
+    },
+    {
+      name: 'Halee',
+      roles: [TIMING],
+    },
+    {
+      name: 'Honoka',
+      roles: [QC],
+    },
+    {
+      name: 'ItsKipz',
+      roles: [QC],
+    },
+    {
+      name: 'Madiev',
+      roles: [MUSIC],
+    },
+    {
+      name: 'Mr. Luffy',
+      roles: [QC],
+    },
+    {
+      name: 'Rael',
+      roles: [EDITING],
+    },
+    {
+      name: 'Tom',
+      roles: [EDITING],
+    },
+    {
+      name: 'Victor',
+      roles: [EDITING],
     },
   ];
 
@@ -208,7 +279,47 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
           </div>
         </section>
         <section className={s.container}>
-          <h1>Former Team Members</h1>
+          <h1>Spanish Team</h1>
+          <div className={s.grid}>
+            {esTeam.map(m => (
+              <div>
+                <h3>{m.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={s.container}>
+          <h1>French Team</h1>
+          <div className={s.grid}>
+            {frTeam.map(m => (
+              <div>
+                <h3>{m.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={s.container}>
+          <h1>German Team</h1>
+          <div className={s.grid}>
+            {deTeam.map(m => (
+              <div>
+                <h3>{m.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={s.container}>
+          <h1>Portuguese Team</h1>
+          <div className={s.grid}>
+            {ptTeam.map(m => (
+              <div>
+                <h3>{m.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={s.container}>
+          <h1>Former Team Roles</h1>
           <div className={s.grid}>
             {formerTeam.map(m => (
               <div>
