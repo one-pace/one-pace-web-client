@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import { GetStaticProps, NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
@@ -369,7 +369,7 @@ const HomePage: NextPage<Props, InitialProps> = props => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { PrismaClient } = await import('@prisma/client');
   const prisma = new PrismaClient();
 
