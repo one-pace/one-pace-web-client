@@ -86,7 +86,6 @@
     "regenerator-runtime": "^0.13.5",
     "resize-observer-polyfill": "^1.5.1",
     "sharp": "^0.25.2",
-    "webtorrent": "^0.108.1",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

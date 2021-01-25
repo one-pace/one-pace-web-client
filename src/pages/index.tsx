@@ -6,7 +6,7 @@ import { GetStaticProps, NextPage } from 'next';
 import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
 
-import { useTranslation } from '../core/i18n';
+// import { useTranslation } from '../core/i18n';
 import withApollo from '../core/withApollo';
 
 interface Props {

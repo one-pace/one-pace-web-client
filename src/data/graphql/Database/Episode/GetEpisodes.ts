@@ -20,7 +20,6 @@ export const schema = [
     released_date:   String!
     resolution:      String!
     status:          String
-    streams_hash:    String
     title:           String!
     torrent_hash:    String
     updated_at:      Timestamp

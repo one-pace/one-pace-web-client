@@ -65,7 +65,6 @@ model Episode {
   anime_episodes  String
   crc32           String
   torrent_hash    String
-  streams_hash    String?
   resolution      String
   duration        String
   images          Image[]

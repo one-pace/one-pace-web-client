@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import App from 'next/app';
 import 'normalize.css';
-import WebTorrent from 'webtorrent';
 
 import '../components/react-md.scss';
 
 import AppContext from '../context';
 import { appWithTranslation } from '../core/i18n';
-
-const torrentClient = new WebTorrent({
-  maxConns: 55,
-});
 
 const OnePaceApp = ({ Component, pageProps, pathname, query, ...context }) => {
   const [isNavVisible, setNavVisibility] = useState(true);
@@ -26,7 +21,6 @@ const OnePaceApp = ({ Component, pageProps, pathname, query, ...context }) => {
         setNavVisibility,
         screenOrientation,
         setScreenOrientation,
-        torrentClient,
       }}
     >
       <Component {...pageProps} />

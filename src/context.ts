@@ -1,5 +1,4 @@
 import { createContext, createRef, RefObject } from 'react';
-import { WebTorrent } from 'webtorrent';
 
 export type AppContextTypes = {
   isNavVisible: boolean;
@@ -8,7 +7,6 @@ export type AppContextTypes = {
   screenOrientation: 'portrait' | 'landscape' | string;
   setNavVisibility: Function;
   setScreenOrientation: Function;
-  torrentClient: WebTorrent;
 };
 
 export type SliderContextTypes = {
@@ -25,7 +23,6 @@ const AppContext = createContext<AppContextTypes>({
   screenOrientation: 'portrait',
   setNavVisibility: () => {},
   setScreenOrientation: () => {},
-  torrentClient: () => {},
 });
 
 export const SliderContext = createContext<SliderContextTypes>({
