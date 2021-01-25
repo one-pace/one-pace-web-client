@@ -9,6 +9,7 @@ import { onError } from 'apollo-link-error';
 import { setContext } from 'apollo-link-context';
 import apolloLogger from 'apollo-link-logger';
 import gql from 'graphql-tag';
+import getConfig from 'next/config';
 import React from 'react';
 
 import withApollo from './withApolloHOC';
@@ -19,9 +20,11 @@ import {
 } from '../data/graphql/OnMemoryState/schema';
 
 const __DEV__ = process.env.NODE_ENV !== 'production';
-const WEB_URL = process.env.WEB_URL; // eslint-disable-line prefer-destructuring
+const { WEB_URL } = getConfig().publicRuntimeConfig;
 
 function createIsomorphLink(context: { getToken: () => string }) {
+  const isServer = typeof window === 'undefined';
+
   const links = [
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
@@ -36,7 +39,7 @@ function createIsomorphLink(context: { getToken: () => string }) {
   ];
 
   // Server-side link
-  if (typeof window === 'undefined') {
+  if (isServer) {
     const { SchemaLink } = require('apollo-link-schema'); // eslint-disable-line global-require
     const { makeExecutableSchema } = require('graphql-tools'); // eslint-disable-line global-require
     console.info('createIsomorphLink context', context);
@@ -61,7 +64,9 @@ function createIsomorphLink(context: { getToken: () => string }) {
   // Client-side link
   const httpLink = createHttpLink({
     credentials: 'same-origin',
-    uri: `${WEB_URL}/api/graphql`,
+    uri: isServer
+      ? 'http://localhost:3000/api/graphql'
+      : `${WEB_URL}/api/graphql`,
   });
 
   links.push(

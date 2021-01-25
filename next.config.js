@@ -75,14 +75,11 @@ module.exports = withNextEnv(
           },
           cssModules: true,
           distDir: 'build',
-          env: {
-            WEB_URL: process.env.WEB_URL,
-          },
           rewrites: async () => nextI18NextRewrites(localeSubpaths),
           // experimental: { css: true },
           publicRuntimeConfig: {
             // Will be available on both server and client
-            // WEB_URL: process.env.API_URL,
+            WEB_URL: 'https://beta.onepace.net',
             localeSubpaths,
           },
           // serverRuntimeConfig: {
