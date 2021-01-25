@@ -14,18 +14,19 @@ interface Props {
     {
       episodes: [
         {
-          anime_episodes?: string;
+          anime_episodes: string;
           description?: string;
+          duration: string;
           images?: Array<{
             src: string;
             type: string;
             width: number;
           }>;
-          manga_chapters?: string;
+          manga_chapters: string;
           part: number;
-          released_date?: string;
-          resolution?: string;
-          title?: string;
+          released_date: string | null;
+          resolution: string;
+          title: string;
           torrent_hash?: string;
         },
       ];
@@ -44,12 +45,12 @@ const GET_ALL_ARCS = gql`
       episodes {
         anime_episodes
         description
+        duration
         images {
           src
           type
           width
         }
-        length
         manga_chapters
         part
         released_date
@@ -379,6 +380,7 @@ export const getStaticProps: GetStaticProps = async () => {
         select: {
           anime_episodes: true,
           description: true,
+          duration: true,
           images: {
             select: {
               src: true,
@@ -386,7 +388,6 @@ export const getStaticProps: GetStaticProps = async () => {
               width: true,
             },
           },
-          length: true,
           manga_chapters: true,
           part: true,
           released_date: true,

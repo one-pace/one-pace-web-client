@@ -16,20 +16,19 @@ import { useTranslation } from '../../core/i18n';
 import Image, { media1x, media2x, media3x } from '../Image';
 
 interface Item {
-  // arc?: string;
-  anime_episodes?: string;
+  anime_episodes: string;
   description?: string;
+  duration: string;
   images?: Array<{
     src: string;
     type: string;
     width: number;
   }>;
-  length?: string;
-  manga_chapters?: string;
-  part?: number;
-  released_date?: string;
-  resolution?: string;
-  title?: string;
+  manga_chapters: string;
+  part: number;
+  released_date: string | null;
+  resolution: string;
+  title: string;
   torrent_hash?: string;
 }
 
@@ -183,10 +182,8 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                     </strong>
                   </p>
                   <p>
-                    {t('length')}:{' '}
-                    <strong>
-                      {state.currentItem.length || unavailable}
-                    </strong>
+                    {t('duration')}:{' '}
+                    <strong>{state.currentItem.duration || unavailable}</strong>
                   </p>
                   <p>
                     {t('resolution')}:{' '}

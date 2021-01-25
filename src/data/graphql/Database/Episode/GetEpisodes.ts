@@ -11,9 +11,9 @@ export const schema = [
     crc32:           String
     created_at:      Timestamp
     description:     String
+    duration:        String!
     id:              ID!
     images:          [Image]
-    length:          String
     manga_chapters:  String!
     openload:        String
     part:            Int!

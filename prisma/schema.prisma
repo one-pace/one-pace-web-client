@@ -57,8 +57,9 @@ model Episode {
   arc_id          String
   title           String    @unique
 
-  // Has to be modified to be greater than VarChar(191), i.e VarChar(1000)
+  // Has to be VarChar(1000) - already taken care of in migrations/
   description     String
+
   part            Int
   manga_chapters  String
   anime_episodes  String
@@ -66,7 +67,7 @@ model Episode {
   torrent_hash    String
   streams_hash    String?
   resolution      String
-  length          String?
+  duration        String
   images          Image[]
   released_date   String
   status          String
