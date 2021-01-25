@@ -51,9 +51,19 @@ export const resolvers = {
         select.episodes['orderBy'] = { part: 'asc' }; // eslint-disable-line dot-notation
       }
 
-      const getAllArcs = await prisma.arc.findMany({
-        select,
-      });
+      const getAllArcs = await prisma.arc
+        .findMany({
+          select,
+        })
+        .catch(err => {
+          if (err)
+            console.error(
+              '[GraphQL] databaseGetAllArcs encountered an error:',
+              err,
+            );
+
+          throw new Error('An error occurred fetching Arc data.');
+        });
 
       return getAllArcs;
     },
@@ -67,10 +77,20 @@ export const resolvers = {
 
       if (select.episodes) select.episodes = { orderBy: { part: 'asc' } };
 
-      const getArc = await prisma.arc.findOne({
-        select,
-        where: { ...args },
-      });
+      const getArc = await prisma.arc
+        .findOne({
+          select,
+          where: { ...args },
+        })
+        .catch(err => {
+          if (err)
+            console.error(
+              '[GraphQL] databaseGetArc encountered an error:',
+              err,
+            );
+
+          throw new Error('An error occurred fetching Arc data.');
+        });
 
       return getArc;
     },

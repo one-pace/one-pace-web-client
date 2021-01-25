@@ -40,7 +40,17 @@ export const resolvers = {
     ) {
       const select = buildSelect(ast);
 
-      const getAllImages = await prisma.image.findMany({ select });
+      const getAllImages = await prisma.image
+        .findMany({ select })
+        .catch(err => {
+          if (err)
+            console.error(
+              '[GraphQL] databaseGetAllImages encountered an error:',
+              err,
+            );
+
+          throw new Error('An error occurred fetching Image data.');
+        });
 
       return getAllImages;
     },
@@ -52,10 +62,20 @@ export const resolvers = {
     ) {
       const select = buildSelect(ast);
 
-      const getImage = await prisma.image.findOne({
-        select,
-        where: { ...args },
-      });
+      const getImage = await prisma.image
+        .findOne({
+          select,
+          where: { ...args },
+        })
+        .catch(err => {
+          if (err)
+            console.error(
+              '[GraphQL] databaseGetImage encountered an error:',
+              err,
+            );
+
+          throw new Error('An error occurred fetching Image data.');
+        });
 
       return getImage;
     },

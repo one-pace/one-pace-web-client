@@ -373,32 +373,36 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { PrismaClient } = await import('@prisma/client');
   const prisma = new PrismaClient();
 
-  const getAllArcs = await prisma.arc.findMany({
-    select: {
-      episodes: {
-        orderBy: { part: 'asc' },
-        select: {
-          anime_episodes: true,
-          description: true,
-          duration: true,
-          images: {
-            select: {
-              src: true,
-              type: true,
-              width: true,
+  const getAllArcs = await prisma.arc
+    .findMany({
+      select: {
+        episodes: {
+          orderBy: { part: 'asc' },
+          select: {
+            anime_episodes: true,
+            description: true,
+            duration: true,
+            images: {
+              select: {
+                src: true,
+                type: true,
+                width: true,
+              },
             },
+            manga_chapters: true,
+            part: true,
+            released_date: true,
+            resolution: true,
+            title: true,
+            torrent_hash: true,
           },
-          manga_chapters: true,
-          part: true,
-          released_date: true,
-          resolution: true,
-          title: true,
-          torrent_hash: true,
         },
+        title: true,
       },
-      title: true,
-    },
-  });
+    })
+    .catch(_err => {
+      console.error('An error occurred fetching Arc data.');
+    });
 
   if (getAllArcs) {
     return {

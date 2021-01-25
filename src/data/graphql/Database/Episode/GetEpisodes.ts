@@ -51,7 +51,17 @@ export const resolvers = {
     ) {
       const select = buildSelect(ast);
 
-      const getAllEpisodes = await prisma.episode.findMany({ select });
+      const getAllEpisodes = await prisma.episode
+        .findMany({ select })
+        .catch(err => {
+          if (err)
+            console.error(
+              '[GraphQL] databaseGetAllEpisodes encountered an error:',
+              err,
+            );
+
+          throw new Error('An error occurred fetching Episode data.');
+        });
 
       return getAllEpisodes;
     },
@@ -63,10 +73,20 @@ export const resolvers = {
     ) {
       const select = buildSelect(ast);
 
-      const getEpisode = await prisma.episode.findOne({
-        select,
-        where: { ...args },
-      });
+      const getEpisode = await prisma.episode
+        .findOne({
+          select,
+          where: { ...args },
+        })
+        .catch(err => {
+          if (err)
+            console.error(
+              '[GraphQL] databaseGetEpisode encountered an error:',
+              err,
+            );
+
+          throw new Error('An error occurred fetching Episode data.');
+        });
 
       return getEpisode;
     },
