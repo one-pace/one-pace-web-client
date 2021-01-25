@@ -1,36 +1,47 @@
 import React from 'react';
+import { NextPageContext } from 'next';
+import { ErrorProps } from 'next/error';
+import Router from 'next/router';
 
-import { withTranslation } from '../core/i18n';
+import { useTranslation } from '../core/i18n';
 
-interface Props {
-  statusCode?: number;
-  t: (text: string, opts?: any) => string;
-}
+const CustomError = ({ statusCode }: ErrorProps) => {
+  const { t } = useTranslation('common');
 
-const Error = ({ statusCode, t }: Props) => (
-  <p>
-    {statusCode
-      ? t('error-with-status', { statusCode })
-      : t('error-without-status')}
-  </p>
-);
+  return (
+    <p>
+      {statusCode
+        ? t('error-with-status', { statusCode })
+        : t('error-without-status')}
+    </p>
+  );
+};
 
-Error.getInitialProps = async ({ res, err }) => {
-  let statusCode = null;
-  if (res) {
-    ({ statusCode } = res);
-  } else if (err) {
-    ({ statusCode } = err);
+CustomError.getInitialProps = async ({ err, req, res }: NextPageContext) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404; // eslint-disable-line no-nested-ternary
+
+  if (statusCode === 404) {
+    if (req.url.match(/\/$/)) {
+      const withoutTrailingSlash = req.url.substr(0, req.url.length - 1);
+      if (res) {
+        res.writeHead(303, {
+          Location: withoutTrailingSlash,
+        });
+        res.end();
+      } else {
+        Router.push(withoutTrailingSlash);
+      }
+    }
   }
+
   return {
     namespacesRequired: ['common'],
     statusCode,
   };
 };
 
-Error.defaultProps = {
-  statusCode: null,
+CustomError.defaultProps = {
+  statusCode: 404,
 };
 
-// @ts-ignore
-export default withTranslation('common')(Error);
+export default CustomError;
