@@ -352,7 +352,7 @@ const HomePage: NextPage<Props, InitialProps> = props => {
                   (arc: { title: string }) => arc.title === 'Wano',
                 )[0]?.episodes
               }
-              title="Wano Country"
+              title="Wano"
             />
             <Carousel
               items={
@@ -404,17 +404,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       console.error('An error occurred fetching Arc data.');
     });
 
-  if (getAllArcs) {
-    return {
-      props: {
-        arcs: getAllArcs,
-      },
-    };
-  }
-
   return {
     namespacesRequired: ['common'],
-    props: { arcs: [] },
+    props: { arcs: getAllArcs || [] },
   };
 };
 
