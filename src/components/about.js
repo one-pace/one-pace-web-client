@@ -104,6 +104,10 @@ class About extends React.Component {
                 <td>Gaijin</td>
                 <td>{I18n.t('about.translation')}</td>
               </tr>
+              <tr>
+                <td>Gigglebot</td>
+                <td>{I18n.t('about.editing')}</td>
+              </tr>
             </tbody>
           </table>
         </div>
