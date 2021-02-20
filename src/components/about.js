@@ -60,7 +60,7 @@ class About extends React.Component {
               </tr>
               <tr>
                 <td>Halee</td>
-                <td>{I18n.t('about.musicer')}, {I18n.t('about.timing')}</td>
+                <td>{I18n.t('about.musicer')}</td>
               </tr>
               <tr>
                 <td>Datenshi</td>
