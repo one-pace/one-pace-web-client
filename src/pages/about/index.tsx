@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 
 import s from './About.module.css';
 
@@ -7,21 +7,18 @@ import Layout from '../../components/Layout';
 
 import { useTranslation } from '../../core/i18n';
 
-interface Props {
-
-}
+interface Props {}
 
 interface InitialProps {
   namespacesRequired?: string[];
 }
 
-const AboutPage: NextPage<Props, InitialProps> = props => {
+const AboutPage: NextPage<Props, InitialProps> = () => {
   const { t } = useTranslation('about');
 
   const CODING = 'Coding';
   const EDITING = t('editing');
   const GRAPHICS = t('graphics');
-  const MOD = 'Moderator';
   const MUSIC = t('musicer');
   const QC = t('qc');
   const TIMING = t('timing');
@@ -45,7 +42,7 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
     },
     {
       name: 'CyberLariat',
-      roles: [MOD, 'Spreadsheeter'],
+      roles: ['Spreadsheeter'],
     },
     {
       name: 'Datenshi',
@@ -73,7 +70,7 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
     },
     {
       name: 'Gigglebot',
-      roles: [EDITING, MOD],
+      roles: [EDITING],
     },
     {
       name: 'Grug',
@@ -109,7 +106,7 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
     },
     {
       name: 'RedHawk02',
-      roles: [MOD],
+      roles: ['Tech Guy'],
     },
     {
       name: 'Sewil',
@@ -121,7 +118,7 @@ const AboutPage: NextPage<Props, InitialProps> = props => {
     },
     {
       name: 'Zenef',
-      roles: [MOD, QC, WIKI],
+      roles: [QC, WIKI],
     },
   ];
 
