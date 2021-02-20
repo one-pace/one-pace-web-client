@@ -18,15 +18,16 @@ import Image, { media1x, media2x, media3x } from '../Image';
 interface Item {
   anime_episodes: string;
   description?: string;
-  duration: string;
+  duration?: string;
+  episodes?: Item[];
   images?: Array<{
     src: string;
     type: string;
     width: number;
   }>;
   manga_chapters: string;
-  part: number;
-  released_date: string | null;
+  part?: number;
+  released_date?: string | null;
   resolution: string;
   title: string;
   torrent_hash?: string;
@@ -40,6 +41,7 @@ interface Props {
   items: Item[];
   rowNum?: number;
   title?: string;
+  type?: 'arcs' | 'episodes';
 }
 
 interface State {
@@ -76,7 +78,9 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
     }));
 
   const placeholderImage =
-    props.aspectRatio === '4:3'
+    props.type === 'arcs' // eslint-disable-line no-nested-ternary
+      ? '/images/arcs/cover-placeholder-arc.jpg'
+      : props.aspectRatio === '4:3'
       ? '/images/unreleased-placeholder-4x3.jpg'
       : '/images/unreleased-placeholder-16x9.jpg';
 
@@ -101,14 +105,8 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
         </span>
       </h2>
       <div className={s.container}>
-        <CarouselSlider
-          activeRowItemIndex={props.activeRowItemIndex}
-          enableLooping
-          // onSliderMove={handleSliderMove}
-          parentContext={{ rowIndex: props.rowNum }}
-          totalItems={props.items?.length || 0}
-        >
-          {props.items?.map(item => {
+        {props.type === 'arcs' ? (
+          props.items?.map(item => {
             let srcFallback = placeholderImage;
             let src1x = null;
             let src2x = null;
@@ -116,22 +114,28 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
 
             if (item.images?.length) {
               if (item.images[0]?.src)
-                srcFallback = `/images/episodes/${item.images[0].src}`;
+                srcFallback = `/images/${props.type}/${item.images[0].src}`;
 
               if (item.images[1]?.src)
-                src1x = `/images/episodes/${item.images[1].src}`;
+                src1x = `/images/${props.type}/${item.images[1].src}`;
 
               if (item.images[2]?.src)
-                src2x = `/images/episodes/${item.images[2].src}`;
+                src2x = `/images/${props.type}/${item.images[2].src}`;
 
               if (item.images[3]?.src)
-                src3x = `/images/episodes/${item.images[3].src}`;
+                src3x = `/images/${props.type}/${item.images[3].src}`;
             }
 
             const image = (
               <Image
                 alt={`${item.title} image`}
-                aspectRatio={props.aspectRatio === '4:3' ? 0.75 : 0.5625}
+                aspectRatio={
+                  props.type === 'arcs' // eslint-disable-line no-nested-ternary
+                    ? 1.77777777778
+                    : props.aspectRatio === '4:3'
+                    ? 0.75
+                    : 0.5625
+                }
                 color="#282828"
                 src={srcFallback}
               >
@@ -153,11 +157,81 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                 onClick={event => handleClickItem(event, item)}
               >
                 {image}
-                <span className={s.part}>{item.part}</span>
+                {item.part && <span className={s.part}>{item.part}</span>}
               </CarouselSliderItem>
             );
-          })}
-        </CarouselSlider>
+          })
+        ) : (
+          <CarouselSlider
+            activeRowItemIndex={props.activeRowItemIndex}
+            enableLooping
+            // onSliderMove={handleSliderMove}
+            parentContext={{ rowIndex: props.rowNum }}
+            totalItems={props.items?.length || 0}
+          >
+            {props.items?.map(item => {
+              let srcFallback = placeholderImage;
+              let src1x = null;
+              let src2x = null;
+              let src3x = null;
+
+              if (item.images?.length) {
+                if (item.images[0]?.src)
+                  srcFallback = `/images/${props.type}/${item.images[0].src}`;
+
+                if (item.images[1]?.src)
+                  src1x = `/images/${props.type}/${item.images[1].src}`;
+
+                if (item.images[2]?.src)
+                  src2x = `/images/${props.type}/${item.images[2].src}`;
+
+                if (item.images[3]?.src)
+                  src3x = `/images/${props.type}/${item.images[3].src}`;
+              }
+
+              const image = (
+                <Image
+                  alt={`${item.title} image`}
+                  aspectRatio={props.aspectRatio === '4:3' ? 0.75 : 0.5625}
+                  color="#282828"
+                  src={srcFallback}
+                >
+                  {src1x && src2x && src3x && (
+                    <picture>
+                      <source
+                        media={media3x}
+                        srcSet={src3x}
+                        type="image/webp"
+                      />
+                      <source
+                        media={media2x}
+                        srcSet={src2x}
+                        type="image/webp"
+                      />
+                      <source
+                        media={media1x}
+                        srcSet={src1x}
+                        type="image/webp"
+                      />
+                      <source srcSet={srcFallback} type="image/jpeg" />
+                      <img alt="" />
+                    </picture>
+                  )}
+                </Image>
+              );
+
+              return (
+                <CarouselSliderItem
+                  key={item.title}
+                  onClick={event => handleClickItem(event, item)}
+                >
+                  {image}
+                  {item.part && <span className={s.part}>{item.part}</span>}
+                </CarouselSliderItem>
+              );
+            })}
+          </CarouselSlider>
+        )}
         <div className={s.expander}>
           <Collapse collapsed={state.isInfoCollapsed} temporary>
             <div>
@@ -235,6 +309,7 @@ Carousel.defaultProps = {
   activeRowItemIndex: undefined,
   aspectRatio: '16:9',
   rowNum: 0,
+  type: 'episodes',
 };
 
 export default Carousel;

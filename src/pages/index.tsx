@@ -12,6 +12,7 @@ import withApollo from '../core/withApollo';
 interface Props {
   arcs: [
     {
+      anime_episodes: string;
       episodes: [
         {
           anime_episodes: string;
@@ -30,6 +31,8 @@ interface Props {
           torrent_hash?: string;
         },
       ];
+      manga_chapters: string;
+      resolution: string;
       title: string;
     },
   ];
@@ -42,6 +45,7 @@ interface InitialProps {
 const GET_ALL_ARCS = gql`
   query getAllArcs {
     databaseGetAllArcs {
+      anime_episodes
       episodes {
         anime_episodes
         description
@@ -58,6 +62,14 @@ const GET_ALL_ARCS = gql`
         title
         torrent_hash
       }
+      images {
+        alt
+        src
+        type
+        width
+      }
+      manga_chapters
+      resolution
       title
     }
   }
@@ -83,6 +95,7 @@ const HomePage: NextPage<Props, InitialProps> = props => {
         {/* <Carousel title="Arcs" /> */}
         {arcs?.length && (
           <>
+            <Carousel items={arcs} title="Arcs" type="arcs" />
             <Carousel
               aspectRatio="4:3"
               items={
