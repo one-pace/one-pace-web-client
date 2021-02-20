@@ -25,7 +25,179 @@ let errorCount = 0;
 
 async function main() {
   for (const arc of arcs) {
-    prisma.arc
+    let new_arc = '';
+    switch (arc.id) {
+      case 1:
+        new_arc = 'Impel Down';
+        break;
+      case 2:
+        new_arc = 'Zou';
+        break;
+      case 3:
+        new_arc = 'Dressrosa';
+        break;
+      case 4:
+        new_arc = 'Punk Hazard';
+        break;
+      case 5:
+        new_arc = 'Fishman Island';
+        break;
+      case 6:
+        new_arc = 'Romance Dawn';
+        break;
+      case 7:
+        new_arc = 'Orange Town';
+        break;
+      case 8:
+        new_arc = 'Loguetown';
+        break;
+      case 9:
+        new_arc = 'Reverse Mountain';
+        break;
+      case 10:
+        new_arc = 'Long Ring Long Land';
+        break;
+      case 11:
+        new_arc = 'Post-Enies Lobby';
+        break;
+      case 12:
+        new_arc = 'Thriller Bark';
+        break;
+      case 13:
+        new_arc = 'Sabaody Archipelago';
+        break;
+      case 14:
+        new_arc = 'Amazon Lily';
+        break;
+      case 16:
+        new_arc = 'Return to Sabaody';
+        break;
+      case 17:
+        new_arc = 'Skypiea';
+        break;
+      case 18:
+        new_arc = 'Syrup Village';
+        break;
+      case 19:
+        new_arc = 'Whole Cake Island';
+        break;
+      case 21:
+        new_arc = 'Specials';
+        break;
+      case 40:
+        new_arc = 'Enies Lobby';
+        break;
+      case 41:
+        new_arc = 'Whisky Peak';
+        break;
+      case 42:
+        new_arc = 'Marineford';
+        break;
+      case 43:
+        new_arc = 'Post-War';
+        break;
+      case 44:
+        new_arc = 'Arlong Park';
+        break;
+      case 45:
+        new_arc = 'Little Garden';
+        break;
+      case 46:
+        new_arc = 'Drum Island';
+        break;
+      case 47:
+        new_arc = 'Arabasta';
+        break;
+      case 48:
+        new_arc = 'Jaya';
+        break;
+      case 49:
+        new_arc = 'Water Seven';
+        break;
+      case 50:
+        new_arc = 'Baratie';
+        break;
+      case 51:
+        new_arc = 'Gaimon';
+        break;
+      case 52:
+        new_arc = 'Reverie';
+        break;
+      case 53:
+        new_arc = 'Wano';
+        break;
+      default:
+        break;
+    }
+
+    const images = [];
+    let image_url = null;
+    if (new_arc !== 'Specials') {
+      image_url = `cover-${new_arc.replace(/\s/g, '-').toLowerCase()}-arc`;
+
+      const resolveBaseImage = resolveImage(
+        `${image_url}.jpg`,
+        'assets',
+        'arcs',
+      );
+      const findBaseImage = findImage(`${image_url}.jpg`, 'assets', 'arcs');
+
+      if (findBaseImage) {
+        // Add fallback image
+        if (!findImage(`${image_url}_270w.jpg`, 'public', 'arcs')) {
+          await sharp(resolveBaseImage)
+            .resize(270, 480)
+            .toFile(resolveImage(`${image_url}_270w.jpg`, 'public', 'arcs'));
+        }
+
+        images.push({
+          src: `${image_url}_270w.jpg`,
+          type: 'image/jpeg',
+          width: 270,
+        });
+
+        // Add mobile image
+        if (!findImage(`${image_url}_135w.webp`, 'public', 'arcs')) {
+          await sharp(resolveBaseImage)
+            .resize(135, 240)
+            .toFile(resolveImage(`${image_url}_135w.webp`, 'public', 'arcs'));
+        }
+
+        images.push({
+          src: `${image_url}_135w.webp`,
+          type: 'image/webp',
+          width: 135,
+        });
+
+        // Add desktop and 2x DPI image
+        if (!findImage(`${image_url}_270w.webp`, 'public', 'arcs')) {
+          await sharp(resolveBaseImage)
+            .resize(270, 480)
+            .toFile(resolveImage(`${image_url}_270w.webp`, 'public', 'arcs'));
+        }
+
+        images.push({
+          src: `${image_url}_270w.webp`,
+          type: 'image/webp',
+          width: 270,
+        });
+
+        // Add 4K and Ultrawide / 3x DPI image
+        if (!findImage(`${image_url}_405w.webp`, 'public', 'arcs')) {
+          await sharp(resolveBaseImage)
+            .resize(405, 720)
+            .toFile(resolveImage(`${image_url}_405w.webp`, 'public', 'arcs'));
+        }
+
+        images.push({
+          src: `${image_url}_405w.webp`,
+          type: 'image/webp',
+          width: 405,
+        });
+      }
+    }
+
+    await prisma.arc
       .upsert({
         create: {
           title: arc.title,
@@ -34,7 +206,7 @@ async function main() {
           manga_chapters: arc.chapters,
           torrent_hash: arc.torrent_hash,
           resolution: arc.resolution,
-          image_url: arc.image_url,
+          // image_url: arc.image_url,
           is_completed: arc.completed === 1,
           is_hidden: arc.hidden === 1,
           is_released: arc.released === 1,
@@ -46,7 +218,7 @@ async function main() {
           manga_chapters: arc.chapters,
           torrent_hash: arc.torrent_hash,
           resolution: arc.resolution,
-          image_url: arc.image_url,
+          // image_url: arc.image_url,
           is_completed: arc.completed === 1,
           is_hidden: arc.hidden === 1,
           is_released: arc.released === 1,
@@ -61,6 +233,34 @@ async function main() {
         errors.push(`[Error] Upserting arc ${arc.title}: ${err.message}`);
         errorCount += 1;
       });
+
+    for (const image of images) {
+      // console.info(image);
+      const createImage = await prisma.image
+        .create({
+          data: {
+            alt: null,
+            arc: {
+              connect: {
+                title: arc.title,
+              },
+            },
+            src: image.src,
+            type: image.type,
+            width: image.width,
+          },
+        })
+        .catch(err => {
+          console.error(err, image);
+          errors.push(
+            `[Error] Creating image for arc ${arc.title}: ${err.message}`,
+          );
+          errorCount += 1;
+        });
+
+      console.info(createImage);
+      // return createImage;
+    }
   }
 
   for (const episode of episodes) {
