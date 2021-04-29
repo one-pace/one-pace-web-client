@@ -6,6 +6,7 @@ node_modules/
 # Compiled output
 .next
 build
+out
 
 # Generate Types
 __generated__
