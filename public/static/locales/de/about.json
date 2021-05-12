@@ -1,17 +1,15 @@
 {
-  "title": "Was ist One Pace?",
   "description": "One Pace ist ein im März 2013 begonnenes Fanprojekt, mit dem Ziel den Manga treuer als die Toei Adaption umzusetzen. Wir schneiden Fillerszenen, Reactionshots, die nicht im Manga erscheinen und gestreckte Szenen aus, und strukturieren Szenen um, damit wir Godas Manga treuer bleiben.",
-  "team": "Das Team",
   "editing": "Editing",
-  "timing": "Timing",
+  "graphics": "Graphiker",
+  "musicer": "Music master",
   "qc": "QK",
   "qualityChecking": "Qualitätskontrolle",
-  "vfx": "Visual Effects Designer",
-  "graphics": "Graphiker",
-  "musicer": "Music Master",
-  "webmaster": "Webmaster",
+  "subtitleEditing": "Korrekturlesung",
+  "team": "Das Team",
+  "timing": "Timing",
+  "title": "Was ist One Pace?",
   "translation": "Übersetzung",
-  "memorialTitle": "Gedenkstätte",
-  "memorialDescription": "In Gedenken unseres geliebten Teammitglieds, Feeso, ein guter Mann und unser Nakama, der mit uns durch dick und dünn ging. Nachdem sich die Vernehmung des F.B.I. als erfolglos erwies, wurde er der CP-9 übergeben und im untersten Level Impel Downs eingesperrt. Seitdem hat man nichts mehr von ihm gehört.",
-  "memorialF": "F"
+  "vfx": "Visual Effects Designer",
+  "webmaster": "Webmaster"
 }
