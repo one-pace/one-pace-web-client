@@ -32,18 +32,19 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
   const JPES = `JP-ES ${TRANSLATION}`;
   const JPFR = `JP-FR ${TRANSLATION}`;
   const JPPT = `JP-PT ${TRANSLATION}`;
+  const JPAR = `JP-AR ${TRANSLATION}`;
 
   const KTIMING = `Karaoke ${TIMING}`;
 
   const team = [
     {
       name: 'Bastia',
-      roles: ['Recruiter', TIMING],
+      roles: ['Recruiter', 'Stoat', TIMING],
     },
-    {
-      name: 'CyberLariat',
-      roles: ['Spreadsheeter'],
-    },
+    // {
+    //   name: 'CyberLariat',
+    //   roles: ['Spreadsheeter'],
+    // },
     {
       name: 'Datenshi',
       roles: [GRAPHICS, TIMING],
@@ -83,10 +84,6 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
     {
       name: 'Kaitou Yahiko',
       roles: [GRAPHICS, KTIMING, TIMING, VFX],
-    },
-    {
-      name: 'Lance',
-      roles: [TIMING],
     },
     {
       name: 'Meggo',
@@ -202,7 +199,30 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
     },
   ];
 
+  const arTeam = [
+    {
+      name: 'FhdKSA',
+      roles: [JPAR],
+    },
+    {
+      name: 'Ibfinity',
+      roles: [JPAR],
+    },
+    {
+      name: 'JaNKeeeZ',
+      roles: [JPAR],
+    },
+  ];
+
   const formerTeam = [
+    {
+      name: 'Alasta',
+      roles: [QC],
+    },
+    {
+      name: 'Bernie Crane',
+      roles: [QC],
+    },
     {
       name: 'Danpmss',
       roles: [JPES, QC],
@@ -228,12 +248,24 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
       roles: [QC],
     },
     {
+      name: 'Ibaraki',
+      roles: [QC],
+    },
+    {
       name: 'ItsKipz',
       roles: [QC],
     },
     {
-      name: 'Madiev',
+      name: 'Lance',
+      roles: [TIMING],
+    },
+    {
+      name: 'MadieV',
       roles: [MUSIC],
+    },
+    {
+      name: 'Meggo',
+      roles: [QC],
     },
     {
       name: 'Mr. Luffy',
@@ -261,7 +293,14 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           <p>{t('description')}</p>
         </section>
         <section className={s.container}>
-          <h1>{t('team')}</h1>
+          <h2>Peewee-Sama</h2>
+          <div>
+            <h3>CyberLariat</h3>
+            <p>Overlord</p>
+          </div>
+        </section>
+        <section className={s.container}>
+          <h2>{t('team')}</h2>
           <div className={s.grid}>
             {team.map(m => (
               <div>
@@ -276,7 +315,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h1>Spanish Team</h1>
+          <h2>Spanish Team</h2>
           <div className={s.grid}>
             {esTeam.map(m => (
               <div>
@@ -286,7 +325,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h1>French Team</h1>
+          <h2>French Team</h2>
           <div className={s.grid}>
             {frTeam.map(m => (
               <div>
@@ -296,7 +335,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h1>German Team</h1>
+          <h2>German Team</h2>
           <div className={s.grid}>
             {deTeam.map(m => (
               <div>
@@ -306,7 +345,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h1>Portuguese Team</h1>
+          <h2>Portuguese Team</h2>
           <div className={s.grid}>
             {ptTeam.map(m => (
               <div>
@@ -316,7 +355,17 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h1>Former Team Roles</h1>
+          <h2>Arabic Team</h2>
+          <div className={s.grid}>
+            {arTeam.map(m => (
+              <div>
+                <h3>{m.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={s.container}>
+          <h2>Former Team Roles</h2>
           <div className={s.grid}>
             {formerTeam.map(m => (
               <div>
