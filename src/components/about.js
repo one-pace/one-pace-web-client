@@ -111,16 +111,8 @@ class About extends React.Component {
             </tbody>
           </table>
         </div>
-        <div>
-          <h2>{I18n.t('about.memorialTitle')}</h2>
-          <p>{I18n.t('about.memorialDescription')}</p>
-          <div className="pay-respects">
-            <button onClick={this.payRespects}>{I18n.t('about.memorialF')}</button>
-          </div>
-          <img alt="" src={require('../images/MasterRoshiSmoking.png')} />
-        </div>
       </div>
-    )
+    );
   }
 }
 

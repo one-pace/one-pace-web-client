@@ -465,3 +465,25 @@ table.torrents-list {
 		background-color: #333;
 	}
 }
+
+header.recruitment-notice {
+  background: #ff050a;
+  font-size: 1.44rem;
+  font-weight: 700;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.with-sidebar {
+  display: grid;
+  grid-template: 0 auto auto / 1fr;
+
+  @media (min-width: 1200px) {
+    grid-template: auto / 1fr 5fr 1fr;
+  }
+
+  > aside {
+    margin: 0 auto;
+    padding: 50px 16px;
+  }
+}
