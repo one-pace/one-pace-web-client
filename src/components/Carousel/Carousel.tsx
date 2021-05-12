@@ -105,8 +105,14 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
         </span>
       </h2>
       <div className={s.container}>
-        {props.type === 'arcs' ? (
-          props.items?.map(item => {
+        <CarouselSlider
+          activeRowItemIndex={props.activeRowItemIndex}
+          enableLooping
+          // onSliderMove={handleSliderMove}
+          parentContext={{ rowIndex: props.rowNum }}
+          totalItems={props.items?.length || 0}
+        >
+          {props.items?.map(item => {
             let srcFallback = placeholderImage;
             let src1x = null;
             let src2x = null;
@@ -157,81 +163,13 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
                 onClick={event => handleClickItem(event, item)}
               >
                 {image}
-                {item.part && <span className={s.part}>{item.part}</span>}
+                {typeof item.part === 'number' && (
+                  <span className={s.part}>{item.part}</span>
+                )}
               </CarouselSliderItem>
             );
-          })
-        ) : (
-          <CarouselSlider
-            activeRowItemIndex={props.activeRowItemIndex}
-            enableLooping
-            // onSliderMove={handleSliderMove}
-            parentContext={{ rowIndex: props.rowNum }}
-            totalItems={props.items?.length || 0}
-          >
-            {props.items?.map(item => {
-              let srcFallback = placeholderImage;
-              let src1x = null;
-              let src2x = null;
-              let src3x = null;
-
-              if (item.images?.length) {
-                if (item.images[0]?.src)
-                  srcFallback = `/images/${props.type}/${item.images[0].src}`;
-
-                if (item.images[1]?.src)
-                  src1x = `/images/${props.type}/${item.images[1].src}`;
-
-                if (item.images[2]?.src)
-                  src2x = `/images/${props.type}/${item.images[2].src}`;
-
-                if (item.images[3]?.src)
-                  src3x = `/images/${props.type}/${item.images[3].src}`;
-              }
-
-              const image = (
-                <Image
-                  alt={`${item.title} image`}
-                  aspectRatio={props.aspectRatio === '4:3' ? 0.75 : 0.5625}
-                  color="#282828"
-                  src={srcFallback}
-                >
-                  {src1x && src2x && src3x && (
-                    <picture>
-                      <source
-                        media={media3x}
-                        srcSet={src3x}
-                        type="image/webp"
-                      />
-                      <source
-                        media={media2x}
-                        srcSet={src2x}
-                        type="image/webp"
-                      />
-                      <source
-                        media={media1x}
-                        srcSet={src1x}
-                        type="image/webp"
-                      />
-                      <source srcSet={srcFallback} type="image/jpeg" />
-                      <img alt="" />
-                    </picture>
-                  )}
-                </Image>
-              );
-
-              return (
-                <CarouselSliderItem
-                  key={item.title}
-                  onClick={event => handleClickItem(event, item)}
-                >
-                  {image}
-                  {item.part && <span className={s.part}>{item.part}</span>}
-                </CarouselSliderItem>
-              );
-            })}
-          </CarouselSlider>
-        )}
+          })}
+        </CarouselSlider>
         <div className={s.expander}>
           <Collapse collapsed={state.isInfoCollapsed} temporary>
             <div>
