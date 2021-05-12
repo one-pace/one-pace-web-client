@@ -92,7 +92,6 @@ const HomePage: NextPage<Props, InitialProps> = props => {
   return (
     <Layout title="One Pace">
       <main>
-        {/* <Carousel title="Arcs" /> */}
         {arcs?.length && (
           <>
             <Carousel items={arcs} title="Arcs" type="arcs" />

@@ -11,6 +11,7 @@
 }
 
 .container {
+  align-items: center;
   display: flex;
   margin: 0;
   padding: 8px 4%;
@@ -19,6 +20,10 @@
 
   @media (min-width: 1500px) {
     padding: 8px 60px;
+  }
+
+  :global(.rmd-floating-label) {
+    background: #141414;
   }
 
   nav {
