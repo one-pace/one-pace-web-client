@@ -132,69 +132,63 @@ async function main() {
 
     const images = [];
     let image_url = null;
-    if (new_arc !== 'Specials') {
-      image_url = `cover-${new_arc.replace(/\s/g, '-').toLowerCase()}-arc`;
+    image_url = `cover-${new_arc.replace(/\s/g, '-').toLowerCase()}-arc`;
 
-      const resolveBaseImage = resolveImage(
-        `${image_url}.jpg`,
-        'assets',
-        'arcs',
-      );
-      const findBaseImage = findImage(`${image_url}.jpg`, 'assets', 'arcs');
+    const resolveBaseImage = resolveImage(`${image_url}.jpg`, 'assets', 'arcs');
+    const findBaseImage = findImage(`${image_url}.jpg`, 'assets', 'arcs');
 
-      if (findBaseImage) {
-        // Add fallback image
-        if (!findImage(`${image_url}_270w.jpg`, 'public', 'arcs')) {
-          await sharp(resolveBaseImage)
-            .resize(270, 480)
-            .toFile(resolveImage(`${image_url}_270w.jpg`, 'public', 'arcs'));
-        }
-
-        images.push({
-          src: `${image_url}_270w.jpg`,
-          type: 'image/jpeg',
-          width: 270,
-        });
-
-        // Add mobile image
-        if (!findImage(`${image_url}_135w.webp`, 'public', 'arcs')) {
-          await sharp(resolveBaseImage)
-            .resize(135, 240)
-            .toFile(resolveImage(`${image_url}_135w.webp`, 'public', 'arcs'));
-        }
-
-        images.push({
-          src: `${image_url}_135w.webp`,
-          type: 'image/webp',
-          width: 135,
-        });
-
-        // Add desktop and 2x DPI image
-        if (!findImage(`${image_url}_270w.webp`, 'public', 'arcs')) {
-          await sharp(resolveBaseImage)
-            .resize(270, 480)
-            .toFile(resolveImage(`${image_url}_270w.webp`, 'public', 'arcs'));
-        }
-
-        images.push({
-          src: `${image_url}_270w.webp`,
-          type: 'image/webp',
-          width: 270,
-        });
-
-        // Add 4K and Ultrawide / 3x DPI image
-        if (!findImage(`${image_url}_405w.webp`, 'public', 'arcs')) {
-          await sharp(resolveBaseImage)
-            .resize(405, 720)
-            .toFile(resolveImage(`${image_url}_405w.webp`, 'public', 'arcs'));
-        }
-
-        images.push({
-          src: `${image_url}_405w.webp`,
-          type: 'image/webp',
-          width: 405,
-        });
+    if (findBaseImage) {
+      // Add fallback image
+      if (!findImage(`${image_url}_270w.jpg`, 'public', 'arcs')) {
+        await sharp(resolveBaseImage)
+          .resize(270, 480)
+          .toFile(resolveImage(`${image_url}_270w.jpg`, 'public', 'arcs'));
       }
+
+      images.push({
+        src: `${image_url}_270w.jpg`,
+        type: 'image/jpeg',
+        width: 270,
+      });
+
+      // Add mobile image
+      if (!findImage(`${image_url}_135w.webp`, 'public', 'arcs')) {
+        await sharp(resolveBaseImage)
+          .resize(135, 240)
+          .toFile(resolveImage(`${image_url}_135w.webp`, 'public', 'arcs'));
+      }
+
+      images.push({
+        src: `${image_url}_135w.webp`,
+        type: 'image/webp',
+        width: 135,
+      });
+
+      // Add desktop and 2x DPI image
+      if (!findImage(`${image_url}_270w.webp`, 'public', 'arcs')) {
+        await sharp(resolveBaseImage)
+          .resize(270, 480)
+          .toFile(resolveImage(`${image_url}_270w.webp`, 'public', 'arcs'));
+      }
+
+      images.push({
+        src: `${image_url}_270w.webp`,
+        type: 'image/webp',
+        width: 270,
+      });
+
+      // Add 4K and Ultrawide / 3x DPI image
+      if (!findImage(`${image_url}_405w.webp`, 'public', 'arcs')) {
+        await sharp(resolveBaseImage)
+          .resize(405, 720)
+          .toFile(resolveImage(`${image_url}_405w.webp`, 'public', 'arcs'));
+      }
+
+      images.push({
+        src: `${image_url}_405w.webp`,
+        type: 'image/webp',
+        width: 405,
+      });
     }
 
     await prisma.arc
@@ -414,73 +408,71 @@ async function main() {
 
     const images = [];
     let image_url = null;
-    if (new_arc !== 'Specials') {
-      let new_part = `${episode.part}`;
-      if (episode.part >= 1 && episode.part < 10) {
-        new_part = `0${episode.part}`;
+    let new_part = `${episode.part}`;
+    if (episode.part >= 0 && episode.part < 10) {
+      new_part = `0${episode.part}`;
+    }
+    image_url = `cover-${new_arc
+      .replace(/\s/g, '-')
+      .toLowerCase()}-${new_part}`;
+
+    // console.info(image_url);
+
+    const resolveBaseImage = resolveImage(`${image_url}.jpg`, 'assets');
+    const findBaseImage = findImage(`${image_url}.jpg`, 'assets');
+
+    if (findBaseImage) {
+      // Add fallback image
+      if (!findImage(`${image_url}_480w.jpg`)) {
+        await sharp(resolveBaseImage)
+          .resize(480, image_ratio === '4:3' ? 360 : 270)
+          .toFile(resolveImage(`${image_url}_480w.jpg`));
       }
-      image_url = `cover-${new_arc
-        .replace(/\s/g, '-')
-        .toLowerCase()}-${new_part}`;
 
-      // console.info(image_url);
+      images.push({
+        src: `${image_url}_480w.jpg`,
+        type: 'image/jpeg',
+        width: 480,
+      });
 
-      const resolveBaseImage = resolveImage(`${image_url}.jpg`, 'assets');
-      const findBaseImage = findImage(`${image_url}.jpg`, 'assets');
-
-      if (findBaseImage) {
-        // Add fallback image
-        if (!findImage(`${image_url}_480w.jpg`)) {
-          await sharp(resolveBaseImage)
-            .resize(480, image_ratio === '4:3' ? 360 : 270)
-            .toFile(resolveImage(`${image_url}_480w.jpg`));
-        }
-
-        images.push({
-          src: `${image_url}_480w.jpg`,
-          type: 'image/jpeg',
-          width: 480,
-        });
-
-        // Add mobile image
-        if (!findImage(`${image_url}_240w.webp`)) {
-          await sharp(resolveBaseImage)
-            .resize(240, image_ratio === '4:3' ? 180 : 135)
-            .toFile(resolveImage(`${image_url}_240w.webp`));
-        }
-
-        images.push({
-          src: `${image_url}_240w.webp`,
-          type: 'image/webp',
-          width: 240,
-        });
-
-        // Add desktop and 2x DPI image
-        if (!findImage(`${image_url}_480w.webp`)) {
-          await sharp(resolveBaseImage)
-            .resize(480, image_ratio === '4:3' ? 360 : 270)
-            .toFile(resolveImage(`${image_url}_480w.webp`));
-        }
-
-        images.push({
-          src: `${image_url}_480w.webp`,
-          type: 'image/webp',
-          width: 480,
-        });
-
-        // Add 4K and Ultrawide / 3x DPI image
-        if (!findImage(`${image_url}_720w.webp`)) {
-          await sharp(resolveBaseImage)
-            .resize(720, image_ratio === '4:3' ? 540 : 405)
-            .toFile(resolveImage(`${image_url}_720w.webp`));
-        }
-
-        images.push({
-          src: `${image_url}_720w.webp`,
-          type: 'image/webp',
-          width: 720,
-        });
+      // Add mobile image
+      if (!findImage(`${image_url}_240w.webp`)) {
+        await sharp(resolveBaseImage)
+          .resize(240, image_ratio === '4:3' ? 180 : 135)
+          .toFile(resolveImage(`${image_url}_240w.webp`));
       }
+
+      images.push({
+        src: `${image_url}_240w.webp`,
+        type: 'image/webp',
+        width: 240,
+      });
+
+      // Add desktop and 2x DPI image
+      if (!findImage(`${image_url}_480w.webp`)) {
+        await sharp(resolveBaseImage)
+          .resize(480, image_ratio === '4:3' ? 360 : 270)
+          .toFile(resolveImage(`${image_url}_480w.webp`));
+      }
+
+      images.push({
+        src: `${image_url}_480w.webp`,
+        type: 'image/webp',
+        width: 480,
+      });
+
+      // Add 4K and Ultrawide / 3x DPI image
+      if (!findImage(`${image_url}_720w.webp`)) {
+        await sharp(resolveBaseImage)
+          .resize(720, image_ratio === '4:3' ? 540 : 405)
+          .toFile(resolveImage(`${image_url}_720w.webp`));
+      }
+
+      images.push({
+        src: `${image_url}_720w.webp`,
+        type: 'image/webp',
+        width: 720,
+      });
     }
 
     const findEpisode = await prisma.episode
