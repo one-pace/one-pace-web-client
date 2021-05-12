@@ -16,11 +16,12 @@ const withSass = require('@zeit/next-sass');
 const isDebug = !process.argv.includes('--release');
 
 const localeSubpaths = {
-  // de: 'de',
+  ar: 'ar',
+  de: 'de',
   en: 'en',
   es: 'es',
   fr: 'fr',
-  // jp: 'jp',
+  jp: 'jp',
   pt: 'pt',
 };
 
