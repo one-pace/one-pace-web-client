@@ -31,6 +31,13 @@ interface Item {
   resolution: string;
   title: string;
   torrent_hash?: string;
+  translations?: Array<{
+    description?: string;
+    language: {
+      code: string;
+    };
+    title: string;
+  }>;
 }
 
 interface Props {
@@ -55,7 +62,7 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
     isInfoCollapsed: true,
   });
 
-  const { t } = useTranslation('common');
+  const { i18n, t } = useTranslation('common');
 
   const handleClickItem = (
     event: React.MouseEvent<HTMLDivElement>,
@@ -87,15 +94,41 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
   const unavailable = <em>Unavailable</em>;
 
   let currentItemReleaseDate: React.ReactNode | string = unavailable;
-  if (state.currentItem?.released_date?.length) {
-    if (state.currentItem.released_date === 'Unreleased') {
-      currentItemReleaseDate = t('unreleased');
-    } else {
-      currentItemReleaseDate = DateTime.fromISO(
-        state.currentItem.released_date,
-      ).toLocaleString();
+
+  // Run this check once for optimization
+  let isThereCurrentItem = state.currentItem;
+
+  let title = (isThereCurrentItem && state.currentItem.title) || 'Untitled';
+
+  let description: React.ReactElement | string = (isThereCurrentItem && state.currentItem.description) || (
+    <em>{t('description-unavailable')}.</em>
+  );
+
+  if (isThereCurrentItem) {
+    if (state.currentItem.released_date?.length) {
+      if (state.currentItem.released_date === 'Unreleased') {
+        currentItemReleaseDate = t('unreleased');
+      } else {
+        currentItemReleaseDate = DateTime.fromISO(
+          state.currentItem.released_date,
+        ).toLocaleString();
+      }
+    }
+
+    if (state.currentItem.translations?.length) {
+      state.currentItem.translations.some(tl => {
+        if (tl.language.code === i18n.language) {
+          if (tl.title) title = tl.title;
+          if (tl.description) description = tl.description;
+
+          return true;
+        }
+
+        return false;
+      });
     }
   }
+
 
   return (
     <section className={s.root}>
@@ -175,11 +208,9 @@ const Carousel: React.FunctionComponent<Props> = (props: Props) => {
             <div>
               {state.currentItem && (
                 <div className={s.infoContainer}>
-                  <h2>{state.currentItem.title || 'Untitled'}</h2>
+                  <h2>{title}</h2>
                   <p className={s.description}>
-                    {state.currentItem.description || (
-                      <em>{t('description-unavailable')}.</em>
-                    )}
+                    {description}
                   </p>
                   <p>
                     {t('chapters')}:{' '}

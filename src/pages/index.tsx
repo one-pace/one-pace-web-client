@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import { GetServerSideProps, NextPage } from 'next';
@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import Carousel from '../components/Carousel';
 
 // import { useTranslation } from '../core/i18n';
+import AppContext from '../context';
 import withApollo from '../core/withApollo';
 
 interface Props {
@@ -29,11 +30,25 @@ interface Props {
           resolution: string;
           title: string;
           torrent_hash?: string;
+          translations?: Array<{
+            description?: string;
+            language: {
+              code: string;
+            };
+            title: string;
+          }>;
         },
       ];
       manga_chapters: string;
       resolution: string;
       title: string;
+      translations?: Array<{
+        description?: string;
+        language: {
+          code: string;
+        };
+        title: string;
+      }>;
     },
   ];
 }
@@ -61,6 +76,13 @@ const GET_ALL_ARCS = gql`
         resolution
         title
         torrent_hash
+        translations {
+          description
+          language {
+            code
+          }
+          title
+        }
       }
       images {
         alt
@@ -71,11 +93,19 @@ const GET_ALL_ARCS = gql`
       manga_chapters
       resolution
       title
+      translations {
+        language {
+          code
+        }
+        title
+      }
     }
   }
 `;
 
 const HomePage: NextPage<Props, InitialProps> = props => {
+  const { language } = useContext(AppContext);
+
   const [arcs, setArcs] = useState(props.arcs);
 
   // const { t } = useTranslation('common');
@@ -95,285 +125,35 @@ const HomePage: NextPage<Props, InitialProps> = props => {
         {arcs?.length && (
           <>
             <Carousel items={arcs} title="Arcs" type="arcs" />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Romance Dawn',
-                )[0]?.episodes
+            {arcs?.map((arc) => {
+              let aspectRatio: '16:9' | '4:3' = '16:9';
+
+              if (arc.resolution === '480p' || arc.title === 'Romance Dawn')
+                aspectRatio = '4:3';
+
+              let title = arc.title;
+
+              if (arc.translations?.length) {
+                arc.translations.some(tl => {
+                  if (tl.language.code === language) {
+                    if (tl.title) title = tl.title;
+                    // if (tl.description) description = tl.description;
+
+                    return true;
+                  }
+
+                  return false;
+                });
               }
-              title="Romance Dawn"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Orange Town',
-                )[0]?.episodes
-              }
-              title="Orange Town"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Syrup Village',
-                )[0]?.episodes
-              }
-              title="Syrup Village"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Gaimon',
-                )[0]?.episodes
-              }
-              title="Gaimon"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Baratie',
-                )[0]?.episodes
-              }
-              title="Baratie"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Arlong Park',
-                )[0]?.episodes
-              }
-              title="Arlong Park"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Loguetown',
-                )[0]?.episodes
-              }
-              title="Loguetown"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Reverse Mountain',
-                )[0]?.episodes
-              }
-              title="Reverse Mountain"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Whisky Peak',
-                )[0]?.episodes
-              }
-              title="Whisky Peak"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Little Garden',
-                )[0]?.episodes
-              }
-              title="Little Garden"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Drum Island',
-                )[0]?.episodes
-              }
-              title="Drum Island"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Arabasta',
-                )[0]?.episodes
-              }
-              title="Arabasta"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Jaya',
-                )[0]?.episodes
-              }
-              title="Jaya"
-            />
-            <Carousel
-              aspectRatio="4:3"
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Skypiea',
-                )[0]?.episodes
-              }
-              title="Skypiea"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) =>
-                    arc.title === 'Long Ring Long Land',
-                )[0]?.episodes
-              }
-              title="Long Ring Long Land"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Water Seven',
-                )[0]?.episodes
-              }
-              title="Water Seven"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Enies Lobby',
-                )[0]?.episodes
-              }
-              title="Enies Lobby"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Post-Enies Lobby',
-                )[0]?.episodes
-              }
-              title="Post-Enies Lobby"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Thriller Bark',
-                )[0]?.episodes
-              }
-              title="Thriller Bark"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) =>
-                    arc.title === 'Sabaody Archipelago',
-                )[0]?.episodes
-              }
-              title="Sabaody Archipelago"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Amazon Lily',
-                )[0]?.episodes
-              }
-              title="Amazon Lily"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Impel Down',
-                )[0]?.episodes
-              }
-              title="Impel Down"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Marineford',
-                )[0]?.episodes
-              }
-              title="Marineford"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Post-War',
-                )[0]?.episodes
-              }
-              title="Post-War"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Return to Sabaody',
-                )[0]?.episodes
-              }
-              title="Return to Sabaody"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Fishman Island',
-                )[0]?.episodes
-              }
-              title="Fishman Island"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Punk Hazard',
-                )[0]?.episodes
-              }
-              title="Punk Hazard"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Dressrosa',
-                )[0]?.episodes
-              }
-              title="Dressrosa"
-            />
-            <Carousel
-              items={
-                arcs?.filter((arc: { title: string }) => arc.title === 'Zou')[0]
-                  ?.episodes
-              }
-              title="Zou"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Whole Cake Island',
-                )[0]?.episodes
-              }
-              title="Whole Cake Island"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Reverie',
-                )[0]?.episodes
-              }
-              title="Reverie"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Wano',
-                )[0]?.episodes
-              }
-              title="Wano"
-            />
-            <Carousel
-              items={
-                arcs?.filter(
-                  (arc: { title: string }) => arc.title === 'Specials',
-                )[0]?.episodes
-              }
-              title="Specials"
-            />
+
+              return (
+                <Carousel
+                  aspectRatio={aspectRatio}
+                  items={arc.episodes}
+                  title={title}
+                />
+              )
+            })}
           </>
         )}
       </main>
@@ -407,9 +187,31 @@ export const getServerSideProps: GetServerSideProps = async () => {
             resolution: true,
             title: true,
             torrent_hash: true,
+            translations: {
+              select: {
+                description: true,
+                language: {
+                  select: {
+                    code: true,
+                  },
+                },
+                title: true,
+              },
+            },
           },
         },
         title: true,
+        translations: {
+          select: {
+            // description: true,
+            language: {
+              select: {
+                code: true,
+              },
+            },
+            title: true,
+          },
+        },
       },
     })
     .catch(_err => {
