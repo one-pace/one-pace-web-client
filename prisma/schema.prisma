@@ -25,7 +25,7 @@ datasource onepace {
 // import { Prisma Client } from '@prisma/client'
 generator client {
   provider = "prisma-client-js"
-  output = "../node_modules/.prisma/client"
+  output   = "../node_modules/.prisma/client"
 }
 
 // Next steps:
@@ -35,77 +35,109 @@ generator client {
 // 4. Start using Prisma Client JS in your application
 
 model Arc {
-  id              String     @default(cuid()) @id
-  episodes        Episode[]
-  title           String     @unique
-  description     String
-  manga_chapters  String
-  anime_episodes  String
-  torrent_hash    String
-  resolution      String
-  images          Image[]
-  is_completed    Boolean
-  is_hidden       Boolean
-  is_released     Boolean
-  created_at      DateTime   @default(now())
-  updated_at      DateTime   @updatedAt
+  id             String           @id @default(cuid())
+  anime_episodes String
+  episodes       Episode[]
+  description    String           @onepace.VarChar(1000)
+  images         Image[]
+  is_completed   Boolean
+  is_hidden      Boolean
+  is_released    Boolean
+  manga_chapters String
+  resolution     String
+  title          String           @unique
+  torrent_hash   String
+  translations   ArcTranslation[]
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+}
+
+model ArcTranslation {
+  id          String    @id @default(cuid())
+  arc         Arc       @relation(fields: [arc_id], references: [id])
+  arc_id      String
+  description String?   @onepace.VarChar(1000)
+  language    Language  @relation(fields: [language_id], references: [id])
+  language_id String
+  title       String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
 }
 
 model Episode {
-  id              String    @default(cuid()) @id
-  arc             Arc       @relation(fields: [arc_id], references: [id])
-  arc_id          String
-  title           String    @unique
+  id                 String                @id @default(cuid())
+  arc                Arc                   @relation(fields: [arc_id], references: [id])
+  arc_id             String
+  anime_episodes     String
+  crc32              String
+  description        String                @onepace.VarChar(1000)
+  duration           String
+  images             Image[]
+  manga_chapters     String
+  openload           String
+  part               Int
+  released_date      String
+  resolution         String
+  status             String
+  title              String                @unique
+  torrent_hash       String
+  translations       EpisodeTranslation[]
+  created_at         DateTime              @default(now())
+  updated_at         DateTime              @updatedAt
+}
 
-  // Has to be VarChar(1000) - already taken care of in migrations/
-  description     String
-
-  part            Int
-  manga_chapters  String
-  anime_episodes  String
-  crc32           String
-  torrent_hash    String
-  resolution      String
-  duration        String
-  images          Image[]
-  released_date   String
-  status          String
-  openload        String
-  created_at      DateTime  @default(now())
-  updated_at      DateTime  @updatedAt
+model EpisodeTranslation {
+  id          String    @id @default(cuid())
+  description String?   @onepace.VarChar(1000)
+  episode     Episode   @relation(fields: [episode_id], references: [id])
+  episode_id  String
+  language    Language  @relation(fields: [language_id], references: [id])
+  language_id String
+  title       String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
 }
 
 model Image {
-  id          String    @default(cuid()) @id
-  arc         Arc?      @relation(fields: [arc_id], references: [id])
-  arc_id      String?
-  alt         String?
-  episode     Episode?  @relation(fields: [episode_id], references: [id])
-  episode_id  String?
-  src         String    @unique
-  type        String
-  width       Int
+  id         String   @id @default(cuid())
+  arc        Arc?     @relation(fields: [arc_id], references: [id])
+  arc_id     String?
+  alt        String?
+  episode    Episode? @relation(fields: [episode_id], references: [id])
+  episode_id String?
+  src        String   @unique
+  type       String
+  width      Int
+}
+
+model Language {
+  id                    String                @id @default(cuid())
+  arc_translations      ArcTranslation[]
+  code                  String                @unique
+  episode_translations  EpisodeTranslation[]
+  name                  String                @unique
+  nameNative            String?
 }
 
 model User {
-  id          String        @default(cuid()) @id
-  email       String        @unique
-  password    String
-  profile     UserProfile?
-  role        UserRole      @default(USER)
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @updatedAt
+  id         String       @id @default(cuid())
+  email      String       @unique
+  password   String
+  profile    UserProfile?
+  role       UserRole     @default(USER)
+  created_at DateTime     @default(now())
+  updated_at DateTime     @updatedAt
 }
 
 model UserProfile {
-  id           String     @default(cuid()) @id
-  user         User?      @relation(fields: [user_id], references: [id])
-  user_id      String?
-  name         String
-  country      String?
-  picture      String?
-  created_at    DateTime  @default(now())
-  updated_at    DateTime  @updatedAt
+  id         String   @id @default(cuid())
+  user       User?    @relation(fields: [user_id], references: [id])
+  user_id    String?
+  name       String
+  country    String?
+  picture    String?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 enum UserRole {
