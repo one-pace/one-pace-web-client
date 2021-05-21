@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import s from './CarouselSlider.css';
+import s from './CarouselSlider.module.css';
 
 import { SliderContext } from '../../context';
 import useSizeElement from './useSizeElement';

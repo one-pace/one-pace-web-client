@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ListboxChangeEventHandler, Select } from '@react-md/form';
 import { ArrowDropDownSVGIcon } from '@react-md/material-icons';
 
-import s from './Header.css';
+import s from './Header.module.css';
 import { useTranslation } from '../../core/i18n';
 import { media1x, media2x, media3x } from '../Image';
 import Navigation from '../Navigation';

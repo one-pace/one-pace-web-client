@@ -43,8 +43,3 @@
     margin: 0;
   }
 }
-
-:global(.md-circular-progress-path) {
-  stroke: #ffad6c;
-  stroke: var(--lodus-orange);
-}

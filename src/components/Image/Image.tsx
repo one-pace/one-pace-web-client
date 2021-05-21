@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { mdiSyncCircle, mdiImageBroken } from '@mdi/js';
 import Icon from '@mdi/react';
 
-import s from './Image.css';
+import s from './Image.module.css';
 
 interface Image {
   defaultProps: Props;

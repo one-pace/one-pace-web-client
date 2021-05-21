@@ -8,7 +8,7 @@ import { TextIconSpacing } from '@react-md/icon';
 import { CloseSVGIcon, CloudDownloadSVGIcon } from '@react-md/material-icons';
 import { Collapse } from '@react-md/transition';
 
-import s from './Carousel.css';
+import s from './Carousel.module.css';
 
 import CarouselSlider from '../CarouselSlider';
 import CarouselSliderItem from '../CarouselSliderItem';

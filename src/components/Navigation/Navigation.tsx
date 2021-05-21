@@ -4,7 +4,7 @@ import cn from 'classnames';
 // import { Icon } from '@mdi/react';
 import Link from 'next/link';
 
-import s from './Navigation.css';
+import s from './Navigation.module.css';
 
 type Props = {
   className?: string;

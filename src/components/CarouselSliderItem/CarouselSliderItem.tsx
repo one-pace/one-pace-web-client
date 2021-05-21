@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
 
-import s from './CarouselSliderItem.css';
+import s from './CarouselSliderItem.module.css';
 
 import { SliderContext } from '../../context';
 

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 // import cn from 'classnames';
 
-import s from './Layout.css';
+import s from './Layout.module.css';
 
 import AppContext from '../../context';
 import Header from '../Header';

@@ -84,36 +84,3 @@
 .hidden {
   display: none;
 } */
-
-:global(.Navigation-mobile) {
-  background: rgba(38, 50, 56, 0.8);
-  margin: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 300ms ease;
-  transform: scaleY(0);
-  transform-origin: top center;
-  visibility: hidden;
-
-  &:global(.menuOpen) {
-    opacity: 1;
-    transform: scaleY(1);
-    visibility: visible;
-  }
-
-  :global(.md-btn) {
-    margin: 8px;
-  }
-
-  ul {
-    display: block;
-
-    li:not(:last-child) {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    }
-  }
-
-  .link:hover a {
-    color: rgba(255, 255, 255, 0.6);
-  }
-}

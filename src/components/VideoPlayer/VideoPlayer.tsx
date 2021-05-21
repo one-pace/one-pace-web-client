@@ -1,6 +1,6 @@
 import React from 'react';
 
-import s from './VideoPlayer.css';
+import s from './VideoPlayer.module.css';
 
 interface Props {
   file?: string;
