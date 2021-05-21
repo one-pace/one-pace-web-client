@@ -33,6 +33,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
   const JPFR = `JP-FR ${TRANSLATION}`;
   const JPPT = `JP-PT ${TRANSLATION}`;
   const JPAR = `JP-AR ${TRANSLATION}`;
+  const JPIT = `JP-IT ${TRANSLATION}`;
 
   const KTIMING = `Karaoke ${TIMING}`;
 
@@ -214,7 +215,18 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
     },
   ];
 
-  const formerTeam = [
+  const itTeam = [
+    {
+      name: 'Corazon',
+      roles: [JPIT],
+    },
+    {
+      name: 'shows',
+      roles: [JPIT],
+    },
+  ];
+
+  const formerRoles = [
     {
       name: 'Alasta',
       roles: [QC],
@@ -315,7 +327,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h2>Spanish Team</h2>
+          <h2>{t('team-es')}</h2>
           <div className={s.grid}>
             {esTeam.map(m => (
               <div>
@@ -325,7 +337,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h2>French Team</h2>
+          <h2>{t('team-fr')}</h2>
           <div className={s.grid}>
             {frTeam.map(m => (
               <div>
@@ -335,7 +347,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h2>German Team</h2>
+          <h2>{t('team-de')}</h2>
           <div className={s.grid}>
             {deTeam.map(m => (
               <div>
@@ -345,7 +357,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h2>Portuguese Team</h2>
+          <h2>{t('team-pt')}</h2>
           <div className={s.grid}>
             {ptTeam.map(m => (
               <div>
@@ -355,7 +367,7 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h2>Arabic Team</h2>
+          <h2>{t('team-ar')}</h2>
           <div className={s.grid}>
             {arTeam.map(m => (
               <div>
@@ -365,9 +377,19 @@ const AboutPage: NextPage<Props, InitialProps> = () => {
           </div>
         </section>
         <section className={s.container}>
-          <h2>Former Team Roles</h2>
+          <h2>{t('team-it')}</h2>
           <div className={s.grid}>
-            {formerTeam.map(m => (
+            {itTeam.map(m => (
+              <div>
+                <h3>{m.name}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className={s.container}>
+          <h2>{t('formerRoles')}</h2>
+          <div className={s.grid}>
+            {formerRoles.map(m => (
               <div>
                 <h3>{m.name}</h3>
                 <p>
