@@ -1,23 +1,33 @@
 # Do the npm install or yarn install in the full image
-FROM mhart/alpine-node:12 AS builder
+FROM mhart/alpine-node AS builder
 
 WORKDIR /usr/src/app
 
-RUN yarn install && yarn prisma generate
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# COPY package.json /usr/src/app/package.json
+# COPY yarn.lock /usr/src/app/yarn.lock
 
+# Copy project files
 COPY . .
 
-RUN yarn build && yarn --production
+ARG REACT_APP_SERVICE_URL
+ENV REACT_APP_SERVICE_URL $REACT_APP_SERVICE_URL
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
+
+# Add build dependencies required to install all npm modules
+RUN apk update && apk upgrade && \
+    apk add --no-cache git openssh python2 make g++
+
+RUN yarn install --no-progress && yarn prisma generate && yarn build
 
 # And then copy over node_modules, etc from that stage to the smaller base image
 FROM mhart/alpine-node:base
-
-WORKDIR /usr/src/app
-
+WORKDIR /app
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/build ./build
+COPY --from=builder /usr/src/app/public ./public
 COPY --from=builder /usr/src/app/next.config.js ./next.config.js
-
+COPY --from=builder /usr/src/app/package.json ./package.json
 EXPOSE 3000
-
 CMD ["node_modules/.bin/next", "start"]
