@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 import { AST, buildSelect } from '../../utils';
 
@@ -38,7 +38,7 @@ export const resolvers = {
       { prisma }: { prisma: PrismaClient },
       ast: AST,
     ) {
-      const select = buildSelect(ast);
+      const select: Prisma.ImageSelect = buildSelect(ast);
 
       const getAllImages = await prisma.image
         .findMany({ select })
@@ -60,10 +60,10 @@ export const resolvers = {
       { prisma }: { prisma: PrismaClient },
       ast: AST,
     ) {
-      const select = buildSelect(ast);
+      const select: Prisma.ImageSelect = buildSelect(ast);
 
       const getImage = await prisma.image
-        .findOne({
+        .findUnique({
           select,
           where: { ...args },
         })

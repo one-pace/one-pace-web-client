@@ -1,4 +1,4 @@
-import { ArcSelect, PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 import { AST, buildSelect } from '../../utils';
 
@@ -18,6 +18,7 @@ export const schema = [
     resolution:      String!
     torrent_hash:    String
     title:           String!
+    translations:    [ArcTranslation]
     updated_at:      Timestamp
   }
 `,
@@ -45,7 +46,7 @@ export const resolvers = {
       { prisma }: { prisma: PrismaClient },
       ast: AST,
     ) {
-      const select: ArcSelect = buildSelect(ast);
+      const select: Prisma.ArcSelect = buildSelect(ast);
 
       if (select.episodes) {
         select.episodes['orderBy'] = { part: 'asc' }; // eslint-disable-line dot-notation
@@ -73,12 +74,12 @@ export const resolvers = {
       { prisma }: { prisma: PrismaClient },
       ast: AST,
     ) {
-      const select: ArcSelect = buildSelect(ast);
+      const select: Prisma.ArcSelect = buildSelect(ast);
 
       if (select.episodes) select.episodes = { orderBy: { part: 'asc' } };
 
       const getArc = await prisma.arc
-        .findOne({
+        .findUnique({
           select,
           where: { ...args },
         })

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 import { AST, buildSelect } from '../../utils';
 
@@ -22,6 +22,7 @@ export const schema = [
     status:          String
     title:           String!
     torrent_hash:    String
+    translations:    [EpisodeTranslation]
     updated_at:      Timestamp
   }
 `,
@@ -49,7 +50,7 @@ export const resolvers = {
       { prisma }: { prisma: PrismaClient },
       ast: AST,
     ) {
-      const select = buildSelect(ast);
+      const select: Prisma.EpisodeSelect = buildSelect(ast);
 
       const getAllEpisodes = await prisma.episode
         .findMany({ select })
@@ -71,10 +72,10 @@ export const resolvers = {
       { prisma }: { prisma: PrismaClient },
       ast: AST,
     ) {
-      const select = buildSelect(ast);
+      const select: Prisma.EpisodeSelect = buildSelect(ast);
 
       const getEpisode = await prisma.episode
-        .findOne({
+        .findUnique({
           select,
           where: { ...args },
         })
