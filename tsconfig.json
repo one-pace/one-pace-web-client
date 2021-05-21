@@ -36,7 +36,7 @@
     "next.config.js",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "prisma/seed.js",
+    "prisma/seed.ts",
     "tools/process-images.js"
   ]
 }

@@ -3,9 +3,9 @@
 import dotenvLoad from 'dotenv-load';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
-import { PrismaClient } from '@prisma/client';
-import 'regenerator-runtime';
 import sharp from 'sharp';
+import { PrismaClient } from '.prisma/client';
+import 'regenerator-runtime';
 
 import { arcs } from './dump-onepace-arcs';
 import { episodes } from './dump-onepace-episodes';
@@ -14,11 +14,17 @@ dotenvLoad();
 
 const prisma = new PrismaClient();
 
-const resolveImage = (filename, directory = 'public', model = 'episodes') =>
-  resolve(__dirname, `../${directory}/images/${model}/${filename}`);
+const resolveImage = (
+  filename: string,
+  directory: string = 'public',
+  model: 'arcs' | 'episodes' = 'episodes',
+) => resolve(__dirname, `../${directory}/images/${model}/${filename}`);
 
-const findImage = (filename, directory = 'public', model = 'episodes') =>
-  existsSync(resolveImage(filename, directory, model));
+const findImage = (
+  filename: string,
+  directory: string = 'public',
+  model: 'arcs' | 'episodes' = 'episodes',
+) => existsSync(resolveImage(filename, directory, model));
 
 const errors = [];
 let errorCount = 0;
@@ -313,6 +319,7 @@ async function main() {
                 title: arc.title,
               },
             },
+            description: undefined,
             language: {
               connect: { code },
             },
@@ -673,6 +680,7 @@ async function main() {
         if (episode[`title_${code}`]) {
           const data = {
             data: {
+              description: undefined,
               episode: {
                 connect: {
                   title: episode.title,
