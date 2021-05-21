@@ -2,9 +2,11 @@ import { createContext, createRef, RefObject } from 'react';
 
 export type AppContextTypes = {
   isNavVisible: boolean;
+  language: string;
   pathname: string;
   query?: Object;
   screenOrientation: 'portrait' | 'landscape' | string;
+  setLanguage: (lang: string) => void;
   setNavVisibility: Function;
   setScreenOrientation: Function;
 };
@@ -18,9 +20,11 @@ export type SliderContextTypes = {
 
 const AppContext = createContext<AppContextTypes>({
   isNavVisible: false,
+  language: 'en',
   pathname: '',
   query: {},
   screenOrientation: 'portrait',
+  setLanguage: _lang => {},
   setNavVisibility: () => {},
   setScreenOrientation: () => {},
 });

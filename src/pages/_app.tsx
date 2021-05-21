@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import App from 'next/app';
-import 'normalize.css';
 
+import 'normalize.css';
 import '../components/react-md.scss';
+import '../components/variables.css';
+import '../components/globals.css';
 
 import AppContext from '../context';
-import { appWithTranslation } from '../core/i18n';
+import { appWithTranslation, useTranslation } from '../core/i18n';
 
 const OnePaceApp = ({ Component, pageProps, pathname, query, ...context }) => {
+  const { i18n } = useTranslation();
+
   const [isNavVisible, setNavVisibility] = useState(true);
+  const [language, setLanguage] = useState(i18n.language);
   const [screenOrientation, setScreenOrientation] = useState('landscape');
 
   return (
@@ -16,8 +21,10 @@ const OnePaceApp = ({ Component, pageProps, pathname, query, ...context }) => {
       value={{
         ...context,
         isNavVisible,
+        language,
         pathname,
         query,
+        setLanguage,
         setNavVisibility,
         screenOrientation,
         setScreenOrientation,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { ListboxChangeEventHandler, Select } from '@react-md/form';
@@ -6,6 +6,7 @@ import { ArrowDropDownSVGIcon } from '@react-md/material-icons';
 
 import s from './Header.module.css';
 import { useTranslation } from '../../core/i18n';
+import AppContext from '../../context';
 import { media1x, media2x, media3x } from '../Image';
 import Navigation from '../Navigation';
 
@@ -96,7 +97,7 @@ const LANGUAGES = [
 
 const Header = ({ path, title }: PropTypes) => {
   const { i18n } = useTranslation();
-  const [language, setLanguage] = useState(i18n.language);
+  const { language, setLanguage } = useContext(AppContext);
 
   const handleChangeLanguage: ListboxChangeEventHandler = (
     nextValue: string,
