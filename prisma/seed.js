@@ -23,8 +23,53 @@ const findImage = (filename, directory = 'public', model = 'episodes') =>
 const errors = [];
 let errorCount = 0;
 
+const LANGUAGES = {
+  ar: {
+    code: 'ar',
+    name: 'Arabic',
+  },
+  de: {
+    code: 'de',
+    name: 'German',
+    nameNative: 'Deutsch',
+  },
+  en: {
+    code: 'en',
+    name: 'English',
+    nameNative: 'English',
+  },
+  es: {
+    code: 'es',
+    name: 'Spanish',
+  },
+  fr: {
+    code: 'fr',
+    name: 'French',
+  },
+  it: {
+    code: 'it',
+    name: 'Italian',
+  },
+  jp: {
+    code: 'jp',
+    name: 'Japanese',
+  },
+  pt: {
+    code: 'pt',
+    name: 'Portuguese',
+  },
+};
+
 async function main() {
-  for (const arc of arcs) {
+  for await (const [code, language] of Object.entries(LANGUAGES)) {
+    await prisma.language.create({ data: { ...language } }).catch(err => {
+      console.error(err);
+      errors.push(`[Error] Creating language ${language.name}: ${err.message}`);
+      errorCount += 1;
+    });
+  }
+
+  for await (const arc of arcs) {
     let new_arc = '';
     switch (arc.id) {
       case 1:
@@ -254,6 +299,38 @@ async function main() {
 
       console.info(createImage);
       // return createImage;
+    }
+
+    console.info('About to iterate through LANGUAGES');
+    for await (const [code, language] of Object.entries(LANGUAGES)) {
+      console.info(`Iterated to ${language.name} (${code})`);
+      if (arc[`title_${code}`]) {
+        console.info(`Found matching title: ${arc[`title_${code}`]}`);
+        const data = {
+          data: {
+            arc: {
+              connect: {
+                title: arc.title,
+              },
+            },
+            language: {
+              connect: { code },
+            },
+            title: arc[`title_${code}`],
+          },
+        };
+
+        if (arc[`description_${code}`])
+          data.data.description = arc[`description_${code}`];
+
+        await prisma.arcTranslation.create(data).catch(err => {
+          console.error(err);
+          errors.push(
+            `[Error] Creating translation (${language.name}) for arc ${arc.title}: ${err.message}`,
+          );
+          errorCount += 1;
+        });
+      }
     }
   }
 
@@ -590,6 +667,35 @@ async function main() {
 
         console.info(createImage);
         // return createImage;
+      }
+
+      for await (const [code, language] of Object.entries(LANGUAGES)) {
+        if (episode[`title_${code}`]) {
+          const data = {
+            data: {
+              episode: {
+                connect: {
+                  title: episode.title,
+                },
+              },
+              language: {
+                connect: { code },
+              },
+              title: episode[`title_${code}`],
+            },
+          };
+
+          if (episode[`description_${code}`])
+            data.data.description = episode[`description_${code}`];
+
+          await prisma.episodeTranslation.create(data).catch(err => {
+            console.error(err);
+            errors.push(
+              `[Error] Creating translation (${language.name}) for episode ${episode.title}: ${err.message}`,
+            );
+            errorCount += 1;
+          });
+        }
       }
     }
   }
