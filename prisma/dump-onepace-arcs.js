@@ -6,7 +6,7 @@ module.exports = {
       chapters: 'N/A',
       episodes: 'N/A',
       torrent_hash: 'a3b449356e0e57fac111b7382d55d0a1fa5ddafb',
-      resolution: '',
+      resolution: '720p',
       completed: 1,
       hidden: 0,
       released: 1,
