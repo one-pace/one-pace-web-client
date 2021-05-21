@@ -171,7 +171,7 @@
     "build-docker-multistage": "docker build -t onepace-website -f ./Dockerfile.multistage .",
     "export": "next export",
     "run-docker": "docker run --rm -it -p 3000:3000 onepace-website",
-    "seed-db": "babel-node prisma/seed.js",
+    "seed-db": "prisma migrate db seed --preview-feature",
     "serve": "next start",
     "start": "next",
     "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'"
