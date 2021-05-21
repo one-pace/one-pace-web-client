@@ -10,8 +10,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 const withImages = require('next-images');
-const withCSS = require('@zeit/next-css');
-const withSass = require('@zeit/next-sass');
 
 const isDebug = !process.argv.includes('--release');
 
@@ -29,68 +27,60 @@ const localeSubpaths = {
 // next.config.js
 module.exports = withNextEnv(
   withBundleAnalyzer(
-    withImages(
-      withCSS(
-        withSass({
-          webpack: (config, { dev }) => {
-            let newConfig = config;
+    withImages({
+      webpack: (config, { dev }) => {
+        const newConfig = config;
 
-            newConfig.module.rules.forEach(rule => {
-              if (rule.test && rule.test.toString().includes('.scss')) {
-                // eslint-disable-next-line no-param-reassign
-                rule.rules = rule.use.map(useRule => {
-                  if (typeof useRule === 'string') {
-                    return { loader: useRule };
-                  }
-
-                  if (useRule.loader.startsWith('css-loader')) {
-                    return {
-                      loader: useRule.loader,
-                      options: {
-                        ...useRule.options,
-                        modules: false,
-                      },
-                    };
-                  }
-
-                  return useRule;
-                });
-
-                delete rule.use; // eslint-disable-line no-param-reassign
+        newConfig.module.rules.forEach((rule) => {
+          if (rule.test && rule.test.toString().includes('.scss')) {
+            // eslint-disable-next-line no-param-reassign
+            rule.rules = rule.use.map((useRule) => {
+              if (typeof useRule === 'string') {
+                return { loader: useRule };
               }
+
+              if (useRule.loader.startsWith('css-loader')) {
+                return {
+                  loader: useRule.loader,
+                  options: {
+                    ...useRule.options,
+                    modules: false,
+                  },
+                };
+              }
+
+              return useRule;
             });
 
-            newConfig = {
-              ...newConfig,
-              node: {
-                fs: 'empty',
-              },
-            };
+            delete rule.use; // eslint-disable-line no-param-reassign
+          }
+        });
 
-            return newConfig;
-          },
-          cssLoaderOptions: {
-            importLoaders: 1,
-            localIdentName: isDebug
-              ? '[name]-[local]-[hash:base64:5]'
-              : '[hash:base64:5]',
-          },
-          cssModules: true,
-          distDir: 'build',
-          rewrites: async () => nextI18NextRewrites(localeSubpaths),
-          // experimental: { css: true },
-          publicRuntimeConfig: {
-            // Will be available on both server and client
-            WEB_URL: process.env.WEB_URL || 'https://beta.onepace.net',
-            localeSubpaths,
-          },
-          // serverRuntimeConfig: {
-          //   // Will only be available on the server side
-          //   // KEY: 'value'
-          // },
-          // target: 'serverless',
-        }),
-      ),
-    ),
+        return newConfig;
+      },
+      cssLoaderOptions: {
+        importLoaders: 1,
+        localIdentName: isDebug
+          ? '[name]-[local]-[hash:base64:5]'
+          : '[hash:base64:5]',
+      },
+      cssModules: true,
+      distDir: 'build',
+      future: {
+        webpack5: true,
+      },
+      rewrites: async () => nextI18NextRewrites(localeSubpaths),
+      // experimental: { css: true },
+      publicRuntimeConfig: {
+        // Will be available on both server and client
+        WEB_URL: process.env.WEB_URL || 'https://beta.onepace.net',
+        localeSubpaths,
+      },
+      // serverRuntimeConfig: {
+      //   // Will only be available on the server side
+      //   // KEY: 'value'
+      // },
+      // target: 'serverless',
+    }),
   ),
 );
