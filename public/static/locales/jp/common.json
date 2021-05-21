@@ -1,7 +1,14 @@
 {
-  "h1": "A simple example",
   "change-locale": "Change locale",
-  "to-second-page": "To second page",
   "error-with-status": "A {{statusCode}} error occurred on server",
-  "error-without-status": "An error occurred on the server"
+  "error-without-status": "An error occurred on the server",
+  "chapters": "Manga Chapter(s)",
+  "description-unavailable": "Description unavailable",
+  "direct-download": "Direct Download",
+  "episodes": "Anime Episode(s)",
+  "duration": "Duration",
+  "magnet-link": "Magnet Link",
+  "released-on": "Released on",
+  "resolution": "Resolution",
+  "unreleased": "Unreleased"
 }
