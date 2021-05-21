@@ -21,6 +21,7 @@ const localeSubpaths = {
   en: 'en',
   es: 'es',
   fr: 'fr',
+  it: 'it',
   jp: 'jp',
   pt: 'pt',
 };

@@ -83,6 +83,15 @@ const LANGUAGES = [
     label: 'Arabic',
     value: 'ar',
   },
+  {
+    children: (
+      <span>
+        Italian (<span className="rmd-typography--bold">IT</span>)
+      </span>
+    ),
+    label: 'Italian',
+    value: 'it',
+  },
 ];
 
 const Header = ({ path, title }: PropTypes) => {
