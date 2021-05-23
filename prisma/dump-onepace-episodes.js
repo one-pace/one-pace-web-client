@@ -213,7 +213,7 @@ module.exports = {
       id: 12,
       crc32: '75ECC73A',
       arc_id: 6,
-      resolution: '480p',
+      resolution: '1080p',
       chapters: '2',
       episodes: '1',
       torrent_hash: 'f5d5229f2ba960b829df92d7723f9143d0dd7dab',
@@ -221,6 +221,8 @@ module.exports = {
       title: 'They Call Him "Straw Hat" Luffy',
       title_es: 'Luffy, el hombre del sombrero de paja',
       title_jp: 'その男"麦わらのルフィ"',
+      title_fr: 'On le surnomme "Chapeau de paille"',
+      title_de: 'Hier kommt "Strohhut" Luffy!',
       description:
         'While Alvida and her pirates plunder a cruise ship, they come across a barrel containing a strange boy named Monkey D. Luffy.  The timid Koby befriends Luffy, and they share their grand dreams with each other.',
       description_es:
@@ -666,6 +668,8 @@ module.exports = {
       title: 'The Pirate King and the Master Swordsman',
       title_es: 'Rey pirata y maestro espadachín',
       title_jp: '海賊王と大剣豪',
+      title_fr: 'Le Roi des Pirates et le Grand Épéiste',
+      title_de: 'Piratenkönig und Meisterschwertkämpfer',
       description:
         'In search of members for his pirate crew, Luffy with his new friend Koby arrive at an island with a Navy stronghold.  There, they track down the renowned pirate hunter Zoro but run afoul of Helmeppo, son of the infamous Captain Morgan.',
       description_es:
@@ -905,6 +909,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2015-05-05T18:30:00Z',
       title: "Chouchou's Treasure",
+      title_jp: 'シュシュの宝',
       description:
         "Luffy meets a small dog guarding his late master’s store.  Meanwhile, the beast tamer Mohji, the acrobat Cabaji, and the lion Richie show up in the streets of Orange Town to get revenge for Captain Buggy's humiliating loss.",
       description_es:
@@ -963,6 +968,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2017-07-16T18:30:00Z',
       title: 'The Silent Man',
+      title_jp: '音無き男',
       description:
         'Captain Kuro makes his appearance, and with Zoro too injured to fight, Luffy incapacitated, and Usopp and Nami too weak to make a stand, the situation is desperate.  However, Kaya herself arrives, intent on bargaining with Kuro.',
       description_es:
@@ -1046,6 +1052,7 @@ module.exports = {
       title: 'The Legend Has Begun',
       title_es: 'La leyenda ha comenzado',
       title_jp: '伝説は始まった',
+      title_fr: 'Et ainsi débuta la légende',
       description:
         "Luffy finally finds the execution platform, only to be caught in Buggy and Alvida's trap.  Sanji and Zoro rush to stop Buggy from poetically executing Luffy where Roger died.",
       description_es:
@@ -1378,6 +1385,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2015-05-04T18:30:00Z',
       title: 'The Pirate Thief Nami',
+      title_jp: '海賊専門泥棒ナミ',
       description:
         "Nami, a street-smart girl who loves money and tangerines, makes Luffy's acquaintance.  To save herself and steal a map to the Grand Line, she tricks Luffy into allowing her to turn him over to the infamous pirate, Buggy “the Clown.”",
       description_es:
@@ -1630,6 +1638,8 @@ module.exports = {
       title: 'The First',
       title_es: 'El primer miembro',
       title_jp: '1人目',
+      title_fr: 'Le Premier',
+      title_de: 'Der Erste',
       description:
         'Luffy convinces the captive Zoro to join his pirate crew, but they must first defeat the tyrannical Captain Morgan.',
       description_es:
@@ -1966,6 +1976,7 @@ module.exports = {
       title: 'The Town of Beginnings and Endings',
       title_es: 'La ciudad del principio y del fin',
       title_jp: '始まりとお 終わりの町',
+      title_fr: 'La Ville où tout commence et tout se termine',
       description:
         'Touting a fresh bounty issued by Navy HQ, Luffy and co. make landfall at Loguetown, the place where Gold Roger was both born and executed.  Being the last stop before the Grand Line, the crew stocks up on supplies and sightsees.',
       description_es:
@@ -1990,6 +2001,7 @@ module.exports = {
       title: 'Parallels',
       title_es: 'Paralelismos',
       title_jp: '類似点',
+      title_fr: 'Parallèles',
       description:
         'Usopp manages to anger the brat daughter of bounty hunter Daddy the Father and finds his own life at stake.  When Daddy discovers that Usopp is the son of Red Hair Pirate Yasopp, the only man to beat him, he offers him a risky way out.',
       description_es:
@@ -2110,6 +2122,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2015-05-08T18:30:00Z',
       title: 'Pirate Buggy the Clown',
+      title_jp: '海賊”道化のバギー”',
       description:
         "Shockingly, it turns out Captain Buggy and Red-Haired Shanks share a common history.  When the bombastic clown rips Shanks' straw hat, Luffy's rage knows no bounds.",
       description_es:
@@ -2399,6 +2412,8 @@ module.exports = {
       title: 'Romance Dawn, the Dawn of an Adventure',
       title_es: 'El amanecer de la aventura',
       title_jp: 'ROMANCE DAWN - 冒険の夜明け',
+      title_fr: "L'Aube d'une Aventure",
+      title_de: 'Romance Dawn - Der Anfang eines Abenteuers',
       description:
         'Influenced by the straw-hat wearing pirate Red Hair Shanks, an enthusiastic young boy named Monkey D. Luffy dreams of one day becoming King of the Pirates.',
       description_es:
@@ -2616,6 +2631,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2017-02-03T18:30:00Z',
       title: 'Captain Usopp',
+      title_jp: 'キャプテン･ウソップ',
       description:
         "With Nami joining as Luffy's navigator (though not as an actual member of the crew), they arrive at an island in search of a proper ship.  There they meet a man claiming to be a pirate captain who seemingly also has ties to Red-Haired Shanks.",
       description_es:
@@ -2638,6 +2654,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2017-02-03T18:30:00Z',
       title: 'Captain Kuro',
+      title_jp: 'キャプテン･クロ',
       description:
         'Usopp petitions his wealthy friend, Kaya, to help Luffy get a proper ship, but he is rebuked by her butler.  After uncovering a devious plot, Usopp warns the village and Kaya, but finds his years of lying make it difficult to convince people of the truth.',
       description_es:
@@ -2701,6 +2718,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2017-06-22T18:30:00Z',
       title: 'The Slope',
+      title_jp: '坂道',
       description:
         'Usopp resolves that, to keep the peace, the town must continue to believe he is a liar, which means he cannot let Captain Kuro’s men up the slope to the village!  Luffy, Zoro, and Nami aid Usopp in his plan to keep the Black Cat Pirates at bay.',
       description_es:
@@ -4014,6 +4032,7 @@ module.exports = {
       torrent_hash: '',
       released_date: '2017-10-21T01:10:00Z',
       title: 'For Whom the Bell Tolls',
+      title_jp: '誰が為に鐘は鳴る',
       description:
         "While the fight between Luffy and Kuro continues, Jango is intent on forcing Kaya to bequeath her family's money to the Black Cat captain.  Despite the Usopp Pirates' efforts to stop the hypnotist, it seems as if the transaction is all but inevitable.",
       description_es:
@@ -6254,6 +6273,7 @@ module.exports = {
       title: 'Arlong Park',
       title_es: 'Arlong Park',
       title_jp: 'アーロンパーク',
+      title_fr: 'Arlong Park',
       description:
         'As they depart the Baratie in pursuit of Nami and the Going Merry, Yosaku warns Luffy and Sanji about the vicious Arlong and his fish-man underlings.  Meanwhile, Usopp, Johnny, and Zoro make landfall where Nami docked the Merry.',
       description_es:
@@ -6278,6 +6298,7 @@ module.exports = {
       title: 'Monsters of the Grand Line',
       title_es: 'Monstruos del Grand Line',
       title_jp: '"偉大なる航路"から来た怪物',
+      title_fr: 'Le Monstre de Grand Line',
       description:
         'Usopp, having challenged the fish-men, has been caught.  To effectively prove her loyalty to the Arlong Pirates, Nami is left with a morbid choice.',
       description_es:
@@ -6302,6 +6323,7 @@ module.exports = {
       title: 'Sea Charts and Fishmen',
       title_es: 'Mapas y Gyojin',
       title_jp: '海図と魚人',
+      title_fr: 'Cartes et Hommes-Poissons',
       description:
         'Luffy’s group has reached the island but are met with a shocking revelation.  Unmoved by Nami’s apparent actions and her insistence that he leaves, Luffy stubbornly sticks around.',
       description_es:
@@ -6326,6 +6348,7 @@ module.exports = {
       title: 'Bell-mère-san',
       title_es: 'Bell-mère-san',
       title_jp: 'ベルメールさん',
+      title_fr: 'Belmer',
       description:
         "Nojiko goes into detail about Nami's childhood and their adoptive mother Bell-mère, a former marine.  Despite being poor and unrelated by blood, they had a happy life on their tangerine orchard.",
       description_es:
@@ -6350,6 +6373,7 @@ module.exports = {
       title: 'Live',
       title_es: 'Vivan',
       title_jp: '生きる',
+      title_fr: 'Vivre',
       description:
         "When a Navy officer under Arlong's pay confiscates all the money Nami accumulated over the years, it becomes clear where Arlong stands on his promise.",
       description_es:
@@ -6374,6 +6398,7 @@ module.exports = {
       title: "OK, LET'S STAND UP",
       title_es: '¡Bien, pongámonos de pie!',
       title_jp: "OK, Let's STAND UP!",
+      title_fr: 'OK, LEVONS-NOUS !',
       description:
         "Nami's audible sorrows have reached the ears of a certain Straw Hat captain, and he and his crew rise to action.  The villagers look on in awe as the Straw Hats boldly enter Arlong Park to face the fishmen.",
       description_es:
@@ -6398,6 +6423,7 @@ module.exports = {
       title: 'Chivalry vs. Fishman Karate',
       title_es: 'Caballerosidad vs. karate Gyojin',
       title_jp: '騎士道VS魚人空手',
+      title_fr: 'Esprit Chevaleresque VS Karaté des Hommes-Poissons',
       description:
         'Luffy’s newest move leaves him incapacitated and at the mercy of the sea, while Zoro, Sanji, and Usopp desperately fight off Arlong’s top officers.',
       description_es:
@@ -6422,6 +6448,7 @@ module.exports = {
       title: 'My Turn',
       title_es: 'Mi turno',
       title_jp: '交替',
+      title_fr: 'Mon Tour',
       description:
         'The top officers are defeated, but as they currently are, Sanji and Zoro prove to be no match for Arlong.  However, with Luffy finally free, he just may just be able to pull it off.  Meanwhile, Nami finally gathers the courage to face Arlong.',
       description_es:
@@ -6446,6 +6473,7 @@ module.exports = {
       title: 'Happiness',
       title_es: 'Felicidad',
       title_jp: '幸せ',
+      title_fr: 'Bonheur',
       description:
         'Luffy springs into action against Arlong, and their intense struggle commences!  Luffy becomes enraged when he discovers how exactly Arlong had been using Nami, and he comes to a quick decision on how to finally free her of her shackles.',
       description_es:
@@ -6470,6 +6498,7 @@ module.exports = {
       title: 'Spin, Pinwheel, Spin',
       title_es: 'Gira, molino, gira',
       title_jp: 'まわれ風車',
+      title_fr: "La Rotation d'un Moulinet",
       description:
         "Arlong's reign of terror is over, so the island throws a party to celebrate their freedom and to honor their pirate saviors.  During the festivities, Nami makes her decision to officially join the Straw Hat Pirates.",
       description_es:
@@ -6494,6 +6523,7 @@ module.exports = {
       title: 'Adventure on Little Garden',
       title_es: 'Aventura en Little Garden',
       title_jp: '冒険のリトルガーデン',
+      title_fr: 'Aventure à Little Garden',
       description:
         'The Straw Hats arrive at their destination and discover that the island is home to enormous creatures... and people.  Meanwhile, the Baroque Works agents Mr. 3 and his partner Miss Golden Week receive new orders.',
       description_es:
@@ -6518,6 +6548,7 @@ module.exports = {
       title: 'Dorry and Brogy',
       title_es: 'Dorry y Brogy',
       title_jp: 'ドリーとブロギー',
+      title_fr: 'Dorry et Brogy',
       description:
         'Usopp, immensely impressed with the giants of Elbaf, names Brogy his master. To commemorate their duel, the giants imbibe two barrels of booze from Nami, but, unbeknownst to anyone, a saboteur has tampered with one of them!',
       description_es:
@@ -6542,6 +6573,7 @@ module.exports = {
       title: 'Foul Play',
       title_es: 'Juego sucio',
       title_jp: '姑息',
+      title_fr: 'Tricherie',
       description:
         "Despite his internal injuries and Luffy's warnings, the prideful giant Dorry insists on continuing his duel with Brogy. Meanwhile, the Baroque Works Officer Agents begin to make their move on the island with the Straw Hats as their next targets.",
       description_es:
@@ -6566,6 +6598,7 @@ module.exports = {
       title: 'Luffy vs. Mr. 3',
       title_es: 'Luffy vs. Mr. 3',
       title_jp: 'ルフィ VS Mr. 3',
+      title_fr: 'Luffy VS. Mr 3',
       description:
         'Luffy, Usopp, and Karoo launch headlong into rescuing their friends, but Miss Golden Week runs a colorful interference. Mr. 3 is forced to take matters into his own conniving hands, and Usopp brainstorms how he will finally free his friends.',
       description_es:
@@ -6608,6 +6641,7 @@ module.exports = {
       title: 'Tin Plate Wapol',
       title_es: 'Wapol, el hojalata',
       title_jp: 'ブリキのワポル',
+      title_fr: "Wapol la Plaque d'Étain",
       description:
         "En route to Arabasta, Nami falls ill. Without a doctor aboard the Going Merry, the Straw Hats must decide whether to stay the course or find more immediate help. As their ship crosses into a frigid area, a figure is seen standing on the water's surface.",
       description_es:
@@ -6629,7 +6663,9 @@ module.exports = {
       episodes: '',
       torrent_hash: '',
       released_date: null,
-      title: '',
+      title: 'Adventure in a Nameless Country',
+      title_jp: '名もなき国の冒険',
+      title_fr: 'Adventure dans un Pays Sans Nom',
       status: '',
       part: 2,
       hidden: 0,
@@ -7579,6 +7615,7 @@ module.exports = {
       title: 'Straight Ahead!!',
       title_es: '¡Adelante!',
       title_jp: 'まっすぐ!!!',
+      title_fr: 'Droit devant !',
       description:
         'Sanji, pretending to be Mr. 3, convinces Crocodile he has eliminated Vivi and co., prompting the Unluckies to arrive and deliver a way off Little Garden. With a clear path straight ahead—or so it seems—the Straw Hats set sail.',
       description_es:
