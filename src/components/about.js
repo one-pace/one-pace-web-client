@@ -60,7 +60,7 @@ class About extends React.Component {
               </tr>
               <tr>
                 <td>Halee</td>
-                <td>{I18n.t('about.musicer')}, {I18n.t('about.timing')}</td>
+                <td>{I18n.t('about.musicer')}</td>
               </tr>
               <tr>
                 <td>Datenshi</td>
@@ -104,19 +104,15 @@ class About extends React.Component {
                 <td>Gaijin</td>
                 <td>{I18n.t('about.translation')}</td>
               </tr>
+              <tr>
+                <td>Gigglebot</td>
+                <td>{I18n.t('about.editing')}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div>
-          <h2>{I18n.t('about.memorialTitle')}</h2>
-          <p>{I18n.t('about.memorialDescription')}</p>
-          <div className="pay-respects">
-            <button onClick={this.payRespects}>{I18n.t('about.memorialF')}</button>
-          </div>
-          <img alt="" src={require('../images/MasterRoshiSmoking.png')} />
-        </div>
       </div>
-    )
+    );
   }
 }
 
