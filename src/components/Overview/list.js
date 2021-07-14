@@ -22,7 +22,7 @@ const List = ({ arc, image, cards, user, onClickCard }) => {
         </div>
       </div>
       <div className={`cards${!released ? ' unreleased' : ''}`}>
-        <div className="progress-card" key={`${arc.title} image`}>
+        <div className="arc-img" key={`${arc.title} image`}>
           <img alt="" className="list-image" src={image} />
         </div>
         <div className="progress-episode-list">
