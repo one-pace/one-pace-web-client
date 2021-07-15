@@ -82,6 +82,7 @@ module.exports = {
       torrent_hash: 'c9674a7ea74ed12edad2103529154e6f32ef1af3',
       released_date: '2017-02-25T18:30:00Z',
       title: 'Romance Dawn, Version 2',
+      title_it: 'Romance Dawn, Versione 2',
       status: '',
       part: 2,
       hidden: 0,
@@ -223,6 +224,7 @@ module.exports = {
       title_jp: 'その男"麦わらのルフィ"',
       title_fr: 'On le surnomme "Chapeau de paille"',
       title_de: 'Hier kommt "Strohhut" Luffy!',
+      title_it: "Lo chiamano “Luffy Cappello di Paglia”",
       description:
         'While Alvida and her pirates plunder a cruise ship, they come across a barrel containing a strange boy named Monkey D. Luffy.  The timid Koby befriends Luffy, and they share their grand dreams with each other.',
       description_es:
@@ -670,6 +672,7 @@ module.exports = {
       title_jp: '海賊王と大剣豪',
       title_fr: 'Le Roi des Pirates et le Grand Épéiste',
       title_de: 'Piratenkönig und Meisterschwertkämpfer',
+      title_it: 'Il Re dei Pirati e il Maestro Spadaccino',
       description:
         'In search of members for his pirate crew, Luffy with his new friend Koby arrive at an island with a Navy stronghold.  There, they track down the renowned pirate hunter Zoro but run afoul of Helmeppo, son of the infamous Captain Morgan.',
       description_es:
@@ -950,6 +953,7 @@ module.exports = {
       torrent_hash: 'ddbca2961dab0ad1e2a1d362ca7e03f7db3c7484',
       released_date: '2014-09-10T18:30:00Z',
       title: 'Straw Hat Theatre',
+      title_it: 'Il Teatro di Cappello di Paglia',
       status: '',
       part: 1,
       hidden: 0,
@@ -1386,6 +1390,7 @@ module.exports = {
       released_date: '2015-05-04T18:30:00Z',
       title: 'The Pirate Thief Nami',
       title_jp: '海賊専門泥棒ナミ',
+      title_it: 'Nami la Gatta Ladra',
       description:
         "Nami, a street-smart girl who loves money and tangerines, makes Luffy's acquaintance.  To save herself and steal a map to the Grand Line, she tricks Luffy into allowing her to turn him over to the infamous pirate, Buggy “the Clown.”",
       description_es:
@@ -1640,6 +1645,7 @@ module.exports = {
       title_jp: '1人目',
       title_fr: 'Le Premier',
       title_de: 'Der Erste',
+      title_it: 'Il Primo Compagno',
       description:
         'Luffy convinces the captive Zoro to join his pirate crew, but they must first defeat the tyrannical Captain Morgan.',
       description_es:
@@ -1858,6 +1864,7 @@ module.exports = {
       torrent_hash: 'a53c0691afa6adcffe74623f27be23da835a06be',
       released_date: '2014-05-13T18:30:00Z',
       title: 'Strong World',
+      title_it: 'Strong World',
       status: '',
       part: 0,
       hidden: 0,
@@ -2414,6 +2421,7 @@ module.exports = {
       title_jp: 'ROMANCE DAWN - 冒険の夜明け',
       title_fr: "L'Aube d'une Aventure",
       title_de: 'Romance Dawn - Der Anfang eines Abenteuers',
+      title_it: "Romance Dawn, L’alba di una grande avventura",
       description:
         'Influenced by the straw-hat wearing pirate Red Hair Shanks, an enthusiastic young boy named Monkey D. Luffy dreams of one day becoming King of the Pirates.',
       description_es:
@@ -3563,6 +3571,7 @@ module.exports = {
       torrent_hash: 'ff9a1b7755108450a6768ee5daba5ae69e53ab3c',
       released_date: '2017-03-31T18:30:00Z',
       title: 'Whole Cake Island 01 (April Fools 2017)',
+      title_it: 'Whole Cake Island 01 (Pesce d’Aprile 2017)',
       status: '',
       part: 4,
       hidden: 0,
@@ -5076,6 +5085,7 @@ module.exports = {
       torrent_hash: 'b1d945ae9e3b0a2539109eac024c2c713fa90a2c',
       released_date: '2019-03-31T13:04:03Z',
       title: 'Whole Cake Island 39 (April Fools 2019)',
+      title_it: 'Whole Cake Island 39 (Pesce d’Aprile 2019)',
       description:
         'After the Straw Hats die, Tommy Wiseau picks up the pieces and explores a story of love, betrayal, and doggies.',
       status: '',
@@ -7800,6 +7810,7 @@ module.exports = {
       torrent_hash: '91c2900b69470850a055b0bb0ff11e00e7ed6bfe',
       released_date: '2017-02-26T02:01:35Z',
       title: "Wapol's Omnivorous Hurrah",
+      title_it: "L'urrà Onnivoro di Wapol",
       status: '',
       part: 3,
       hidden: 0,
