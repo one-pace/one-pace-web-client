@@ -1,6 +1,7 @@
 import { createContext, createRef, RefObject } from 'react';
 
 export type AppContextTypes = {
+  isEditing: boolean;
   isNavVisible: boolean;
   language: string;
   pathname: string;
@@ -9,6 +10,7 @@ export type AppContextTypes = {
   setLanguage: (lang: string) => void;
   setNavVisibility: Function;
   setScreenOrientation: Function;
+  toggleEditing: () => void;
 };
 
 export type SliderContextTypes = {
@@ -19,6 +21,7 @@ export type SliderContextTypes = {
 };
 
 const AppContext = createContext<AppContextTypes>({
+  isEditing: false,
   isNavVisible: false,
   language: 'en',
   pathname: '',
@@ -27,6 +30,7 @@ const AppContext = createContext<AppContextTypes>({
   setLanguage: _lang => {},
   setNavVisibility: () => {},
   setScreenOrientation: () => {},
+  toggleEditing: () => {},
 });
 
 export const SliderContext = createContext<SliderContextTypes>({

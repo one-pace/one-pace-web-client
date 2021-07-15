@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Button } from '@react-md/button';
 import { ListboxChangeEventHandler, Select } from '@react-md/form';
 import { ArrowDropDownSVGIcon } from '@react-md/material-icons';
 
@@ -97,7 +98,9 @@ const LANGUAGES = [
 
 const Header = ({ path, title }: PropTypes) => {
   const { i18n } = useTranslation();
-  const { language, setLanguage } = useContext(AppContext);
+  const { isEditing, language, setLanguage, toggleEditing } = useContext(
+    AppContext,
+  );
 
   const handleChangeLanguage: ListboxChangeEventHandler = (
     nextValue: string,
@@ -143,6 +146,13 @@ const Header = ({ path, title }: PropTypes) => {
             rightChildren={<ArrowDropDownSVGIcon />}
             value={language}
           />
+          <Button
+            className={s.editButton}
+            onClick={toggleEditing}
+            themeType="outline"
+          >
+            {isEditing ? 'Finish' : 'Edit'}
+          </Button>
         </div>
       </header>
     </>

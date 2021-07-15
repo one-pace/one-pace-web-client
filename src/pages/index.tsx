@@ -104,7 +104,7 @@ const GET_ALL_ARCS = gql`
 `;
 
 const HomePage: NextPage<Props, InitialProps> = props => {
-  const { language } = useContext(AppContext);
+  const { isEditing, language } = useContext(AppContext);
 
   const [arcs, setArcs] = useState(props.arcs);
 
