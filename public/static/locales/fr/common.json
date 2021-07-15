@@ -2,13 +2,13 @@
   "change-locale": "Change locale",
   "error-with-status": "A {{statusCode}} error occurred on server",
   "error-without-status": "An error occurred on the server",
-  "chapters": "Chapitres",
+  "chapters": "Chapitres ",
   "description-unavailable": "Description non disponible",
   "direct-download": "Téléchargement direct",
-  "episodes": "Épisodes",
-  "duration": "Durée",
+  "episodes": "Épisodes ",
+  "duration": "Durée ",
   "magnet-link": "Lien magnétique",
-  "released-on": "Sorti le",
-  "resolution": "Résolution",
+  "released-on": "Sorti le ",
+  "resolution": "Résolution ",
   "unreleased": "Non disponible"
 }
