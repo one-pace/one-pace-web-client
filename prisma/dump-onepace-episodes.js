@@ -83,6 +83,9 @@ module.exports = {
       released_date: '2017-02-25T18:30:00Z',
       title: 'Romance Dawn, Version 2',
       title_it: 'Romance Dawn, Versione 2',
+      title_fr: 'Romance Dawn, Version 2',
+      title_pt: 'Romance Dawn - O Alvorecer da Aventura, Versão 2',
+      title_ar: 'فجر الرومانسية، النسخة الثانية',
       status: '',
       part: 2,
       hidden: 0,
@@ -225,6 +228,8 @@ module.exports = {
       title_fr: 'On le surnomme "Chapeau de paille"',
       title_de: 'Hier kommt "Strohhut" Luffy!',
       title_it: "Lo chiamano “Luffy Cappello di Paglia”",
+      title_pt: "O Homem Chamado Luffy do Chapéu de Palha",
+      title_ar: "يسمونه لوفي المشهور بـ (قبعة القش)",
       description:
         'While Alvida and her pirates plunder a cruise ship, they come across a barrel containing a strange boy named Monkey D. Luffy.  The timid Koby befriends Luffy, and they share their grand dreams with each other.',
       description_es:
@@ -673,6 +678,8 @@ module.exports = {
       title_fr: 'Le Roi des Pirates et le Grand Épéiste',
       title_de: 'Piratenkönig und Meisterschwertkämpfer',
       title_it: 'Il Re dei Pirati e il Maestro Spadaccino',
+      title_pt: 'O Rei dos Piratas e o Mestre Espadachim',
+      title_ar: 'ملك القراصنة والسياف الأعظم',
       description:
         'In search of members for his pirate crew, Luffy with his new friend Koby arrive at an island with a Navy stronghold.  There, they track down the renowned pirate hunter Zoro but run afoul of Helmeppo, son of the infamous Captain Morgan.',
       description_es:
@@ -913,6 +920,11 @@ module.exports = {
       released_date: '2015-05-05T18:30:00Z',
       title: "Chouchou's Treasure",
       title_jp: 'シュシュの宝',
+      title_fr: "Trésor",
+      title_de: "Shushus Schatz",
+      title_pt: "Tesouro",
+      title_ar: "كنز تشوتشو",
+      title_it: "Il Tesoro di Chouchou",
       description:
         "Luffy meets a small dog guarding his late master’s store.  Meanwhile, the beast tamer Mohji, the acrobat Cabaji, and the lion Richie show up in the streets of Orange Town to get revenge for Captain Buggy's humiliating loss.",
       description_es:
@@ -954,6 +966,9 @@ module.exports = {
       released_date: '2014-09-10T18:30:00Z',
       title: 'Straw Hat Theatre',
       title_it: 'Il Teatro di Cappello di Paglia',
+      title_fr: 'Théâtre du Chapeau de paille',
+      title_pt: 'O Teatro dos Chapéus de Palha',
+      title_ar: 'مسرح قبعة القش',
       status: '',
       part: 1,
       hidden: 0,
@@ -1391,6 +1406,10 @@ module.exports = {
       title: 'The Pirate Thief Nami',
       title_jp: '海賊専門泥棒ナミ',
       title_it: 'Nami la Gatta Ladra',
+      title_fr: 'Nami',
+      title_de: 'Die Piratendiebin Nami',
+      title_pt: 'Surge Nami',
+      title_ar: 'سارقة القراصنة نامي/القطة السارقة نامي',
       description:
         "Nami, a street-smart girl who loves money and tangerines, makes Luffy's acquaintance.  To save herself and steal a map to the Grand Line, she tricks Luffy into allowing her to turn him over to the infamous pirate, Buggy “the Clown.”",
       description_es:
@@ -1646,6 +1665,8 @@ module.exports = {
       title_fr: 'Le Premier',
       title_de: 'Der Erste',
       title_it: 'Il Primo Compagno',
+      title_pt: 'O Primeiro',
+      title_ar: 'الأول',
       description:
         'Luffy convinces the captive Zoro to join his pirate crew, but they must first defeat the tyrannical Captain Morgan.',
       description_es:
@@ -1865,6 +1886,9 @@ module.exports = {
       released_date: '2014-05-13T18:30:00Z',
       title: 'Strong World',
       title_it: 'Strong World',
+      title_fr: 'Strong World',
+      title_pt: 'Strong World',
+      title_ar: 'عالم قوي',
       status: '',
       part: 0,
       hidden: 0,
@@ -2130,6 +2154,11 @@ module.exports = {
       released_date: '2015-05-08T18:30:00Z',
       title: 'Pirate Buggy the Clown',
       title_jp: '海賊”道化のバギー”',
+      title_fr: 'Baggy le Clown',
+      title_de: 'Pirat Buggy, der Clown',
+      title_pt: 'Pirata Buggy, O Palhaço',
+      title_ar: 'القرصان المهرج باغي',
+      title_it: 'Buggy il Clown Pirata',
       description:
         "Shockingly, it turns out Captain Buggy and Red-Haired Shanks share a common history.  When the bombastic clown rips Shanks' straw hat, Luffy's rage knows no bounds.",
       description_es:
@@ -2422,6 +2451,8 @@ module.exports = {
       title_fr: "L'Aube d'une Aventure",
       title_de: 'Romance Dawn - Der Anfang eines Abenteuers',
       title_it: "Romance Dawn, L’alba di una grande avventura",
+      title_pt: "Romance Dawn - O Alvorecer da Aventura",
+      title_ar: "فجر الرومانسية، فجر  المغامرة",
       description:
         'Influenced by the straw-hat wearing pirate Red Hair Shanks, an enthusiastic young boy named Monkey D. Luffy dreams of one day becoming King of the Pirates.',
       description_es:
@@ -2640,6 +2671,11 @@ module.exports = {
       released_date: '2017-02-03T18:30:00Z',
       title: 'Captain Usopp',
       title_jp: 'キャプテン･ウソップ',
+      title_fr: 'Le Capitaine Usopp',
+      title_de: 'Le Capitaine Usopp',
+      title_pt: 'Capitão Usopp',
+      title_ar: 'كابتن أوسوب', 
+      title_it: 'Capitano Usopp',
       description:
         "With Nami joining as Luffy's navigator (though not as an actual member of the crew), they arrive at an island in search of a proper ship.  There they meet a man claiming to be a pirate captain who seemingly also has ties to Red-Haired Shanks.",
       description_es:
@@ -2663,6 +2699,11 @@ module.exports = {
       released_date: '2017-02-03T18:30:00Z',
       title: 'Captain Kuro',
       title_jp: 'キャプテン･クロ',
+      title_fr: 'Le Capitaine Kuro',
+      title_de: 'Le Capitaine Kuro',
+      title_pt: 'Capitão Kuro',
+      title_ar: 'كابتن كورو',
+      title_it: 'Capitano Kuro',
       description:
         'Usopp petitions his wealthy friend, Kaya, to help Luffy get a proper ship, but he is rebuked by her butler.  After uncovering a devious plot, Usopp warns the village and Kaya, but finds his years of lying make it difficult to convince people of the truth.',
       description_es:
@@ -2727,6 +2768,11 @@ module.exports = {
       released_date: '2017-06-22T18:30:00Z',
       title: 'The Slope',
       title_jp: '坂道',
+      title_fr: 'Sur une Pente Glissante',
+      title_de: 'Der Hang',
+      title_pt: 'A Ladeira',
+      title_ar: 'الجرف',
+      title_it: 'La Salita',
       description:
         'Usopp resolves that, to keep the peace, the town must continue to believe he is a liar, which means he cannot let Captain Kuro’s men up the slope to the village!  Luffy, Zoro, and Nami aid Usopp in his plan to keep the Black Cat Pirates at bay.',
       description_es:
@@ -3572,6 +3618,9 @@ module.exports = {
       released_date: '2017-03-31T18:30:00Z',
       title: 'Whole Cake Island 01 (April Fools 2017)',
       title_it: 'Whole Cake Island 01 (Pesce d’Aprile 2017)',
+      title_fr: "Whole Cake Island 01 (Poisson d'Avril 2017)",
+      title_pt: 'Whole Cake Island 01 (Especial de 1º de Abril 2017)',
+      title_ar: 'جزيرة الكعكة الكاملة 01',
       status: '',
       part: 4,
       hidden: 0,
@@ -5086,6 +5135,9 @@ module.exports = {
       released_date: '2019-03-31T13:04:03Z',
       title: 'Whole Cake Island 39 (April Fools 2019)',
       title_it: 'Whole Cake Island 39 (Pesce d’Aprile 2019)',
+      title_fr: "Whole Cake Island 39 (Poisson d'Avril 2019)",
+      title_pt: "Whole Cake Island 39 (Especial de 1º de Abril 2019)",
+      title_ar: "جزيرة الكعكة الكاملة 39",
       description:
         'After the Straw Hats die, Tommy Wiseau picks up the pieces and explores a story of love, betrayal, and doggies.',
       status: '',
@@ -7811,6 +7863,8 @@ module.exports = {
       released_date: '2017-02-26T02:01:35Z',
       title: "Wapol's Omnivorous Hurrah",
       title_it: "L'urrà Onnivoro di Wapol",
+      title_fr: "L'Incroyable Destin de Wapol le Glouton",
+      title_ar: "بهجة وابول النهمة",
       status: '',
       part: 3,
       hidden: 0,
