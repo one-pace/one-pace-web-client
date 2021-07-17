@@ -988,6 +988,11 @@ module.exports = {
       released_date: '2017-07-16T18:30:00Z',
       title: 'The Silent Man',
       title_jp: '音無き男',
+      title_fr: "À Pas de Velours",
+      title_de: 'Der lautlose Mann',
+      title_pt: 'O Homem Silencioso',
+      title_ar: 'الرجل الخافت',
+      title_it: "L’uomo Silenzioso",
       description:
         'Captain Kuro makes his appearance, and with Zoro too injured to fight, Luffy incapacitated, and Usopp and Nami too weak to make a stand, the situation is desperate.  However, Kaya herself arrives, intent on bargaining with Kuro.',
       description_es:
@@ -4091,6 +4096,11 @@ module.exports = {
       released_date: '2017-10-21T01:10:00Z',
       title: 'For Whom the Bell Tolls',
       title_jp: '誰が為に鐘は鳴る',
+      title_fr: "Pour qui sonne le Glas",
+      title_de: 'Für wen die Glocke läutet',
+      title_pt: 'Por Quem os Sinos Dobram',
+      title_ar: 'لمن تقرع الأجراس',
+      title_it: 'Per chi suona la campana',
       description:
         "While the fight between Luffy and Kuro continues, Jango is intent on forcing Kaya to bequeath her family's money to the Black Cat captain.  Despite the Usopp Pirates' efforts to stop the hypnotist, it seems as if the transaction is all but inevitable.",
       description_es:
@@ -4114,6 +4124,11 @@ module.exports = {
       released_date: '2017-10-21T02:38:00Z',
       title: 'To the Sea',
       title_jp: '海へ',
+      title_fr: "L'Heure du Départ",
+      title_de: 'Aufs Meer',
+      title_pt: 'Para o Mar',
+      title_ar: 'نحو البحر',
+      title_it: 'Si Salpa',
       description:
         "Kuro's ultimate move attacks everything in the area, friend or foe notwithstanding, and Luffy becomes enraged by Kuro's lack of regard for his crew.",
       description_es:
@@ -6017,6 +6032,11 @@ module.exports = {
       released_date: '2019-01-22T00:17:21Z',
       title: "You're the Rare Breed",
       title_jp: 'あんたが珍獣',
+      title_fr: 'Une Faune Insolite',
+      title_de: 'Du bist das seltene Tier',
+      title_pt: 'Você é Um Espécime Raro',
+      title_ar: 'أنت هو الفصيلة النادرة',
+      title_it: 'Tu sei una bestia rara',
       description:
         'With Usopp now on the crew and their new ship, the Going Merry, under their command, the Straw Hats head to an island said to hold a fabled treasure.  There they encounter a strange man stuck in a box who has been looking for the same treasure.',
       description_es:
@@ -6336,6 +6356,10 @@ module.exports = {
       title_es: 'Arlong Park',
       title_jp: 'アーロンパーク',
       title_fr: 'Arlong Park',
+      title_de: 'Arlong Park',
+      title_pt: 'Arlong Park',
+      title_ar: 'منتزه أرلونغ',
+      title_it: 'Arlong Park',
       description:
         'As they depart the Baratie in pursuit of Nami and the Going Merry, Yosaku warns Luffy and Sanji about the vicious Arlong and his fish-man underlings.  Meanwhile, Usopp, Johnny, and Zoro make landfall where Nami docked the Merry.',
       description_es:
@@ -6361,6 +6385,10 @@ module.exports = {
       title_es: 'Monstruos del Grand Line',
       title_jp: '"偉大なる航路"から来た怪物',
       title_fr: 'Le Monstre de Grand Line',
+      title_de: 'Die Monster der Grand Line',
+      title_pt: 'Monstros da Grand Line',
+      title_ar: 'وحوش الغراند لاين',
+      title_it: 'Il Mostro dalla Grand Line',
       description:
         'Usopp, having challenged the fish-men, has been caught.  To effectively prove her loyalty to the Arlong Pirates, Nami is left with a morbid choice.',
       description_es:
@@ -6386,6 +6414,10 @@ module.exports = {
       title_es: 'Mapas y Gyojin',
       title_jp: '海図と魚人',
       title_fr: 'Cartes et Hommes-Poissons',
+      title_de: 'Seekarten und Fischmenschen',
+      title_pt: 'Cartas Náuticas e Homens-Peixe',
+      title_ar: 'الخرائط البحرية واليوجين',
+      title_it: 'Carte Nautiche e Uomini-pesce',
       description:
         'Luffy’s group has reached the island but are met with a shocking revelation.  Unmoved by Nami’s apparent actions and her insistence that he leaves, Luffy stubbornly sticks around.',
       description_es:
@@ -6411,6 +6443,10 @@ module.exports = {
       title_es: 'Bell-mère-san',
       title_jp: 'ベルメールさん',
       title_fr: 'Belmer',
+      title_de: 'Bellemere',
+      title_pt: "Bell-mère-sana",
+      title_ar: 'بيل ميري-سان',
+      title_it: 'Bellmère',
       description:
         "Nojiko goes into detail about Nami's childhood and their adoptive mother Bell-mère, a former marine.  Despite being poor and unrelated by blood, they had a happy life on their tangerine orchard.",
       description_es:
@@ -6436,6 +6472,10 @@ module.exports = {
       title_es: 'Vivan',
       title_jp: '生きる',
       title_fr: 'Vivre',
+      title_de: 'Leben',
+      title_pt: 'Vivam',
+      title_ar: 'عش',
+      title_it: 'Vivere',
       description:
         "When a Navy officer under Arlong's pay confiscates all the money Nami accumulated over the years, it becomes clear where Arlong stands on his promise.",
       description_es:
@@ -6461,6 +6501,9 @@ module.exports = {
       title_es: '¡Bien, pongámonos de pie!',
       title_jp: "OK, Let's STAND UP!",
       title_fr: 'OK, LEVONS-NOUS !',
+      title_pt: 'CERTO, VAMOS NOS LEVANTAR!',
+      title_ar: 'حسنًا، لننهض',
+      title_it: 'OK, Let’s STAND UP',
       description:
         "Nami's audible sorrows have reached the ears of a certain Straw Hat captain, and he and his crew rise to action.  The villagers look on in awe as the Straw Hats boldly enter Arlong Park to face the fishmen.",
       description_es:
@@ -6486,6 +6529,9 @@ module.exports = {
       title_es: 'Caballerosidad vs. karate Gyojin',
       title_jp: '騎士道VS魚人空手',
       title_fr: 'Esprit Chevaleresque VS Karaté des Hommes-Poissons',
+      title_pt: 'Cavalheirismo vs. Caratê dos Homens-Peixe',
+      title_ar: 'الشهامة ضد يوجين كاراتيه',
+      title_it: 'Cavaliere Vs. Karate degli Uomini-pesce',
       description:
         'Luffy’s newest move leaves him incapacitated and at the mercy of the sea, while Zoro, Sanji, and Usopp desperately fight off Arlong’s top officers.',
       description_es:
@@ -6511,6 +6557,9 @@ module.exports = {
       title_es: 'Mi turno',
       title_jp: '交替',
       title_fr: 'Mon Tour',
+      title_pt: 'Minha Vez',
+      title_ar: 'دوري',
+      title_it: 'Il Mio Turno',
       description:
         'The top officers are defeated, but as they currently are, Sanji and Zoro prove to be no match for Arlong.  However, with Luffy finally free, he just may just be able to pull it off.  Meanwhile, Nami finally gathers the courage to face Arlong.',
       description_es:
@@ -6536,6 +6585,9 @@ module.exports = {
       title_es: 'Felicidad',
       title_jp: '幸せ',
       title_fr: 'Bonheur',
+      title_pt: 'Felicidade',
+      title_ar: 'سعادة',
+      title_it: 'Felicità',
       description:
         'Luffy springs into action against Arlong, and their intense struggle commences!  Luffy becomes enraged when he discovers how exactly Arlong had been using Nami, and he comes to a quick decision on how to finally free her of her shackles.',
       description_es:
